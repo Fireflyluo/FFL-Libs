@@ -1,0 +1,10 @@
+{
+    recheck = false,
+    options = {
+        plat = "riscv",
+        toolchain = "riscv-wch-gcc"
+    },
+    mtimes = {
+        ["xmake_riscv.lua"] = 1772287371
+    }
+}

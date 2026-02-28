@@ -16,6 +16,9 @@
 #include "qmi8658a_reg.h"
 #include <math.h>
 
+/* 外部函数声明 - 用户需要在自己的项目中提供 HAL_Delay 函数 */
+extern void HAL_Delay(uint32_t ms);
+
 // 定义圆周率（兼容性方案）
 #ifndef M_PI
 #define M_PI 3.1415926535f

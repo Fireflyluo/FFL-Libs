@@ -1,10 +1,9 @@
-
 /***************************************************************************************
  * 本程序由江协科技创建并免费开源共享
  * 你可以任意查看、使用和修改，并应用到自己的项目之中
  * 程序版权归江协科技所有，任何人或组织不得将其据为己有
  *
- * 程序名称：				0.96寸OLED显示屏驱动程序（4针脚I2C接口）
+ * 程序名称：				0.96 寸 OLED 显示屏驱动程序（4 针脚 I2C 接口）
  * 程序创建时间：			2023.10.24
  * 当前程序版本：			V1.1
  * 当前版本发布时间：		2023.12.8
@@ -19,8 +18,6 @@
  */
 
 #include "OLED.h"
-#include "IQmath_RV32.h"
-#include "drv_i2c.h"
 #include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -28,129 +25,69 @@
 
 /**
  * 数据存储格式：
- * 纵向8点，高位在下，先从左到右，再从上到下
- * 每一个Bit对应一个像素点
- *
- *      B0 B0                  B0 B0
- *      B1 B1                  B1 B1
- *      B2 B2                  B2 B2
- *      B3 B3  ------------->  B3 B3 --
- *      B4 B4                  B4 B4  |
- *      B5 B5                  B5 B5  |
- *      B6 B6                  B6 B6  |
- *      B7 B7                  B7 B7  |
- *                                    |
- *  -----------------------------------
- *  |
- *  |   B0 B0                  B0 B0
- *  |   B1 B1                  B1 B1
- *  |   B2 B2                  B2 B2
- *  --> B3 B3  ------------->  B3 B3
- *      B4 B4                  B4 B4
- *      B5 B5                  B5 B5
- *      B6 B6                  B6 B6
- *      B7 B7                  B7 B7
- *
- * 坐标轴定义：
- * 左上角为(0, 0)点
- * 横向向右为X轴，取值范围：0~127
- * 纵向向下为Y轴，取值范围：0~63
- *
- *       0             X轴           127
- *      .------------------------------->
- *    0 |
- *      |
- *      |
- *      |
- *  Y轴 |
- *      |
- *      |
- *      |
- *   63 |
- *      v
- *
+ * 纵向 8 点，高位在下，先从左到右，再从上到下
+ * 每一个 Bit 对应一个像素点
  */
 
 /*全局变量*********************/
 
 /**
- * OLED显存数组
+ * OLED 显存数组
  * 所有的显示函数，都只是对此显存数组进行读写
- * 随后调用OLED_Update函数或OLED_UpdateArea函数
- * 才会将显存数组的数据发送到OLED硬件，进行显示
+ * 随后调用 OLED_Update 函数或 OLED_UpdateArea 函数
+ * 才会将显存数组的数据发送到 OLED 硬件，进行显示
  */
 uint8_t OLED_DisplayBuf[8][128];
 
 /*********************全局变量*/
 
-/*引脚配置*********************/
+/* 用户需要实现的硬件抽象层函数声明 */
+/* 用户需要在自己的项目中实现以下函数 */
 
 /**
- * 函    数：OLED写SCL高低电平
- * 参    数：要写入SCL的电平值，范围：0/1
- * 返 回 值：无
- * 说    明：当上层函数需要写SCL时，此函数会被调用
- *           用户需要根据参数传入的值，将SCL置为高电平或者低电平
- *           当参数传入0时，置SCL为低电平，当参数传入1时，置SCL为高电平
+ * @brief OLED 写 SCL 高低电平
+ * @param BitValue 要写入 SCL 的电平值，范围：0/1
+ * @note 用户需要在自己的项目中实现此函数
  */
+__attribute__((weak))
 void OLED_W_SCL(uint8_t BitValue)
 {
-    /*根据BitValue的值，将SCL置高电平或者低电平*/
-    GPIO_WriteBit(GPIOB, GPIO_Pin_8, (BitAction)BitValue);
-
-    /*如果单片机速度过快，可在此添加适量延时，以避免超出I2C通信的最大速度*/
-    //...
+    /* 这是一个占位函数，用户需要在自己的项目中实现 */
+    (void)BitValue;
 }
 
 /**
- * 函    数：OLED写SDA高低电平
- * 参    数：要写入SDA的电平值，范围：0/1
- * 返 回 值：无
- * 说    明：当上层函数需要写SDA时，此函数会被调用
- *           用户需要根据参数传入的值，将SDA置为高电平或者低电平
- *           当参数传入0时，置SDA为低电平，当参数传入1时，置SDA为高电平
+ * @brief OLED 写 SDA 高低电平
+ * @param BitValue 要写入 SDA 的电平值，范围：0/1
+ * @note 用户需要在自己的项目中实现此函数
  */
+__attribute__((weak))
 void OLED_W_SDA(uint8_t BitValue)
 {
-    /*根据BitValue的值，将SDA置高电平或者低电平*/
-    GPIO_WriteBit(GPIOB, GPIO_Pin_9, (BitAction)BitValue);
-
-    /*如果单片机速度过快，可在此添加适量延时，以避免超出I2C通信的最大速度*/
-    //...
+    /* 这是一个占位函数，用户需要在自己的项目中实现 */
+    (void)BitValue;
 }
 
 /**
- * 函    数：OLED引脚初始化
- * 参    数：无
- * 返 回 值：无
- * 说    明：当上层函数需要初始化时，此函数会被调用
- *           用户需要将SCL和SDA引脚初始化为开漏模式，并释放引脚
+ * @brief OLED 引脚初始化
+ * @note 用户需要在自己的项目中实现此函数
  */
+__attribute__((weak))
 void OLED_GPIO_Init(void)
 {
-    uint32_t i, j;
+    /* 这是一个占位函数，用户需要在自己的项目中实现 */
+}
 
-    /*在初始化前，加入适量延时，待OLED供电稳定*/
-    for (i = 0; i < 1000; i++)
-    {
-        for (j = 0; j < 1000; j++)
-            ;
-    }
-
-    /*将SCL和SDA引脚初始化为开漏模式*/
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-
-    GPIO_InitTypeDef GPIO_InitStructure;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_OD;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_8;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-    /*释放SCL和SDA*/
-    OLED_W_SCL(1);
-    OLED_W_SDA(1);
+/**
+ * @brief 延时函数（毫秒）
+ * @param ms 延时的毫秒数
+ * @note 用户需要在自己的项目中实现此函数
+ */
+__attribute__((weak))
+void OLED_Delay_ms(uint32_t ms)
+{
+    /* 这是一个占位函数，用户需要在自己的项目中实现 */
+    (void)ms;
 }
 
 /*********************引脚配置*/
@@ -158,32 +95,32 @@ void OLED_GPIO_Init(void)
 /*通信协议*********************/
 
 /**
- * 函    数：I2C起始
+ * 函    数：I2C 起始
  * 参    数：无
  * 返 回 值：无
  */
 void OLED_I2C_Start(void)
 {
-    OLED_W_SDA(1); // 释放SDA，确保SDA为高电平
-    OLED_W_SCL(1); // 释放SCL，确保SCL为高电平
-    OLED_W_SDA(0); // 在SCL高电平期间，拉低SDA，产生起始信号
-    OLED_W_SCL(0); // 起始后把SCL也拉低，即为了占用总线，也为了方便总线时序的拼接
+    OLED_W_SDA(1); // 释放 SDA，确保 SDA 为高电平
+    OLED_W_SCL(1); // 释放 SCL，确保 SCL 为高电平
+    OLED_W_SDA(0); // 在 SCL 高电平期间，拉低 SDA，产生起始信号
+    OLED_W_SCL(0); // 起始后把 SCL 也拉低，即为了占用总线，也为了方便总线时序的拼接
 }
 
 /**
- * 函    数：I2C终止
+ * 函    数：I2C 终止
  * 参    数：无
  * 返 回 值：无
  */
 void OLED_I2C_Stop(void)
 {
-    OLED_W_SDA(0); // 拉低SDA，确保SDA为低电平
-    OLED_W_SCL(1); // 释放SCL，使SCL呈现高电平
-    OLED_W_SDA(1); // 在SCL高电平期间，释放SDA，产生终止信号
+    OLED_W_SDA(0); // 拉低 SDA，确保 SDA 为低电平
+    OLED_W_SCL(1); // 释放 SCL，使 SCL 呈现高电平
+    OLED_W_SDA(1); // 在 SCL 高电平期间，释放 SDA，产生终止信号
 }
 
 /**
- * 函    数：I2C发送一个字节
+ * 函    数：I2C 发送一个字节
  * 参    数：Byte 要发送的一个字节数据，范围：0x00~0xFF
  * 返 回 值：无
  */
@@ -191,14 +128,14 @@ void OLED_I2C_SendByte(uint8_t Byte)
 {
     uint8_t i;
 
-    /*循环8次，主机依次发送数据的每一位*/
+    /*循环 8 次，主机依次发送数据的每一位*/
     for (i = 0; i < 8; i++)
     {
-        /*使用掩码的方式取出Byte的指定一位数据并写入到SDA线*/
-        /*两个!的作用是，让所有非零的值变为1*/
+        /*使用掩码的方式取出 Byte 的指定一位数据并写入到 SDA 线*/
+        /*两个！的作用是，让所有非零的值变为 1*/
         OLED_W_SDA(!!(Byte & (0x80 >> i)));
-        OLED_W_SCL(1); // 释放SCL，从机在SCL高电平期间读取SDA
-        OLED_W_SCL(0); // 拉低SCL，主机开始发送下一位数据
+        OLED_W_SCL(1); // 释放 SCL，从机在 SCL 高电平期间读取 SDA
+        OLED_W_SCL(0); // 拉低 SCL，主机开始发送下一位数据
     }
 
     OLED_W_SCL(1); // 额外的一个时钟，不处理应答信号
@@ -206,55 +143,38 @@ void OLED_I2C_SendByte(uint8_t Byte)
 }
 
 /**
- * 函    数：OLED写命令
+ * 函    数：OLED 写命令
  * 参    数：Command 要写入的命令值，范围：0x00~0xFF
  * 返 回 值：无
  */
 void OLED_WriteCommand(uint8_t Command)
 {
-    // OLED_I2C_Start();				//I2C起始
-    // OLED_I2C_SendByte(0x78);		//发送OLED的I2C从机地址
-    // OLED_I2C_SendByte(0x00);		//控制字节，给0x00，表示即将写命令
-    // OLED_I2C_SendByte(Command);		//写入指定的命令
-    // OLED_I2C_Stop();				//I2C终止
-
-    // i2c_write_byte(I2C_NUM_1, 0x3C, 0x00, Command);
-
-    extern vu8 tx_flag;
-    tx_flag = 1;
-
-    i2c_write_byte_async(I2C_NUM_1, 0x3C, 0x00, Command);
-    while (tx_flag == 1)
-        ;
+    OLED_I2C_Start();				//I2C 起始
+    OLED_I2C_SendByte(0x78);		//发送 OLED 的 I2C 从机地址
+    OLED_I2C_SendByte(0x00);		//控制字节，给 0x00，表示即将写命令
+    OLED_I2C_SendByte(Command);		//写入指定的命令
+    OLED_I2C_Stop();				//I2C 终止
 }
 
 /**
- * 函    数：OLED写数据
+ * 函    数：OLED 写数据
  * 参    数：Data 要写入数据的起始地址
  * 参    数：Count 要写入数据的数量
  * 返 回 值：无
  */
 void OLED_WriteData(uint8_t *Data, uint8_t Count)
 {
-    // uint8_t i;
+    uint8_t i;
 
-    // OLED_I2C_Start();				//I2C起始
-    // OLED_I2C_SendByte(0x78);		//发送OLED的I2C从机地址
-    // OLED_I2C_SendByte(0x40);		//控制字节，给0x40，表示即将写数量
-    // /*循环Count次，进行连续的数据写入*/
-    // for (i = 0; i < Count; i ++)
-    // {
-    // 	OLED_I2C_SendByte(Data[i]);	//依次发送Data的每一个数据
-    // }
-    // OLED_I2C_Stop();				//I2C终止
-
-    //i2c_write_register(I2C_NUM_1, 0x3C, 0x40, Data, Count);
-
-    extern vu8 tx_flag;
-    tx_flag = 1;
-    i2c_write_register_async(I2C_NUM_1, 0x3C, 0x40, Data, Count);
-    while (tx_flag == 1)
-        ;
+    OLED_I2C_Start();				//I2C 起始
+    OLED_I2C_SendByte(0x78);		//发送 OLED 的 I2C 从机地址
+    OLED_I2C_SendByte(0x40);		//控制字节，给 0x40，表示即将写数量
+    /*循环 Count 次，进行连续的数据写入*/
+    for (i = 0; i < Count; i ++)
+    {
+    	OLED_I2C_SendByte(Data[i]);	//依次发送 Data 的每一个数据
+    }
+    OLED_I2C_Stop();				//I2C 终止
 }
 
 /*********************通信协议*/
@@ -262,20 +182,17 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count)
 /*硬件配置*********************/
 
 /**
- * 函    数：OLED初始化
+ * 函    数：OLED 初始化
  * 参    数：无
  * 返 回 值：无
  * 说    明：使用前，需要调用此初始化函数
  */
 void OLED_Init(void)
 {
-    //	OLED_GPIO_Init();			//先调用底层的端口初始化
+	OLED_GPIO_Init();			//先调用底层的端口初始化
 
-    /*写入一系列的命令，对OLED进行初始化配置*/
-    // I2C_ITConfig(I2C1, I2C_IT_BUF | I2C_IT_EVT | I2C_IT_ERR, DISABLE);
-    // I2C_ITConfig(I2C2, I2C_IT_BUF | I2C_IT_EVT | I2C_IT_ERR, DISABLE);
-
-    OLED_WriteCommand(0xAE); // 设置显示开启/关闭，0xAE关闭，0xAF开启
+    /*写入一系列的命令，对 OLED 进行初始化配置*/
+    OLED_WriteCommand(0xAE); // 设置显示开启/关闭，0xAE 关闭，0xAF 开启
 
     OLED_WriteCommand(0xD5); // 设置显示时钟分频比/振荡器频率
     OLED_WriteCommand(0x80); // 0x00~0xFF
@@ -288,11 +205,11 @@ void OLED_Init(void)
 
     OLED_WriteCommand(0x40); // 设置显示开始行，0x40~0x7F
 
-    OLED_WriteCommand(0xA1); // 设置左右方向，0xA1正常，0xA0左右反置
+    OLED_WriteCommand(0xA1); // 设置左右方向，0xA1 正常，0xA0 左右反置
 
-    OLED_WriteCommand(0xC8); // 设置上下方向，0xC8正常，0xC0上下反置
+    OLED_WriteCommand(0xC8); // 设置上下方向，0xC8 正常，0xC0 上下反置
 
-    OLED_WriteCommand(0xDA); // 设置COM引脚硬件配置
+    OLED_WriteCommand(0xDA); // 设置 COM 引脚硬件配置
     OLED_WriteCommand(0x12);
 
     OLED_WriteCommand(0x81); // 设置对比度
@@ -301,43 +218,41 @@ void OLED_Init(void)
     OLED_WriteCommand(0xD9); // 设置预充电周期
     OLED_WriteCommand(0xF1);
 
-    OLED_WriteCommand(0xDB); // 设置VCOMH取消选择级别
+    OLED_WriteCommand(0xDB); // 设置 VCOMH 取消选择级别
     OLED_WriteCommand(0x30);
 
     OLED_WriteCommand(0xA4); // 设置整个显示打开/关闭
 
-    OLED_WriteCommand(0xA6); // 设置正常/反色显示，0xA6正常，0xA7反色
+    OLED_WriteCommand(0xA6); // 设置正常/反色显示，0xA6 正常，0xA7 反色
 
     OLED_WriteCommand(0x8D); // 设置充电泵
     OLED_WriteCommand(0x14);
 
     OLED_WriteCommand(0xAF); // 开启显示
 
-    // I2C_ITConfig(I2C1, I2C_IT_BUF | I2C_IT_EVT | I2C_IT_ERR, ENABLE);
-    // I2C_ITConfig(I2C2, I2C_IT_BUF | I2C_IT_EVT | I2C_IT_ERR, ENABLE);
     OLED_Clear();  // 清空显存数组
     OLED_Update(); // 更新显示，清屏，防止初始化后未显示内容时花屏
 }
 
 /**
- * 函    数：OLED设置显示光标位置
+ * 函    数：OLED 设置显示光标位置
  * 参    数：Page 指定光标所在的页，范围：0~7
- * 参    数：X 指定光标所在的X轴坐标，范围：0~127
+ * 参    数：X 指定光标所在的 X 轴坐标，范围：0~127
  * 返 回 值：无
- * 说    明：OLED默认的Y轴，只能8个Bit为一组写入，即1页等于8个Y轴坐标
+ * 说    明：OLED 默认的 Y 轴，只能 8 个 Bit 为一组写入，即 1 页等于 8 个 Y 轴坐标
  */
 void OLED_SetCursor(uint8_t Page, uint8_t X)
 {
-    /*如果使用此程序驱动1.3寸的OLED显示屏，则需要解除此注释*/
-    /*因为1.3寸的OLED驱动芯片（SH1106）有132列*/
-    /*屏幕的起始列接在了第2列，而不是第0列*/
-    /*所以需要将X加2，才能正常显示*/
+    /*如果使用此程序驱动 1.3 寸的 OLED 显示屏，则需要解除此注释*/
+    /*因为 1.3 寸的 OLED 驱动芯片（SH1106）有 132 列*/
+    /*屏幕的起始列接在了第 2 列，而不是第 0 列*/
+    /*所以需要将 X 加 2，才能正常显示*/
     //	X += 2;
 
     /*通过指令设置页地址和列地址*/
     OLED_WriteCommand(0xB0 | Page);              // 设置页位置
-    OLED_WriteCommand(0x10 | ((X & 0xF0) >> 4)); // 设置X位置高4位
-    OLED_WriteCommand(0x00 | (X & 0x0F));        // 设置X位置低4位
+    OLED_WriteCommand(0x10 | ((X & 0xF0) >> 4)); // 设置 X 位置高 4 位
+    OLED_WriteCommand(0x00 | (X & 0x0F));        // 设置 X 位置低 4 位
 }
 
 /*********************硬件配置*/
@@ -350,14 +265,14 @@ void OLED_SetCursor(uint8_t Page, uint8_t X)
  * 函    数：次方函数
  * 参    数：X 底数
  * 参    数：Y 指数
- * 返 回 值：等于X的Y次方
+ * 返 回 值：等于 X 的 Y 次方
  */
 uint32_t OLED_Pow(uint32_t X, uint32_t Y)
 {
-    uint32_t Result = 1; // 结果默认为1
-    while (Y--)          // 累乘Y次
+    uint32_t Result = 1; // 结果默认为 1
+    while (Y--)          // 累乘 Y 次
     {
-        Result *= X; // 每次把X累乘到结果上
+        Result *= X; // 每次把 X 累乘到结果上
     }
     return Result;
 }
@@ -365,15 +280,15 @@ uint32_t OLED_Pow(uint32_t X, uint32_t Y)
 /**
  * 函    数：判断指定点是否在指定多边形内部
  * 参    数：nvert 多边形的顶点数
- * 参    数：vertx verty 包含多边形顶点的x和y坐标的数组
- * 参    数：testx testy 测试点的X和y坐标
+ * 参    数：vertx verty 包含多边形顶点的 x 和 y 坐标的数组
+ * 参    数：testx testy 测试点的 X 和 y 坐标
  * 返 回 值：指定点是否在指定多边形内部，1：在内部，0：不在内部
  */
 uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty, int16_t testx, int16_t testy)
 {
     int16_t i, j, c = 0;
 
-    /*此算法由W. Randolph Franklin提出*/
+    /*此算法由 W. Randolph Franklin 提出*/
     /*参考链接：https://wrfranklin.org/Research/Short_Notes/pnpoly.html*/
     for (i = 0, j = nvert - 1; i < nvert; j = i++)
     {
@@ -390,7 +305,7 @@ uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty, int16_t testx
  * 函    数：判断指定点是否在指定角度内部
  * 参    数：X Y 指定点的坐标
  * 参    数：StartAngle EndAngle 起始角度和终止角度，范围：-180~180
- *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
+ *           水平向右为 0 度，水平向左为 180 度或 -180 度，下方为正数，上方为负数，顺时针旋转
  * 返 回 值：指定点是否在指定角度内部，1：在内部，0：不在内部
  */
 uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngle)
@@ -421,12 +336,12 @@ uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngl
 /*功能函数*********************/
 
 /**
- * 函    数：将OLED显存数组更新到OLED屏幕
+ * 函    数：将 OLED 显存数组更新到 OLED 屏幕
  * 参    数：无
  * 返 回 值：无
- * 说    明：所有的显示函数，都只是对OLED显存数组进行读写
- *           随后调用OLED_Update函数或OLED_UpdateArea函数
- *           才会将显存数组的数据发送到OLED硬件，进行显示
+ * 说    明：所有的显示函数，都只是对 OLED 显存数组进行读写
+ *           随后调用 OLED_Update 函数或 OLED_UpdateArea 函数
+ *           才会将显存数组的数据发送到 OLED 硬件，进行显示
  *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_Update(void)
@@ -437,23 +352,23 @@ void OLED_Update(void)
     {
         /*设置光标位置为每一页的第一列*/
         OLED_SetCursor(j, 0);
-        /*连续写入128个数据，将显存数组的数据写入到OLED硬件*/
+        /*连续写入 128 个数据，将显存数组的数据写入到 OLED 硬件*/
         OLED_WriteData(OLED_DisplayBuf[j], 128);
     }
 }
 
 /**
- * 函    数：将OLED显存数组部分更新到OLED屏幕
+ * 函    数：将 OLED 显存数组部分更新到 OLED 屏幕
  * 参    数：X 指定区域左上角的横坐标，范围：0~127
  * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
  * 参    数：Width 指定区域的宽度，范围：0~128
  * 参    数：Height 指定区域的高度，范围：0~64
  * 返 回 值：无
  * 说    明：此函数会至少更新参数指定的区域
- *           如果更新区域Y轴只包含部分页，则同一页的剩余部分会跟随一起更新
- * 说    明：所有的显示函数，都只是对OLED显存数组进行读写
- *           随后调用OLED_Update函数或OLED_UpdateArea函数
- *           才会将显存数组的数据发送到OLED硬件，进行显示
+ *           如果更新区域 Y 轴只包含部分页，则同一页的剩余部分会跟随一起更新
+ * 说    明：所有的显示函数，都只是对 OLED 显存数组进行读写
+ *           随后调用 OLED_Update 函数或 OLED_UpdateArea 函数
+ *           才会将显存数组的数据发送到 OLED 硬件，进行显示
  *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
@@ -479,18 +394,18 @@ void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
     }
 
     /*遍历指定区域涉及的相关页*/
-    /*(Y + Height - 1) / 8 + 1的目的是(Y + Height) / 8并向上取整*/
+    /*(Y + Height - 1) / 8 + 1 的目的是 (Y + Height) / 8 并向上取整*/
     for (j = Y / 8; j < (Y + Height - 1) / 8 + 1; j++)
     {
         /*设置光标位置为相关页的指定列*/
         OLED_SetCursor(j, X);
-        /*连续写入Width个数据，将显存数组的数据写入到OLED硬件*/
+        /*连续写入 Width 个数据，将显存数组的数据写入到 OLED 硬件*/
         OLED_WriteData(&OLED_DisplayBuf[j][X], Width);
     }
 }
 
 /**
- * 函    数：将OLED显存数组全部清零
+ * 函    数：将 OLED 显存数组全部清零
  * 参    数：无
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -498,9 +413,9 @@ void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 void OLED_Clear(void)
 {
     uint8_t i, j;
-    for (j = 0; j < 8; j++) // 遍历8页
+    for (j = 0; j < 8; j++) // 遍历 8 页
     {
-        for (i = 0; i < 128; i++) // 遍历128列
+        for (i = 0; i < 128; i++) // 遍历 128 列
         {
             OLED_DisplayBuf[j][i] = 0x00; // 将显存数组数据全部清零
         }
@@ -508,7 +423,7 @@ void OLED_Clear(void)
 }
 
 /**
- * 函    数：将OLED显存数组部分清零
+ * 函    数：将 OLED 显存数组部分清零
  * 参    数：X 指定区域左上角的横坐标，范围：0~127
  * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
  * 参    数：Width 指定区域的宽度，范围：0~128
@@ -548,7 +463,7 @@ void OLED_ClearArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 }
 
 /**
- * 函    数：将OLED显存数组全部取反
+ * 函    数：将 OLED 显存数组全部取反
  * 参    数：无
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -556,9 +471,9 @@ void OLED_ClearArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 void OLED_Reverse(void)
 {
     uint8_t i, j;
-    for (j = 0; j < 8; j++) // 遍历8页
+    for (j = 0; j < 8; j++) // 遍历 8 页
     {
-        for (i = 0; i < 128; i++) // 遍历128列
+        for (i = 0; i < 128; i++) // 遍历 128 列
         {
             OLED_DisplayBuf[j][i] ^= 0xFF; // 将显存数组数据全部取反
         }
@@ -566,7 +481,7 @@ void OLED_Reverse(void)
 }
 
 /**
- * 函    数：将OLED显存数组部分取反
+ * 函    数：将 OLED 显存数组部分取反
  * 参    数：X 指定区域左上角的横坐标，范围：0~127
  * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
  * 参    数：Width 指定区域的宽度，范围：0~128
@@ -606,38 +521,38 @@ void OLED_ReverseArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 }
 
 /**
- * 函    数：OLED显示一个字符
+ * 函    数：OLED 显示一个字符
  * 参    数：X 指定字符左上角的横坐标，范围：0~127
  * 参    数：Y 指定字符左上角的纵坐标，范围：0~63
- * 参    数：Char 指定要显示的字符，范围：ASCII码可见字符
+ * 参    数：Char 指定要显示的字符，范围：ASCII 码可见字符
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowChar(uint8_t X, uint8_t Y, char Char, uint8_t FontSize)
 {
-    if (FontSize == OLED_8X16) // 字体为宽8像素，高16像素
+    if (FontSize == OLED_8X16) // 字体为宽 8 像素，高 16 像素
     {
-        /*将ASCII字模库OLED_F8x16的指定数据以8*16的图像格式显示*/
+        /*将 ASCII 字模库 OLED_F8x16 的指定数据以 8*16 的图像格式显示*/
         OLED_ShowImage(X, Y, 8, 16, OLED_F8x16[Char - ' ']);
     }
-    else if (FontSize == OLED_6X8) // 字体为宽6像素，高8像素
+    else if (FontSize == OLED_6X8) // 字体为宽 6 像素，高 8 像素
     {
-        /*将ASCII字模库OLED_F6x8的指定数据以6*8的图像格式显示*/
+        /*将 ASCII 字模库 OLED_F6x8 的指定数据以 6*8 的图像格式显示*/
         OLED_ShowImage(X, Y, 6, 8, OLED_F6x8[Char - ' ']);
     }
 }
 
 /**
- * 函    数：OLED显示字符串
+ * 函    数：OLED 显示字符串
  * 参    数：X 指定字符串左上角的横坐标，范围：0~127
  * 参    数：Y 指定字符串左上角的纵坐标，范围：0~63
- * 参    数：String 指定要显示的字符串，范围：ASCII码可见字符组成的字符串
+ * 参    数：String 指定要显示的字符串，范围：ASCII 码可见字符组成的字符串
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -646,20 +561,20 @@ void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize)
     uint8_t i;
     for (i = 0; String[i] != '\0'; i++) // 遍历字符串的每个字符
     {
-        /*调用OLED_ShowChar函数，依次显示每个字符*/
+        /*调用 OLED_ShowChar 函数，依次显示每个字符*/
         OLED_ShowChar(X + i * FontSize, Y, String[i], FontSize);
     }
 }
 
 /**
- * 函    数：OLED显示数字（十进制，正整数）
+ * 函    数：OLED 显示数字（十进制，正整数）
  * 参    数：X 指定数字左上角的横坐标，范围：0~127
  * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
  * 参    数：Number 指定要显示的数字，范围：0~4294967295
  * 参    数：Length 指定数字的长度，范围：0~10
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -668,7 +583,7 @@ void OLED_ShowNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t
     uint8_t i;
     for (i = 0; i < Length; i++) // 遍历数字的每一位
     {
-        /*调用OLED_ShowChar函数，依次显示每个数字*/
+        /*调用 OLED_ShowChar 函数，依次显示每个数字*/
         /*Number / OLED_Pow(10, Length - i - 1) % 10 可以十进制提取数字的每一位*/
         /*+ '0' 可将数字转换为字符格式*/
         OLED_ShowChar(X + i * FontSize, Y, Number / OLED_Pow(10, Length - i - 1) % 10 + '0', FontSize);
@@ -676,14 +591,14 @@ void OLED_ShowNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t
 }
 
 /**
- * 函    数：OLED显示有符号数字（十进制，整数）
+ * 函    数：OLED 显示有符号数字（十进制，整数）
  * 参    数：X 指定数字左上角的横坐标，范围：0~127
  * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
  * 参    数：Number 指定要显示的数字，范围：-2147483648~2147483647
  * 参    数：Length 指定数字的长度，范围：0~10
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -692,20 +607,20 @@ void OLED_ShowSignedNum(uint8_t X, uint8_t Y, int32_t Number, uint8_t Length, ui
     uint8_t i;
     uint32_t Number1;
 
-    if (Number >= 0) // 数字大于等于0
+    if (Number >= 0) // 数字大于等于 0
     {
-        OLED_ShowChar(X, Y, '+', FontSize); // 显示+号
-        Number1 = Number;                   // Number1直接等于Number
+        OLED_ShowChar(X, Y, '+', FontSize); // 显示 + 号
+        Number1 = Number;                   // Number1 直接等于 Number
     }
-    else // 数字小于0
+    else // 数字小于 0
     {
-        OLED_ShowChar(X, Y, '-', FontSize); // 显示-号
-        Number1 = -Number;                  // Number1等于Number取负
+        OLED_ShowChar(X, Y, '-', FontSize); // 显示 - 号
+        Number1 = -Number;                  // Number1 等于 Number 取负
     }
 
     for (i = 0; i < Length; i++) // 遍历数字的每一位
     {
-        /*调用OLED_ShowChar函数，依次显示每个数字*/
+        /*调用 OLED_ShowChar 函数，依次显示每个数字*/
         /*Number1 / OLED_Pow(10, Length - i - 1) % 10 可以十进制提取数字的每一位*/
         /*+ '0' 可将数字转换为字符格式*/
         OLED_ShowChar(X + (i + 1) * FontSize, Y, Number1 / OLED_Pow(10, Length - i - 1) % 10 + '0', FontSize);
@@ -713,14 +628,14 @@ void OLED_ShowSignedNum(uint8_t X, uint8_t Y, int32_t Number, uint8_t Length, ui
 }
 
 /**
- * 函    数：OLED显示十六进制数字（十六进制，正整数）
+ * 函    数：OLED 显示十六进制数字（十六进制，正整数）
  * 参    数：X 指定数字左上角的横坐标，范围：0~127
  * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
  * 参    数：Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
  * 参    数：Length 指定数字的长度，范围：0~8
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -732,30 +647,30 @@ void OLED_ShowHexNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint
         /*以十六进制提取数字的每一位*/
         SingleNumber = Number / OLED_Pow(16, Length - i - 1) % 16;
 
-        if (SingleNumber < 10) // 单个数字小于10
+        if (SingleNumber < 10) // 单个数字小于 10
         {
-            /*调用OLED_ShowChar函数，显示此数字*/
+            /*调用 OLED_ShowChar 函数，显示此数字*/
             /*+ '0' 可将数字转换为字符格式*/
             OLED_ShowChar(X + i * FontSize, Y, SingleNumber + '0', FontSize);
         }
-        else // 单个数字大于10
+        else // 单个数字大于 10
         {
-            /*调用OLED_ShowChar函数，显示此数字*/
-            /*+ 'A' 可将数字转换为从A开始的十六进制字符*/
+            /*调用 OLED_ShowChar 函数，显示此数字*/
+            /*+ 'A' 可将数字转换为从 A 开始的十六进制字符*/
             OLED_ShowChar(X + i * FontSize, Y, SingleNumber - 10 + 'A', FontSize);
         }
     }
 }
 
 /**
- * 函    数：OLED显示二进制数字（二进制，正整数）
+ * 函    数：OLED 显示二进制数字（二进制，正整数）
  * 参    数：X 指定数字左上角的横坐标，范围：0~127
  * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
  * 参    数：Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
  * 参    数：Length 指定数字的长度，范围：0~16
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -764,7 +679,7 @@ void OLED_ShowBinNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint
     uint8_t i;
     for (i = 0; i < Length; i++) // 遍历数字的每一位
     {
-        /*调用OLED_ShowChar函数，依次显示每个数字*/
+        /*调用 OLED_ShowChar 函数，依次显示每个数字*/
         /*Number / OLED_Pow(2, Length - i - 1) % 2 可以二进制提取数字的每一位*/
         /*+ '0' 可将数字转换为字符格式*/
         OLED_ShowChar(X + i * FontSize, Y, Number / OLED_Pow(2, Length - i - 1) % 2 + '0', FontSize);
@@ -772,15 +687,15 @@ void OLED_ShowBinNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint
 }
 
 /**
- * 函    数：OLED显示浮点数字（十进制，小数）
+ * 函    数：OLED 显示浮点数字（十进制，小数）
  * 参    数：X 指定数字左上角的横坐标，范围：0~127
  * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
  * 参    数：Number 指定要显示的数字，范围：-4294967295.0~4294967295.0
  * 参    数：IntLength 指定数字的整数位长度，范围：0~10
  * 参    数：FraLength 指定数字的小数位长度，范围：0~9，小数进行四舍五入显示
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
@@ -788,19 +703,19 @@ void OLED_ShowFloatNum(uint8_t X, uint8_t Y, double Number, uint8_t IntLength, u
 {
     uint32_t PowNum, IntNum, FraNum;
 
-    if (Number >= 0) // 数字大于等于0
+    if (Number >= 0) // 数字大于等于 0
     {
-        OLED_ShowChar(X, Y, '+', FontSize); // 显示+号
+        OLED_ShowChar(X, Y, '+', FontSize); // 显示 + 号
     }
-    else // 数字小于0
+    else // 数字小于 0
     {
-        OLED_ShowChar(X, Y, '-', FontSize); // 显示-号
-        Number = -Number;                   // Number取负
+        OLED_ShowChar(X, Y, '-', FontSize); // 显示 - 号
+        Number = -Number;                   // Number 取负
     }
 
     /*提取整数部分和小数部分*/
     IntNum = Number;                  // 直接赋值给整型变量，提取整数
-    Number -= IntNum;                 // 将Number的整数减掉，防止之后将小数乘到整数时因数过大造成错误
+    Number -= IntNum;                 // 将 Number 的整数减掉，防止之后将小数乘到整数时因数过大造成错误
     PowNum = OLED_Pow(10, FraLength); // 根据指定小数的位数，确定乘数
     FraNum = round(Number * PowNum);  // 将小数乘到整数，同时四舍五入，避免显示误差
     IntNum += FraNum / PowNum;        // 若四舍五入造成了进位，则需要再加给整数
@@ -816,11 +731,11 @@ void OLED_ShowFloatNum(uint8_t X, uint8_t Y, double Number, uint8_t IntLength, u
 }
 
 /**
- * 函    数：OLED显示汉字串
+ * 函    数：OLED 显示汉字串
  * 参    数：X 指定汉字串左上角的横坐标，范围：0~127
  * 参    数：Y 指定汉字串左上角的纵坐标，范围：0~63
  * 参    数：Chinese 指定要显示的汉字串，范围：必须全部为汉字或者全角字符，不要加入任何半角字符
- *           显示的汉字需要在OLED_Data.c里的OLED_CF16x16数组定义
+ *           显示的汉字需要在 OLED_Data.c 里的 OLED_CF16x16 数组定义
  *           未找到指定汉字时，会显示默认图形（一个方框，内部一个问号）
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -837,7 +752,7 @@ void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese)
         SingleChinese[pChinese] = Chinese[i]; // 提取汉字串数据到单个汉字数组
         pChinese++;                           // 计次自增
 
-        /*当提取次数到达OLED_CHN_CHAR_WIDTH时，即代表提取到了一个完整的汉字*/
+        /*当提取次数到达 OLED_CHN_CHAR_WIDTH 时，即代表提取到了一个完整的汉字*/
         if (pChinese >= OLED_CHN_CHAR_WIDTH)
         {
             pChinese = 0; // 计次归零
@@ -849,18 +764,18 @@ void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese)
                 /*找到匹配的汉字*/
                 if (strcmp(OLED_CF16x16[pIndex].Index, SingleChinese) == 0)
                 {
-                    break; // 跳出循环，此时pIndex的值为指定汉字的索引
+                    break; // 跳出循环，此时 pIndex 的值为指定汉字的索引
                 }
             }
 
-            /*将汉字字模库OLED_CF16x16的指定数据以16*16的图像格式显示*/
+            /*将汉字字模库 OLED_CF16x16 的指定数据以 16*16 的图像格式显示*/
             OLED_ShowImage(X + ((i + 1) / OLED_CHN_CHAR_WIDTH - 1) * 16, Y, 16, 16, OLED_CF16x16[pIndex].Data);
         }
     }
 }
 
 /**
- * 函    数：OLED显示图像
+ * 函    数：OLED 显示图像
  * 参    数：X 指定图像左上角的横坐标，范围：0~127
  * 参    数：Y 指定图像左上角的纵坐标，范围：0~63
  * 参    数：Width 指定图像的宽度，范围：0~128
@@ -887,7 +802,7 @@ void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const u
     OLED_ClearArea(X, Y, Width, Height);
 
     /*遍历指定图像涉及的相关页*/
-    /*(Height - 1) / 8 + 1的目的是Height / 8并向上取整*/
+    /*(Height - 1) / 8 + 1 的目的是 Height / 8 并向上取整*/
     for (j = 0; j < (Height - 1) / 8 + 1; j++)
     {
         /*遍历指定图像涉及的相关列*/
@@ -907,7 +822,7 @@ void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const u
             OLED_DisplayBuf[Y / 8 + j][X + i] |= Image[j * Width + i] << (Y % 8);
 
             /*超出边界，则跳过显示*/
-            /*使用continue的目的是，下一页超出边界时，上一页的后续内容还需要继续显示*/
+            /*使用 continue 的目的是，下一页超出边界时，上一页的后续内容还需要继续显示*/
             if (Y / 8 + j + 1 > 7)
             {
                 continue;
@@ -920,13 +835,13 @@ void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const u
 }
 
 /**
- * 函    数：OLED使用printf函数打印格式化字符串
+ * 函    数：OLED 使用 printf 函数打印格式化字符串
  * 参    数：X 指定格式化字符串左上角的横坐标，范围：0~127
  * 参    数：Y 指定格式化字符串左上角的纵坐标，范围：0~63
  * 参    数：FontSize 指定字体大小
- *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
- * 参    数：format 指定要显示的格式化字符串，范围：ASCII码可见字符组成的字符串
+ *           范围：OLED_8X16		宽 8 像素，高 16 像素
+ *                 OLED_6X8		宽 6 像素，高 8 像素
+ * 参    数：format 指定要显示的格式化字符串，范围：ASCII 码可见字符组成的字符串
  * 参    数：... 格式化字符串参数列表
  * 返 回 值：无
  * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -934,15 +849,15 @@ void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const u
 void OLED_Printf(uint8_t X, uint8_t Y, uint8_t FontSize, char *format, ...)
 {
     char String[30];                         // 定义字符数组
-    va_list arg;                             // 定义可变参数列表数据类型的变量arg
-    va_start(arg, format);                   // 从format开始，接收参数列表到arg变量
-    vsprintf(String, format, arg);           // 使用vsprintf打印格式化字符串和参数列表到字符数组中
-    va_end(arg);                             // 结束变量arg
-    OLED_ShowString(X, Y, String, FontSize); // OLED显示字符数组（字符串）
+    va_list arg;                             // 定义可变参数列表数据类型的变量 arg
+    va_start(arg, format);                   // 从 format 开始，接收参数列表到 arg 变量
+    vsprintf(String, format, arg);           // 使用 vsprintf 打印格式化字符串和参数列表到字符数组中
+    va_end(arg);                             // 结束变量 arg
+    OLED_ShowString(X, Y, String, FontSize); // OLED 显示字符数组（字符串）
 }
 
 /**
- * 函    数：OLED在指定位置画一个点
+ * 函    数：OLED 在指定位置画一个点
  * 参    数：X 指定点的横坐标，范围：0~127
  * 参    数：Y 指定点的纵坐标，范围：0~63
  * 返 回 值：无
@@ -960,12 +875,12 @@ void OLED_DrawPoint(uint8_t X, uint8_t Y)
         return;
     }
 
-    /*将显存数组指定位置的一个Bit数据置1*/
+    /*将显存数组指定位置的一个 Bit 数据置 1*/
     OLED_DisplayBuf[Y / 8][X] |= 0x01 << (Y % 8);
 }
 
 /**
- * 函    数：OLED获取指定位置点的值
+ * 函    数：OLED 获取指定位置点的值
  * 参    数：X 指定点的横坐标，范围：0~127
  * 参    数：Y 指定点的纵坐标，范围：0~63
  * 返 回 值：指定位置点是否处于点亮状态，1：点亮，0：熄灭
@@ -985,14 +900,14 @@ uint8_t OLED_GetPoint(uint8_t X, uint8_t Y)
     /*判断指定位置的数据*/
     if (OLED_DisplayBuf[Y / 8][X] & 0x01 << (Y % 8))
     {
-        return 1; // 为1，返回1
+        return 1; // 为 1，返回 1
     }
 
-    return 0; // 否则，返回0
+    return 0; // 否则，返回 0
 }
 
 /**
- * 函    数：OLED画线
+ * 函    数：OLED 画线
  * 参    数：X0 指定一个端点的横坐标，范围：0~127
  * 参    数：Y0 指定一个端点的纵坐标，范围：0~63
  * 参    数：X1 指定另一个端点的横坐标，范围：0~127
@@ -1008,7 +923,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
 
     if (y0 == y1) // 横线单独处理
     {
-        /*0号点X坐标大于1号点X坐标，则交换两点X坐标*/
+        /*0 号点 X 坐标大于 1 号点 X 坐标，则交换两点 X 坐标*/
         if (x0 > x1)
         {
             temp = x0;
@@ -1016,7 +931,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
             x1   = temp;
         }
 
-        /*遍历X坐标*/
+        /*遍历 X 坐标*/
         for (x = x0; x <= x1; x++)
         {
             OLED_DrawPoint(x, y0); // 依次画点
@@ -1024,7 +939,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
     }
     else if (x0 == x1) // 竖线单独处理
     {
-        /*0号点Y坐标大于1号点Y坐标，则交换两点Y坐标*/
+        /*0 号点 Y 坐标大于 1 号点 Y 坐标，则交换两点 Y 坐标*/
         if (y0 > y1)
         {
             temp = y0;
@@ -1032,7 +947,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
             y1   = temp;
         }
 
-        /*遍历Y坐标*/
+        /*遍历 Y 坐标*/
         for (y = y0; y <= y1; y++)
         {
             OLED_DrawPoint(x0, y); // 依次画点
@@ -1040,11 +955,11 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
     }
     else // 斜线
     {
-        /*使用Bresenham算法画直线，可以避免耗时的浮点运算，效率更高*/
+        /*使用 Bresenham 算法画直线，可以避免耗时的浮点运算，效率更高*/
         /*参考文档：https://www.cs.montana.edu/courses/spring2009/425/dslectures/Bresenham.pdf*/
         /*参考教程：https://www.bilibili.com/video/BV1364y1d7Lo*/
 
-        if (x0 > x1) // 0号点X坐标大于1号点X坐标
+        if (x0 > x1) // 0 号点 X 坐标大于 1 号点 X 坐标
         {
             /*交换两点坐标*/
             /*交换后不影响画线，但是画线方向由第一、二、三、四象限变为第一、四象限*/
@@ -1056,21 +971,21 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
             y1   = temp;
         }
 
-        if (y0 > y1) // 0号点Y坐标大于1号点Y坐标
+        if (y0 > y1) // 0 号点 Y 坐标大于 1 号点 Y 坐标
         {
-            /*将Y坐标取负*/
+            /*将 Y 坐标取负*/
             /*取负后影响画线，但是画线方向由第一、四象限变为第一象限*/
             y0 = -y0;
             y1 = -y1;
 
-            /*置标志位yflag，记住当前变换，在后续实际画线时，再将坐标换回来*/
+            /*置标志位 yflag，记住当前变换，在后续实际画线时，再将坐标换回来*/
             yflag = 1;
         }
 
-        if (y1 - y0 > x1 - x0) // 画线斜率大于1
+        if (y1 - y0 > x1 - x0) // 画线斜率大于 1
         {
-            /*将X坐标与Y坐标互换*/
-            /*互换后影响画线，但是画线方向由第一象限0~90度范围变为第一象限0~45度范围*/
+            /*将 X 坐标与 Y 坐标互换*/
+            /*互换后影响画线，但是画线方向由第一象限 0~90 度范围变为第一象限 0~45 度范围*/
             temp = x0;
             x0   = y0;
             y0   = temp;
@@ -1078,12 +993,12 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
             x1   = y1;
             y1   = temp;
 
-            /*置标志位xyflag，记住当前变换，在后续实际画线时，再将坐标换回来*/
+            /*置标志位 xyflag，记住当前变换，在后续实际画线时，再将坐标换回来*/
             xyflag = 1;
         }
 
-        /*以下为Bresenham算法画直线*/
-        /*算法要求，画线方向必须为第一象限0~45度范围*/
+        /*以下为 Bresenham 算法画直线*/
+        /*算法要求，画线方向必须为第一象限 0~45 度范围*/
         dx     = x1 - x0;
         dy     = y1 - y0;
         incrE  = 2 * dy;
@@ -1110,7 +1025,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
             OLED_DrawPoint(x, y);
         }
 
-        while (x < x1) // 遍历X轴的每个点
+        while (x < x1) // 遍历 X 轴的每个点
         {
             x++;
             if (d < 0) // 下一个点在当前点东方
@@ -1145,7 +1060,7 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
 }
 
 /**
- * 函    数：OLED矩形
+ * 函    数：OLED 矩形
  * 参    数：X 指定矩形左上角的横坐标，范围：0~127
  * 参    数：Y 指定矩形左上角的纵坐标，范围：0~63
  * 参    数：Width 指定矩形的宽度，范围：0~128
@@ -1161,13 +1076,13 @@ void OLED_DrawRectangle(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, uin
     uint8_t i, j;
     if (!IsFilled) // 指定矩形不填充
     {
-        /*遍历上下X坐标，画矩形上下两条线*/
+        /*遍历上下 X 坐标，画矩形上下两条线*/
         for (i = X; i < X + Width; i++)
         {
             OLED_DrawPoint(i, Y);
             OLED_DrawPoint(i, Y + Height - 1);
         }
-        /*遍历左右Y坐标，画矩形左右两条线*/
+        /*遍历左右 Y 坐标，画矩形左右两条线*/
         for (i = Y; i < Y + Height; i++)
         {
             OLED_DrawPoint(X, i);
@@ -1176,10 +1091,10 @@ void OLED_DrawRectangle(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, uin
     }
     else // 指定矩形填充
     {
-        /*遍历X坐标*/
+        /*遍历 X 坐标*/
         for (i = X; i < X + Width; i++)
         {
-            /*遍历Y坐标*/
+            /*遍历 Y 坐标*/
             for (j = Y; j < Y + Height; j++)
             {
                 /*在指定区域画点，填充满矩形*/
@@ -1190,7 +1105,7 @@ void OLED_DrawRectangle(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, uin
 }
 
 /**
- * 函    数：OLED三角形
+ * 函    数：OLED 三角形
  * 参    数：X0 指定第一个端点的横坐标，范围：0~127
  * 参    数：Y0 指定第一个端点的纵坐标，范围：0~63
  * 参    数：X1 指定第二个端点的横坐标，范围：0~127
@@ -1219,7 +1134,7 @@ void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X
     }
     else // 指定三角形填充
     {
-        /*找到三个点最小的X、Y坐标*/
+        /*找到三个点最小的 X、Y 坐标*/
         if (X1 < minx)
         {
             minx = X1;
@@ -1237,7 +1152,7 @@ void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X
             miny = Y2;
         }
 
-        /*找到三个点最大的X、Y坐标*/
+        /*找到三个点最大的 X、Y 坐标*/
         if (X1 > maxx)
         {
             maxx = X1;
@@ -1257,13 +1172,13 @@ void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X
 
         /*最小最大坐标之间的矩形为可能需要填充的区域*/
         /*遍历此区域中所有的点*/
-        /*遍历X坐标*/
+        /*遍历 X 坐标*/
         for (i = minx; i <= maxx; i++)
         {
-            /*遍历Y坐标*/
+            /*遍历 Y 坐标*/
             for (j = miny; j <= maxy; j++)
             {
-                /*调用OLED_pnpoly，判断指定点是否在指定三角形之中*/
+                /*调用 OLED_pnpoly，判断指定点是否在指定三角形之中*/
                 /*如果在，则画点，如果不在，则不做处理*/
                 if (OLED_pnpoly(3, vx, vy, i, j))
                 {
@@ -1275,7 +1190,7 @@ void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X
 }
 
 /**
- * 函    数：OLED画圆
+ * 函    数：OLED 画圆
  * 参    数：X 指定圆的圆心横坐标，范围：0~127
  * 参    数：Y 指定圆的圆心纵坐标，范围：0~63
  * 参    数：Radius 指定圆的半径，范围：0~255
@@ -1289,7 +1204,7 @@ void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
 {
     int16_t x, y, d, j;
 
-    /*使用Bresenham算法画圆，可以避免耗时的浮点运算，效率更高*/
+    /*使用 Bresenham 算法画圆，可以避免耗时的浮点运算，效率更高*/
     /*参考文档：https://www.cs.montana.edu/courses/spring2009/425/dslectures/Bresenham.pdf*/
     /*参考教程：https://www.bilibili.com/video/BV1VM4y1u7wJ*/
 
@@ -1305,7 +1220,7 @@ void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
 
     if (IsFilled) // 指定圆填充
     {
-        /*遍历起始点Y坐标*/
+        /*遍历起始点 Y 坐标*/
         for (j = -y; j < y; j++)
         {
             /*在指定区域画点，填充部分圆*/
@@ -1313,7 +1228,7 @@ void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
         }
     }
 
-    while (x < y) // 遍历X轴的每个点
+    while (x < y) // 遍历 X 轴的每个点
     {
         x++;
         if (d < 0) // 下一个点在当前点东方
@@ -1358,7 +1273,7 @@ void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
 }
 
 /**
- * 函    数：OLED画椭圆
+ * 函    数：OLED 画椭圆
  * 参    数：X 指定椭圆的圆心横坐标，范围：0~127
  * 参    数：Y 指定椭圆的圆心纵坐标，范围：0~63
  * 参    数：A 指定椭圆的横向半轴长度，范围：0~255
@@ -1375,7 +1290,7 @@ void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFill
     int16_t a = A, b = B;
     float d1, d2;
 
-    /*使用Bresenham算法画椭圆，可以避免部分耗时的浮点运算，效率更高*/
+    /*使用 Bresenham 算法画椭圆，可以避免部分耗时的浮点运算，效率更高*/
     /*参考链接：https://blog.csdn.net/myf_666/article/details/128167392*/
 
     x  = 0;
@@ -1384,7 +1299,7 @@ void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFill
 
     if (IsFilled) // 指定椭圆填充
     {
-        /*遍历起始点Y坐标*/
+        /*遍历起始点 Y 坐标*/
         for (j = -y; j < y; j++)
         {
             /*在指定区域画点，填充部分椭圆*/
@@ -1467,14 +1382,14 @@ void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFill
 }
 
 /**
- * 函    数：OLED画圆弧
+ * 函    数：OLED 画圆弧
  * 参    数：X 指定圆弧的圆心横坐标，范围：0~127
  * 参    数：Y 指定圆弧的圆心纵坐标，范围：0~63
  * 参    数：Radius 指定圆弧的半径，范围：0~255
  * 参    数：StartAngle 指定圆弧的起始角度，范围：-180~180
- *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
+ *           水平向右为 0 度，水平向左为 180 度或 -180 度，下方为正数，上方为负数，顺时针旋转
  * 参    数：EndAngle 指定圆弧的终止角度，范围：-180~180
- *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
+ *           水平向右为 0 度，水平向左为 180 度或 -180 度，下方为正数，上方为负数，顺时针旋转
  * 参    数：IsFilled 指定圆弧是否填充，填充后为扇形
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
@@ -1485,7 +1400,7 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
 {
     int16_t x, y, d, j;
 
-    /*此函数借用Bresenham算法画圆的方法*/
+    /*此函数借用 Bresenham 算法画圆的方法*/
 
     d = 1 - Radius;
     x = 0;
@@ -1511,7 +1426,7 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
 
     if (IsFilled) // 指定圆弧填充
     {
-        /*遍历起始点Y坐标*/
+        /*遍历起始点 Y 坐标*/
         for (j = -y; j < y; j++)
         {
             /*在填充圆的每个点时，判断指定点是否在指定角度内，在，则画点，不在，则不做处理*/
@@ -1522,7 +1437,7 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
         }
     }
 
-    while (x < y) // 遍历X轴的每个点
+    while (x < y) // 遍历 X 轴的每个点
     {
         x++;
         if (d < 0) // 下一个点在当前点东方
@@ -1604,5 +1519,5 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
 
 /*********************功能函数*/
 
-/*****************江协科技|版权所有****************/
+/*****************江协科技 | 版权所有****************/
 /*****************jiangxiekeji.com*****************/

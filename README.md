@@ -72,8 +72,62 @@ cat sensor/sc7a20htr/README.md
 # 参考 platform/ 目录下的示例
 ```
 
-### 2. 构建系统
-尝试使用 **xmake** 构建，正在完善 `demo/xmake` 目录中的示例工程。目的是利用xmake快速构建工程。
+### 2. xmake构建系统
+本项目现已支持 **xmake** 构建系统，您可以轻松地将传感器驱动库集成到您的项目中。
+
+#### 2.1 安装xmake
+如果您还没有安装xmake，请访问 [xmake.io](https://xmake.io) 下载并安装。
+
+#### 2.2 快速开始
+```bash
+# 1. 克隆项目
+git clone https://github.com/Fireflyluo/fireflyluo-Embedded-Libs.git
+
+# 2. 进入项目目录
+cd fireflyluo-Embedded-Libs
+
+# 3. 编译所有传感器驱动库
+xmake
+
+# 4. 运行示例程序
+cd demo/xmake
+xmake
+xmake run
+```
+
+#### 2.3 在您的项目中使用
+在您的项目xmake.lua中添加以下内容：
+
+```lua
+-- 添加对传感器驱动库的依赖
+add_requires("embedded-sensor-drivers")
+
+target("my_app")
+    set_kind("binary")
+    add_files("src/*.c")
+    add_packages("embedded-sensor-drivers")
+    
+    -- 可选择性地启用特定传感器驱动
+    add_defines("USE_ICM42688P")
+    add_defines("USE_QMI8658A")
+    add_defines("USE_SC7A20HTR")
+    add_defines("USE_SHT40")
+    add_defines("USE_OLED")
+```
+
+#### 2.4 构建选项
+项目提供了以下构建选项，可以在编译时启用或禁用特定的传感器驱动：
+- `--enable-sensor_icm42688p=true/false` : 启用/禁用ICM42688P驱动
+- `--enable-sensor_qmi8658a=true/false` : 启用/禁用QMI8658A驱动
+- `--enable-sensor_sc7a20htr=true/false` : 启用/禁用SC7A20HTR驱动
+- `--enable-sensor_sht40=true/false` : 启用/禁用SHT40驱动
+- `--enable-sensor_oled=true/false` : 启用/禁用OLED驱动
+
+例如，只启用ICM42688P和SHT40驱动：
+```bash
+xmake f --enable-sensor_icm42688p=true --enable-sensor_qmi8658a=false --enable-sensor_sc7a20htr=false --enable-sensor_sht40=true --enable-sensor_oled=false
+xmake
+```
 
 ### 3. 平台适配
 大多数驱动采用分层架构：
@@ -82,6 +136,7 @@ cat sensor/sc7a20htr/README.md
 - **平台层**：具体MCU平台实现
 
 您需要根据目标平台实现相应的HAL接口。
+
 
 ## 文档规范
 

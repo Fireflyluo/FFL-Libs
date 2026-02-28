@@ -1,0 +1,3 @@
+{
+    projectfile = "sensor/xmake_riscv.lua"
+}

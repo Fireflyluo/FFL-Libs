@@ -1,0 +1,31 @@
+{
+    errdata = "\27[01m\27[KICM42688P\\icm42688p.c:\27[m\27[K In function '\27[01m\27[Kicm42688_config_interrupt_pin\27[m\27[K':\
+\27[01m\27[KICM42688P\\icm42688p.c:968:66:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[Kunused parameter '\27[01m\27[Kmode\27[m\27[K' [\27[01;35m\27[K-Wunused-parameter\27[m\27[K]\
+  968 |                                              \27[01;35m\27[Kicm42688_int_mode_t mode\27[m\27[K,\
+      |                                              \27[01;35m\27[K~~~~~~~~~~~~~~~~~~~~^~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:969:67:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[Kunused parameter '\27[01m\27[Kdrive\27[m\27[K' [\27[01;35m\27[K-Wunused-parameter\27[m\27[K]\
+  969 |                                              \27[01;35m\27[Kicm42688_int_drive_t drive\27[m\27[K,\
+      |                                              \27[01;35m\27[K~~~~~~~~~~~~~~~~~~~~~^~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:970:70:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[Kunused parameter '\27[01m\27[Kpolarity\27[m\27[K' [\27[01;35m\27[K-Wunused-parameter\27[m\27[K]\
+  970 |                                              \27[01;35m\27[Kicm42688_int_polarity_t polarity\27[m\27[K)\
+      |                                              \27[01;35m\27[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:\27[m\27[K In function '\27[01m\27[Kicm42688_config_external_clock\27[m\27[K':\
+\27[01m\27[KICM42688P\\icm42688p.c:1584:56:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[Kunused parameter '\27[01m\27[Kfrequency\27[m\27[K' [\27[01;35m\27[K-Wunused-parameter\27[m\27[K]\
+ 1584 |                                               \27[01;35m\27[Kuint32_t frequency\27[m\27[K)\
+      |                                               \27[01;35m\27[K~~~~~~~~~^~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:\27[m\27[K At top level:\
+\27[01m\27[KICM42688P\\icm42688p.c:1778:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_verify_register\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+ 1778 | static icm42688_err_t \27[01;35m\27[Kicm42688_verify_register\27[m\27[K(icm42688_device_t *dev,\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:1760:16:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_calculate_checksum\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+ 1760 | static uint8_t \27[01;35m\27[Kicm42688_calculate_checksum\27[m\27[K(const uint8_t *data, uint16_t len)\
+      |                \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:210:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_switch_bank\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+  210 | static icm42688_err_t \27[01;35m\27[Kicm42688_switch_bank\27[m\27[K(icm42688_device_t *dev, icm42688_bank_t bank)\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:101:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kodr_frequency_lut\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-const-variable=\27[m\27[K]\
+  101 | static const uint32_t \27[01;35m\27[Kodr_frequency_lut\27[m\27[K[] = {\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[Kcc1.exe:\27[m\27[K \27[01;36m\27[Knote: \27[m\27[Kunrecognized command-line option '\27[01m\27[K-Wno-gnu-line-marker\27[m\27[K' may have been intended to silence earlier diagnostics\
+"
+}

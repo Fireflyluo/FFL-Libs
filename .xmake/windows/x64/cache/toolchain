@@ -1,0 +1,158 @@
+{
+    tool_target_sht40_riscv_x64_cxx = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_oled_riscv_x64_cc = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
+        toolname = "gcc",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_oled_riscv_x64_cxx = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_qmi8658a_riscv_x64_cc = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
+        toolname = "gcc",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    ["riscv-wch-gcc_arch_x64_plat_riscv"] = {
+        arch = "x64",
+        plat = "riscv",
+        __checked = true,
+        __global = true
+    },
+    tool_target_icm42688p_riscv_x64_cxx = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_icm42688p_riscv_x64_ar = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
+        toolname = "ar",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_sc7a20htr_riscv_x64_cxx = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_sht40_riscv_x64_cc = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
+        toolname = "gcc",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_icm42688p_riscv_x64_cc = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
+        toolname = "gcc",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_sc7a20htr_riscv_x64_cc = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
+        toolname = "gcc",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_sc7a20htr_riscv_x64_ar = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
+        toolname = "ar",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_qmi8658a_riscv_x64_cxx = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_qmi8658a_riscv_x64_ar = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
+        toolname = "ar",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_oled_riscv_x64_ar = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
+        toolname = "ar",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    },
+    tool_target_sht40_riscv_x64_ar = {
+        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
+        toolname = "ar",
+        toolchain_info = {
+            arch = "x64",
+            name = "riscv-wch-gcc",
+            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
+            plat = "riscv"
+        }
+    }
+}

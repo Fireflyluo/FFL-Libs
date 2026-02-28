@@ -1,0 +1,16 @@
+{
+    errdata = "\27[01m\27[KICM42688P\\icm42688p.c:1778:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_verify_register\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+ 1778 | static icm42688_err_t \27[01;35m\27[Kicm42688_verify_register\27[m\27[K(icm42688_device_t *dev,\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:1760:16:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_calculate_checksum\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+ 1760 | static uint8_t \27[01;35m\27[Kicm42688_calculate_checksum\27[m\27[K(const uint8_t *data, uint16_t len)\
+      |                \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:210:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kicm42688_switch_bank\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-function\27[m\27[K]\
+  210 | static icm42688_err_t \27[01;35m\27[Kicm42688_switch_bank\27[m\27[K(icm42688_device_t *dev, icm42688_bank_t bank)\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[KICM42688P\\icm42688p.c:101:23:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K'\27[01m\27[Kodr_frequency_lut\27[m\27[K' defined but not used [\27[01;35m\27[K-Wunused-const-variable=\27[m\27[K]\
+  101 | static const uint32_t \27[01;35m\27[Kodr_frequency_lut\27[m\27[K[] = {\
+      |                       \27[01;35m\27[K^~~~~~~~~~~~~~~~~\27[m\27[K\
+\27[01m\27[Kcc1.exe:\27[m\27[K \27[01;36m\27[Knote: \27[m\27[Kunrecognized command-line option '\27[01m\27[K-Wno-gnu-line-marker\27[m\27[K' may have been intended to silence earlier diagnostics\
+"
+}

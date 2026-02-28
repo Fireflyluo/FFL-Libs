@@ -10,7 +10,7 @@
 
 #include "qmi8658a_reg.h"
 #include "gyro_device.h"
-#include "py32f4xx_hal.h"
+// #include "py32f4xx_hal.h"  // 移除对特定HAL的依赖
 #ifdef __cplusplus
 extern "C" {
 #endif
