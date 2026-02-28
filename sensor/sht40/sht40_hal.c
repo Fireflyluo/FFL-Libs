@@ -1,7 +1,7 @@
 #include "sht40_hal.h"
-#include "debug.h" // 用于调试输出
 #include "board.h"
-
+#include "debug.h" // 用于调试输出
+#include "drv_i2c.h"
 /*************************************************************************************************
  *	函 数 名: SHT40_Init
  *	入口参数: I2Cx - I2C外设指针
@@ -10,9 +10,12 @@
  *************************************************************************************************/
 void SHT40_Init(void)
 {
+    uint32_t serial = 0;
     // 执行软件复位
     SHT40_Soft_Reset();
     SHT40_Delay(10); // 复位后需要等待
+    serial = SHT40_Read_Serial_Number();
+    printf("SHT40 Serial Number: 0x%08lX\r\n", serial);
 }
 
 /*************************************************************************************************
@@ -24,10 +27,10 @@ void SHT40_Init(void)
 uint8_t SHT40_Soft_Reset(void)
 {
     uint8_t cmd = SHT40_SOFT_RESET;
-    uint8_t data[1];
 
     // 发送复位命令
-    uint8_t ret = I2C_Master_Transmit_Polling(SHT40_I2C_ADDR, cmd, data, 0);
+    // uint8_t ret = i2c_write_async(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
+    uint8_t ret = i2c_write(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
     if (ret != 0)
     {
         return 1; // 发送失败
@@ -60,10 +63,11 @@ uint8_t SHT40_Read_Temperature_Humidity(float *temperature, float *humidity)
 uint8_t SHT40_Read_Temperature_Humidity_Ex(uint8_t cmd, float *temperature, float *humidity)
 {
     uint8_t rx_data[6] = {0};
-    uint8_t ret = 0;
+    uint8_t ret        = 0;
 
     // 1. 发送测量命令
-    ret = I2C_Master_Transmit_Polling(SHT40_I2C_ADDR, cmd, NULL, 0);
+    // ret = i2c_write_async(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
+    ret = i2c_write(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
     if (ret != 0)
     {
         return 1; // 发送命令失败
@@ -88,7 +92,8 @@ uint8_t SHT40_Read_Temperature_Humidity_Ex(uint8_t cmd, float *temperature, floa
     }
 
     // 3. 读取6字节数据
-    ret = I2C_Master_Receive_Polling(SHT40_I2C_ADDR, 0xFF, rx_data, 6);
+    // ret = i2c_read_async(I2C_NUM_1, SHT40_I2C_ADDR, rx_data, 6);
+    ret = i2c_read(I2C_NUM_1, SHT40_I2C_ADDR, rx_data, 6);
     if (ret != 0)
     {
         return 2; // 读取数据失败
@@ -97,11 +102,11 @@ uint8_t SHT40_Read_Temperature_Humidity_Ex(uint8_t cmd, float *temperature, floa
     // 4. 解析温湿度数据
     // 温度: 前2字节, 湿度: 中间2字节, 后2字节是CRC校验
     uint16_t temp_raw = (rx_data[0] << 8) | rx_data[1];
-    uint16_t hum_raw = (rx_data[3] << 8) | rx_data[4];
+    uint16_t hum_raw  = (rx_data[3] << 8) | rx_data[4];
 
     // 5. 转换为实际值
     *temperature = -45.0f + 175.0f * (temp_raw / 65535.0f);
-    *humidity = -6.0f + 125.0f * (hum_raw / 65535.0f);
+    *humidity    = -6.0f + 125.0f * (hum_raw / 65535.0f);
 
     // 限制湿度范围在0-100%
     if (*humidity < 0.0f)
@@ -120,29 +125,31 @@ uint8_t SHT40_Read_Temperature_Humidity_Ex(uint8_t cmd, float *temperature, floa
  *************************************************************************************************/
 uint32_t SHT40_Read_Serial_Number(void)
 {
-    uint8_t cmd = SHT40_READ_SERIAL_NUMBER;
+    uint8_t cmd        = SHT40_READ_SERIAL_NUMBER;
     uint8_t rx_data[6] = {0};
-
+    uint8_t ret        = 0;
     // 1. 发送读取序列号命令
-    if (I2C_Master_Transmit_Polling(SHT40_I2C_ADDR, cmd, NULL, 0) != 0)
+    // ret = i2c_write_async(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
+    ret = i2c_write(I2C_NUM_1, SHT40_I2C_ADDR, &cmd, 1);
+    if (ret != 0)
     {
-        return 0xFFFFFFFF; // 发送失败
+        return 0; // 发送命令失败
     }
 
     SHT40_Delay(1); // 短暂延时
 
     // 2. 读取序列号数据
-    if (I2C_Master_Receive_Polling(SHT40_I2C_ADDR, 0xFF, rx_data, 6) != 0)
+    // ret = i2c_read_async(I2C_NUM_1, SHT40_I2C_ADDR, rx_data, 6);
+    ret = i2c_read(I2C_NUM_1, SHT40_I2C_ADDR, rx_data, 6);
+    if (ret != 0)
     {
-        return 0xFFFFFFFF; // 读取失败
+        return 0; // 读取数据失败
     }
-
+    SHT40_Delay(1); // 短暂延时
     // 3. 组合为32位序列号
     // 数据格式: 字节0,1,3,4是序列号，字节2,5是CRC
-    uint32_t serial = ((uint32_t)rx_data[0] << 24) |
-                      ((uint32_t)rx_data[1] << 16) |
-                      ((uint32_t)rx_data[3] << 8) |
-                      (rx_data[4]);
+    uint32_t serial =
+        ((uint32_t)rx_data[0] << 24) | ((uint32_t)rx_data[1] << 16) | ((uint32_t)rx_data[3] << 8) | (rx_data[4]);
 
     return serial;
 }
@@ -157,18 +164,16 @@ uint32_t SHT40_Read_Serial_Number(void)
 uint8_t SHT40_Heater(uint8_t heater_cmd)
 {
     // 检查是否为有效的加热命令
-    if (heater_cmd != SHT40_HEATER_200mW_1s &&
-        heater_cmd != SHT40_HEATER_200mW_100ms &&
-        heater_cmd != SHT40_HEATER_110mW_1s &&
-        heater_cmd != SHT40_HEATER_110mW_100ms &&
-        heater_cmd != SHT40_HEATER_20mW_1s &&
-        heater_cmd != SHT40_HEATER_20mW_100ms)
+    if (heater_cmd != SHT40_HEATER_200mW_1s && heater_cmd != SHT40_HEATER_200mW_100ms &&
+        heater_cmd != SHT40_HEATER_110mW_1s && heater_cmd != SHT40_HEATER_110mW_100ms &&
+        heater_cmd != SHT40_HEATER_20mW_1s && heater_cmd != SHT40_HEATER_20mW_100ms)
     {
         return 1; // 无效的加热命令
     }
 
     // 发送加热命令
-    uint8_t ret = I2C_Master_Transmit_Polling(SHT40_I2C_ADDR, heater_cmd, NULL, 0);
+    // uint8_t ret = i2c_write_async(I2C_NUM_1, SHT40_I2C_ADDR, &heater_cmd, 1);
+    uint8_t ret = i2c_write(I2C_NUM_1, SHT40_I2C_ADDR, &heater_cmd, 1);
     if (ret != 0)
     {
         return 2; // 发送失败
@@ -206,4 +211,5 @@ void SHT40_Delay(uint32_t ms)
 {
     // 调用系统延时函数
     Delay_Ms(ms);
+    // HAL_Delay(ms);
 }

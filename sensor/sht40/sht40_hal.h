@@ -4,9 +4,9 @@
 #include "stdint.h"
 
 // 设备地址定义
-#define SHT40_ADDR_WRITE 0x88      // 写地址
-#define SHT40_ADDR_READ  0x89      // 读地址
-#define SHT40_I2C_ADDR   0x46 << 1 // 7位地址
+#define SHT40_ADDR_WRITE 0x88 // 写地址
+#define SHT40_ADDR_READ  0x89 // 读地址
+#define SHT40_I2C_ADDR   0x46 // 7位地址
 
 // 命令定义
 #define SHT40_MEASURE_TEMPERATURE_HUMIDITY                  0xFD

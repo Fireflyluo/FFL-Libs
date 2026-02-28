@@ -14,21 +14,20 @@
 
 // 灵敏度查找表（根据量程，单位：mg/LSB）
 static const float sensitivity_table[] = {
-    [SC7A20_ACCEL_FS_2G] = 0.9765625f, // ±2g
-    [SC7A20_ACCEL_FS_4G] = 1.953125f,  // ±4g
-    [SC7A20_ACCEL_FS_8G] = 3.90625f,   // ±8g
-    [SC7A20_ACCEL_FS_16G] = 7.8125f    // ±16g
+    [SC7A20_ACCEL_FS_2G]  = 0.9765625f, // ±2g
+    [SC7A20_ACCEL_FS_4G]  = 1.953125f,  // ±4g
+    [SC7A20_ACCEL_FS_8G]  = 3.90625f,   // ±8g
+    [SC7A20_ACCEL_FS_16G] = 7.8125f     // ±16g
 };
 
 // 默认配置
-static const sc7a20_config_t default_config = {
-    .i2c_addr = SC7A20_I2C_ADDR_L,
-    .range = SC7A20_ACCEL_FS_2G,
-    .odr = SC7A20_ACCEL_ODR_100HZ,
-    .enable_axis = {1, 1, 1},
-    .block_data_update = true,
-    .high_resolution_mode = false,
-    .low_power_mode = false};
+static const sc7a20_config_t default_config = {.i2c_addr             = SC7A20_I2C_ADDR_L,
+                                               .range                = SC7A20_ACCEL_FS_2G,
+                                               .odr                  = SC7A20_ACCEL_ODR_100HZ,
+                                               .enable_axis          = {1, 1, 1},
+                                               .block_data_update    = true,
+                                               .high_resolution_mode = false,
+                                               .low_power_mode       = false};
 
 /* ========================== 设备上下文结构 ========================== */
 
@@ -86,7 +85,7 @@ static sc7a20_status_t verify_communication(sc7a20_handle_t handle)
     {
         return status;
     }
-
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     if (chip_id != SC7A20_CHIP_ID)
     {
         return SC7A20_DEVICE_NOT_FOUND;
@@ -102,11 +101,11 @@ static sc7a20_status_t verify_communication(sc7a20_handle_t handle)
 static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
 {
     sc7a20_status_t status = SC7A20_OK;
-    sc7a20_ctrl0_t ctrl0 = {0};
-    sc7a20_ctrl1_t ctrl1 = {0};
-    sc7a20_ctrl2_t ctrl2 = {0};
-    sc7a20_ctrl3_t ctrl3 = {0};
-    sc7a20_ctrl4_t ctrl4 = {0};
+    sc7a20_ctrl0_t ctrl0   = {0};
+    sc7a20_ctrl1_t ctrl1   = {0};
+    sc7a20_ctrl2_t ctrl2   = {0};
+    sc7a20_ctrl3_t ctrl3   = {0};
+    sc7a20_ctrl4_t ctrl4   = {0};
 
     if (handle == NULL)
     {
@@ -125,11 +124,11 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
     }
 
     // 配置CTRL1寄存器（数据率、轴使能、功耗模式）
-    ctrl1.bit.Xen = handle->config.enable_axis[0] ? 1 : 0;
-    ctrl1.bit.Yen = handle->config.enable_axis[1] ? 1 : 0;
-    ctrl1.bit.Zen = handle->config.enable_axis[2] ? 1 : 0;
+    ctrl1.bit.Xen  = handle->config.enable_axis[0] ? 1 : 0;
+    ctrl1.bit.Yen  = handle->config.enable_axis[1] ? 1 : 0;
+    ctrl1.bit.Zen  = handle->config.enable_axis[2] ? 1 : 0;
     ctrl1.bit.LPen = handle->config.low_power_mode ? 1 : 0;
-    ctrl1.bit.ODR = handle->config.odr;
+    ctrl1.bit.ODR  = handle->config.odr;
 
     // ctrl2.reg = 0x47;//50HZ 正常模式 xyz使能
     status = write_register(handle, SC7A20_CTRL1, ctrl1.reg);
@@ -138,19 +137,19 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
         return status;
     }
     ctrl2.reg = 0x00; // 关闭滤波器
-    status = write_register(handle, SC7A20_CTRL2, ctrl2.reg);
+    status    = write_register(handle, SC7A20_CTRL2, ctrl2.reg);
     if (status != SC7A20_OK)
     {
         return status;
     }
     ctrl3.reg = 0x00; // 关闭中断
-    status = write_register(handle, SC7A20_CTRL3, ctrl3.reg);
+    status    = write_register(handle, SC7A20_CTRL3, ctrl3.reg);
     if (status != SC7A20_OK)
     {
         return status;
     }
     // 配置CTRL4寄存器（量程、块数据更新、字节序等）
-    ctrl4.reg = 0x08; // 读取完更新 小端 2g 高精度
+    ctrl4.reg    = 0x08; // 读取完更新 小端 2g 高精度
     ctrl4.bit.fs = handle->config.range;
 
     status = write_register(handle, SC7A20_CTRL4, ctrl4.reg);
@@ -170,14 +169,12 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
 
 /* ========================== 公共接口实现 ========================== */
 
-sc7a20_status_t sc7a20_init(sc7a20_handle_t handle, const sc7a20_ops_t *ops,
-                            const sc7a20_config_t *config)
+sc7a20_status_t sc7a20_init(sc7a20_handle_t handle, const sc7a20_ops_t *ops, const sc7a20_config_t *config)
 {
     sc7a20_status_t status = SC7A20_OK;
 
     // 参数检查
-    if (handle == NULL || ops == NULL || ops->write == NULL ||
-        ops->read == NULL || ops->delay_ms == NULL)
+    if (handle == NULL || ops == NULL || ops->write == NULL || ops->read == NULL || ops->delay_ms == NULL)
     {
         return SC7A20_INVALID_PARAM;
     }
@@ -208,6 +205,7 @@ sc7a20_status_t sc7a20_init(sc7a20_handle_t handle, const sc7a20_ops_t *ops,
 
     // 验证设备通信
     status = verify_communication(handle);
+
     if (status != SC7A20_OK)
     {
         handle->last_status = status;
@@ -222,9 +220,18 @@ sc7a20_status_t sc7a20_init(sc7a20_handle_t handle, const sc7a20_ops_t *ops,
         return status;
     }
 
+    // 根据CTRL4.BLE位决定字节序（需要读取CTRL4寄存器）
+    sc7a20_ctrl4_t ctrl4;
+    status = read_register(handle, SC7A20_CTRL4, &ctrl4.reg);
+    if (status != SC7A20_OK)
+    {
+        handle->last_status = status;
+        return status;
+    }
+    handle->endian = ctrl4.bit.BLE; // 0=小端，1=大端
     // 标记为已初始化
     handle->flags.is_initialized = 1;
-    handle->last_status = SC7A20_OK;
+    handle->last_status          = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -238,7 +245,7 @@ sc7a20_status_t sc7a20_deinit(sc7a20_handle_t handle)
 
     // 进入电源关断模式
     sc7a20_ctrl1_t ctrl1 = {0};
-    ctrl1.bit.ODR = SC7A20_ACCEL_ODR_POWER_DOWN;
+    ctrl1.bit.ODR        = SC7A20_ACCEL_ODR_POWER_DOWN;
     write_register(handle, SC7A20_CTRL1, ctrl1.reg);
 
     // 清除初始化标志
@@ -271,19 +278,11 @@ sc7a20_status_t sc7a20_read_acceleration(sc7a20_handle_t handle, sc7a20_accel_da
         return status;
     }
 
-    // 根据CTRL4.BLE位决定字节序（需要读取CTRL4寄存器）
-    sc7a20_ctrl4_t ctrl4;
-    status = read_register(handle, SC7A20_CTRL4, &ctrl4.reg);
-    if (status != SC7A20_OK)
-    {
-        handle->last_status = status;
-        return status;
-    }
     int16_t raw_x = 0;
     int16_t raw_y = 0;
     int16_t raw_z = 0;
     // 组合数据（考虑字节序）
-    if (ctrl4.bit.BLE == 0)
+    if (handle->endian == 0)
     {
         // 小端模式：低字节在前
         raw_x = (int16_t)((buffer[1] << 8) | buffer[0]);
@@ -298,8 +297,8 @@ sc7a20_status_t sc7a20_read_acceleration(sc7a20_handle_t handle, sc7a20_accel_da
         raw_z = (int16_t)((buffer[4] << 8) | buffer[5]);
     }
     data->x = raw_x >> 4; // 右移4位，提取12位有效数据
-    data->y = raw_y >> 4; 
-    data->z = raw_z >> 4; 
+    data->y = raw_y >> 4;
+    data->z = raw_z >> 4;
     // 转换为g值
     data->x_g = data->x * handle->sensitivity;
     data->y_g = data->y * handle->sensitivity;
@@ -334,15 +333,8 @@ sc7a20_status_t sc7a20_read_raw_data(sc7a20_handle_t handle, int16_t *x, int16_t
         handle->last_status = status;
         return status;
     }
-    // 根据CTRL4.BLE位决定字节序（需要读取CTRL4寄存器）
-    sc7a20_ctrl4_t ctrl4;
-    status = read_register(handle, SC7A20_CTRL4, &ctrl4.reg);
-    if (status != SC7A20_OK)
-    {
-        handle->last_status = status;
-        return status;
-    }
-    if (ctrl4.bit.BLE == 0)
+
+    if (handle->endian == 0)
     {
         // 组合数据（小端序）
         *x = ((int16_t)((buffer[1] << 8) | buffer[0])) >> 4;
@@ -384,9 +376,9 @@ sc7a20_status_t sc7a20_is_data_ready(sc7a20_handle_t handle, bool *ready)
         return status;
     }
 
-    *ready = (status_reg.bit.ZYXDA != 0);
+    *ready                   = (status_reg.bit.ZYXDA != 0);
     handle->flags.data_ready = *ready;
-    handle->last_status = SC7A20_OK;
+    handle->last_status      = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -414,15 +406,8 @@ sc7a20_status_t sc7a20_read_new_data(sc7a20_handle_t handle, sc7a20_accel_data_t
         handle->last_status = status;
         return status;
     }
-    // 根据CTRL4.BLE位决定字节序（需要读取CTRL4寄存器）
-    sc7a20_ctrl4_t ctrl4;
-    status = read_register(handle, SC7A20_CTRL4, &ctrl4.reg);
-    if (status != SC7A20_OK)
-    {
-        handle->last_status = status;
-        return status;
-    }
-    if (ctrl4.bit.BLE == 0)
+
+    if (handle->endian == 0)
     {
         // 组合数据 (小端序)
         data->x = ((int16_t)((buffer[1] << 8) | buffer[0])) >> 4;
@@ -537,7 +522,7 @@ sc7a20_status_t sc7a20_set_output_data_rate(sc7a20_handle_t handle, sc7a20_accel
     }
 
     // 更新配置
-    handle->config.odr = odr;
+    handle->config.odr  = odr;
     handle->last_status = SC7A20_OK;
 
     return SC7A20_OK;
@@ -583,7 +568,7 @@ sc7a20_status_t sc7a20_set_axis_enable(sc7a20_handle_t handle, bool x_enable, bo
     handle->config.enable_axis[0] = x_enable;
     handle->config.enable_axis[1] = y_enable;
     handle->config.enable_axis[2] = z_enable;
-    handle->last_status = SC7A20_OK;
+    handle->last_status           = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -600,7 +585,7 @@ sc7a20_status_t sc7a20_get_config(sc7a20_handle_t handle, sc7a20_config_t *confi
         return SC7A20_NOT_INIT;
     }
 
-    *config = handle->config;
+    *config             = handle->config;
     handle->last_status = SC7A20_OK;
 
     return SC7A20_OK;
@@ -640,9 +625,9 @@ sc7a20_status_t sc7a20_enter_sleep(sc7a20_handle_t handle)
         return status;
     }
 
-    handle->flags.is_sleeping = 1;
+    handle->flags.is_sleeping     = 1;
     handle->config.low_power_mode = true;
-    handle->last_status = SC7A20_OK;
+    handle->last_status           = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -681,9 +666,9 @@ sc7a20_status_t sc7a20_wakeup(sc7a20_handle_t handle)
         return status;
     }
 
-    handle->flags.is_sleeping = 0;
+    handle->flags.is_sleeping     = 0;
     handle->config.low_power_mode = false;
-    handle->last_status = SC7A20_OK;
+    handle->last_status           = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -727,17 +712,17 @@ sc7a20_status_t sc7a20_set_power_mode(sc7a20_handle_t handle, sc7a20_power_mode_
 
     case SC7A20_LOW_POWER:
         ctrl1.bit.LPen = 1;
-        ctrl0.bit.HR = 0; // 低功耗模式，HR=0
+        ctrl0.bit.HR   = 0; // 低功耗模式，HR=0
         break;
 
     case SC7A20_NORMAL:
         ctrl1.bit.LPen = 0;
-        ctrl0.bit.HR = 0; // 正常模式，HR=0
+        ctrl0.bit.HR   = 0; // 正常模式，HR=0
         break;
 
     case SC7A20_HIGH_RESOLUTION:
         ctrl1.bit.LPen = 0;
-        ctrl0.bit.HR = 1; // 高分辨率模式，HR=1
+        ctrl0.bit.HR   = 1; // 高分辨率模式，HR=1
         break;
 
     default:
@@ -760,10 +745,10 @@ sc7a20_status_t sc7a20_set_power_mode(sc7a20_handle_t handle, sc7a20_power_mode_
     }
 
     // 更新配置
-    handle->config.low_power_mode = (mode == SC7A20_LOW_POWER);
+    handle->config.low_power_mode       = (mode == SC7A20_LOW_POWER);
     handle->config.high_resolution_mode = (mode == SC7A20_HIGH_RESOLUTION);
-    handle->flags.is_sleeping = (mode == SC7A20_POWER_DOWN) ? 1 : 0;
-    handle->last_status = SC7A20_OK;
+    handle->flags.is_sleeping           = (mode == SC7A20_POWER_DOWN) ? 1 : 0;
+    handle->last_status                 = SC7A20_OK;
 
     return SC7A20_OK;
 }
@@ -780,7 +765,7 @@ sc7a20_status_t sc7a20_get_chip_id(sc7a20_handle_t handle, uint8_t *chip_id)
         return SC7A20_NOT_INIT;
     }
 
-    *chip_id = handle->chip_id;
+    *chip_id            = handle->chip_id;
     handle->last_status = SC7A20_OK;
 
     return SC7A20_OK;
@@ -808,7 +793,7 @@ sc7a20_status_t sc7a20_get_status(sc7a20_handle_t handle, uint8_t *status)
         return ret;
     }
 
-    *status = drdy_status.reg;
+    *status             = drdy_status.reg;
     handle->last_status = SC7A20_OK;
 
     return SC7A20_OK;
@@ -855,7 +840,7 @@ sc7a20_status_t sc7a20_is_ready(sc7a20_handle_t handle, bool *ready)
         return SC7A20_INVALID_PARAM;
     }
 
-    *ready = handle->flags.is_initialized;
+    *ready              = handle->flags.is_initialized;
     handle->last_status = SC7A20_OK;
 
     return SC7A20_OK;

@@ -18,6 +18,14 @@ extern "C" {
 #include <stdbool.h>
 
 #include "sc7a20_reg.h"
+
+/* ========================== 配置宏定义 ========================== */
+
+// 启用异步操作支持（默认禁用）
+#ifndef SC7A20_ASYNC_SUPPORT
+#define SC7A20_ASYNC_SUPPORT 0
+#endif
+
 /* ========================== 常量定义 ========================== */
 #define SC7A20_CHIP_ID    0x11 // 设备ID寄存器预期值
 #define SC7A20_I2C_ADDR_L 0x18 // SDO接逻辑低
@@ -98,6 +106,17 @@ typedef enum {
     SC7A20_DATA_NOT_READY = 0, // 数据未就绪
     SC7A20_DATA_READY          // 数据就绪
 } sc7a20_data_ready_t;
+
+/* ========================== 异步操作相关定义 ========================== */
+
+// 异步操作状态枚举
+typedef enum {
+    SC7A20_ASYNC_IDLE = 0,        // 空闲状态
+    SC7A20_ASYNC_WRITE_REG_ADDR,  // 写寄存器地址阶段
+    SC7A20_ASYNC_WRITE_DATA,      // 写数据阶段
+    SC7A20_ASYNC_READ_DATA,       // 读数据阶段
+    SC7A20_ASYNC_COMPLETE         // 操作完成
+} sc7a20_async_state_t;
 
 #ifdef __cplusplus
 }
