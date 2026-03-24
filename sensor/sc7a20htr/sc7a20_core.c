@@ -122,7 +122,7 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
     {
         return status;
     }
-
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     // 配置CTRL1寄存器（数据率、轴使能、功耗模式）
     ctrl1.bit.Xen  = handle->config.enable_axis[0] ? 1 : 0;
     ctrl1.bit.Yen  = handle->config.enable_axis[1] ? 1 : 0;
@@ -136,18 +136,21 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
     {
         return status;
     }
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     ctrl2.reg = 0x00; // 关闭滤波器
     status    = write_register(handle, SC7A20_CTRL2, ctrl2.reg);
     if (status != SC7A20_OK)
     {
         return status;
     }
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     ctrl3.reg = 0x00; // 关闭中断
     status    = write_register(handle, SC7A20_CTRL3, ctrl3.reg);
     if (status != SC7A20_OK)
     {
         return status;
     }
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     // 配置CTRL4寄存器（量程、块数据更新、字节序等）
     ctrl4.reg    = 0x08; // 读取完更新 小端 2g 高精度
     ctrl4.bit.fs = handle->config.range;
@@ -157,7 +160,7 @@ static sc7a20_status_t apply_configuration(sc7a20_handle_t handle)
     {
         return status;
     }
-
+    handle->ops.delay_ms(1); // 等待数据读取完毕
     // 更新灵敏度
     if (handle->config.range < sizeof(sensitivity_table) / sizeof(sensitivity_table[0]))
     {

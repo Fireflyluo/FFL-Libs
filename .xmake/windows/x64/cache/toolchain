@@ -1,158 +1,249 @@
 {
-    tool_target_sht40_riscv_x64_cxx = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
-        toolname = "gxx",
+    tool_target_oled_windows_x64_cxx = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_oled_riscv_x64_cc = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
-        toolname = "gcc",
+    tool_target_sht40_windows_x64_ar = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]],
+        toolname = "link",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_oled_riscv_x64_cxx = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
-        toolname = "gxx",
-        toolchain_info = {
-            arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
-        }
-    },
-    tool_target_qmi8658a_riscv_x64_cc = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
-        toolname = "gcc",
-        toolchain_info = {
-            arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
-        }
-    },
-    ["riscv-wch-gcc_arch_x64_plat_riscv"] = {
-        arch = "x64",
-        plat = "riscv",
+    gfortran_arch_x64_plat_windows = {
         __checked = true,
+        plat = "windows",
+        arch = "x64",
         __global = true
     },
-    tool_target_icm42688p_riscv_x64_cxx = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
-        toolname = "gxx",
+    tool_target_icm42688p_windows_x64_ar = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]],
+        toolname = "link",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_icm42688p_riscv_x64_ar = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
-        toolname = "ar",
+    tool_target_icm42688p_windows_x64_cc = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_sc7a20htr_riscv_x64_cxx = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
-        toolname = "gxx",
+    clang_arch_x64_plat_windows = {
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    tool_target_sht40_windows_x64_cxx = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_sht40_riscv_x64_cc = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
-        toolname = "gcc",
+    tool_target_sht40_windows_x64_cc = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_icm42688p_riscv_x64_cc = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
-        toolname = "gcc",
+    tool_target_qmi8658a_windows_x64_cxx = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_sc7a20htr_riscv_x64_cc = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]],
-        toolname = "gcc",
+    nim_arch_x64_plat_windows = {
+        __checked = false,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    go_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    yasm_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    tool_target_sc7a20htr_windows_x64_cxx = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_sc7a20htr_riscv_x64_ar = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
-        toolname = "ar",
+    msvc_arch_x64_plat_windows = {
+        vs_toolset = "14.50.35717",
+        vcarchs = {
+            "arm",
+            "arm64",
+            "arm64ec",
+            "x64",
+            "x86"
+        },
+        vs_sdkver = "10.0.26100.0",
+        plat = "windows",
+        __checked = "2026",
+        __global = true,
+        arch = "x64",
+        vcvars = {
+            UCRTVersion = "10.0.26100.0",
+            VisualStudioVersion = "18.0",
+            LIBPATH = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x86\store\references;E:\Windows Kits\10\UnionMetadata\10.0.26100.0;E:\Windows Kits\10\References\10.0.26100.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319]],
+            WindowsSdkBinPath = [[E:\Windows Kits\10\bin\]],
+            WindowsSDKVersion = "10.0.26100.0",
+            VCInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\]],
+            WindowsLibPath = [[E:\Windows Kits\10\UnionMetadata\10.0.26100.0;E:\Windows Kits\10\References\10.0.26100.0]],
+            VSCMD_ARG_app_plat = "Desktop",
+            WindowsSdkDir = [[E:\Windows Kits\10\]],
+            VCIDEInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\]],
+            PATH = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\18\Insiders\Team Tools\DiagnosticsHub\Collector;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\Extensions\Microsoft\CodeCoverage.Console;E:\Windows Kits\10\bin\10.0.26100.0\\x64;E:\Windows Kits\10\bin\\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\;c:\Users\21614\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\21614\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;E:\APP\VMware\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-17.0.13.11-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;D:\APP\path\mingw64\bin;C:\msys64\ucrt64\bin;D:\Desktop\¹¤¾ßÈí¼þ\putty\;C:\;PP\Git\cmd;D:\APP\Node_js\node_cache;D:\APP\Node_js\node_global;D:\APP\Node_js\;D:\APP\Node_js\node_global\node_modules;D:\APP\Git\cmd;E:\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;E:\APP\xmake;C:\Program Files\dotnet\;C:\Users\21614\.cargo\bin;C:\Users\21614\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\21614\AppData\Local\Programs\Python\Python313\;C:\Users\21614\AppData\Local\Programs\Python\Launcher\;C:\Users\21614\AppData\Local\Microsoft\WindowsApps;D:\APP\path\14.2 rel1\bin;D:\APP\Microsoft VS Code\bin;D:\APP\path\openocd\bin;C:\Users\21614\AppData\Local\Programs\Python\Python313\Scripts\pyocd.exe;D:\APP\path\mingw64\bin;D:\APP\path\java\jdk.1.8.0_201\bin;D:\APP\path\java\jdk.1.8.0_201\jre\bin;C:\Users\21614\.vscode\extensions\metalcode-eu.windows-arm-none-eabi-0.1.6\bin;C:\msys64\usr\bin;C:\msys64\clang64\bin;C:\msys64\ucrt64\bin;C:\msys64\mingw64\bin;C:\msys64\mingw64\arm-none-eabi\bin;D:\APP\CLion 2025.1.1\bin;;D:\APP\ESP32\.espressif\python_env\idf5.2_py3.11_env\Scripts;D:\APP\Node_js\node_global;E:\APP\Microsoft VS Code\bin;C:\Users\21614\.dotnet\tools;D:\APP\path\clangd_21.1.0\bin;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\vcpkg]],
+            ExtensionSdkDir = [[C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs]],
+            VS180COMNTOOLS = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\]],
+            VSCMD_ARG_TGT_ARCH = "x64",
+            UniversalCRTSdkDir = [[E:\Windows Kits\10\]],
+            VSCMD_VER = "18.3.0-insiders",
+            VCToolsInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\]],
+            LIB = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;E:\Windows Kits\10\lib\10.0.26100.0\ucrt\x64;E:\Windows Kits\10\\lib\10.0.26100.0\\um\x64]],
+            WindowsSdkVerBinPath = [[E:\Windows Kits\10\bin\10.0.26100.0\]],
+            VSInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\]],
+            DevEnvdir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\]],
+            VCToolsVersion = "14.50.35717",
+            VSCMD_ARG_HOST_ARCH = "x64",
+            INCLUDE = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\include;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Auxiliary\VS\include;E:\Windows Kits\10\include\10.0.26100.0\ucrt;E:\Windows Kits\10\\include\10.0.26100.0\\um;E:\Windows Kits\10\\include\10.0.26100.0\\shared;E:\Windows Kits\10\\include\10.0.26100.0\\winrt;E:\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um]],
+            VCToolsRedistDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Redist\MSVC\14.50.35710\]]
+        },
+        vs = "2026"
+    },
+    rust_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    swift_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    fpc_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    tool_target_oled_windows_x64_cc = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_qmi8658a_riscv_x64_cxx = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]],
-        toolname = "gxx",
+    tool_target_sc7a20htr_windows_x64_ar = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]],
+        toolname = "link",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_qmi8658a_riscv_x64_ar = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
-        toolname = "ar",
+    tool_target_qmi8658a_windows_x64_ar = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]],
+        toolname = "link",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_oled_riscv_x64_ar = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
-        toolname = "ar",
+    cuda_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    zig_arch_x64_plat_windows = {
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    nasm_arch_x64_plat_windows = {
+        __checked = true,
+        plat = "windows",
+        arch = "x64",
+        __global = true
+    },
+    tool_target_qmi8658a_windows_x64_cc = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
         }
     },
-    tool_target_sht40_riscv_x64_ar = {
-        program = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]],
-        toolname = "ar",
+    tool_target_sc7a20htr_windows_x64_cc = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
         toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
             arch = "x64",
-            name = "riscv-wch-gcc",
-            cachekey = "riscv-wch-gcc_arch_x64_plat_riscv",
-            plat = "riscv"
+            name = "msvc"
+        }
+    },
+    tool_target_icm42688p_windows_x64_cxx = {
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        toolname = "cl",
+        toolchain_info = {
+            plat = "windows",
+            cachekey = "msvc_arch_x64_plat_windows",
+            arch = "x64",
+            name = "msvc"
         }
     }
 }

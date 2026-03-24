@@ -139,3 +139,8 @@ void icm42688_delay_ms(uint32_t ms);
 3. **SPI模式**：支持SPI模式0和模式3
 4. **数据单位**：加速度单位为g，角速度单位为dps（度/秒）
 5. **温度补偿**：建议在关键应用中进行温度补偿校准
+## Quick Include
+
+```c
+#include "icm42688p.h"
+```

@@ -1,20 +1,4 @@
 {
-    files = {
-        [[sensor\sc7a20htr\sc7a20_core_async.c]]
-    },
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-MD",
-            "-std:c11",
-            [[-Isensor\sc7a20htr]],
-            [[-Isensor\sc7a20htr\inc]],
-            "-DSC7A20HTR_DRIVER_AVAILABLE",
-            "/W4",
-            "/utf-8"
-        }
-    },
     depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -35,5 +19,22 @@
             \"d:\\\\mcu\\\\0.fireflyluo-embedded-libs-main\\\\sensor\\\\sc7a20htr\\\\inc\\\\sc7a20_async.h\"\
         ]\
     }\
-}"
+}",
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-MD",
+            "-std:c11",
+            [[-Isensor\sc7a20htr]],
+            [[-Isensor\sc7a20htr\inc]],
+            [[-Isensor\sc7a20htr\platform]],
+            "-DSC7A20HTR_DRIVER_AVAILABLE",
+            "/W4",
+            "/utf-8"
+        }
+    },
+    files = {
+        [[sensor\sc7a20htr\sc7a20_core_async.c]]
+    }
 }

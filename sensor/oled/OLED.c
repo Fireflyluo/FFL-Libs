@@ -1,4 +1,4 @@
-/***************************************************************************************
+﻿/***************************************************************************************
  * 本程序由江协科技创建并免费开源共享
  * 你可以任意查看、使用和修改，并应用到自己的项目之中
  * 程序版权归江协科技所有，任何人或组织不得将其据为己有
@@ -22,6 +22,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#if defined(_MSC_VER)
+#define OLED_WEAK
+#elif defined(__GNUC__) || defined(__clang__)
+#define OLED_WEAK __attribute__((weak))
+#else
+#define OLED_WEAK
+#endif
 
 /**
  * 数据存储格式：
@@ -44,12 +51,13 @@ uint8_t OLED_DisplayBuf[8][128];
 /* 用户需要实现的硬件抽象层函数声明 */
 /* 用户需要在自己的项目中实现以下函数 */
 
+#ifndef OLED_DISABLE_DEFAULT_STUBS
 /**
  * @brief OLED 写 SCL 高低电平
  * @param BitValue 要写入 SCL 的电平值，范围：0/1
  * @note 用户需要在自己的项目中实现此函数
  */
-__attribute__((weak))
+OLED_WEAK
 void OLED_W_SCL(uint8_t BitValue)
 {
     /* 这是一个占位函数，用户需要在自己的项目中实现 */
@@ -61,7 +69,7 @@ void OLED_W_SCL(uint8_t BitValue)
  * @param BitValue 要写入 SDA 的电平值，范围：0/1
  * @note 用户需要在自己的项目中实现此函数
  */
-__attribute__((weak))
+OLED_WEAK
 void OLED_W_SDA(uint8_t BitValue)
 {
     /* 这是一个占位函数，用户需要在自己的项目中实现 */
@@ -72,7 +80,7 @@ void OLED_W_SDA(uint8_t BitValue)
  * @brief OLED 引脚初始化
  * @note 用户需要在自己的项目中实现此函数
  */
-__attribute__((weak))
+OLED_WEAK
 void OLED_GPIO_Init(void)
 {
     /* 这是一个占位函数，用户需要在自己的项目中实现 */
@@ -83,13 +91,12 @@ void OLED_GPIO_Init(void)
  * @param ms 延时的毫秒数
  * @note 用户需要在自己的项目中实现此函数
  */
-__attribute__((weak))
+OLED_WEAK
 void OLED_Delay_ms(uint32_t ms)
 {
-    /* 这是一个占位函数，用户需要在自己的项目中实现 */
-    (void)ms;
+    /* 这是一个占位函数，用户需要在自己的项目中实现 */\n    (void)ms;
 }
-
+#endif
 /*********************引脚配置*/
 
 /*通信协议*********************/

@@ -1,4 +1,4 @@
-# 嵌入式传感器驱动库
+﻿# 嵌入式传感器驱动库
 
 本目录包含多种嵌入式传感器驱动的 xmake 构建配置，支持多平台编译（Windows、ARM、RISC-V）。
 
@@ -74,15 +74,29 @@ target("my_project")
     add_deps("oled")           -- 使用 OLED 驱动
 ```
 
-### 方式 2：使用包管理器
+### 方式 2：使用 xrepo（推荐）
 
-将传感器驱动库添加到你的 xmake 包仓库，然后：
+`lua
+add_repositories(\"embedded-sensors path/to/fireflyluo-Embedded-Libs/xmake-repo\")
+add_requires(\"embedded-sensor-drivers\", {
+    configs = {
+        sensor_icm42688p = true,
+        sensor_qmi8658a = true,
+        sensor_sc7a20htr = true,
+        sensor_sht40 = true,
+        sensor_oled = false
+    }
+})
+`
 
-```lua
-target("my_project")
-    add_packages("icm42688p", "qmi8658a", "sc7a20htr", "sht40", "oled")
-```
+Then link it to your target:
 
+`lua
+target(\"my_project\")
+    set_kind(\"binary\")
+    add_files(\"src/*.c\")
+    add_packages(\"embedded-sensor-drivers\")
+`
 ## 硬件抽象层（HAL）接口
 
 所有驱动都使用弱函数定义硬件抽象层接口，用户需要在自己的项目中实现这些接口。

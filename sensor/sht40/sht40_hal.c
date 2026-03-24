@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file sht40_hal.c
  * @brief SHT40 温湿度传感器硬件抽象层驱动
  * 
@@ -11,6 +11,14 @@
 #include "sht40_hal.h"
 #include <stdio.h>
 
+#if defined(_MSC_VER)
+#define SHT40_WEAK
+#elif defined(__GNUC__) || defined(__clang__)
+#define SHT40_WEAK __attribute__((weak))
+#else
+#define SHT40_WEAK
+#endif
+
 /* 弱函数定义 - 用户需要在自己的项目中实现 */
 
 /**
@@ -21,7 +29,8 @@
  * @param len 数据长度
  * @return 0-成功，非 0-失败
  */
-__attribute__((weak))
+#ifndef SHT40_DISABLE_DEFAULT_STUBS
+SHT40_WEAK
 uint8_t SHT40_I2C_Write(uint8_t i2c_num, uint8_t addr, uint8_t *data, uint8_t len)
 {
     (void)i2c_num;
@@ -39,7 +48,7 @@ uint8_t SHT40_I2C_Write(uint8_t i2c_num, uint8_t addr, uint8_t *data, uint8_t le
  * @param len 数据长度
  * @return 0-成功，非 0-失败
  */
-__attribute__((weak))
+SHT40_WEAK
 uint8_t SHT40_I2C_Read(uint8_t i2c_num, uint8_t addr, uint8_t *data, uint8_t len)
 {
     (void)i2c_num;
@@ -53,13 +62,13 @@ uint8_t SHT40_I2C_Read(uint8_t i2c_num, uint8_t addr, uint8_t *data, uint8_t len
  * @brief 延时函数（弱定义）
  * @param ms 延时毫秒数
  */
-__attribute__((weak))
+SHT40_WEAK
 void SHT40_Delay(uint32_t ms)
 {
     (void)ms;
     // 空实现，用户需要实现自己的延时函数
 }
-
+#endif
 /*************************************************************************************************
  *	函 数 名: SHT40_Init
  *	入口参数：无

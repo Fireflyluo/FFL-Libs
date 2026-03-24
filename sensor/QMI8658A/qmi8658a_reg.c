@@ -1,4 +1,4 @@
-/*-----------------------------------------------File Info------------------------------------------------
+﻿/*-----------------------------------------------File Info------------------------------------------------
 ** File Name:               qmi8658a_reg.c  
 ** Last modified date:      2025.8.16
 ** Last version:            V0.1
@@ -20,6 +20,14 @@ extern "C" {
 #include <stddef.h>
 #include "qmi8658a_reg.h"
 
+#if defined(_MSC_VER)
+#define QMI8658A_WEAK
+#elif defined(__GNUC__) || defined(__clang__)
+#define QMI8658A_WEAK __attribute__((weak))
+#else
+#define QMI8658A_WEAK
+#endif
+
 /* 用户需要提供的 HAL 延迟函数声明 */
 extern void HAL_Delay(uint32_t ms);
 
@@ -35,7 +43,8 @@ extern void HAL_Delay(uint32_t ms);
   * @retval 0: 成功；非 0: 失败
   * @note   这是一个弱定义，用户需要在自己的项目中实现此函数
   */
-__attribute__((weak))
+#ifndef QMI8658A_DISABLE_DEFAULT_STUBS
+QMI8658A_WEAK
 int32_t qmi8658a_i2c_read(void *handle, uint8_t reg, uint8_t *data, uint16_t len)
 {
     // 这是一个占位函数，用户需要在自己的项目中实现
@@ -55,7 +64,7 @@ int32_t qmi8658a_i2c_read(void *handle, uint8_t reg, uint8_t *data, uint16_t len
   * @retval 0: 成功；非 0: 失败
   * @note   这是一个弱定义，用户需要在自己的项目中实现此函数
   */
-__attribute__((weak))
+QMI8658A_WEAK
 int32_t qmi8658a_i2c_write(void *handle, uint8_t reg, uint8_t *data, uint16_t len)
 {
     // 这是一个占位函数，用户需要在自己的项目中实现
@@ -65,8 +74,7 @@ int32_t qmi8658a_i2c_write(void *handle, uint8_t reg, uint8_t *data, uint16_t le
     (void)len;
     return -1;  // 返回错误，提示用户需要实现此函数
 }
-
-
+#endif
 /* 基础寄存器操作 */
 int32_t qmi8658a_read_reg(qmi8658a_ctx_t *ctx, uint8_t reg, uint8_t* data, uint16_t len)
 {

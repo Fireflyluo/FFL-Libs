@@ -1,4 +1,4 @@
-# fireflyluo-Embedded-Libs
+﻿# fireflyluo-Embedded-Libs
 
 ## 项目概述
 
@@ -95,37 +95,38 @@ xmake
 xmake run
 ```
 
-#### 2.3 在您的项目中使用
-在您的项目xmake.lua中添加以下内容：
+#### 2.3 在您的项目中使用（xrepo 本地包）
 
-```lua
--- 添加对传感器驱动库的依赖
-add_requires("embedded-sensor-drivers")
+在您的项目 xmake.lua 中添加以下内容：
 
-target("my_app")
-    set_kind("binary")
-    add_files("src/*.c")
-    add_packages("embedded-sensor-drivers")
-    
-    -- 可选择性地启用特定传感器驱动
-    add_defines("USE_ICM42688P")
-    add_defines("USE_QMI8658A")
-    add_defines("USE_SC7A20HTR")
-    add_defines("USE_SHT40")
-    add_defines("USE_OLED")
-```
+`lua
+add_repositories(\"embedded-sensors path/to/fireflyluo-Embedded-Libs/xmake-repo\")
+add_requires(\"embedded-sensor-drivers\", {
+    configs = {
+        sensor_icm42688p = true,
+        sensor_qmi8658a = true,
+        sensor_sc7a20htr = true,
+        sensor_sht40 = true,
+        sensor_oled = false
+    }
+})
 
+target(\"my_app\")
+    set_kind(\"binary\")
+    add_files(\"src/*.c\")
+    add_packages(\"embedded-sensor-drivers\")
+`
 #### 2.4 构建选项
 项目提供了以下构建选项，可以在编译时启用或禁用特定的传感器驱动：
-- `--enable-sensor_icm42688p=true/false` : 启用/禁用ICM42688P驱动
-- `--enable-sensor_qmi8658a=true/false` : 启用/禁用QMI8658A驱动
-- `--enable-sensor_sc7a20htr=true/false` : 启用/禁用SC7A20HTR驱动
-- `--enable-sensor_sht40=true/false` : 启用/禁用SHT40驱动
-- `--enable-sensor_oled=true/false` : 启用/禁用OLED驱动
+- `--sensor_icm42688p=y/n` : 启用/禁用ICM42688P驱动
+- `--sensor_qmi8658a=y/n` : 启用/禁用QMI8658A驱动
+- `--sensor_sc7a20htr=y/n` : 启用/禁用SC7A20HTR驱动
+- `--sensor_sht40=y/n` : 启用/禁用SHT40驱动
+- `--sensor_oled=y/n` : 启用/禁用OLED驱动
 
 例如，只启用ICM42688P和SHT40驱动：
 ```bash
-xmake f --enable-sensor_icm42688p=true --enable-sensor_qmi8658a=false --enable-sensor_sc7a20htr=false --enable-sensor_sht40=true --enable-sensor_oled=false
+xmake f --sensor_icm42688p=y --sensor_qmi8658a=n --sensor_sc7a20htr=n --sensor_sht40=y --sensor_oled=n
 xmake
 ```
 
@@ -167,3 +168,4 @@ xmake
 - 添加传感器 -> 加速度计 -> sc7a20htr 驱动
 - 添加传感器 -> 温湿度传感器 -> sht40 驱动
 - 添加裸机框架 -> 事件驱动 -> OSAL
+

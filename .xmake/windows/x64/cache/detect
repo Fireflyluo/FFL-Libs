@@ -1,56 +1,22 @@
 {
-    ["lib.detect.has_flags"] = {
-        ["riscv_x64_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc12\\bin\\riscv-wch-elf-gcc.exe__cc_cxflags_-march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type_-fdiagnostics-color=always"] = true,
-        ["riscv_x64_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc12\\bin\\riscv-wch-elf-gcc.exe__cc_cxflags_-march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type_-MMD -MF"] = true,
-        ["riscv_x64_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc12\\bin\\riscv-wch-elf-gcc.exe__cc__-march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type_-fPIC"] = true,
-        ["riscv_x64_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc12\\bin\\riscv-wch-elf-gcc.exe__cc_cxflags_-march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -fno-common -ffunction-sections -fdata-sections -fno-builtin -fno-hosted -Wall -Werror=return-type_-Wno-gnu-line-marker -Werror"] = true
-    },
-    ["find_program_riscv-wch-gcc_arch_x64_plat_riscv_checktoolcc"] = {
-        ["riscv-wch-elf-gcc"] = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-gcc]]
-    },
-    ["core.tools.gcc.has_cflags"] = {
-        ["e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc12\\bin\\riscv-wch-elf-gcc.exe_"] = {
-            ["-Xassembler"] = true,
-            ["-print-multi-os-directory"] = true,
-            ["-print-sysroot"] = true,
-            ["-save-temps"] = true,
-            ["-Xpreprocessor"] = true,
-            ["-dumpmachine"] = true,
-            ["-E"] = true,
-            ["--target-help"] = true,
-            ["-B"] = true,
-            ["-print-libgcc-file-name"] = true,
-            ["-no-canonical-prefixes"] = true,
-            ["-print-multi-directory"] = true,
-            ["-Xlinker"] = true,
-            ["-S"] = true,
-            ["-print-search-dirs"] = true,
-            ["-shared"] = true,
-            ["-print-multi-lib"] = true,
-            ["-pie"] = true,
-            ["-o"] = true,
-            ["-dumpspecs"] = true,
-            ["--version"] = true,
-            ["-pass-exit-codes"] = true,
-            ["-dumpversion"] = true,
-            ["--help"] = true,
-            ["-time"] = true,
-            ["-v"] = true,
-            ["-print-sysroot-headers-suffix"] = true,
-            ["-print-multiarch"] = true,
-            ["-pipe"] = true,
-            ["-c"] = true,
-            ["--param"] = true,
-            ["-x"] = true
-        }
-    },
-    ["find_program_riscv-wch-gcc_arch_x64_plat_riscv_checktoolar"] = {
-        ["riscv-wch-elf-ar"] = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-ar]]
-    },
-    ["find_program_riscv-wch-gcc_arch_x64_plat_riscv_checktoolcxx"] = {
-        ["riscv-wch-elf-g++"] = [[E:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC12\bin\riscv-wch-elf-g++]]
-    },
     find_program = {
-        ["E:\\APP\\MRS2\\MounRiver_Studio2\\resources\\app\\resources\\win32\\components\\WCH\\Toolchain\\RISC-V Embedded GCC12\\bin\\riscv-wch-elf-gcc"] = [[e:\app\mrs2\mounriver_studio2\resources\app\resources\win32\components\wch\toolchain\risc-v embedded gcc12\bin\riscv-wch-elf-gcc.exe]]
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe"] = [[c:\program files\microsoft visual studio\18\insiders\vc\tools\msvc\14.50.35717\bin\hostx64\x64\cl.exe]],
+        nim = false
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolar = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]]
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/W4"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_cl_sourceDependencies"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-std:c11"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/utf-8"] = true
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
     }
 }

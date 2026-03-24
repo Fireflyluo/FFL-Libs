@@ -1,7 +1,4 @@
 {
-    files = {
-        [[sensor\sc7a20htr\sc7a20_core.c]]
-    },
     depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -37,9 +34,13 @@
             "-std:c11",
             [[-Isensor\sc7a20htr]],
             [[-Isensor\sc7a20htr\inc]],
+            [[-Isensor\sc7a20htr\platform]],
             "-DSC7A20HTR_DRIVER_AVAILABLE",
             "/W4",
             "/utf-8"
         }
+    },
+    files = {
+        [[sensor\sc7a20htr\sc7a20_core.c]]
     }
 }

@@ -22,7 +22,21 @@ includes("sensor/xmake.lua")
 -- 示例程序（如果需要）
 target("example")
     set_kind("phony")
-    add_deps("icm42688p", "qmi8658a", "sc7a20htr", "sht40", "oled")
+    if has_config("sensor_icm42688p") then
+        add_deps("icm42688p")
+    end
+    if has_config("sensor_qmi8658a") then
+        add_deps("qmi8658a")
+    end
+    if has_config("sensor_sc7a20htr") then
+        add_deps("sc7a20htr")
+    end
+    if has_config("sensor_sht40") then
+        add_deps("sht40")
+    end
+    if has_config("sensor_oled") then
+        add_deps("oled")
+    end
     on_run(function()
         print("嵌入式传感器驱动库 - 示例工程")
         print("使用 'xmake create -P .' 创建新的示例工程")
