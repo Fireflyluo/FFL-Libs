@@ -10,8 +10,14 @@ end
 if has_config("sensor_sc7a20htr") then
     includes("sc7a20htr/xmake.lua")
 end
+if has_config("sensor_sc7a20_new") then
+    includes("sc7a20_new/xmake.lua")
+end
 if has_config("sensor_sht40") then
     includes("sht40/xmake.lua")
+end
+if has_config("sensor_sht40_new") then
+    includes("sht40_new/xmake.lua")
 end
 if has_config("sensor_oled") then
     includes("oled/xmake.lua")

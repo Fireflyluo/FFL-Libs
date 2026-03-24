@@ -9,7 +9,9 @@
 | ICM42688P | 6 轴 IMU | SPI | TDK 高性能运动跟踪传感器 |
 | QMI8658A | 6 轴 IMU | I2C | 高通 6 轴惯性测量单元 |
 | SC7A20HTR | 3 轴加速度计 | I2C | 芯科低功耗加速度计 |
+| SC7A20 New | 3 轴加速度计 | I2C | 新版可移植 SC7A20 驱动（同步/异步统一事务模型） |
 | SHT40 | 温湿度传感器 | I2C | Sensirion 高精度温湿度传感器 |
+| SHT40 New | 温湿度传感器 | I2C | 新版可移植 SHT40 驱动（总线事务抽象） |
 | OLED | 显示屏 | I2C/SPI | 0.96 寸 OLED 显示屏驱动 |
 
 ## 目录结构
@@ -22,7 +24,9 @@ sensor/
 ├── ICM42688P/             # ICM42688P 驱动
 ├── QMI8658A/              # QMI8658A 驱动
 ├── sc7a20htr/             # SC7A20HTR 驱动
+├── sc7a20_new/            # SC7A20 新版驱动
 ├── sht40/                 # SHT40 驱动
+├── sht40_new/             # SHT40 新版驱动
 └── oled/                  # OLED 显示屏驱动
 ```
 
@@ -70,7 +74,9 @@ target("my_project")
     add_deps("icm42688p")      -- 使用 ICM42688P 驱动
     add_deps("qmi8658a")       -- 使用 QMI8658A 驱动
     add_deps("sc7a20htr")      -- 使用 SC7A20HTR 驱动
+    add_deps("sc7a20_new")     -- 使用 SC7A20 新版驱动
     add_deps("sht40")          -- 使用 SHT40 驱动
+    add_deps("sht40_new")      -- 使用 SHT40 新版驱动
     add_deps("oled")           -- 使用 OLED 驱动
 ```
 
@@ -83,7 +89,9 @@ add_requires(\"embedded-sensor-drivers\", {
         sensor_icm42688p = true,
         sensor_qmi8658a = true,
         sensor_sc7a20htr = true,
+        sensor_sc7a20_new = true,
         sensor_sht40 = true,
+        sensor_sht40_new = true,
         sensor_oled = false
     }
 })

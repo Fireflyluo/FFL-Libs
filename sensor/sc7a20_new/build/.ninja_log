@@ -1,0 +1,11 @@
+# ninja log v6
+142	673	7960588443744523	libsc7a20_new.a	8481eb33dabd006a
+132	252	7960588443654552	CMakeFiles/sc7a20_new_integration.dir/test/integration_test.c.obj	9bbe664625aec7c0
+678	808	7960588449116900	sc7a20_new_integration.exe	fac6df02733cc5cc
+22	154	7960588442554686	CMakeFiles/sc7a20_new_unit.dir/test/unit_test.c.obj	4b89852d6a8492ad
+31	153	7960588442637578	CMakeFiles/sc7a20_new_integration.dir/adapters/mock_adapter.c.obj	c5504829662fb3a4
+14	141	7960588442467128	CMakeFiles/sc7a20_new.dir/src/sc7a20_async.c.obj	4512adc6de1d4519
+4	131	7960588442375868	CMakeFiles/sc7a20_new.dir/src/sc7a20_sync.c.obj	75a6c44a64bda8ed
+673	809	7960588449066946	sc7a20_new_unit.exe	d86286074d35278
+33	149	7960588318189015	CMakeFiles/sc7a20_new_unit.dir/adapters/mock_adapter.c.obj	28140fdc9d2171e9
+3	137	7960588317887705	CMakeFiles/sc7a20_new.dir/src/sc7a20_core.c.obj	18b3de60f0febd47

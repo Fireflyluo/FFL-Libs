@@ -13,7 +13,9 @@ set_languages("c11")
 option("sensor_icm42688p", {default = true, showmenu = true, description = "Enable ICM42688P driver"})
 option("sensor_qmi8658a", {default = true, showmenu = true, description = "Enable QMI8658A driver"})
 option("sensor_sc7a20htr", {default = true, showmenu = true, description = "Enable SC7A20HTR driver"})
+option("sensor_sc7a20_new", {default = true, showmenu = true, description = "Enable SC7A20 New driver"})
 option("sensor_sht40", {default = true, showmenu = true, description = "Enable SHT40 driver"})
+option("sensor_sht40_new", {default = true, showmenu = true, description = "Enable SHT40 New driver"})
 option("sensor_oled", {default = true, showmenu = true, description = "Enable OLED driver"})
 
 -- 定义传感器驱动模块
@@ -31,8 +33,14 @@ target("example")
     if has_config("sensor_sc7a20htr") then
         add_deps("sc7a20htr")
     end
+    if has_config("sensor_sc7a20_new") then
+        add_deps("sc7a20_new")
+    end
     if has_config("sensor_sht40") then
         add_deps("sht40")
+    end
+    if has_config("sensor_sht40_new") then
+        add_deps("sht40_new")
     end
     if has_config("sensor_oled") then
         add_deps("oled")

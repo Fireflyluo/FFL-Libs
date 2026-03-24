@@ -1,0 +1,5 @@
+D:/Desktop/ch32/0.ch32v208_dome/ch32v208_tmos_cdc3/lib/sc7a20_new/build/CMakeFiles/sc7a20_new.dir
+D:/Desktop/ch32/0.ch32v208_dome/ch32v208_tmos_cdc3/lib/sc7a20_new/build/CMakeFiles/sc7a20_new_unit.dir
+D:/Desktop/ch32/0.ch32v208_dome/ch32v208_tmos_cdc3/lib/sc7a20_new/build/CMakeFiles/sc7a20_new_integration.dir
+D:/Desktop/ch32/0.ch32v208_dome/ch32v208_tmos_cdc3/lib/sc7a20_new/build/CMakeFiles/edit_cache.dir
+D:/Desktop/ch32/0.ch32v208_dome/ch32v208_tmos_cdc3/lib/sc7a20_new/build/CMakeFiles/rebuild_cache.dir

@@ -1,11 +1,13 @@
 package("embedded-sensor-drivers")
-    set_description("Embedded sensor drivers (ICM42688P, QMI8658A, SC7A20HTR, SHT40, OLED)")
+    set_description("Embedded sensor drivers (ICM42688P, QMI8658A, SC7A20HTR, SC7A20 New, SHT40, SHT40 New, OLED)")
     set_license("MIT")
 
     add_configs("sensor_icm42688p", {description = "Enable ICM42688P driver", default = true, type = "boolean"})
     add_configs("sensor_qmi8658a", {description = "Enable QMI8658A driver", default = true, type = "boolean"})
     add_configs("sensor_sc7a20htr", {description = "Enable SC7A20HTR driver", default = true, type = "boolean"})
+    add_configs("sensor_sc7a20_new", {description = "Enable SC7A20 New driver", default = true, type = "boolean"})
     add_configs("sensor_sht40", {description = "Enable SHT40 driver", default = true, type = "boolean"})
+    add_configs("sensor_sht40_new", {description = "Enable SHT40 New driver", default = true, type = "boolean"})
     add_configs("sensor_oled", {description = "Enable OLED driver", default = true, type = "boolean"})
 
     -- Repository layout: <project>/xmake-repo/packages/e/embedded-sensor-drivers/xmake.lua
@@ -27,9 +29,19 @@ package("embedded-sensor-drivers")
             package:add("includedirs", "sensor/sc7a20htr/inc")
             package:add("includedirs", "sensor/sc7a20htr/platform")
         end
+        if package:config("sensor_sc7a20_new") then
+            package:add("links", "sc7a20_new")
+            package:add("includedirs", "sensor/sc7a20_new")
+            package:add("includedirs", "sensor/sc7a20_new/inc")
+        end
         if package:config("sensor_sht40") then
             package:add("links", "sht40")
             package:add("includedirs", "sensor/sht40")
+        end
+        if package:config("sensor_sht40_new") then
+            package:add("links", "sht40_new")
+            package:add("includedirs", "sensor/sht40_new")
+            package:add("includedirs", "sensor/sht40_new/inc")
         end
         if package:config("sensor_oled") then
             package:add("links", "oled")
@@ -45,7 +57,9 @@ package("embedded-sensor-drivers")
             "--sensor_icm42688p=" .. (package:config("sensor_icm42688p") and "y" or "n"),
             "--sensor_qmi8658a=" .. (package:config("sensor_qmi8658a") and "y" or "n"),
             "--sensor_sc7a20htr=" .. (package:config("sensor_sc7a20htr") and "y" or "n"),
+            "--sensor_sc7a20_new=" .. (package:config("sensor_sc7a20_new") and "y" or "n"),
             "--sensor_sht40=" .. (package:config("sensor_sht40") and "y" or "n"),
+            "--sensor_sht40_new=" .. (package:config("sensor_sht40_new") and "y" or "n"),
             "--sensor_oled=" .. (package:config("sensor_oled") and "y" or "n")
         }
         import("package.tools.xmake").install(package, configs)

@@ -1,24 +1,22 @@
 {
     cmdlines = {
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        "xmake check",
         "xmake check",
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        "xmake -v",
-        [[xmake lua E:\APP\xmake\modules\private\utils\statistics.lua --verbose]],
-        "xmake -v",
-        "xmake f -p windows -a x64",
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        "xmake check",
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
-        "xmake -v",
-        "xmake -v",
-        "xmake -v",
-        "xmake f -p windows",
-        "xmake f -p windows",
-        "xmake f -p windows",
-        "xmake f -p windows",
-        "xmake b sc7a20htr"
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        "xmake check",
+        "xmake show -l targets",
+        "xmake show -l targets",
+        "xmake f --sensor_sc7a20_new=y --sensor_sht40_new=y",
+        "xmake show -l targets",
+        "xmake -r",
+        "xmake build sc7a20_new",
+        "xmake build sht40_new",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]]
     }
 }

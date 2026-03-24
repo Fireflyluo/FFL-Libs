@@ -1,7 +1,4 @@
 {
-    files = {
-        [[sensor\oled\OLED_Data.c]]
-    },
     depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -29,5 +26,8 @@
             "/W4",
             "/utf-8"
         }
+    },
+    files = {
+        [[sensor\oled\OLED_Data.c]]
     }
 }

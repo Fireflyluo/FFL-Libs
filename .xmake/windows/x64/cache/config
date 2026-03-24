@@ -1,10 +1,11 @@
 {
-    recheck = false,
-    mtimes = {
-        ["xmake.lua"] = 1774350962,
-        ["sensor\\xmake.lua"] = 1774350911
-    },
     options = {
-        plat = "windows"
-    }
+        sensor_sc7a20_new = true,
+        sensor_sht40_new = true
+    },
+    mtimes = {
+        ["xmake.lua"] = 1774358749,
+        ["sensor\\xmake.lua"] = 1774358619
+    },
+    recheck = false
 }

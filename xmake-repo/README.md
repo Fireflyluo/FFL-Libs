@@ -20,7 +20,9 @@ add_requires("embedded-sensor-drivers", {
         sensor_icm42688p = true,
         sensor_qmi8658a = true,
         sensor_sc7a20htr = true,
+        sensor_sc7a20_new = true,
         sensor_sht40 = true,
+        sensor_sht40_new = true,
         sensor_oled = false
     }
 })

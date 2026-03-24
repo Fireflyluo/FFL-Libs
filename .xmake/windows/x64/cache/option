@@ -1,72 +1,100 @@
 {
-    sensor_icm42688p = {
+    sensor_sht40_new = {
+        __sourceinfo_showmenu = { },
+        description = "Enable SHT40 New driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
         __sourceinfo_description = {
-            ["Enable ICM42688P driver"] = {
-                file = [[@programdir\core\base\interpreter.lua]],
-                line = 1080
+            ["Enable SHT40 New driver"] = {
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
             }
         },
-        __sourceinfo_showmenu = { },
         default = true,
-        description = "Enable ICM42688P driver",
         __sourceinfo_default = { },
-        showmenu = true,
-        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]]
-    },
-    sensor_qmi8658a = {
-        __sourceinfo_description = {
-            ["Enable QMI8658A driver"] = {
-                file = [[@programdir\core\base\interpreter.lua]],
-                line = 1080
-            }
-        },
-        __sourceinfo_showmenu = { },
-        default = true,
-        description = "Enable QMI8658A driver",
-        __sourceinfo_default = { },
-        showmenu = true,
-        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]]
+        showmenu = true
     },
     sensor_oled = {
+        __sourceinfo_showmenu = { },
+        description = "Enable OLED driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
         __sourceinfo_description = {
             ["Enable OLED driver"] = {
-                file = [[@programdir\core\base\interpreter.lua]],
-                line = 1080
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
             }
         },
-        __sourceinfo_showmenu = { },
         default = true,
-        description = "Enable OLED driver",
         __sourceinfo_default = { },
-        showmenu = true,
-        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]]
+        showmenu = true
     },
-    sensor_sc7a20htr = {
+    sensor_sc7a20_new = {
+        __sourceinfo_showmenu = { },
+        description = "Enable SC7A20 New driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
         __sourceinfo_description = {
-            ["Enable SC7A20HTR driver"] = {
-                file = [[@programdir\core\base\interpreter.lua]],
-                line = 1080
+            ["Enable SC7A20 New driver"] = {
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
             }
         },
-        __sourceinfo_showmenu = { },
         default = true,
-        description = "Enable SC7A20HTR driver",
         __sourceinfo_default = { },
-        showmenu = true,
-        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]]
+        showmenu = true
     },
     sensor_sht40 = {
+        __sourceinfo_showmenu = { },
+        description = "Enable SHT40 driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
         __sourceinfo_description = {
             ["Enable SHT40 driver"] = {
-                file = [[@programdir\core\base\interpreter.lua]],
-                line = 1080
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
             }
         },
-        __sourceinfo_showmenu = { },
         default = true,
-        description = "Enable SHT40 driver",
         __sourceinfo_default = { },
-        showmenu = true,
-        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]]
+        showmenu = true
+    },
+    sensor_qmi8658a = {
+        __sourceinfo_showmenu = { },
+        description = "Enable QMI8658A driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
+        __sourceinfo_description = {
+            ["Enable QMI8658A driver"] = {
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
+            }
+        },
+        default = true,
+        __sourceinfo_default = { },
+        showmenu = true
+    },
+    sensor_sc7a20htr = {
+        __sourceinfo_showmenu = { },
+        description = "Enable SC7A20HTR driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
+        __sourceinfo_description = {
+            ["Enable SC7A20HTR driver"] = {
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
+            }
+        },
+        default = true,
+        __sourceinfo_default = { },
+        showmenu = true
+    },
+    sensor_icm42688p = {
+        __sourceinfo_showmenu = { },
+        description = "Enable ICM42688P driver",
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main]],
+        __sourceinfo_description = {
+            ["Enable ICM42688P driver"] = {
+                line = 1080,
+                file = [[@programdir\core\base\interpreter.lua]]
+            }
+        },
+        default = true,
+        __sourceinfo_default = { },
+        showmenu = true
     }
 }

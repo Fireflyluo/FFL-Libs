@@ -18,7 +18,9 @@ fireflyluo-Embedded-Libs/
 │   ├── ICM42688P/         # 6轴IMU（加速度计+陀螺仪）
 │   ├── QMI8658A/          # 6轴IMU（加速度计+陀螺仪）  
 │   ├── sc7a20htr/         # 三轴加速度计
-│   └── sht40/             # 温湿度传感器
+│   ├── sc7a20_new/        # 三轴加速度计（新版）
+│   ├── sht40/             # 温湿度传感器
+│   └── sht40_new/         # 温湿度传感器（新版）
 ├── RF/                     # 射频芯片驱动
 │   ├── SI24R1/            # 2.4G射频芯片
 │   ├── xl2400p/           # 2.4G射频芯片
@@ -37,7 +39,9 @@ fireflyluo-Embedded-Libs/
 | **ICM42688P** | 6轴IMU | ±2/±4/±8/±16g加速度计，±250/±500/±1000/±2000dps陀螺仪，I2C/SPI接口 |
 | **QMI8658A** | 6轴IMU | ±2/±4/±8/±16g加速度计，±32/±64/±128/±256/±512/±1024/±2048dps陀螺仪，I2C接口 |
 | **SC7A20HTR** | 三轴加速度计 | ±2/±4/±8/±16g量程，最高4.434kHz输出率，支持同步/异步操作 |
+| **SC7A20 New** | 三轴加速度计 | 可移植重构版本，统一事务总线契约，支持同步/异步操作 |
 | **SHT40** | 温湿度传感器 | 温度精度±0.1°C，湿度精度±1.8%RH，I2C接口 |
+| **SHT40 New** | 温湿度传感器 | 可移植重构版本，统一总线抽象，支持同步/异步操作 |
 
 ### 射频驱动 (RF/)
 
@@ -106,7 +110,9 @@ add_requires(\"embedded-sensor-drivers\", {
         sensor_icm42688p = true,
         sensor_qmi8658a = true,
         sensor_sc7a20htr = true,
+        sensor_sc7a20_new = true,
         sensor_sht40 = true,
+        sensor_sht40_new = true,
         sensor_oled = false
     }
 })
@@ -121,7 +127,9 @@ target(\"my_app\")
 - `--sensor_icm42688p=y/n` : 启用/禁用ICM42688P驱动
 - `--sensor_qmi8658a=y/n` : 启用/禁用QMI8658A驱动
 - `--sensor_sc7a20htr=y/n` : 启用/禁用SC7A20HTR驱动
+- `--sensor_sc7a20_new=y/n` : 启用/禁用SC7A20 New驱动
 - `--sensor_sht40=y/n` : 启用/禁用SHT40驱动
+- `--sensor_sht40_new=y/n` : 启用/禁用SHT40 New驱动
 - `--sensor_oled=y/n` : 启用/禁用OLED驱动
 
 例如，只启用ICM42688P和SHT40驱动：
@@ -168,4 +176,3 @@ xmake
 - 添加传感器 -> 加速度计 -> sc7a20htr 驱动
 - 添加传感器 -> 温湿度传感器 -> sht40 驱动
 - 添加裸机框架 -> 事件驱动 -> OSAL
-
