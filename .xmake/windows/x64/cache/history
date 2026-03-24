@@ -17,6 +17,13 @@
         "xmake build sc7a20_new",
         "xmake build sht40_new",
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]]
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
+        "xmake check",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        "xmake check"
     }
 }

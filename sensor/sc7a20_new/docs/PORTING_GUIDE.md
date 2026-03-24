@@ -1,37 +1,37 @@
-﻿# PORTING GUIDE
+﻿# 移植指南
 
-## 1. Bus contract
+## 1. 总线适配
 
-You only need to implement:
+移植只需要实现以下接口：
 
 - `xfer(ctx, msgs, cnt, cb, user)`
-- `cancel(ctx)` (optional)
+- `cancel(ctx)`（可选）
 
-`msgs` is an atomic transaction. Do not split it into unrelated calls from the driver side.
+`msgs` 表示一次原子事务，驱动层不会把它拆成互不相关的操作。
 
-## 2. Message semantics
+## 2. 消息语义
 
-- `SC7A20_COMM_WRITE`: write message bytes to bus.
-- `SC7A20_COMM_READ`: read bytes from bus.
-- `SC7A20_COMM_STOP`: transaction end marker.
+- `SC7A20_COMM_WRITE`: 写消息
+- `SC7A20_COMM_READ`: 读消息
+- `SC7A20_COMM_STOP`: 事务结束
 
-Typical register read:
+典型寄存器读取事务：
 
-1. write 1 byte register address
-2. read N bytes
+1. 写 1 字节寄存器地址
+2. 读 N 字节寄存器数据
 
-Typical register write:
+典型寄存器写入事务：
 
-1. write 1 byte register address
-2. write N bytes payload
+1. 写 1 字节寄存器地址
+2. 写 N 字节载荷
 
-## 3. Sync vs async
+## 3. 同步与异步
 
-- Sync API passes `cb = NULL` to `xfer`.
-- Async API passes a completion callback.
-- Adapter can implement both in one function.
+- 同步 API：传 `cb = NULL` 给 `xfer`
+- 异步 API：传完成回调给 `xfer`
+- 一个适配器可同时支持同步与异步
 
-## 4. CH32 integration example
+## 4. CH32 接入示例
 
 ```c
 #include "lib/sc7a20_new/inc/sc7a20.h"
@@ -57,7 +57,7 @@ static void sc7a20_setup(void)
 }
 ```
 
-## 5. Thread safety
+## 5. 并发与重入
 
-The driver has an internal `in_use` lock to prevent re-entrant access.
-If your adapter can complete from ISR context, ensure callback scheduling is safe for your system.
+驱动内部通过 `in_use` 锁避免重入。
+如果底层回调运行在中断上下文，请确保你的调度策略与线程模型一致。
