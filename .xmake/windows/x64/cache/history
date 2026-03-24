@@ -13,6 +13,14 @@
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
         "xmake -r ringbuffer",
+        "xmake -r sw_timer",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
+        "xmake f --utils_ringbuffer=y --utils_sw_timer=y --sensor_oled=n",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
+        "xmake -r ringbuffer",
         "xmake -r sw_timer"
     }
 }

@@ -23,7 +23,9 @@ add_requires("embedded-sensor-drivers", {
         sensor_sc7a20_new = true,
         sensor_sht40 = true,
         sensor_sht40_new = true,
-        sensor_oled = false
+        sensor_oled = false,
+        utils_ringbuffer = true,
+        utils_sw_timer = true
     }
 })
 ```

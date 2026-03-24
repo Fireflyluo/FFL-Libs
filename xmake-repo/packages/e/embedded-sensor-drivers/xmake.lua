@@ -1,5 +1,5 @@
 package("embedded-sensor-drivers")
-    set_description("Embedded sensor drivers (ICM42688P, QMI8658A, SC7A20HTR, SC7A20 New, SHT40, SHT40 New, OLED)")
+    set_description("Embedded drivers and utils (ICM42688P, QMI8658A, SC7A20HTR, SC7A20 New, SHT40, SHT40 New, OLED, ringbuffer, sw_timer)")
     set_license("MIT")
 
     add_configs("sensor_icm42688p", {description = "Enable ICM42688P driver", default = true, type = "boolean"})
@@ -9,6 +9,8 @@ package("embedded-sensor-drivers")
     add_configs("sensor_sht40", {description = "Enable SHT40 driver", default = true, type = "boolean"})
     add_configs("sensor_sht40_new", {description = "Enable SHT40 New driver", default = true, type = "boolean"})
     add_configs("sensor_oled", {description = "Enable OLED driver", default = true, type = "boolean"})
+    add_configs("utils_ringbuffer", {description = "Enable ringbuffer utility", default = true, type = "boolean"})
+    add_configs("utils_sw_timer", {description = "Enable software timer utility", default = true, type = "boolean"})
 
     -- Repository layout: <project>/xmake-repo/packages/e/embedded-sensor-drivers/xmake.lua
     -- Use the project root as the source directory.
@@ -47,6 +49,14 @@ package("embedded-sensor-drivers")
             package:add("links", "oled")
             package:add("includedirs", "sensor/oled")
         end
+        if package:config("utils_ringbuffer") then
+            package:add("links", "ringbuffer")
+            package:add("includedirs", "utils")
+        end
+        if package:config("utils_sw_timer") then
+            package:add("links", "sw_timer")
+            package:add("includedirs", "utils")
+        end
 
         -- Keep the default include root in case some headers use repo-relative paths
         package:add("includedirs", ".")
@@ -60,7 +70,9 @@ package("embedded-sensor-drivers")
             "--sensor_sc7a20_new=" .. (package:config("sensor_sc7a20_new") and "y" or "n"),
             "--sensor_sht40=" .. (package:config("sensor_sht40") and "y" or "n"),
             "--sensor_sht40_new=" .. (package:config("sensor_sht40_new") and "y" or "n"),
-            "--sensor_oled=" .. (package:config("sensor_oled") and "y" or "n")
+            "--sensor_oled=" .. (package:config("sensor_oled") and "y" or "n"),
+            "--utils_ringbuffer=" .. (package:config("utils_ringbuffer") and "y" or "n"),
+            "--utils_sw_timer=" .. (package:config("utils_sw_timer") and "y" or "n")
         }
         import("package.tools.xmake").install(package, configs)
     end)
