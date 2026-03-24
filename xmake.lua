@@ -17,9 +17,12 @@ option("sensor_sc7a20_new", {default = true, showmenu = true, description = "Ena
 option("sensor_sht40", {default = true, showmenu = true, description = "Enable SHT40 driver"})
 option("sensor_sht40_new", {default = true, showmenu = true, description = "Enable SHT40 New driver"})
 option("sensor_oled", {default = true, showmenu = true, description = "Enable OLED driver"})
+option("utils_ringbuffer", {default = true, showmenu = true, description = "Enable ringbuffer utility"})
+option("utils_sw_timer", {default = true, showmenu = true, description = "Enable software timer utility"})
 
 -- 定义传感器驱动模块
 includes("sensor/xmake.lua")
+includes("utils/xmake.lua")
 
 -- 示例程序（如果需要）
 target("example")
@@ -44,6 +47,12 @@ target("example")
     end
     if has_config("sensor_oled") then
         add_deps("oled")
+    end
+    if has_config("utils_ringbuffer") then
+        add_deps("ringbuffer")
+    end
+    if has_config("utils_sw_timer") then
+        add_deps("sw_timer")
     end
     on_run(function()
         print("嵌入式传感器驱动库 - 示例工程")

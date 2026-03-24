@@ -1,29 +1,18 @@
 {
     cmdlines = {
-        "xmake check",
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
         "xmake check",
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
         "xmake check",
-        "xmake show -l targets",
-        "xmake show -l targets",
-        "xmake f --sensor_sc7a20_new=y --sensor_sht40_new=y",
-        "xmake show -l targets",
-        "xmake -r",
-        "xmake build sc7a20_new",
-        "xmake build sht40_new",
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
-        "xmake check",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\update_intellisense.lua .vscode clangd]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        "xmake f --utils_ringbuffer=y --utils_sw_timer=y",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
-        "xmake check"
+        "xmake -r ringbuffer",
+        "xmake -r sw_timer"
     }
 }

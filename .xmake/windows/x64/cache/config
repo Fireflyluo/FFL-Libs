@@ -1,11 +1,12 @@
 {
     options = {
-        sensor_sc7a20_new = true,
-        sensor_sht40_new = true
+        utils_ringbuffer = true,
+        utils_sw_timer = true
     },
+    recheck = false,
     mtimes = {
-        ["xmake.lua"] = 1774358749,
-        ["sensor\\xmake.lua"] = 1774358619
-    },
-    recheck = false
+        ["sensor\\xmake.lua"] = 1774358619,
+        ["xmake.lua"] = 1774361581,
+        ["utils\\xmake.lua"] = 1774361447
+    }
 }

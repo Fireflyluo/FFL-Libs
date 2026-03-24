@@ -1,22 +1,22 @@
 {
-    ["lib.detect.has_flags"] = {
-        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-std:c11"] = true,
-        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/utf-8"] = true,
-        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/W4"] = true,
-        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_cl_sourceDependencies"] = true
-    },
     find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
         ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
     },
-    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    find_program = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe"] = [[c:\program files\microsoft visual studio\18\insiders\vc\tools\msvc\14.50.35717\bin\hostx64\x64\cl.exe]],
+        nim = false
     },
     find_program_msvc_arch_x64_plat_windows_checktoolar = {
         ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]]
     },
-    find_program = {
-        nim = false,
-        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
-        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe"] = [[c:\program files\microsoft visual studio\18\insiders\vc\tools\msvc\14.50.35717\bin\hostx64\x64\cl.exe]]
+    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_cl_sourceDependencies"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/utf-8"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-std:c11"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_/W4"] = true
     }
 }
