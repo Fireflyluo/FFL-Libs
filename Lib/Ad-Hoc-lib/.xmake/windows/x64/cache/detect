@@ -1,0 +1,57 @@
+{
+    ["core.tools.gcc.has_cflags"] = {
+        ["e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe_"] = {
+            ["-x"] = true,
+            ["-Xassembler"] = true,
+            ["-save-temps"] = true,
+            ["-print-multiarch"] = true,
+            ["-print-multi-lib"] = true,
+            ["-pipe"] = true,
+            ["-pie"] = true,
+            ["-E"] = true,
+            ["-S"] = true,
+            ["-print-libgcc-file-name"] = true,
+            ["-c"] = true,
+            ["-B"] = true,
+            ["-no-canonical-prefixes"] = true,
+            ["-print-sysroot"] = true,
+            ["--version"] = true,
+            ["-dumpversion"] = true,
+            ["-pass-exit-codes"] = true,
+            ["-o"] = true,
+            ["--param"] = true,
+            ["-print-search-dirs"] = true,
+            ["-dumpspecs"] = true,
+            ["-dumpmachine"] = true,
+            ["-print-multi-directory"] = true,
+            ["-Xpreprocessor"] = true,
+            ["-shared"] = true,
+            ["-Xlinker"] = true,
+            ["-v"] = true,
+            ["-print-sysroot-headers-suffix"] = true,
+            ["--help"] = true,
+            ["-print-multi-os-directory"] = true,
+            ["--target-help"] = true,
+            ["-time"] = true
+        }
+    },
+    find_program_cross_arch_riscv_plat_cross_checktoolcc = {
+        ["riscv32-wch-elf-gcc"] = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc]]
+    },
+    ["lib.detect.has_flags"] = {
+        ["cross_riscv_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe__cc___-fPIC"] = true,
+        ["cross_riscv_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe__cc___-O3"] = true,
+        ["cross_riscv_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe__cc_cxflags__-Wno-gnu-line-marker -Werror"] = true,
+        ["cross_riscv_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe__cc_cxflags__-MMD -MF"] = true,
+        ["cross_riscv_e:\\app\\mrs2\\mounriver_studio2\\resources\\app\\resources\\win32\\components\\wch\\toolchain\\risc-v embedded gcc15\\bin\\riscv32-wch-elf-gcc.exe__cc_cxflags__-DNDEBUG"] = true
+    },
+    find_program = {
+        ["e:\\APP\\MRS2\\MounRiver_Studio2\\resources\\app\\resources\\win32\\components\\WCH\\Toolchain\\RISC-V Embedded GCC15\\bin\\riscv32-wch-elf-gcc"] = [[e:\app\mrs2\mounriver_studio2\resources\app\resources\win32\components\wch\toolchain\risc-v embedded gcc15\bin\riscv32-wch-elf-gcc.exe]]
+    },
+    find_program_cross_arch_riscv_plat_cross_checktoolar = {
+        ["riscv32-wch-elf-gcc-ar"] = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc-ar]]
+    },
+    find_program_cross_arch_riscv_plat_cross_checktoolcxx = {
+        ["riscv32-wch-elf-gcc"] = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc]]
+    }
+}

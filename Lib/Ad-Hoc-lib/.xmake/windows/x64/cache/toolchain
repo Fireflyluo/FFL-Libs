@@ -1,0 +1,51 @@
+{
+    ["tool_target_adhoc-lib-core_cross_riscv_cc"] = {
+        toolname = "gcc",
+        program = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc]],
+        toolchain_info = {
+            cachekey = "cross_arch_riscv_plat_cross",
+            plat = "cross",
+            name = "cross",
+            arch = "riscv"
+        }
+    },
+    cross_arch_riscv_plat_cross = {
+        sdkdir = "e:/APP/MRS2/MounRiver_Studio2/resources/app/resources/win32/components/WCH/Toolchain/RISC-V Embedded GCC15",
+        __global = true,
+        bindir = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin]],
+        cross = "riscv32-wch-elf-",
+        plat = "cross",
+        __checked = {
+            cross = "riscv32-wch-elf-",
+            bindir = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin]],
+            sdkdir = "e:/APP/MRS2/MounRiver_Studio2/resources/app/resources/win32/components/WCH/Toolchain/RISC-V Embedded GCC15"
+        },
+        arch = "riscv"
+    },
+    ["tool_target_adhoc-lib-core_cross_riscv_cxx"] = {
+        toolname = "gcc",
+        program = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc]],
+        toolchain_info = {
+            cachekey = "cross_arch_riscv_plat_cross",
+            plat = "cross",
+            name = "cross",
+            arch = "riscv"
+        }
+    },
+    ["tool_target_adhoc-lib-core_cross_riscv_ar"] = {
+        toolname = "gcc_ar",
+        program = [[e:\APP\MRS2\MounRiver_Studio2\resources\app\resources\win32\components\WCH\Toolchain\RISC-V Embedded GCC15\bin\riscv32-wch-elf-gcc-ar]],
+        toolchain_info = {
+            cachekey = "cross_arch_riscv_plat_cross",
+            plat = "cross",
+            name = "cross",
+            arch = "riscv"
+        }
+    },
+    envs_arch_riscv_plat_cross = {
+        __global = true,
+        plat = "cross",
+        __checked = true,
+        arch = "riscv"
+    }
+}

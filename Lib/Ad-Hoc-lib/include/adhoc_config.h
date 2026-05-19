@@ -1,0 +1,168 @@
+/*-----------------------------------------------File Info------------------------------------------------
+** File Name:               adhoc_config.h
+** Created date:            2026.5.16
+** author:                  Fireflyluo
+** Version:                 V0.1
+** Descriptions:            Ad-Hoc-lib 统一配置头
+**                          通过宏覆盖协议库默认配置，便于跨工程复用
+**--------------------------------------------------------------------------------------------------------
+*/
+
+#ifndef ADHOC_CONFIG_H
+#define ADHOC_CONFIG_H
+
+/*
+ * 可选：由工程侧通过编译参数指定用户配置头，例如：
+ *   -DADHOC_CONFIG_USER_HEADER=\"my_adhoc_user_config.h\"
+ */
+#ifdef ADHOC_CONFIG_USER_HEADER
+#include ADHOC_CONFIG_USER_HEADER
+#endif
+
+/* ========== 时序模块配置 ========== */
+#ifndef ADHOC_CONFIG_TMOS_TICK_US
+#define ADHOC_CONFIG_TMOS_TICK_US 625u
+#endif
+
+#ifndef ADHOC_CONFIG_TIMING_M_RECOMMENDED_MIN
+#define ADHOC_CONFIG_TIMING_M_RECOMMENDED_MIN 10u
+#endif
+
+#ifndef ADHOC_CONFIG_TIMING_M_RECOMMENDED_MAX
+#define ADHOC_CONFIG_TIMING_M_RECOMMENDED_MAX 1000u
+#endif
+
+/* ========== 状态机配置 ========== */
+#ifndef ADHOC_CONFIG_SM_GATEWAY_ID_MAX
+#define ADHOC_CONFIG_SM_GATEWAY_ID_MAX 1000000u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_BEACON_ID_MIN
+#define ADHOC_CONFIG_SM_BEACON_ID_MIN 1000001u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_DEFAULT_RETRY_MAX
+#define ADHOC_CONFIG_SM_DEFAULT_RETRY_MAX 30u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_DEFAULT_NETWORK_WINDOW_US
+#define ADHOC_CONFIG_SM_DEFAULT_NETWORK_WINDOW_US 30000000u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_RSSI_STRONG_MIN_DBM
+#define ADHOC_CONFIG_SM_RSSI_STRONG_MIN_DBM (-65)
+#endif
+
+#ifndef ADHOC_CONFIG_SM_RSSI_MEDIUM_MIN_DBM
+#define ADHOC_CONFIG_SM_RSSI_MEDIUM_MIN_DBM (-80)
+#endif
+
+#ifndef ADHOC_CONFIG_SM_JOIN_LEVEL_MAX
+#define ADHOC_CONFIG_SM_JOIN_LEVEL_MAX 254u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY
+#define ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY 6u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_NEIGHBOR_CACHE_CAPACITY
+#define ADHOC_CONFIG_SM_NEIGHBOR_CACHE_CAPACITY 6u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_UPSTREAM_LOSS_CYCLES
+#define ADHOC_CONFIG_SM_UPSTREAM_LOSS_CYCLES 3u
+#endif
+
+#ifndef ADHOC_CONFIG_TEST_DROP_JOIN_CONFIRM
+#define ADHOC_CONFIG_TEST_DROP_JOIN_CONFIRM 0u
+#endif
+
+/* ========== 组网确认队列配置 ========== */
+#ifndef ADHOC_CONFIG_REPLY_LIST_CAPACITY
+#define ADHOC_CONFIG_REPLY_LIST_CAPACITY 24u
+#endif
+
+#ifndef ADHOC_CONFIG_REPLY_MAX_PER_FRAME
+#define ADHOC_CONFIG_REPLY_MAX_PER_FRAME 5u
+#endif
+
+#ifndef ADHOC_CONFIG_SM_DOWNSTREAM_BINDING_CAPACITY
+#define ADHOC_CONFIG_SM_DOWNSTREAM_BINDING_CAPACITY 24u
+#endif
+
+/* ========== 数据面配置 ========== */
+#ifndef ADHOC_CONFIG_DATA_DEDUP_CAPACITY
+#define ADHOC_CONFIG_DATA_DEDUP_CAPACITY 64u
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_ACK_QUEUE_CAPACITY
+#define ADHOC_CONFIG_DATA_ACK_QUEUE_CAPACITY 32u
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_TX_QUEUE_CAPACITY
+#define ADHOC_CONFIG_DATA_TX_QUEUE_CAPACITY 16u
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_TX_REPORT_QUEUE_CAPACITY
+#define ADHOC_CONFIG_DATA_TX_REPORT_QUEUE_CAPACITY 16u
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_TX_RETRY_MAX
+#define ADHOC_CONFIG_DATA_TX_RETRY_MAX 30u
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_DEFAULT_DEDUP_WINDOW_MS
+#define ADHOC_CONFIG_DATA_DEFAULT_DEDUP_WINDOW_MS (6u * 60u * 60u * 1000u)
+#endif
+
+#ifndef ADHOC_CONFIG_DATA_GATEWAY_ID_MAX
+#define ADHOC_CONFIG_DATA_GATEWAY_ID_MAX 1000000u
+#endif
+
+/* ========== CRC8 查表段属性配置 ========== */
+#ifndef ADHOC_CONFIG_CRC8_TABLE_STORAGE
+#if defined(__GNUC__) && defined(__riscv)
+#define ADHOC_CONFIG_CRC8_TABLE_STORAGE __attribute__((section(".flash1_rodata")))
+#else
+#define ADHOC_CONFIG_CRC8_TABLE_STORAGE
+#endif
+#endif
+
+/* ========== 基本约束检查 ========== */
+#if ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY == 0u
+#error "ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY > 8u
+#error "ADHOC_CONFIG_SM_UPSTREAM_BINDING_CAPACITY must be <= 8."
+#endif
+
+#if ADHOC_CONFIG_SM_NEIGHBOR_CACHE_CAPACITY == 0u
+#error "ADHOC_CONFIG_SM_NEIGHBOR_CACHE_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_REPLY_MAX_PER_FRAME == 0u
+#error "ADHOC_CONFIG_REPLY_MAX_PER_FRAME must be > 0."
+#endif
+
+#if ADHOC_CONFIG_SM_DOWNSTREAM_BINDING_CAPACITY == 0u
+#error "ADHOC_CONFIG_SM_DOWNSTREAM_BINDING_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_DATA_DEDUP_CAPACITY == 0u
+#error "ADHOC_CONFIG_DATA_DEDUP_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_DATA_ACK_QUEUE_CAPACITY == 0u
+#error "ADHOC_CONFIG_DATA_ACK_QUEUE_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_DATA_TX_QUEUE_CAPACITY == 0u
+#error "ADHOC_CONFIG_DATA_TX_QUEUE_CAPACITY must be > 0."
+#endif
+
+#if ADHOC_CONFIG_DATA_TX_REPORT_QUEUE_CAPACITY == 0u
+#error "ADHOC_CONFIG_DATA_TX_REPORT_QUEUE_CAPACITY must be > 0."
+#endif
+
+#endif /* ADHOC_CONFIG_H */

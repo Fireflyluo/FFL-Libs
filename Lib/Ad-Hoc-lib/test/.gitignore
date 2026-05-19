@@ -1,0 +1,19 @@
+# Build artifacts
+adhoc_sim.exe
+*.exe
+*.obj
+*.o
+
+# Runtime logs
+logs/*.log
+*.log
+
+# Redundant old log directories
+node_0_1/
+node_1_1000001/
+node_2_1000002/
+
+# IDE
+.vs/
+*.suo
+*.user

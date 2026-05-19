@@ -30,6 +30,9 @@ fireflyluo-Embedded-Libs/
 ├── utils/                  # 通用工具模块（ringbuffer/sw_timer）
 ├── demo/                   # 示例工程
 │   └── xmake/              # xmake 构建示例
+├── Lib/                    # 可复用协议/中间层库
+│   └── Ad-Hoc-lib/         # 自组网协议核心
+├── toolchains/             # xmake 可复用 toolchain 定义
 └── xmake-repo/             # xrepo 本地仓库配置
 ```
 
@@ -133,11 +136,18 @@ add_requires("embedded-sensor-drivers", {
     }
 })
 
+add_requires("adhoc-lib")
+
 target("my_app")
     set_kind("binary")
     add_files("src/*.c")
     add_packages("embedded-sensor-drivers")
+    add_packages("adhoc-lib")
 ```
+
+#### 2.4 可复用 toolchain
+
+WCH RISC-V 裸机工程可直接复用 `toolchains/wch-riscv.lua`，接入方式见 `toolchains/README.md`。
 
 #### 2.4 构建选项
 

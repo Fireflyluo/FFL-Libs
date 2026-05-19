@@ -21,6 +21,14 @@
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
         [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
         "xmake -r ringbuffer",
-        "xmake -r sw_timer"
+        "xmake -r sw_timer",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]],
+        "xmake check",
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\explorer.lua]],
+        [[xmake l c:\Users\21614\.vscode\extensions\tboox.xmake-vscode-2.5.5\assets\config.lua]]
     }
 }
