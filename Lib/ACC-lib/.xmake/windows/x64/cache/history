@@ -1,0 +1,8 @@
+{
+    cmdlines = {
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\ACC-lib --yes -y -c --acc_sc7a20=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\cache\build_808adc66]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\ACC-lib --yes]],
+        [[xmake lua E:\APP\xmake\modules\private\utils\statistics.lua --project=D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\ACC-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5 -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\ACC-lib --yes]]
+    }
+}

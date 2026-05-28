@@ -1,0 +1,18 @@
+{
+    recheck = false,
+    mtimes = {
+        ["xmake.lua"] = 1779898761
+    },
+    options = {
+        kind = "static",
+        runtimes = "MD",
+        mode = "release",
+        clean = true,
+        arch = "x64",
+        imu_icm42688p = true,
+        imu_qmi8658a = true,
+        builddir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\cache\build_74c9d22f]],
+        plat = "windows",
+        vs = "2026"
+    }
+}

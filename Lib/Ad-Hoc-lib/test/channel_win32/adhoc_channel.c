@@ -11,6 +11,7 @@
 
 #include "adhoc_channel.h"
 
+#include <stdlib.h>
 #include <string.h>
 
 /**
@@ -64,6 +65,18 @@ void adhoc_channel_set_topo(adhoc_channel_t *ch, uint8_t from_idx, uint8_t to_id
 }
 
 /**
+ * @brief 设置随机丢包率
+ */
+void adhoc_channel_set_drop_rate(adhoc_channel_t *ch, uint8_t drop_rate_pct)
+{
+    if (ch == NULL) return;
+    if (drop_rate_pct > 100u) drop_rate_pct = 100u;
+    EnterCriticalSection(&ch->lock);
+    ch->drop_rate_pct = drop_rate_pct;
+    LeaveCriticalSection(&ch->lock);
+}
+
+/**
  * @brief 向信道发送帧: 遍历拓扑矩阵, 拷贝到所有可达节点(排除自身)的接收 FIFO
  */
 int adhoc_channel_tx(adhoc_channel_t *ch, uint8_t from_idx, const uint8_t *frame, uint8_t len)
@@ -88,6 +101,12 @@ int adhoc_channel_tx(adhoc_channel_t *ch, uint8_t from_idx, const uint8_t *frame
 
         rssi = (int8_t)ch->topo[from_idx][to_idx];
         if (rssi == 0)
+        {
+            continue;
+        }
+
+        /* 随机丢包 */
+        if (ch->drop_rate_pct > 0u && (rand() % 100u) < ch->drop_rate_pct)
         {
             continue;
         }

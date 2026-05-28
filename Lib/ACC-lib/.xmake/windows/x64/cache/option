@@ -1,0 +1,16 @@
+{
+    acc_sc7a20 = {
+        showmenu = true,
+        __sourceinfo_default = { },
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\ACC-lib]],
+        default = false,
+        description = "Enable SC7A20 accelerometer driver",
+        __sourceinfo_showmenu = { },
+        __sourceinfo_description = {
+            ["Enable SC7A20 accelerometer driver"] = {
+                file = [[.\xmake.lua]],
+                line = 7
+            }
+        }
+    }
+}

@@ -1,7 +1,20 @@
+/*-----------------------------------------------File Info------------------------------------------------
+** File Name:               adhoc_reply_list.c
+** Created date:            2026.5.14
+** author:                  Fireflyluo
+** Version:                 V0.1
+** Descriptions:            组网确认队列实现
+**                          环形 FIFO 确认队列, 按 node_id 去重, 用于 A 帧 flag=7 入网确认打包
+**--------------------------------------------------------------------------------------------------------
+*/
+
 #include "adhoc_reply_list.h"
 
 #include <string.h>
 
+/**
+ * @brief 检查队列中是否已包含指定 node_id
+ */
 static int adhoc_reply_list_contains(const adhoc_reply_list_t *list, uint32_t node_id)
 {
     uint8_t index;
@@ -22,6 +35,9 @@ static int adhoc_reply_list_contains(const adhoc_reply_list_t *list, uint32_t no
     return 0;
 }
 
+/**
+ * @brief 复位确认队列(清空所有条目)
+ */
 void adhoc_reply_list_reset(adhoc_reply_list_t *list)
 {
     if (list == 0)
@@ -31,6 +47,12 @@ void adhoc_reply_list_reset(adhoc_reply_list_t *list)
     memset(list, 0, sizeof(*list));
 }
 
+/**
+ * @brief 推入唯一 ID: 已存在则更新 id_flag, 不存在则追加
+ * @param list 队列实例
+ * @param id   载荷 ID (id_flag + node_id)
+ * @return 1成功 0失败(队列满或参数非法)
+ */
 int adhoc_reply_list_push_unique(adhoc_reply_list_t *list, adhoc_payload_id_t id)
 {
     uint8_t index;
@@ -68,6 +90,9 @@ int adhoc_reply_list_push_unique(adhoc_reply_list_t *list, adhoc_payload_id_t id
     return 1;
 }
 
+/**
+ * @brief 推入入网确认条目(自动设置 id_flag=7)
+ */
 int adhoc_reply_list_push_confirm_unique(adhoc_reply_list_t *list, uint32_t node_id)
 {
     adhoc_payload_id_t id;
@@ -81,6 +106,9 @@ int adhoc_reply_list_push_confirm_unique(adhoc_reply_list_t *list, uint32_t node
     return adhoc_reply_list_push_unique(list, id);
 }
 
+/**
+ * @brief 从队头弹出一个 ID
+ */
 int adhoc_reply_list_pop(adhoc_reply_list_t *list, adhoc_payload_id_t *out_id)
 {
     adhoc_payload_id_t id;
@@ -98,11 +126,20 @@ int adhoc_reply_list_pop(adhoc_reply_list_t *list, adhoc_payload_id_t *out_id)
     return 1;
 }
 
+/**
+ * @brief 获取队列当前大小
+ */
 uint8_t adhoc_reply_list_size(const adhoc_reply_list_t *list)
 {
     return list == 0 ? 0u : list->count;
 }
 
+/**
+ * @brief 构建 A 帧确认区: 从队列弹出条目, 统一标记为 flag=7, 打包到 content
+ * @param content_offset 写入起始偏移(LMT_A 之后)
+ * @param max_ids        最大确认条目数
+ * @param out_used_ids   输出实际写入条目数(可为NULL)
+ */
 int adhoc_reply_list_build_confirm_payload(adhoc_reply_list_t *list, uint8_t content[ADHOC_FRAME_CONTENT_LEN],
                                            uint8_t content_offset, uint8_t max_ids, uint8_t *out_used_ids)
 {

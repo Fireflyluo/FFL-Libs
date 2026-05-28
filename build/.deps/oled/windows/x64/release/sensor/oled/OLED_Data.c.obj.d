@@ -1,4 +1,16 @@
 {
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-MD",
+            "-std:c11",
+            [[-Isensor\oled]],
+            "-DOLED_DRIVER_AVAILABLE",
+            "/W4",
+            "/utf-8"
+        }
+    },
     depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
@@ -15,18 +27,6 @@
         ]\
     }\
 }",
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-MD",
-            "-std:c11",
-            [[-Isensor\oled]],
-            "-DOLED_DRIVER_AVAILABLE",
-            "/W4",
-            "/utf-8"
-        }
-    },
     files = {
         [[sensor\oled\OLED_Data.c]]
     }

@@ -1,0 +1,7 @@
+{
+    repositories = {
+        ["local-repo"] = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\..\..\xmake-repo]]
+        }
+    }
+}

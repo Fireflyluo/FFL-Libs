@@ -1,0 +1,30 @@
+{
+    imu_qmi8658a = {
+        default = false,
+        __sourceinfo_description = {
+            ["Enable QMI8658A driver"] = {
+                line = 7,
+                file = [[.\xmake.lua]]
+            }
+        },
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib]],
+        __sourceinfo_showmenu = { },
+        showmenu = true,
+        description = "Enable QMI8658A driver",
+        __sourceinfo_default = { }
+    },
+    imu_icm42688p = {
+        default = false,
+        __sourceinfo_description = {
+            ["Enable ICM42688P driver"] = {
+                line = 13,
+                file = [[.\xmake.lua]]
+            }
+        },
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib]],
+        __sourceinfo_showmenu = { },
+        showmenu = true,
+        description = "Enable ICM42688P driver",
+        __sourceinfo_default = { }
+    }
+}

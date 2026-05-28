@@ -5,12 +5,14 @@
 - `protocol-design.md`
 - `software-architecture.md`
 - `porting-guide.md`
+- `configuration.md`
 
 ## 1. 接入前提
 
 - 已实现 `adhoc_link_ops_t`（见 `porting-guide.md`）
 - 已准备静态内存用于 `adhoc_node`
 - 应用任务具备周期调度能力（建议固定轮询节拍）
+- 已根据工程需求检查 `adhoc_config.h` 可配置项（队列容量/默认阈值）
 
 ## 2. 初始化
 
@@ -38,6 +40,21 @@ adhoc_node_set_role(node_mem, ADHOC_ROLE_GATEWAY /* or ADHOC_ROLE_BEACON */);
 ```
 
 建议：启动时校验 `sizeof(node_mem) >= need`，避免后续硬故障。
+
+### 2.3 时间基线（可选但推荐）
+
+如果协议时间戳需要对齐外部绝对时间（例如 BDT），建议在任务启动后设置一次基线：
+
+```c
+uint32_t mono_us = link_ops.now_us(link_ctx);   // 协议调度单调时基
+uint32_t bdt_sec = rtc_or_host_time_seconds;    // 绝对时间秒值（如 BDT）
+adhoc_time_set_bdt_base(mono_us, bdt_sec);
+```
+
+说明：
+
+- 不设置时，`LMT_A/LMT_D` 默认退化为 `now_us/1e6`。
+- 设置后，状态机调度仍使用单调 `now_us`，仅时间戳语义切换为绝对秒。
 
 ## 3. 主循环推荐顺序
 

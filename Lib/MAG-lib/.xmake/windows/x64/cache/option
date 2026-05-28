@@ -1,0 +1,16 @@
+{
+    mag_qmc5883p = {
+        description = "Enable QMC5883P magnetometer driver",
+        __sourceinfo_default = { },
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\MAG-lib]],
+        showmenu = true,
+        __sourceinfo_showmenu = { },
+        default = false,
+        __sourceinfo_description = {
+            ["Enable QMC5883P magnetometer driver"] = {
+                line = 7,
+                file = [[.\xmake.lua]]
+            }
+        }
+    }
+}

@@ -30,7 +30,10 @@
 /** @brief 节点线程轮询间隔(ms) */
 #define SIM_POLL_INTERVAL_MS 1u
 
-/** @brief 场景模式选择: 0全连通 1树形网状 2弱信号 3高频 4重组网 5压力混合 6长时间 7转发延迟 */
+/** @brief 随机丢包率百分比(仅mode10/11生效) */
+#define SIM_DROP_RATE        0u
+
+/** @brief 场景模式选择: 0全连通 1树形网状 2弱信号 3高频 4重组网 5压力混合 6长时间 7转发延迟 8链式深度8 9链式深度12 10随机丢包 11链式+丢包 12RSSI渐变 13突发入网 */
 #define SCENARIO_MODE        0u
 
 #if SCENARIO_MODE == 0u
@@ -88,6 +91,48 @@
 #define SCENARIO_RSSI        -40
 #define SIM_RUN_DURATION_S   40u
 #define SIM_DATA_INTERVAL_US 1000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 8u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   8u
+#define SCENARIO_RSSI        -50
+#define SIM_RUN_DURATION_S   60u
+#define SIM_DATA_INTERVAL_US 3000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 9u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   12u
+#define SCENARIO_RSSI        -50
+#define SIM_RUN_DURATION_S   90u
+#define SIM_DATA_INTERVAL_US 3000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 10u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   2u
+#define SCENARIO_RSSI        -40
+#define SIM_RUN_DURATION_S   30u
+#define SIM_DATA_INTERVAL_US 2000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 11u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   4u
+#define SCENARIO_RSSI        -40
+#define SIM_RUN_DURATION_S   40u
+#define SIM_DATA_INTERVAL_US 1000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 12u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   2u
+#define SCENARIO_RSSI        -40
+#define SIM_RUN_DURATION_S   40u
+#define SIM_DATA_INTERVAL_US 2000000u
+#define SIM_REGROUP_US       0u
+#elif SCENARIO_MODE == 13u
+#define SCENARIO_GW_COUNT    1u
+#define SCENARIO_BCN_COUNT   15u
+#define SCENARIO_RSSI        -40
+#define SIM_RUN_DURATION_S   15u
+#define SIM_DATA_INTERVAL_US 10000000u
 #define SIM_REGROUP_US       0u
 #endif
 
@@ -319,6 +364,10 @@ static void sim_init_scenario(void)
 
     adhoc_channel_init(&g_sim.channel, g_sim.node_count);
 
+#if SCENARIO_MODE == 10u || SCENARIO_MODE == 11u
+    adhoc_channel_set_drop_rate(&g_sim.channel, SIM_DROP_RATE);
+#endif
+
     {
         int8_t (*topo)[SIM_MAX_NODES] = g_sim.topo;
         memset(topo, 0, sizeof(g_sim.topo));
@@ -334,11 +383,13 @@ static void sim_init_scenario(void)
         topo[4][7] = -50; topo[7][4] = -50;
         topo[5][8] = -50; topo[8][5] = -50;
         topo[6][7] = -50; topo[7][6] = -50;
-#elif SCENARIO_MODE == 7u
-        topo[0][1] = -40; topo[1][0] = -40;
-        topo[1][2] = -50; topo[2][1] = -50;
-        topo[2][3] = -50; topo[3][2] = -50;
-        topo[3][4] = -50; topo[4][3] = -50;
+#elif SCENARIO_MODE == 7u || SCENARIO_MODE == 8u || SCENARIO_MODE == 9u || SCENARIO_MODE == 11u
+        for (i = 1u; i < g_sim.node_count; ++i)
+        {
+            int8_t rssi = (i == 1u) ? -40 : SCENARIO_RSSI;
+            topo[i - 1u][i] = rssi;
+            topo[i][i - 1u] = rssi;
+        }
 #else
         for (i = 0u; i < g_sim.node_count; ++i)
             for (j = 0u; j < g_sim.node_count; ++j)
@@ -515,6 +566,27 @@ int main(void)
     {
         Sleep(1000);
         elapsed_s = (uint32_t)((adhoc_virtual_time_now_us(&g_sim.vt) - start_us) / 1000000u);
+
+#if SCENARIO_MODE == 12u
+        {
+            int8_t rssi = -40;
+            if (elapsed_s < 10u)
+                rssi = -40;
+            else if (elapsed_s < 25u)
+                rssi = -40 - (int8_t)((elapsed_s - 10u) * 50 / 15);
+            else if (elapsed_s < 35u)
+                rssi = -90 + (int8_t)((elapsed_s - 25u) * 50 / 10);
+            else
+                rssi = -40;
+            uint8_t n;
+            for (n = 0u; n < g_sim.node_count; ++n)
+                if (n != 0)
+                {
+                    adhoc_channel_set_topo(&g_sim.channel, 0u, n, rssi);
+                    adhoc_channel_set_topo(&g_sim.channel, n, 0u, rssi);
+                }
+        }
+#endif
 
         if (elapsed_s - last_report_s >= 5u || elapsed_s >= SIM_RUN_DURATION_S)
         {

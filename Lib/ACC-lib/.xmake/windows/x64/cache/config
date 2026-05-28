@@ -1,0 +1,17 @@
+{
+    mtimes = {
+        ["xmake.lua"] = 1779901095
+    },
+    options = {
+        vs = "2026",
+        builddir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\cache\build_808adc66]],
+        arch = "x64",
+        plat = "windows",
+        runtimes = "MD",
+        acc_sc7a20 = true,
+        mode = "release",
+        kind = "static",
+        clean = true
+    },
+    recheck = false
+}

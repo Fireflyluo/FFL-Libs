@@ -1,0 +1,129 @@
+{
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-DNDEBUG"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc__-nologo_-O2"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_cl_external_includedir"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_cl_sourceDependencies"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-std:c11"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x64\\cl.exe__cc_cxflags_-nologo_-MD"] = true
+    },
+    find_program = {
+        nim = false,
+        git = [[D:\APP\Git\cmd\git.exe]],
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe"] = [[c:\program files\microsoft visual studio\18\insiders\vc\tools\msvc\14.50.35717\bin\hostx64\x64\cl.exe]],
+        ["7z"] = [[E:\APP\xmake\winenv\bin\7z]],
+        gzip = false,
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolld = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]]
+    },
+    ["detect.sdks.find_vcpkgdir"] = false,
+    find_program_msvc_arch_x64_plat_windows_checktoolsh = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]]
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    find_package_windows_x64_fetch_package_system = {
+        ["imu-lib_5077f9dffa414d2f8ee2a93b542f89fc_release_external"] = false,
+        ["acc-lib_7bb3121110204fbba81403407ca566b5_release_external"] = false,
+        ["th-lib_19b99769523840df81d6749e3af5f92e_release_external"] = false
+    },
+    find_package_windows_x64_fetch_package_xmake = {
+        ["xmake::imu-lib_5077f9dffa414d2f8ee2a93b542f89fc_release_latest_external"] = {
+            version = "latest",
+            static = true,
+            links = {
+                "imu-lib"
+            },
+            sysincludedirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\drivers\qmi8658a\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\drivers\icm42688p\include]]
+            },
+            libfiles = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\lib\imu-lib.lib]]
+            },
+            linkdirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\lib]]
+            },
+            license = "MIT"
+        },
+        ["xmake::th-lib_19b99769523840df81d6749e3af5f92e_release_latest_external"] = {
+            version = "latest",
+            static = true,
+            links = {
+                "th-lib"
+            },
+            sysincludedirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\drivers\sht30\include]]
+            },
+            libfiles = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\lib\th-lib.lib]]
+            },
+            linkdirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\lib]]
+            },
+            license = "MIT"
+        },
+        ["xmake::mag-lib_43ac2ac38dcf42b6b6954b06009f77a8_release_latest_external"] = {
+            version = "latest",
+            static = true,
+            links = {
+                "mag-lib"
+            },
+            sysincludedirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\drivers\qmc5883p\include]]
+            },
+            libfiles = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\lib\mag-lib.lib]]
+            },
+            linkdirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\lib]]
+            },
+            license = "MIT"
+        },
+        ["xmake::acc-lib_7bb3121110204fbba81403407ca566b5_release_latest_external"] = {
+            version = "latest",
+            static = true,
+            links = {
+                "acc-lib"
+            },
+            sysincludedirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\drivers\sc7a20\include]]
+            },
+            libfiles = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\lib\acc-lib.lib]]
+            },
+            linkdirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\lib]]
+            },
+            license = "MIT"
+        },
+        ["xmake::baro-lib_ad1e8f2cc7b143d6bdcf892146b2a419_release_latest_external"] = {
+            version = "latest",
+            static = true,
+            links = {
+                "baro-lib"
+            },
+            sysincludedirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\include]],
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\drivers\icp20100\include]]
+            },
+            libfiles = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\lib\baro-lib.lib]]
+            },
+            linkdirs = {
+                [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\lib]]
+            },
+            license = "MIT"
+        }
+    }
+}

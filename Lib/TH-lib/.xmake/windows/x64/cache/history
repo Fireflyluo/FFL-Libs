@@ -1,0 +1,30 @@
+{
+    cmdlines = {
+        "xmake -P .",
+        [[xmake lua E:\APP\xmake\modules\private\utils\statistics.lua --project=.]],
+        "xmake -P .",
+        "xmake f -P . --th_sht30=y -p mingw -c",
+        "xmake -P .",
+        "xmake f -P . --th_sht30=y -p mingw --toolchain=mingw -c",
+        "xmake -P . -v",
+        [[xmake f -P . --th_sht30=y -p mingw --bin=D:\APP\path\mingw64\bin -c]],
+        "xmake -P .",
+        [[xmake f -P . --th_sht40=y --th_sht30=n --bin=D:\APP\path\mingw64\bin -p mingw -c]],
+        "xmake -P .",
+        [[xmake f -P . --th_sht40=y --th_sht30=y --bin=D:\APP\path\mingw64\bin -p mingw -c]],
+        "xmake -P .",
+        "xmake -r",
+        "xmake f -F xmake.lua -c --th_sht30=y --th_sht40=n",
+        "xmake -F xmake.lua -r",
+        "xmake f -F xmake.lua -c --th_sht30=y --th_sht40=y",
+        "xmake -F xmake.lua -r",
+        [[xmake repo -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes --add local-repo D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\..\..\xmake-repo]],
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes -y -c --th_sht40=n --th_sht30=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\cache\build_2ec578df]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes]],
+        [[xmake repo -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes --add local-repo D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\..\..\xmake-repo]],
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes -y -c --th_sht40=n --th_sht30=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\cache\build_62942253]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib --yes]]
+    }
+}

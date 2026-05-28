@@ -1,0 +1,104 @@
+{
+    ["imu-lib"] = {
+        static = true,
+        installdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc]],
+        __requireconfs = {
+            configs = {
+                qmi8658a = true,
+                icm42688p = true
+            }
+        },
+        __requirestr = "imu-lib",
+        license = "MIT",
+        libfiles = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\lib\imu-lib.lib]],
+        linkdirs = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\lib]],
+        sysincludedirs = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\drivers\qmi8658a\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc\drivers\icm42688p\include]]
+        },
+        version = "latest",
+        __enabled = true,
+        links = "imu-lib"
+    },
+    ["mag-lib"] = {
+        static = true,
+        installdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8]],
+        __requireconfs = {
+            configs = {
+                qmc5883p = true
+            }
+        },
+        __requirestr = "mag-lib",
+        license = "MIT",
+        libfiles = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\lib\mag-lib.lib]],
+        linkdirs = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\lib]],
+        sysincludedirs = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8\drivers\qmc5883p\include]]
+        },
+        version = "latest",
+        __enabled = true,
+        links = "mag-lib"
+    },
+    ["baro-lib"] = {
+        static = true,
+        installdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419]],
+        __requireconfs = {
+            configs = {
+                icp20100 = true
+            }
+        },
+        __requirestr = "baro-lib",
+        license = "MIT",
+        libfiles = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\lib\baro-lib.lib]],
+        linkdirs = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\lib]],
+        sysincludedirs = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419\drivers\icp20100\include]]
+        },
+        version = "latest",
+        __enabled = true,
+        links = "baro-lib"
+    },
+    ["th-lib"] = {
+        static = true,
+        installdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e]],
+        __requireconfs = {
+            configs = {
+                sht30 = true
+            }
+        },
+        __requirestr = "th-lib",
+        license = "MIT",
+        libfiles = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\lib\th-lib.lib]],
+        linkdirs = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\lib]],
+        sysincludedirs = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e\drivers\sht30\include]]
+        },
+        version = "latest",
+        __enabled = true,
+        links = "th-lib"
+    },
+    ["acc-lib"] = {
+        static = true,
+        installdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5]],
+        __requireconfs = {
+            configs = {
+                sc7a20 = true
+            }
+        },
+        __requirestr = "acc-lib",
+        license = "MIT",
+        libfiles = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\lib\acc-lib.lib]],
+        linkdirs = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\lib]],
+        sysincludedirs = {
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\include]],
+            [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5\drivers\sc7a20\include]]
+        },
+        version = "latest",
+        __enabled = true,
+        links = "acc-lib"
+    }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CH32 Project"
+  short_description: "Build, flash, clean, serial-debug, and analyze this CH32V208 project."
+  default_prompt: "Use this skill when working in this repository to build, flash, clean, read serial output from COM8 with scripts/serial_reader.py, or analyze the CH32V208 TMOS/BLE/USB project according to local VS Code tasks and repository conventions."

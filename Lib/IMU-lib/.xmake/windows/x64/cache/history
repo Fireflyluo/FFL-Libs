@@ -1,0 +1,12 @@
+{
+    cmdlines = {
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes -y -c --imu_qmi8658a=y --imu_icm42688p=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\cache\build_c5edca37]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes]],
+        [[xmake lua E:\APP\xmake\modules\private\utils\statistics.lua --project=D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes]],
+        [[xmake repo -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes --add local-repo D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\..\..\xmake-repo]],
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes -y -c --imu_qmi8658a=y --imu_icm42688p=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\cache\build_74c9d22f]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\IMU-lib --yes]]
+    }
+}

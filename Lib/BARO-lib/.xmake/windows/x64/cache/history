@@ -1,0 +1,7 @@
+{
+    cmdlines = {
+        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\BARO-lib --yes -y -c --baro_icp20100=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\cache\build_54813443]],
+        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\BARO-lib --yes]],
+        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419 -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\BARO-lib --yes]]
+    }
+}

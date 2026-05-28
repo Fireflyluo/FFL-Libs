@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenCode DeepSeek Delegation"
+  short_description: "Delegate simple tasks to local OpenCode DeepSeek"
+  default_prompt: "Use $opencode-deepseek-delegation to offload a simple repo task to local OpenCode DeepSeek and then verify the result."

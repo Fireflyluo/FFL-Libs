@@ -216,6 +216,15 @@ static uint32_t adhoc_sm_upstream_loss_timeout_us(const adhoc_sm_t *sm)
     return sm->cfg.t5_us * ADHOC_SM_UPSTREAM_LOSS_CYCLES;
 }
 
+/** @brief 根据窗口截止时间更新锁网状态 */
+static void adhoc_sm_network_lock_update(adhoc_sm_t *sm, uint32_t now_us)
+{
+    if (sm == 0) return;
+    if (sm->network_lock_active == 0u || sm->network_lock_end_us == 0u) return;
+    if (adhoc_sm_time_reached(now_us, sm->network_lock_end_us))
+        sm->network_lock_closed = 1u;
+}
+
 /** @brief 检查候选邻居是否匹配指定上级 */
 static int adhoc_sm_candidate_matches(const adhoc_sm_candidate_t *candidate, uint8_t gateway_no, uint8_t upstream_level, uint32_t upstream_id)
 {
@@ -245,7 +254,10 @@ static void adhoc_sm_candidate_init(adhoc_sm_t *sm, adhoc_sm_candidate_t *candid
     candidate->last_rssi      = rssi;
     candidate->first_cycle_idx = cycle_idx;
     candidate->last_seen_us   = ts_us;
-    candidate->network_end_us = ts_us + sm->cfg.network_window_us;
+    if (sm->network_lock_active != 0u && sm->network_lock_closed == 0u && sm->network_lock_end_us != 0u)
+        candidate->network_end_us = sm->network_lock_end_us;
+    else
+        candidate->network_end_us = ts_us + sm->cfg.network_window_us;
 }
 
 /** @brief 更新候选邻居的命中记录(同周期不重复计数) */
@@ -590,8 +602,8 @@ static int adhoc_sm_emit_gateway_beacon(adhoc_sm_t *sm, uint32_t now_us, adhoc_f
 
 /* ========== 状态迁移函数 ========== */
 
-/** @brief 进入 ST1: 等待组网, 清理所有上级信息、邻居缓存、确认队列 */
-static void adhoc_sm_enter_st1(adhoc_sm_t *sm)
+/** @brief 进入 ST1 内部实现 */
+static void adhoc_sm_enter_st1_internal(adhoc_sm_t *sm, uint8_t lock_active, uint8_t lock_closed, uint32_t lock_end_us)
 {
     if (sm == 0) return;
     sm->state = ADHOC_SM_STATE_ST1;
@@ -603,14 +615,42 @@ static void adhoc_sm_enter_st1(adhoc_sm_t *sm)
     sm->gateway_network_started = sm->gateway_network_locked = 0u;
     sm->gateway_network_start_us = sm->gateway_network_end_us = 0u;
     sm->gateway_rx_window_open = sm->gateway_rx_window_start_us = sm->gateway_rx_window_end_us = 0u;
-    sm->network_lock_active = sm->network_lock_closed = 0u;
-    sm->network_lock_end_us = 0u;
+    sm->network_lock_active = lock_active != 0u ? 1u : 0u;
+    sm->network_lock_closed = lock_closed != 0u ? 1u : 0u;
+    sm->network_lock_end_us = lock_end_us;
     sm->regroup_timer_active = sm->regroup_start_us = 0u;
     adhoc_sm_candidate_clear(&sm->candidate);
     adhoc_sm_neighbor_cache_reset(sm);
     adhoc_sm_upstream_bindings_reset(sm);
     adhoc_sm_downstream_bindings_reset(sm);
     adhoc_reply_list_reset(&sm->downlink_confirm_list);
+}
+
+/** @brief 进入 ST1：清空锁网上下文 */
+static void adhoc_sm_enter_st1(adhoc_sm_t *sm)
+{
+    adhoc_sm_enter_st1_internal(sm, 0u, 0u, 0u);
+}
+
+/** @brief 进入 ST1：保留当前窗口上下文 */
+static void adhoc_sm_enter_st1_preserve_lock(adhoc_sm_t *sm)
+{
+    uint8_t lock_active = 0u, lock_closed = 0u;
+    uint32_t lock_end_us = 0u;
+    if (sm != 0) {
+        lock_active = sm->network_lock_active;
+        lock_closed = sm->network_lock_closed;
+        lock_end_us = sm->network_lock_end_us;
+    }
+    adhoc_sm_enter_st1_internal(sm, lock_active, lock_closed, lock_end_us);
+}
+
+/** @brief 进入 ST1：仅等待下一轮网关组网 */
+static void adhoc_sm_enter_st1_wait_next_gateway(adhoc_sm_t *sm)
+{
+    uint32_t lock_end_us = 0u;
+    if (sm != 0) lock_end_us = sm->network_lock_end_us;
+    adhoc_sm_enter_st1_internal(sm, 1u, 1u, lock_end_us);
 }
 
 /** @brief 进入未确认状态(U1/UN): 从候选邻居中提取上级信息, 清理其他候选 */
@@ -705,6 +745,7 @@ adhoc_sm_rx_result_t adhoc_sm_on_rx(adhoc_sm_t *sm, const adhoc_sm_rx_event_t *e
     uint8_t child_bind_no;
     if (sm == 0 || event == 0 || sm->inited == 0u) return ADHOC_SM_RX_IGNORED;
     if (event->sender.domain_id != sm->cfg.domain_id) return ADHOC_SM_RX_IGNORED;
+    adhoc_sm_network_lock_update(sm, event->ts_us);
 
     /* === 网关处理 === */
     if (sm->role == ADHOC_SM_ROLE_GATEWAY) {
@@ -765,6 +806,12 @@ adhoc_sm_rx_result_t adhoc_sm_on_rx(adhoc_sm_t *sm, const adhoc_sm_rx_event_t *e
     /* ST1 态: 扫描邻居, 评估入网条件 */
     if (sm->state != ADHOC_SM_STATE_ST1) return ADHOC_SM_RX_IGNORED;
     if (event->msg_class != ADHOC_MSG_CLASS_A || event->level >= ADHOC_SM_JOIN_LEVEL_MAX) return ADHOC_SM_RX_IGNORED;
+    if (sm->network_lock_closed != 0u) {
+        if (event->level != 0u) return ADHOC_SM_RX_IGNORED;
+        sm->network_lock_active = 0u;
+        sm->network_lock_closed = 0u;
+        sm->network_lock_end_us = 0u;
+    }
     if (!adhoc_sm_sender_matches_level(event->level, event->sender.node_id)) return ADHOC_SM_RX_IGNORED;
 
     signal_rank = adhoc_sm_rssi_rank(event->rssi);
@@ -825,6 +872,8 @@ int adhoc_sm_poll(adhoc_sm_t *sm, uint32_t now_us, adhoc_frame_fields_t *out_fie
 
     /* === 信标 ST1: 等待组网 === */
     if (sm->state == ADHOC_SM_STATE_ST1) {
+        adhoc_sm_network_lock_update(sm, now_us);
+        if (sm->network_lock_closed != 0u) return 1;
         cycle_idx = adhoc_sm_cycle_index(now_us, sm->cfg.t5_us);
         adhoc_sm_neighbors_sweep(sm, cycle_idx, now_us);
         if (adhoc_sm_select_best_ready_neighbor(sm, now_us)) {
@@ -839,17 +888,17 @@ int adhoc_sm_poll(adhoc_sm_t *sm, uint32_t now_us, adhoc_frame_fields_t *out_fie
 
     /* === 信标 U1/UN: 未确认 === */
     if (adhoc_sm_is_unconfirmed_state(sm->state)) {
-        if (sm->network_lock_closed == 0u && sm->upstream_last_seen_us != 0u &&
+        adhoc_sm_network_lock_update(sm, now_us);
+        if (sm->network_lock_closed != 0u) {
+            adhoc_sm_enter_st1_wait_next_gateway(sm); return 1;
+        }
+        if (sm->upstream_last_seen_us != 0u &&
             upstream_loss_timeout_us != 0u &&
             (uint32_t)(now_us - sm->upstream_last_seen_us) > upstream_loss_timeout_us) {
-            adhoc_sm_enter_st1(sm); return 1;
-        }
-        if (sm->network_lock_active != 0u && sm->network_lock_end_us != 0u &&
-            adhoc_sm_time_reached(now_us, sm->network_lock_end_us)) {
-            adhoc_sm_enter_st1(sm); return 1;
+            adhoc_sm_enter_st1_preserve_lock(sm); return 1;
         }
         if (now_us < sm->next_tx_us) return 1;
-        if (sm->retry_count >= sm->cfg.retry_max) { adhoc_sm_enter_st1(sm); return 1; }
+        if (sm->retry_count >= sm->cfg.retry_max) { adhoc_sm_enter_st1_preserve_lock(sm); return 1; }
         if (out_fields == 0 || !adhoc_sm_emit_join_response(sm, sm->retry_count, now_us, out_fields)) return 0;
         *out_has_tx = 1u;
         sm->retry_count++;
@@ -859,17 +908,17 @@ int adhoc_sm_poll(adhoc_sm_t *sm, uint32_t now_us, adhoc_frame_fields_t *out_fie
 
     /* === 信标 C1/CN: 已确认 === */
     if (adhoc_sm_is_confirmed_state(sm->state)) {
-        if (sm->network_lock_closed == 0u && sm->upstream_last_seen_us != 0u &&
+        adhoc_sm_network_lock_update(sm, now_us);
+        if (sm->upstream_last_seen_us != 0u &&
             upstream_loss_timeout_us != 0u &&
             (uint32_t)(now_us - sm->upstream_last_seen_us) > upstream_loss_timeout_us) {
-            adhoc_sm_enter_st1(sm); return 1;
+            if (sm->network_lock_closed != 0u) adhoc_sm_enter_st1_wait_next_gateway(sm);
+            else adhoc_sm_enter_st1_preserve_lock(sm);
+            return 1;
         }
-        if (sm->network_lock_active != 0u && sm->network_lock_end_us != 0u &&
-            adhoc_sm_time_reached(now_us, sm->network_lock_end_us))
-            sm->network_lock_closed = 1u;
         if (sm->regroup_timer_active != 0u && sm->cfg.regroup_interval_us != 0u &&
             (uint32_t)(now_us - sm->regroup_start_us) >= sm->cfg.regroup_interval_us) {
-            adhoc_sm_enter_st1(sm); return 1;
+            adhoc_sm_enter_st1_wait_next_gateway(sm); return 1;
         }
         if (sm->network_lock_closed != 0u) return 1;
         if (now_us < sm->next_tx_us) return 1;

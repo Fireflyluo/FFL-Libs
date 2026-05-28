@@ -1,0 +1,11 @@
+# opencode artifacts
+logs/opencode/
+
+# local delegation runners
+scripts/opencode_job_runner.ps1
+scripts/opencode_job_runner.py
+scripts/start_opencode_job.ps1
+
+build/
+# accidental Windows device filename
+nul

@@ -1,0 +1,17 @@
+{
+    options = {
+        builddir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\cache\build_54813443]],
+        clean = true,
+        kind = "static",
+        runtimes = "MD",
+        mode = "release",
+        vs = "2026",
+        plat = "windows",
+        arch = "x64",
+        baro_icp20100 = true
+    },
+    recheck = false,
+    mtimes = {
+        ["xmake.lua"] = 1779903932
+    }
+}

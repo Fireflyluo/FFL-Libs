@@ -11,8 +11,11 @@
 
 - `protocol-design.md`：协议设计基线（帧格式、Flag 语义、状态机、时间窗）
 - `software-architecture.md`：软件实现拆解（模块职责、收发路径、静态内存模型）
+- `configuration.md`：统一配置说明（`adhoc_config.h` 可配置项与覆盖方式）
+- `软件设计文档.md`：从 Windows 仿真分支同步的中文设计基线，保留原始口径用于对照
 - `porting-guide.md`：移植指南（链路适配接口、平台依赖、验证清单）
 - `USAGE.md`：使用说明（初始化、主循环、上报与观测）
+- `../test/README.md`：Windows 多线程仿真入口与回归场景
 
 ## 读者建议顺序
 

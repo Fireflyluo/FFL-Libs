@@ -1,0 +1,1603 @@
+[SENSOR] tick seq=43 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=43 ts=8925 acc_mg=(1473,-43,-9313) gyro_mdps=(40,-11,-1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=43 ts=8949 acc_mg=(-275,-1704,-5310) gyro_mdps=(0,-9,10) temp_centi=2810
+[SENSOR] qmc read begin
+QMC5883P seq=43 mag_ut=(2666,10666,0)
+[SENSOR] tick seq=44 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=44 ts=9125 acc_mg=(1484,-40,-9312) gyro_mdps=(40,-8,-2) temp_centi=2737
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=44 ts=9149 acc_mg=(-274,-1707,-5307) gyro_mdps=(-1,-9,10) temp_centi=2812
+[SENSOR] qmc read begin
+QMC5883P seq=44 mag_ut=(-8000,5333,21333)
+[SENSOR] tick seq=45 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=45 ts=9325 acc_mg=(1489,-43,-9311) gyro_mdps=(42,-9,1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=45 ts=9349 acc_mg=(-277,-1703,-5306) gyro_mdps=(0,-10,10) temp_centi=2814
+[SENSOR] qmc read begin
+QMC5883P seq=45 mag_ut=(8000,0,-5333)
+[SENSOR] tick seq=46 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=46 ts=9525 acc_mg=(1479,-46,-9312) gyro_mdps=(43,-12,-6) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=46 ts=9549 acc_mg=(-274,-1705,-5307) gyro_mdps=(-1,-7,10) temp_centi=2812
+[SENSOR] qmc read begin
+QMC5883P seq=46 mag_ut=(16000,13333,10666)
+[SENSOR] tick seq=47 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=47 ts=9725 acc_mg=(1489,-47,-9302) gyro_mdps=(41,-14,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=47 ts=9749 acc_mg=(-274,-1701,-5305) gyro_mdps=(-1,-10,10) temp_centi=2810
+[SENSOR] qmc read begin
+QMC5883P seq=47 mag_ut=(-2666,-8000,-10666)
+[SENSOR] tick seq=48 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=48 ts=9925 acc_mg=(1467,-47,-9309) gyro_mdps=(40,-14,4) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=48 ts=9949 acc_mg=(-274,-1705,-5307) gyro_mdps=(-1,-8,10) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=48 mag_ut=(0,-2666,0)
+[SENSOR] tick seq=49 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=49 ts=10125 acc_mg=(1487,-56,-9305) gyro_mdps=(41,-13,5) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=49 ts=10149 acc_mg=(-272,-1699,-5303) gyro_mdps=(-1,-9,9) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=49 mag_ut=(-10666,0,-21333)
+[SENSOR] tick seq=50 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=50 ts=10325 acc_mg=(1477,-37,-9317) gyro_mdps=(36,-14,-2) temp_centi=2740
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=50 ts=10349 acc_mg=(-277,-1702,-5301) gyro_mdps=(-1,-9,10) temp_centi=2817
+[SENSOR] qmc read begin
+QMC5883P seq=50 mag_ut=(8000,-10666,-21333)
+[SENSOR] tick seq=51 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=51 ts=10525 acc_mg=(1485,-39,-9307) gyro_mdps=(41,-14,0) temp_centi=2737
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=51 ts=10549 acc_mg=(-277,-1703,-5309) gyro_mdps=(-1,-9,10) temp_centi=2817
+[SENSOR] qmc read begin
+QMC5883P seq=51 mag_ut=(0,0,0)
+[SENSOR] tick seq=52 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=52 ts=10725 acc_mg=(1485,-41,-9296) gyro_mdps=(38,-10,1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=52 ts=10749 acc_mg=(-274,-1702,-5301) gyro_mdps=(-1,-10,10) temp_centi=2812
+[SENSOR] qmc read begin
+QMC5883P seq=52 mag_ut=(-10666,5333,-16000)
+[SENSOR] tick seq=53 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=53 ts=10925 acc_mg=(1486,-45,-9324) gyro_mdps=(40,-13,4) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=53 ts=10949 acc_mg=(I2C2 : 0x2C
+I2C2 : 0x44
+I2C2 : 0x64
+I2C2 : 0x69
+I2C2 : 0x6A
+I2C2 find device 5 :0x2C 0x44 0x64 0x69 0x6A 
+[I2C-IMU] rd dev=0x6A reg=0x00 len=1 tx
+[I2C-IMU] rd dev=0x6A reg=0x00 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x00 rx
+[I2C-IMU] rd dev=0x6A reg=0x00 rx_rc=0
+QMI8658A init rc=0 addr=0x6A id=0x05
+[I2C-IMU] rd dev=0x69 reg=0x75 len=1 tx
+[I2C-IMU] rd dev=0x69 reg=0x75 tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x75 rx
+[I2C-IMU] rd dev=0x69 reg=0x75 rx_rc=0
+ICM42688P init rc=0 addr=0x69 id=0x47
+QMC5883P init rc=0 addr=0x2C id=0x80
+ICP20100 init rc=-19 addr=0x64 id=0x00 ver=0x00
+[SENSOR] tick seq=0 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=0 ts=324 acc_mg=(1478,-34,-9317) gyro_mdps=(38,-12,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=0 ts=349 acc_mg=(-278,-1705,-5304) gyro_mdps=(-1,-9,9) temp_centi=2817
+[SENSOR] qmc read begin
+QMC5883P seq=0 mag_ut=(0,-8000,-32000)
+[SENSOR] tick seq=1 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=1 ts=524 acc_mg=(1492,-35,-9314) gyro_mdps=(40,-14,-2) temp_centi=2736
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=1 ts=549 acc_mg=(-282,-1697,-5301) gyro_mdps=(0,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=1 mag_ut=(-8000,5333,-21333)
+[SENSOR] tick seq=2 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=2 ts=724 acc_mg=(1495,-40,-9315) gyro_mdps=(41,-10,4) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=2 ts=749 acc_mg=(-283,-1707,-5306) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=2 mag_ut=(2666,-5333,-32000)
+[SENSOR] tick seq=3 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=3 ts=924 acc_mg=(1484,-41,-9320) gyro_mdps=(41,-11,-2) temp_centi=2737
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=3 ts=949 acc_mg=(-276,-1702,-5304) gyro_mdps=(-1,-10,9) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=3 mag_ut=(0,13333,-48000)
+[SENSOR] tick seq=4 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=4 ts=1124 acc_mg=(1479,-40,-9309) gyro_mdps=(43,-13,-4) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=4 ts=1149 acc_mg=(-278,-1704,-5310) gyro_mdps=(-1,-10,9) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=4 mag_ut=(0,5333,-26666)
+[SENSOR] tick seq=5 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=5 ts=1324 acc_mg=(1478,-43,-9307) gyro_mdps=(41,-17,-1) temp_centi=2740
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=5 ts=1349 acc_mg=(-274,-1703,-5304) gyro_mdps=(0,-8,9) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=5 mag_ut=(-5333,5333,5333)
+[SENSOR] tick seq=6 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=6 ts=1524 acc_mg=(1483,-39,-9307) gyro_mdps=(40,-11,1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=6 ts=1549 acc_mg=(-278,-1699,-5301) gyro_mdps=(0,-9,10) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=6 mag_ut=(-5333,0,21333)
+[SENSOR] tick seq=7 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=7 ts=1724 acc_mg=(1480,-29,-9306) gyro_mdps=(38,-11,-1) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=7 ts=1749 acc_mg=(-281,-1704,-5306) gyro_mdps=(-1,-9,9) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=7 mag_ut=(0,0,-26666)
+[SENSOR] tick seq=8 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=8 ts=1924 acc_mg=(1483,-43,-9311) gyro_mdps=(39,-10,-3) temp_centi=2740
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=8 ts=1949 acc_mg=(-281,-1704,-5303) gyro_mdps=(-1,-9,9) temp_centi=2817
+[SENSOR] qmc read begin
+QMC5883P seq=8 mag_ut=(-5333,2666,0)
+[SENSOR] tick seq=9 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=9 ts=2124 acc_mg=(1483,-50,-9295) gyro_mdps=(37,-14,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=9 ts=2149 acc_mg=(-282,-1702,-5306) gyro_mdps=(-1,-9,9) temp_centi=2815
+[SENSOR] qmc read begin
+QMC5883P seq=9 mag_ut=(10666,0,-21333)
+[SENSOR] tick seq=10 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=10 ts=2325 acc_mg=(1483,-47,-9311) gyro_mdps=(38,-17,-3) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=10 ts=2349 acc_mg=(-280,-1710,-5309) gyro_mdps=(-1,-9,9) temp_centi=2814
+[SENSOR] qmc read begin
+QMC5883P seq=10 mag_ut=(2666,-5333,-32000)
+[SENSOR] tick seq=11 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=11 ts=2525 acc_mg=(1478,-41,-9309) gyro_mdps=(40,-14,-1) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=11 ts=2549 acc_mg=(-281,-1702,-5301) gyro_mdps=(-1,-9,10) temp_centi=2818
+[SENSOR] qmc read begin
+QMC5883P seq=11 mag_ut=(13333,0,5333)
+[SENSOR] tick seq=12 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=12 ts=2725 acc_mg=(1485,-49,-9319) gyro_mdps=(43,-13,0) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=12 ts=2749 acc_mg=(-281,-1707,-5303) gyro_mdps=(-1,-9,9) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=12 mag_ut=(-8000,-8000,-10666)
+[SENSOR] tick seq=13 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=13 ts=2925 acc_mg=(1474,-49,-9315) gyro_mdps=(38,-13,0) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=13 ts=2949 acc_mg=(-278,-1703,-5297) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=13 mag_ut=(-2666,8000,-16000)
+[SENSOR] tick seq=14 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=14 ts=3125 acc_mg=(1484,-45,-9311) gyro_mdps=(42,-10,0) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=14 ts=3149 acc_mg=(-277,-1702,-5303) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=14 mag_ut=(0,-10666,5333)
+[SENSOR] tick seq=15 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=15 ts=3325 acc_mg=(1487,-37,-9305) gyro_mdps=(41,-13,-7) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=15 ts=3349 acc_mg=(-274,-1699,-5305) gyro_mdps=(0,-9,10) temp_centi=2818
+[SENSOR] qmc read begin
+QMC5883P seq=15 mag_ut=(-5333,2666,0)
+[SENSOR] tick seq=16 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=16 ts=3525 acc_mg=(1484,-43,-9321) gyro_mdps=(40,-13,-1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=16 ts=3549 acc_mg=(-274,-1705,-5309) gyro_mdps=(-1,-10,10) temp_centi=2818
+[SENSOR] qmc read begin
+QMC5883P seq=16 mag_ut=(-8000,-5333,5333)
+[SENSOR] tick seq=17 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=17 ts=3725 acc_mg=(1483,-43,-9313) gyro_mdps=(40,-15,-3) temp_centi=2740
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=17 ts=3749 acc_mg=(-272,-1705,-5306) gyro_mdps=(0,-8,9) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=17 mag_ut=(16000,0,10666)
+[SENSOR] tick seq=18 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=18 ts=3925 acc_mg=(1486,-43,-9321) gyro_mdps=(43,-12,1) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=18 ts=3949 acc_mg=(-280,-1708,-5301) gyro_mdps=(0,-10,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=18 mag_ut=(-13333,-5333,-21333)
+[SENSOR] tick seq=19 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=19 ts=4125 acc_mg=(1474,-43,-9314) gyro_mdps=(40,-13,-2) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=19 ts=4149 acc_mg=(-274,-1709,-5298) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=19 mag_ut=(8000,0,-37333)
+[SENSOR] tick seq=20 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=20 ts=4325 acc_mg=(1484,-47,-9300) gyro_mdps=(38,-12,0) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=20 ts=4349 acc_mg=(-280,-1701,-5304) gyro_mdps=(-1,-10,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=20 mag_ut=(10666,0,-53333)
+[SENSOR] tick seq=21 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=21 ts=4525 acc_mg=(1489,-53,-9314) gyro_mdps=(39,-14,0) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=21 ts=4549 acc_mg=(-278,-1699,-5305) gyro_mdps=(0,-9,9) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=21 mag_ut=(2666,-2666,-10666)
+[SENSOR] tick seq=22 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=22 ts=4725 acc_mg=(1479,-46,-9315) gyro_mdps=(43,-14,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=22 ts=4749 acc_mg=(-274,-1705,-5303) gyro_mdps=(-1,-8,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=22 mag_ut=(8000,-8000,-10666)
+[SENSOR] tick seq=23 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=23 ts=4925 acc_mg=(1482,-40,-9307) gyro_mdps=(42,-10,-1) temp_centi=2740
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=23 ts=4949 acc_mg=(-274,-1701,-5301) gyro_mdps=(-1,-9,9) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=23 mag_ut=(21333,5333,21333)
+[SENSOR] tick seq=24 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=24 ts=5125 acc_mg=(1477,-44,-9302) gyro_mdps=(40,-11,-2) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=24 ts=5149 acc_mg=(-278,-1704,-5300) gyro_mdps=(0,-8,10) temp_centi=2818
+[SENSOR] qmc read begin
+QMC5883P seq=24 mag_ut=(-10666,-8000,-26666)
+[SENSOR] tick seq=25 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=25 ts=5325 acc_mg=(1477,-43,-9303) gyro_mdps=(37,-11,-3) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=25 ts=5349 acc_mg=(-278,-1696,-5301) gyro_mdps=(-1,-9,10) temp_centi=2818
+[SENSOR] qmc read begin
+QMC5883P seq=25 mag_ut=(-8000,0,-10666)
+[SENSOR] tick seq=26 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=26 ts=5525 acc_mg=(1482,-46,-9311) gyro_mdps=(42,-14,2) temp_centi=2737
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=26 ts=5549 acc_mg=(-274,-1705,-5309) gyro_mdps=(-1,-10,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=26 mag_ut=(5333,-2666,-10666)
+[SENSOR] tick seq=27 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=27 ts=5725 acc_mg=(1487,-35,-9311) gyro_mdps=(39,-11,-2) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=27 ts=5749 acc_mg=(-277,-1703,-5304) gyro_mdps=(-1,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=27 mag_ut=(13333,-2666,0)
+[SENSOR] tick seq=28 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=28 ts=5925 acc_mg=(1480,-41,-9315) gyro_mdps=(41,-10,-1) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=28 ts=5949 acc_mg=(-272,-1707,-5304) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=28 mag_ut=(-8000,0,-5333)
+[SENSOR] tick seq=29 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=29 ts=6125 acc_mg=(1487,-49,-9313) gyro_mdps=(39,-11,-4) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=29 ts=6149 acc_mg=(-274,-1707,-5300) gyro_mdps=(-1,-9,9) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=29 mag_ut=(0,-2666,0)
+[SENSOR] tick seq=30 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=30 ts=6325 acc_mg=(1483,-43,-9303) gyro_mdps=(43,-12,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=30 ts=6349 acc_mg=(-276,-1702,-5303) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=30 mag_ut=(0,2666,-32000)
+[SENSOR] tick seq=31 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=31 ts=6525 acc_mg=(1487,-47,-9307) gyro_mdps=(37,-13,5) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=31 ts=6549 acc_mg=(-277,-1708,-5306) gyro_mdps=(-1,-8,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=31 mag_ut=(-8000,0,-10666)
+[SENSOR] tick seq=32 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=32 ts=6725 acc_mg=(1487,-41,-9305) gyro_mdps=(40,-10,1) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=32 ts=6749 acc_mg=(-272,-1704,-5305) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=32 mag_ut=(16000,16000,0)
+[SENSOR] tick seq=33 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=33 ts=6925 acc_mg=(1484,-40,-9308) gyro_mdps=(38,-12,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=33 ts=6949 acc_mg=(-278,-1703,-5305) gyro_mdps=(0,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=33 mag_ut=(0,-8000,-21333)
+[SENSOR] tick seq=34 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=34 ts=7125 acc_mg=(1482,-41,-9312) gyro_mdps=(42,-11,3) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=34 ts=7149 acc_mg=(-276,-1705,-5307) gyro_mdps=(-1,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=34 mag_ut=(8000,-16000,-21333)
+[SENSOR] tick seq=35 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=35 ts=7325 acc_mg=(1474,-44,-9311) gyro_mdps=(42,-9,1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=35 ts=7349 acc_mg=(-282,-1705,-5306) gyro_mdps=(-1,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=35 mag_ut=(-8000,0,-69333)
+[SENSOR] tick seq=36 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=36 ts=7525 acc_mg=(1484,-44,-9315) gyro_mdps=(40,-12,1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=36 ts=7549 acc_mg=(-276,-1705,-5304) gyro_mdps=(-1,-8,9) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=36 mag_ut=(0,-5333,-5333)
+[SENSOR] tick seq=37 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=37 ts=7725 acc_mg=(1484,-38,-9309) gyro_mdps=(42,-9,0) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=37 ts=7749 acc_mg=(-274,-1703,-5301) gyro_mdps=(-1,-10,10) temp_centi=2826
+[SENSOR] qmc read begin
+QMC5883P seq=37 mag_ut=(0,8000,-10666)
+[SENSOR] tick seq=38 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=38 ts=7925 acc_mg=(1486,-37,-9301) gyro_mdps=(40,-12,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=38 ts=7949 acc_mg=(-274,-1707,-5306) gyro_mdps=(-1,-8,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=38 mag_ut=(2666,13333,-16000)
+[SENSOR] tick seq=39 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=39 ts=8125 acc_mg=(1479,-47,-9306) gyro_mdps=(40,-13,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=39 ts=8149 acc_mg=(-280,-1705,-5306) gyro_mdps=(0,-9,9) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=39 mag_ut=(-18666,0,-32000)
+[SENSOR] tick seq=40 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=40 ts=8325 acc_mg=(1483,-43,-9320) gyro_mdps=(37,-11,0) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=40 ts=8349 acc_mg=(-282,-1708,-5301) gyro_mdps=(0,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=40 mag_ut=(8000,0,-5333)
+[SENSOR] tick seq=41 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=41 ts=8525 acc_mg=(1480,-45,-9293) gyro_mdps=(42,-15,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=41 ts=8549 acc_mg=(-274,-1708,-5298) gyro_mdps=(-1,-8,9) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=41 mag_ut=(10666,5333,0)
+[SENSOR] tick seq=42 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=42 ts=8725 acc_mg=(1480,-40,-9305) gyro_mdps=(42,-11,1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=42 ts=8749 acc_mg=(-274,-1709,-5301) gyro_mdps=(-1,-9,9) temp_centi=2826
+[SENSOR] qmc read begin
+QMC5883P seq=42 mag_ut=(-8000,0,-21333)
+[SENSOR] tick seq=43 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=43 ts=8925 acc_mg=(1477,-45,-9300) gyro_mdps=(40,-9,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=43 ts=8949 acc_mg=(-277,-1704,-5306) gyro_mdps=(0,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=43 mag_ut=(8000,-8000,0)
+[SENSOR] tick seq=44 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=44 ts=9125 acc_mg=(1483,-37,-9303) gyro_mdps=(41,-15,-2) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=44 ts=9149 acc_mg=(-274,-1702,-5303) gyro_mdps=(-1,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=44 mag_ut=(5333,8000,21333)
+[SENSOR] tick seq=45 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=45 ts=9325 acc_mg=(1482,-49,-9302) gyro_mdps=(40,-13,1) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=45 ts=9349 acc_mg=(-274,-1703,-5300) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=45 mag_ut=(-10666,-10666,0)
+[SENSOR] tick seq=46 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=46 ts=9525 acc_mg=(1480,-44,-9300) gyro_mdps=(38,-13,1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=46 ts=9549 acc_mg=(-275,-1705,-5303) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=46 mag_ut=(-8000,2666,-16000)
+[SENSOR] tick seq=47 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=47 ts=9725 acc_mg=(1487,-45,-9299) gyro_mdps=(39,-12,0) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=47 ts=9749 acc_mg=(-274,-1703,-5307) gyro_mdps=(-1,-9,10) temp_centi=2820
+[SENSOR] qmc read begin
+QMC5883P seq=47 mag_ut=(0,-5333,37333)
+[SENSOR] tick seq=48 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=48 ts=9925 acc_mg=(1483,-39,-9297) gyro_mdps=(40,-11,1) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=48 ts=9949 acc_mg=(-274,-1702,-5306) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=48 mag_ut=(-2666,0,-21333)
+[SENSOR] tick seq=49 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=49 ts=10125 acc_mg=(1478,-39,-9306) gyro_mdps=(42,-13,1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=49 ts=10149 acc_mg=(-276,-1701,-5306) gyro_mdps=(-2,-10,9) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P seq=49 mag_ut=(2666,0,0)
+[SENSOR] tick seq=50 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=50 ts=10325 acc_mg=(1484,-44,-9318) gyro_mdps=(39,-15,-1) temp_centi=2741
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=50 ts=10349 acc_mg=(-281,-1705,-5310) gyro_mdps=(0,-9,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=50 mag_ut=(-16000,-2666,-26666)
+[SENSOR] tick seq=51 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=51 ts=10525 acc_mg=(1483,-34,-9306) gyro_mdps=(40,-14,0) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=51 ts=10549 acc_mg=(-277,-1704,-5299) gyro_mdps=(-2,-9,10) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P seq=51 mag_ut=(0,-13333,-32000)
+[SENSOR] tick seq=52 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=52 ts=10725 acc_mg=(1487,-38,-9302) gyro_mdps=(40,-11,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=52 ts=10749 acc_mg=(-276,-1704,-5309) gyro_mdps=(0,-9,9) temp_centi=2826
+[SENSOR] qmc read begin
+QMC5883P seq=52 mag_ut=(0,5333,0)
+[SENSOR] tick seq=53 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=53 ts=10925 acc_mg=(1480,-41,-9303) gyro_mdps=(41,-14,-3) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=53 ts=10949 acc_mg=(-269,-1708,-5303) gyro_mdps=(-2,-9,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=53 mag_ut=(0,-8000,-21333)
+[SENSOR] tick seq=54 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=54 ts=11125 acc_mg=(1482,-39,-9302) gyro_mdps=(38,-11,-2) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=54 ts=11149 acc_mg=(-272,-1709,-5305) gyro_mdps=(0,-9,9) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P seq=54 mag_ut=(5333,5333,21333)
+[SENSOR] tick seq=55 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=55 ts=11325 acc_mg=(1480,-41,-9315) gyro_mdps=(42,-13,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=55 ts=11349 acc_mg=(-270,-1705,-5304) gyro_mdps=(-1,-8,10) temp_centi=2823
+[SENSOR] qmc read begin
+QMC5883P seq=55 mag_ut=(-5333,-21333,-16000)
+[SENSOR] tick seq=56 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=56 ts=11525 acc_mg=(1483,-34,-9300) gyro_mdps=(39,-14,2) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=56 ts=11549 acc_mg=(-275,-1705,-5309) gyro_mdps=(0,-11,10) temp_centi=2821
+[SENSOR] qmc read begin
+QMC5883P seq=56 mag_ut=(0,8000,-26666)
+[SENSOR] tick seq=57 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=57 ts=11725 acc_mg=(1484,-40,-9301) gyro_mdps=(38,-10,-1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=57 ts=11749 acc_mg=(-274,-1703,-5305) gyro_mdps=(0,-9,9) temp_centi=2827
+[SENSOR] qmc read begin
+QMC5883P seq=57 mag_ut=(0,-5333,16000)
+[SENSOR] tick seq=58 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=58 ts=11925 acc_mg=(1479,-45,-9302) gyro_mdps=(41,-15,-2) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=58 ts=11949 acc_mg=(-274,-1707,-5301) gyro_mdps=(0,-9,10) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P seq=58 mag_ut=(-8000,5333,10666)
+[SENSOR] tick seq=59 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=59 ts=12125 acc_mg=(1474,-40,-9307) gyro_mdps=(43,-13,-4) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=59 ts=12149 acc_mg=(-278,-1711,-5300) gyro_mdps=(-1,-8,10) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P seq=59 mag_ut=(0,-8000,-10666)
+[SENSOR] tick seq=60 ready=1110
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=60 ts=12325 acc_mg=(1483,-41,-9302) gyro_mdps=(40,-10,-4) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=60 ts=12349 acc_mg=(-278,-1704,-5305) gyro_mdps=(-1,-8,10) temp_centi=2824
+[SENSOR] qmc read begin
+QMC5883P read rc=-5
+[SENSOR] tick seq=61 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=61 ts=12525 acc_mg=(1487,-44,-9308) gyro_mdps=(41,-12,-1) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=61 ts=12549 acc_mg=(-275,-1704,-5300) gyro_mdps=(-1,-10,9) temp_centi=2824
+[SENSOR] tick seq=62 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=62 ts=12725 acc_mg=(1491,-35,-9311) gyro_mdps=(40,-13,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=62 ts=12749 acc_mg=(-274,-1710,-5304) gyro_mdps=(-1,-9,10) temp_centi=2826
+[SENSOR] tick seq=63 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=63 ts=12925 acc_mg=(1489,-43,-9302) gyro_mdps=(42,-9,0) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=63 ts=12949 acc_mg=(-278,-1701,-5300) gyro_mdps=(0,-9,10) temp_centi=2823
+[SENSOR] tick seq=64 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=64 ts=13125 acc_mg=(1480,-41,-9313) gyro_mdps=(41,-13,-5) temp_centi=2742
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=64 ts=13149 acc_mg=(-275,-1708,-5299) gyro_mdps=(-1,-9,9) temp_centi=2821
+[SENSOR] tick seq=65 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=65 ts=13325 acc_mg=(1477,-44,-9308) gyro_mdps=(40,-14,1) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=65 ts=13349 acc_mg=(-277,-1702,-5305) gyro_mdps=(-1,-9,9) temp_centi=2824
+[SENSOR] tick seq=66 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=66 ts=13525 acc_mg=(1477,-35,-9314) gyro_mdps=(38,-10,0) temp_centi=2739
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=66 ts=13549 acc_mg=(-276,-1709,-5301) gyro_mdps=(-1,-10,9) temp_centi=2826
+[SENSOR] tick seq=67 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=67 ts=13725 acc_mg=(1474,-40,-9297) gyro_mdps=(42,-11,1) temp_centi=2750
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=67 ts=13749 acc_mg=(-274,-1707,-5307) gyro_mdps=(0,-8,10) temp_centi=2829
+[SENSOR] tick seq=68 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=68 ts=13925 acc_mg=(1484,-40,-9314) gyro_mdps=(42,-14,-2) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=68 ts=13949 acc_mg=(-271,-1707,-5301) gyro_mdps=(-1,-9,10) temp_centi=2827
+[SENSOR] tick seq=69 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=69 ts=14125 acc_mg=(1480,-43,-9313) gyro_mdps=(41,-13,-1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=69 ts=14149 acc_mg=(-278,-1702,-5305) gyro_mdps=(0,-9,10) temp_centi=2826
+[SENSOR] tick seq=70 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=70 ts=14325 acc_mg=(1484,-35,-9317) gyro_mdps=(40,-17,-2) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=70 ts=14349 acc_mg=(-281,-1704,-5303) gyro_mdps=(-1,-9,9) temp_centi=2826
+[SENSOR] tick seq=71 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=71 ts=14525 acc_mg=(1485,-43,-9315) gyro_mdps=(39,-15,1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=71 ts=14549 acc_mg=(-274,-1704,-5306) gyro_mdps=(-1,-8,9) temp_centi=2824
+[SENSOR] tick seq=72 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=72 ts=14725 acc_mg=(1480,-39,-9305) gyro_mdps=(41,-11,-2) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=72 ts=14749 acc_mg=(-274,-1697,-5300) gyro_mdps=(-1,-8,10) temp_centi=2824
+[SENSOR] tick seq=73 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=73 ts=14925 acc_mg=(1483,-37,-9313) gyro_mdps=(38,-12,4) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=73 ts=14949 acc_mg=(-272,-1707,-5304) gyro_mdps=(0,-9,10) temp_centi=2827
+[SENSOR] tick seq=74 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=74 ts=15125 acc_mg=(1491,-37,-9308) gyro_mdps=(41,-154,-141) temp_centi=2743
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=74 ts=15150 acc_mg=(-278,-1703,-5301) gyro_mdps=(0,-9,10) temp_centi=2826
+[SENSOR] tick seq=75 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=75 ts=15325 acc_mg=(1474,-51,-9305) gyro_mdps=(39,-15,0) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=75 ts=15349 acc_mg=(-269,-1704,-5304) gyro_mdps=(-1,-9,10) temp_centi=2829
+[SENSOR] tick seq=76 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=76 ts=15525 acc_mg=(1482,-47,-9314) gyro_mdps=(42,-12,3) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=76 ts=15549 acc_mg=(-275,-1702,-5306) gyro_mdps=(-1,-9,10) temp_centi=2826
+[SENSOR] tick seq=77 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=77 ts=15725 acc_mg=(1477,-41,-9309) gyro_mdps=(42,-15,0) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=77 ts=15749 acc_mg=(-274,-1705,-5304) gyro_mdps=(-1,-9,9) temp_centi=2820
+[SENSOR] tick seq=78 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=78 ts=15925 acc_mg=(1473,-38,-9314) gyro_mdps=(38,-13,1) temp_centi=2745
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=78 ts=15949 acc_mg=(-274,-1703,-5305) gyro_mdps=(0,-10,9) temp_centi=2824
+[SENSOR] tick seq=79 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=79 ts=16125 acc_mg=(1479,-46,-9303) gyro_mdps=(40,-14,4) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=79 ts=16149 acc_mg=(-277,-1705,-5304) gyro_mdps=(-1,-8,9) temp_centi=2826
+[SENSOR] tick seq=80 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=80 ts=16325 acc_mg=(1482,-46,-9306) gyro_mdps=(43,-16,0) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=80 ts=16349 acc_mg=(-274,-1702,-5305) gyro_mdps=(-1,-9,9) temp_centi=2827
+[SENSOR] tick seq=81 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=81 ts=16525 acc_mg=(1495,-34,-9301) gyro_mdps=(38,-15,0) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=81 ts=16549 acc_mg=(-274,-1697,-5304) gyro_mdps=(0,-7,10) temp_centi=2826
+[SENSOR] tick seq=82 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=82 ts=16725 acc_mg=(1491,-40,-9303) gyro_mdps=(42,-10,0) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=82 ts=16749 acc_mg=(-274,-1701,-5305) gyro_mdps=(-1,-9,9) temp_centi=2827
+[SENSOR] tick seq=83 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=83 ts=16925 acc_mg=(1485,-41,-9314) gyro_mdps=(42,-9,0) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=83 ts=16949 acc_mg=(-277,-1709,-5306) gyro_mdps=(-1,-9,9) temp_centi=2829
+[SENSOR] tick seq=84 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=84 ts=17125 acc_mg=(1482,-45,-9313) gyro_mdps=(42,-12,-1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=84 ts=17149 acc_mg=(-271,-1707,-5299) gyro_mdps=(-1,-9,10) temp_centi=2823
+[SENSOR] tick seq=85 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=85 ts=17325 acc_mg=(1474,-44,-9305) gyro_mdps=(40,-12,2) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=85 ts=17349 acc_mg=(-276,-1705,-5306) gyro_mdps=(0,-9,10) temp_centi=2827
+[SENSOR] tick seq=86 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=86 ts=17525 acc_mg=(1479,-33,-9311) gyro_mdps=(43,-16,-2) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=86 ts=17549 acc_mg=(-274,-1704,-5306) gyro_mdps=(-1,-8,9) temp_centi=2826
+[SENSOR] tick seq=87 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=87 ts=17725 acc_mg=(1483,-41,-9314) gyro_mdps=(37,-11,-4) temp_centi=2750
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=87 ts=17749 acc_mg=(-276,-1704,-5304) gyro_mdps=(-1,-9,9) temp_centi=2829
+[SENSOR] tick seq=88 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=88 ts=17925 acc_mg=(1480,-44,-9305) gyro_mdps=(38,-13,-1) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=88 ts=17949 acc_mg=(-276,-1705,-5301) gyro_mdps=(-1,-9,9) temp_centi=2826
+[SENSOR] tick seq=89 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=89 ts=18125 acc_mg=(1489,-34,-9313) gyro_mdps=(39,-10,-2) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=89 ts=18149 acc_mg=(-278,-1701,-5301) gyro_mdps=(-1,-9,10) temp_centi=2827
+[SENSOR] tick seq=90 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=90 ts=18325 acc_mg=(1477,-37,-9311) gyro_mdps=(41,-8,1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=90 ts=18349 acc_mg=(-274,-1707,-5306) gyro_mdps=(-2,-10,10) temp_centi=2824
+[SENSOR] tick seq=91 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=91 ts=18525 acc_mg=(1477,-43,-9305) gyro_mdps=(41,-11,1) temp_centi=2749
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=91 ts=18549 acc_mg=(-274,-1705,-5299) gyro_mdps=(0,-7,9) temp_centi=2827
+[SENSOR] tick seq=92 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=92 ts=18725 acc_mg=(1486,-37,-9311) gyro_mdps=(38,-14,-1) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=92 ts=18749 acc_mg=(-275,-1708,-5300) gyro_mdps=(-1,-9,10) temp_centi=2824
+[SENSOR] tick seq=93 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=93 ts=18925 acc_mg=(1476,-39,-9305) gyro_mdps=(43,-14,-1) temp_centi=2744
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=93 ts=18949 acc_mg=(-282,-1701,-5300) gyro_mdps=(-1,-7,10) temp_centi=2829
+[SENSOR] tick seq=94 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=94 ts=19125 acc_mg=(1478,-41,-9302) gyro_mdps=(40,-12,-1) temp_centi=2748
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=94 ts=19149 acc_mg=(-274,-1708,-5293) gyro_mdps=(-1,-7,10) temp_centi=2821
+[SENSOR] tick seq=95 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=95 ts=19325 acc_mg=(1479,-39,-9312) gyro_mdps=(40,-15,-3) temp_centi=2751
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=95 ts=19349 acc_mg=(-275,-1708,-5299) gyro_mdps=(-1,-8,9) temp_centi=2827
+[SENSOR] tick seq=96 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=96 ts=19525 acc_mg=(1478,-51,-9317) gyro_mdps=(43,-13,1) temp_centi=2749
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=96 ts=19549 acc_mg=(-272,-1703,-5300) gyro_mdps=(0,-6,10) temp_centi=2829
+[SENSOR] tick seq=97 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=97 ts=19725 acc_mg=(1489,-32,-9313) gyro_mdps=(37,-17,2) temp_centi=2746
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=97 ts=19749 acc_mg=(-275,-1702,-5304) gyro_mdps=(-1,-9,9) temp_centi=2823
+[SENSOR] tick seq=98 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=98 ts=19925 acc_mg=(1483,-45,-9311) gyro_mdps=(40,-16,-1) temp_centi=2748
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=98 ts=19949 acc_mg=(-277,-1703,-5301) gyro_mdps=(-1,-8,9) temp_centi=2829
+[SENSOR] tick seq=99 ready=1100
+[SENSOR] qmi read begin
+[I2C-IMU] rd dev=0x6A reg=0x33 len=14 tx
+[I2C-IMU] rd dev=0x6A reg=0x33 tx_rc=0
+[I2C-IMU] rd dev=0x6A reg=0x33 rx
+[I2C-IMU] rd dev=0x6A reg=0x33 rx_rc=0
+QMI8658A seq=99 ts=20125 acc_mg=(1472,-41,-9300) gyro_mdps=(40,-11,-2) temp_centi=2747
+[SENSOR] icm read begin
+[I2C-IMU] rd dev=0x69 reg=0x1D len=14 tx
+[I2C-IMU] rd dev=0x69 reg=0x1D tx_rc=0
+[I2C-IMU] rd dev=0x69 reg=0x1D rx
+[I2C-IMU] rd dev=0x69 reg=0x1D rx_rc=0
+ICM42688P seq=99 ts=20149 acc_mg=(-278,-1702,-5309) gyro_mdps=(0,-10,10) temp_centi=2826
+[SENSOR] tick seq=100 ready=1100

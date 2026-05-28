@@ -1,0 +1,351 @@
+QMI8658A seq=47 ts=9682 acc_mg=(1489,-39,-9320) gyro_mdps=(38,-14,1) temp_centi=2757
+ICM42688P seq=47 ts=9691 acc_mg=(-278,-1707,-5310) gyro_mdps=(0,-9,10) temp_centi=2835
+QMC5883P seq=47 mag_ut=(8000,2666,0)
+ICP20100 seq=47 press_pa=100399 temp_centi=2779
+QMI8658A seq=48 ts=9882 acc_mg=(1482,-38,-9301) gyro_mdps=(40,-15,-1) temp_centi=2755
+ICM42688P seq=48 ts=9891 acc_mg=(-272,-1704,-5307) gyro_mdps=(-1,-9,9) temp_centi=2836
+QMC5883P seq=48 mag_ut=(0,0,-21333)
+ICP20100 seq=48 press_pa=100400 temp_centi=2775
+QMI8658A seq=49 ts=10082 acc_mg=(1485,-38,-9315) gyro_mdps=(43,-13,0) temp_centi=2758
+ICM42688P seq=49 ts=10091 acc_mg=(-278,-1705,-5307) gyro_mdps=(-1,-9,9) temp_centi=2836
+QMC5883P seq=49 mag_ut=(0,0,-5333)
+ICP20100 seq=49 press_pa=100399 temp_centi=2779
+QMI8658A seq=50 ts=10282 acc_mg=(1484,-52,-9319) gyro_mdps=(41,-9,1) temp_centi=2761
+ICM42688P seq=50 ts=10291 acc_mg=(-269,-1707,-5303) gyro_mdps=(-1,-9,10) temp_centi=2839
+QMC5883P seq=50 mag_ut=(-5333,-8000,-16000)
+ICP20100 seq=50 press_pa=100400 temp_centi=2775
+QMI8658A seq=51 ts=10482 acc_mg=(1474,-35,-9318) gyro_mdps=(41,-13,-3) temp_centi=2758
+ICM42688P seq=51 ts=10491 acc_mg=(-274,-1708,-5309) gyro_mdps=(-1,-10,9) temp_centi=2835
+QMC5883P seq=51 mag_ut=(-2666,-2666,-10666)
+ICP20100 seq=51 press_pa=100400 temp_centi=2779
+QMI8658A seq=52 ts=10682 acc_mg=(1484,-46,-9309) gyro_mdps=(40,-8,1) temp_centi=2759
+ICM42688P seq=52 ts=10691 acc_mg=(-280,-1705,-5306) gyro_mdps=(-1,-9,9) temp_centi=2838
+QMC5883P seq=52 mag_ut=(0,10666,10666)
+ICP20100 seq=52 press_pa=100399 temp_centi=2779
+QMI8658A seq=53 ts=10882 acc_mg=(1483,-39,-9317) gyro_mdps=(45,-11,0) temp_centi=2760
+ICM42688P seq=53 ts=10891 acc_mg=(-270,-1703,-5306) gyro_mdps=(-1,-9,10) temp_centi=2832
+QMC5883P seq=53 mag_ut=(2666,8000,-16000)
+ICP20100 seq=53 press_pa=100400 temp_centi=2770
+QMI8658A seq=54 ts=11082 acc_mg=(1483,-39,-9315) gyro_mdps=(43,-10,0) temp_centi=2758
+ICM42688P seq=54 ts=11091 acc_mg=(-274,-1701,-5306) gyro_mdps=(-1,-9,9) temp_centi=2836
+QMC5883P seq=54 mag_ut=(-8000,2666,-10666)
+ICP20100 seq=54 press_pa=100399 temp_centi=2775
+QMI8658A seq=55 ts=11282 acc_mg=(1485,-37,-9306) gyro_mdps=(41,-15,0) temp_centi=2758
+ICM42688P seq=55 ts=11291 acc_mg=(-270,-1710,-5309) gyro_mdps=(-1,-8,10) temp_centi=2835
+QMC5883P seq=55 mag_ut=(0,10666,26666)
+ICP20100 seq=55 press_pa=100400 temp_centi=2775
+QMI8658A seq=56 ts=11482 acc_mg=(1487,-33,-9308) gyro_mdps=(44,-11,1) temp_centi=2760
+ICM42688P seq=56 ts=11491 acc_mg=(-272,-1707,-5301) gyro_mdps=(0,-9,9) temp_centi=2836
+QMC5883P seq=56 mag_ut=(18666,8000,0)
+ICP20100 seq=56 press_pa=100400 temp_centi=2779
+I2C2 : 0x2C
+I2C2 : 0x44
+I2C2 : 0x64
+I2C2 : 0x69
+I2C2 : 0x6A
+I2C2 find device 5 :0x2C 0x44 0x64 0x69 0x6A 
+QMI8658A init rc=0 addr=0x6A id=0x05
+ICM42688P init rc=0 addr=0x69 id=0x47
+QMC5883P init rc=0 addr=0x2C id=0x80
+ICP20100 init rc=0 addr=0x64 id=0x63 ver=0xB2
+QMI8658A seq=0 ts=282 acc_mg=(1482,-38,-9306) gyro_mdps=(39,-12,2) temp_centi=2758
+ICM42688P seq=0 ts=291 acc_mg=(-280,-1702,-5305) gyro_mdps=(-1,-9,9) temp_centi=2836
+QMC5883P seq=0 mag_ut=(0,-13333,-10666)
+ICP20100 seq=0 press_pa=100399 temp_centi=2775
+QMI8658A seq=1 ts=482 acc_mg=(1490,-37,-9309) gyro_mdps=(41,-14,4) temp_centi=2757
+ICM42688P seq=1 ts=491 acc_mg=(-278,-1703,-5304) gyro_mdps=(-1,-9,10) temp_centi=2835
+QMC5883P seq=1 mag_ut=(16000,2666,10666)
+ICP20100 seq=1 press_pa=100399 temp_centi=2770
+QMI8658A seq=2 ts=682 acc_mg=(1489,-40,-9317) gyro_mdps=(41,-13,0) temp_centi=2758
+ICM42688P seq=2 ts=691 acc_mg=(-276,-1707,-5305) gyro_mdps=(0,-9,10) temp_centi=2839
+QMC5883P seq=2 mag_ut=(-8000,16000,-42666)
+ICP20100 seq=2 press_pa=100400 temp_centi=2779
+QMI8658A seq=3 ts=882 acc_mg=(1476,-49,-9313) gyro_mdps=(43,-17,2) temp_centi=2760
+ICM42688P seq=3 ts=891 acc_mg=(-278,-1708,-5305) gyro_mdps=(-1,-8,10) temp_centi=2835
+QMC5883P seq=3 mag_ut=(0,8000,0)
+ICP20100 seq=3 press_pa=100400 temp_centi=2779
+QMI8658A seq=4 ts=1082 acc_mg=(1485,-33,-9306) gyro_mdps=(36,-11,-1) temp_centi=2758
+ICM42688P seq=4 ts=1091 acc_mg=(-280,-1698,-5304) gyro_mdps=(-1,-9,10) temp_centi=2838
+QMC5883P seq=4 mag_ut=(10666,2666,-42666)
+ICP20100 seq=4 press_pa=100399 temp_centi=2779
+QMI8658A seq=5 ts=1282 acc_mg=(1485,-45,-9311) gyro_mdps=(42,-14,2) temp_centi=2762
+ICM42688P seq=5 ts=1291 acc_mg=(-275,-1705,-5310) gyro_mdps=(-1,-9,10) temp_centi=2842
+QMC5883P seq=5 mag_ut=(-8000,2666,-10666)
+ICP20100 seq=5 press_pa=100399 temp_centi=2770
+QMI8658A seq=6 ts=1482 acc_mg=(1482,-41,-9296) gyro_mdps=(43,-10,0) temp_centi=2758
+ICM42688P seq=6 ts=1491 acc_mg=(-280,-1709,-5310) gyro_mdps=(-1,-10,10) temp_centi=2835
+QMC5883P seq=6 mag_ut=(-8000,-10666,-16000)
+ICP20100 seq=6 press_pa=100400 temp_centi=2775
+QMI8658A seq=7 ts=1682 acc_mg=(1484,-40,-9300) gyro_mdps=(40,-11,0) temp_centi=2761
+ICM42688P seq=7 ts=1691 acc_mg=(-274,-1704,-5305) gyro_mdps=(-1,-10,10) temp_centi=2839
+QMC5883P seq=7 mag_ut=(2666,-2666,-21333)
+ICP20100 seq=7 press_pa=100399 temp_centi=2770
+QMI8658A seq=8 ts=1882 acc_mg=(1478,-46,-9301) gyro_mdps=(39,-14,0) temp_centi=2760
+ICM42688P seq=8 ts=1891 acc_mg=(-278,-1705,-5306) gyro_mdps=(0,-9,9) temp_centi=2839
+QMC5883P seq=8 mag_ut=(5333,0,0)
+ICP20100 seq=8 press_pa=100399 temp_centi=2779
+QMI8658A seq=9 ts=2082 acc_mg=(1487,-38,-9306) gyro_mdps=(39,-9,1) temp_centi=2762
+ICM42688P seq=9 ts=2091 acc_mg=(-276,-1703,-5310) gyro_mdps=(-1,-9,9) temp_centi=2833
+QMC5883P seq=9 mag_ut=(10666,5333,0)
+ICP20100 seq=9 press_pa=100400 temp_centi=2770
+QMI8658A seq=10 ts=2282 acc_mg=(1477,-41,-9318) gyro_mdps=(43,-14,1) temp_centi=2764
+ICM42688P seq=10 ts=2291 acc_mg=(-278,-1705,-5306) gyro_mdps=(-1,-10,10) temp_centi=2838
+QMC5883P seq=10 mag_ut=(10666,-8000,-21333)
+ICP20100 seq=10 press_pa=100399 temp_centi=2783
+QMI8658A seq=11 ts=2482 acc_mg=(1476,-41,-9308) gyro_mdps=(43,-9,0) temp_centi=2759
+ICM42688P seq=11 ts=2491 acc_mg=(-278,-1704,-5309) gyro_mdps=(-2,-9,10) temp_centi=2836
+QMC5883P seq=11 mag_ut=(-8000,8000,0)
+ICP20100 seq=11 press_pa=100400 temp_centi=2783
+QMI8658A seq=12 ts=2682 acc_mg=(1482,-45,-9317) gyro_mdps=(41,-14,1) temp_centi=2760
+ICM42688P seq=12 ts=2691 acc_mg=(-274,-1713,-5309) gyro_mdps=(-1,-9,9) temp_centi=2839
+QMC5883P seq=12 mag_ut=(-13333,0,5333)
+ICP20100 seq=12 press_pa=100400 temp_centi=2783
+QMI8658A seq=13 ts=2882 acc_mg=(1491,-38,-9313) gyro_mdps=(38,-12,1) temp_centi=2760
+ICM42688P seq=13 ts=2891 acc_mg=(-281,-1704,-5309) gyro_mdps=(0,-8,10) temp_centi=2838
+QMC5883P seq=13 mag_ut=(-16000,-13333,0)
+ICP20100 seq=13 press_pa=100400 temp_centi=2775
+QMI8658A seq=14 ts=3082 acc_mg=(1487,-46,-9312) gyro_mdps=(42,-11,0) temp_centi=2760
+ICM42688P seq=14 ts=3091 acc_mg=(-278,-1703,-5306) gyro_mdps=(-1,-9,10) temp_centi=2838
+QMC5883P seq=14 mag_ut=(13333,0,-26666)
+ICP20100 seq=14 press_pa=100400 temp_centi=2770
+QMI8658A seq=15 ts=3282 acc_mg=(1489,-44,-9303) gyro_mdps=(41,-14,1) temp_centi=2758
+ICM42688P seq=15 ts=3291 acc_mg=(-276,-1703,-5306) gyro_mdps=(-1,-9,9) temp_centi=2842
+QMC5883P seq=15 mag_ut=(0,8000,0)
+ICP20100 seq=15 press_pa=100399 temp_centi=2775
+QMI8658A seq=16 ts=3482 acc_mg=(1482,-39,-9323) gyro_mdps=(38,-12,-1) temp_centi=2759
+ICM42688P seq=16 ts=3491 acc_mg=(-278,-1703,-5300) gyro_mdps=(0,-9,10) temp_centi=2839
+QMC5883P seq=16 mag_ut=(0,-16000,-26666)
+ICP20100 seq=16 press_pa=100399 temp_centi=2783
+QMI8658A seq=17 ts=3682 acc_mg=(1486,-40,-9313) gyro_mdps=(40,-14,-1) temp_centi=2759
+ICM42688P seq=17 ts=3691 acc_mg=(-278,-1709,-5306) gyro_mdps=(-1,-9,10) temp_centi=2838
+QMC5883P seq=17 mag_ut=(-2666,5333,0)
+ICP20100 seq=17 press_pa=100400 temp_centi=2779
+QMI8658A seq=18 ts=3882 acc_mg=(1480,-47,-9305) gyro_mdps=(38,-14,-2) temp_centi=2758
+ICM42688P seq=18 ts=3891 acc_mg=(-277,-1707,-5306) gyro_mdps=(-1,-8,10) temp_centi=2841
+QMC5883P seq=18 mag_ut=(-16000,0,0)
+ICP20100 seq=18 press_pa=100399 temp_centi=2779
+QMI8658A seq=19 ts=4082 acc_mg=(1479,-43,-9312) gyro_mdps=(41,-12,0) temp_centi=2759
+ICM42688P seq=19 ts=4091 acc_mg=(-277,-1703,-5299) gyro_mdps=(-1,-9,10) temp_centi=2838
+QMC5883P seq=19 mag_ut=(-8000,0,0)
+ICP20100 seq=19 press_pa=100399 temp_centi=2770
+QMI8658A seq=20 ts=4282 acc_mg=(1478,-32,-9319) gyro_mdps=(42,-14,0) temp_centi=2760
+ICM42688P seq=20 ts=4291 acc_mg=(-275,-1705,-5306) gyro_mdps=(-1,-8,9) temp_centi=2838
+QMC5883P seq=20 mag_ut=(-2666,0,-21333)
+ICP20100 seq=20 press_pa=100400 temp_centi=2770
+QMI8658A seq=21 ts=4482 acc_mg=(1482,-44,-9312) gyro_mdps=(42,-10,0) temp_centi=2761
+ICM42688P seq=21 ts=4491 acc_mg=(-278,-1704,-5305) gyro_mdps=(0,-9,10) temp_centi=2841
+QMC5883P seq=21 mag_ut=(-18666,-2666,-10666)
+ICP20100 seq=21 press_pa=100400 temp_centi=2779
+QMI8658A seq=22 ts=4682 acc_mg=(1482,-39,-9315) gyro_mdps=(41,-13,1) temp_centi=2762
+ICM42688P seq=22 ts=4691 acc_mg=(-278,-1699,-5307) gyro_mdps=(-1,-9,10) temp_centi=2839
+QMC5883P seq=22 mag_ut=(0,13333,32000)
+ICP20100 seq=22 press_pa=100400 temp_centi=2775
+QMI8658A seq=23 ts=4882 acc_mg=(1485,-41,-9302) gyro_mdps=(40,-11,1) temp_centi=2760
+ICM42688P seq=23 ts=4891 acc_mg=(-280,-1705,-5306) gyro_mdps=(-1,-9,10) temp_centi=2839
+QMC5883P seq=23 mag_ut=(2666,8000,-21333)
+ICP20100 seq=23 press_pa=100399 temp_centi=2775
+QMI8658A seq=24 ts=5082 acc_mg=(1487,-41,-9314) gyro_mdps=(39,-13,1) temp_centi=2760
+ICM42688P seq=24 ts=5091 acc_mg=(-275,-1705,-5311) gyro_mdps=(-1,-10,9) temp_centi=2841
+QMC5883P seq=24 mag_ut=(2666,-16000,-42666)
+ICP20100 seq=24 press_pa=100399 temp_centi=2775
+QMI8658A seq=25 ts=5282 acc_mg=(1487,-43,-9306) gyro_mdps=(41,-11,1) temp_centi=2758
+ICM42688P seq=25 ts=5291 acc_mg=(-276,-1701,-5301) gyro_mdps=(-1,-8,10) temp_centi=2841
+QMC5883P seq=25 mag_ut=(-18666,2666,5333)
+ICP20100 seq=25 press_pa=100399 temp_centi=2770
+QMI8658A seq=26 ts=5482 acc_mg=(1471,-51,-9313) gyro_mdps=(39,-12,0) temp_centi=2760
+ICM42688P seq=26 ts=5491 acc_mg=(-280,-1699,-5307) gyro_mdps=(-1,-10,10) temp_centi=2839
+QMC5883P seq=26 mag_ut=(2666,-8000,5333)
+ICP20100 seq=26 press_pa=100399 temp_centi=2779
+QMI8658A seq=27 ts=5682 acc_mg=(1482,-32,-9327) gyro_mdps=(37,-10,3) temp_centi=2759
+ICM42688P seq=27 ts=5691 acc_mg=(-270,-1702,-5309) gyro_mdps=(-2,-9,10) temp_centi=2842
+QMC5883P seq=27 mag_ut=(-8000,-2666,-2666)
+ICP20100 seq=27 press_pa=100400 temp_centi=2775
+QMI8658A seq=28 ts=5882 acc_mg=(1484,-40,-9319) gyro_mdps=(38,-13,-4) temp_centi=2760
+ICM42688P seq=28 ts=5891 acc_mg=(-280,-1704,-5307) gyro_mdps=(-1,-9,9) temp_centi=2842
+QMC5883P seq=28 mag_ut=(0,5333,10666)
+ICP20100 seq=28 press_pa=100398 temp_centi=2779
+QMI8658A seq=29 ts=6082 acc_mg=(1486,-35,-9312) gyro_mdps=(41,-10,-1) temp_centi=2759
+ICM42688P seq=29 ts=6091 acc_mg=(-278,-1701,-5317) gyro_mdps=(-1,-9,10) temp_centi=2844
+QMC5883P seq=29 mag_ut=(2666,5333,0)
+ICP20100 seq=29 press_pa=100399 temp_centi=2775
+QMI8658A seq=30 ts=6282 acc_mg=(1473,-38,-9309) gyro_mdps=(42,-12,2) temp_centi=2759
+ICM42688P seq=30 ts=6291 acc_mg=(-278,-1703,-5306) gyro_mdps=(-1,-9,9) temp_centi=2841
+QMC5883P seq=30 mag_ut=(0,0,0)
+ICP20100 seq=30 press_pa=100400 temp_centi=2775
+QMI8658A seq=31 ts=6482 acc_mg=(1483,-45,-9319) gyro_mdps=(40,-14,1) temp_centi=2759
+ICM42688P seq=31 ts=6491 acc_mg=(-277,-1703,-5310) gyro_mdps=(-1,-10,10) temp_centi=2838
+QMC5883P seq=31 mag_ut=(-16000,8000,0)
+ICP20100 seq=31 press_pa=100399 temp_centi=2775
+QMI8658A seq=32 ts=6682 acc_mg=(1491,-41,-9307) gyro_mdps=(39,-9,2) temp_centi=2761
+ICM42688P seq=32 ts=6691 acc_mg=(-268,-1705,-5309) gyro_mdps=(-1,-9,10) temp_centi=2839
+QMC5883P seq=32 mag_ut=(-2666,0,5333)
+ICP20100 seq=32 press_pa=100400 temp_centi=2775
+QMI8658A seq=33 ts=6882 acc_mg=(1486,-37,-9311) gyro_mdps=(43,-14,0) temp_centi=2760
+ICM42688P seq=33 ts=6891 acc_mg=(-269,-1703,-5309) gyro_mdps=(-1,-9,10) temp_centi=2839
+QMC5883P seq=33 mag_ut=(-8000,-5333,-21333)
+ICP20100 seq=33 press_pa=100400 temp_centi=2775
+QMI8658A seq=34 ts=7082 acc_mg=(1489,-40,-9302) gyro_mdps=(45,-11,-3) temp_centi=2759
+ICM42688P seq=34 ts=7091 acc_mg=(-275,-1709,-5306) gyro_mdps=(0,-9,10) temp_centi=2836
+QMC5883P seq=34 mag_ut=(0,-10666,0)
+ICP20100 seq=34 press_pa=100399 temp_centi=2775
+QMI8658A seq=35 ts=7282 acc_mg=(1484,-47,-9320) gyro_mdps=(44,-13,-1) temp_centi=2758
+ICM42688P seq=35 ts=7291 acc_mg=(-274,-1704,-5307) gyro_mdps=(-1,-8,10) temp_centi=2842
+QMC5883P seq=35 mag_ut=(0,24000,-10666)
+ICP20100 seq=35 press_pa=100400 temp_centi=2779
+QMI8658A seq=36 ts=7482 acc_mg=(1477,-45,-9312) gyro_mdps=(39,-14,-1) temp_centi=2759
+ICM42688P seq=36 ts=7491 acc_mg=(-272,-1703,-5313) gyro_mdps=(-1,-10,10) temp_centi=2841
+QMC5883P seq=36 mag_ut=(8000,2666,0)
+ICP20100 seq=36 press_pa=100399 temp_centi=2783
+QMI8658A seq=37 ts=7682 acc_mg=(1484,-40,-9314) gyro_mdps=(42,-12,-3) temp_centi=2760
+ICM42688P seq=37 ts=7691 acc_mg=(-274,-1702,-5306) gyro_mdps=(0,-9,10) temp_centi=2839
+QMC5883P seq=37 mag_ut=(-8000,16000,21333)
+ICP20100 seq=37 press_pa=100399 temp_centi=2779
+QMI8658A seq=38 ts=7882 acc_mg=(1477,-34,-9314) gyro_mdps=(40,-11,0) temp_centi=2763
+ICM42688P seq=38 ts=7891 acc_mg=(-274,-1704,-5306) gyro_mdps=(-1,-8,9) temp_centi=2841
+QMC5883P seq=38 mag_ut=(2666,13333,-37333)
+ICP20100 seq=38 press_pa=100399 temp_centi=2775
+QMI8658A seq=39 ts=8082 acc_mg=(1492,-41,-9308) gyro_mdps=(40,-10,0) temp_centi=2759
+ICM42688P seq=39 ts=8091 acc_mg=(-275,-1699,-5309) gyro_mdps=(-1,-8,10) temp_centi=2839
+QMC5883P seq=39 mag_ut=(8000,10666,0)
+ICP20100 seq=39 press_pa=100399 temp_centi=2775
+QMI8658A seq=40 ts=8282 acc_mg=(1484,-47,-9297) gyro_mdps=(42,-10,-3) temp_centi=2763
+ICM42688P seq=40 ts=8291 acc_mg=(-275,-1704,-5306) gyro_mdps=(0,-7,9) temp_centi=2839
+QMC5883P seq=40 mag_ut=(0,8000,-10666)
+ICP20100 seq=40 press_pa=100399 temp_centi=2775
+QMI8658A seq=41 ts=8482 acc_mg=(1487,-38,-9319) gyro_mdps=(38,-12,0) temp_centi=2761
+ICM42688P seq=41 ts=8491 acc_mg=(-274,-1704,-5304) gyro_mdps=(-2,-9,9) temp_centi=2842
+QMC5883P seq=41 mag_ut=(-10666,8000,0)
+ICP20100 seq=41 press_pa=100399 temp_centi=2783
+QMI8658A seq=42 ts=8682 acc_mg=(1484,-46,-9307) gyro_mdps=(41,-16,0) temp_centi=2762
+ICM42688P seq=42 ts=8691 acc_mg=(-277,-1708,-5303) gyro_mdps=(-1,-8,9) temp_centi=2844
+QMC5883P seq=42 mag_ut=(0,0,-10666)
+ICP20100 seq=42 press_pa=100398 temp_centi=2779
+QMI8658A seq=43 ts=8882 acc_mg=(1485,-41,-9308) gyro_mdps=(39,-8,-1) temp_centi=2759
+ICM42688P seq=43 ts=8891 acc_mg=(-271,-1703,-5306) gyro_mdps=(0,-9,10) temp_centi=2844
+QMC5883P seq=43 mag_ut=(-16000,-2666,-10666)
+ICP20100 seq=43 press_pa=100399 temp_centi=2779
+QMI8658A seq=44 ts=9082 acc_mg=(1486,-32,-9302) gyro_mdps=(40,-13,0) temp_centi=2760
+ICM42688P seq=44 ts=9091 acc_mg=(-276,-1707,-5309) gyro_mdps=(-1,-8,10) temp_centi=2842
+QMC5883P seq=44 mag_ut=(-8000,8000,16000)
+ICP20100 seq=44 press_pa=100399 temp_centi=2775
+QMI8658A seq=45 ts=9282 acc_mg=(1476,-38,-9313) gyro_mdps=(43,-17,0) temp_centi=2763
+ICM42688P seq=45 ts=9291 acc_mg=(-274,-1701,-5306) gyro_mdps=(-1,-8,10) temp_centi=2839
+QMC5883P seq=45 mag_ut=(8000,0,-26666)
+ICP20100 seq=45 press_pa=100400 temp_centi=2779
+QMI8658A seq=46 ts=9482 acc_mg=(1485,-46,-9317) gyro_mdps=(38,-10,1) temp_centi=2766
+ICM42688P seq=46 ts=9491 acc_mg=(-281,-1705,-5310) gyro_mdps=(-1,-10,10) temp_centi=2844
+QMC5883P seq=46 mag_ut=(0,-2666,-5333)
+ICP20100 seq=46 press_pa=100399 temp_centi=2779
+QMI8658A seq=47 ts=9682 acc_mg=(1484,-31,-9311) gyro_mdps=(39,-12,1) temp_centi=2764
+ICM42688P seq=47 ts=9691 acc_mg=(-277,-1702,-5303) gyro_mdps=(0,-8,10) temp_centi=2838
+QMC5883P seq=47 mag_ut=(-2666,-2666,-16000)
+ICP20100 seq=47 press_pa=100399 temp_centi=2775
+QMI8658A seq=48 ts=9882 acc_mg=(1484,-35,-9313) gyro_mdps=(41,-11,-1) temp_centi=2762
+ICM42688P seq=48 ts=9891 acc_mg=(-275,-1704,-5306) gyro_mdps=(-1,-9,10) temp_centi=2844
+QMC5883P seq=48 mag_ut=(0,0,-21333)
+ICP20100 seq=48 press_pa=100398 temp_centi=2770
+QMI8658A seq=49 ts=10082 acc_mg=(1496,-47,-9311) gyro_mdps=(40,-13,4) temp_centi=2763
+ICM42688P seq=49 ts=10091 acc_mg=(-275,-1709,-5310) gyro_mdps=(-1,-9,9) temp_centi=2842
+QMC5883P seq=49 mag_ut=(-2666,0,-5333)
+ICP20100 seq=49 press_pa=100400 temp_centi=2770
+QMI8658A seq=50 ts=10282 acc_mg=(1487,-47,-9305) gyro_mdps=(41,-10,1) temp_centi=2763
+ICM42688P seq=50 ts=10291 acc_mg=(-281,-1703,-5310) gyro_mdps=(-2,-9,10) temp_centi=2841
+QMC5883P seq=50 mag_ut=(-2666,0,16000)
+ICP20100 seq=50 press_pa=100399 temp_centi=2775
+QMI8658A seq=51 ts=10482 acc_mg=(1472,-43,-9301) gyro_mdps=(40,-10,0) temp_centi=2762
+ICM42688P seq=51 ts=10491 acc_mg=(-280,-1709,-5307) gyro_mdps=(-1,-9,10) temp_centi=2844
+QMC5883P seq=51 mag_ut=(-8000,8000,-10666)
+ICP20100 seq=51 press_pa=100399 temp_centi=2783
+QMI8658A seq=52 ts=10682 acc_mg=(1486,-35,-9309) gyro_mdps=(42,-12,0) temp_centi=2763
+ICM42688P seq=52 ts=10691 acc_mg=(-277,-1702,-5305) gyro_mdps=(-1,-8,10) temp_centi=2842
+QMC5883P seq=52 mag_ut=(-5333,0,-26666)
+ICP20100 seq=52 press_pa=100398 temp_centi=2779
+QMI8658A seq=53 ts=10882 acc_mg=(1476,-52,-9315) gyro_mdps=(37,-13,0) temp_centi=2764
+ICM42688P seq=53 ts=10891 acc_mg=(-271,-1702,-5306) gyro_mdps=(-1,-9,9) temp_centi=2841
+QMC5883P seq=53 mag_ut=(-2666,2666,-10666)
+ICP20100 seq=53 press_pa=100400 temp_centi=2770
+QMI8658A seq=54 ts=11082 acc_mg=(1495,-44,-9301) gyro_mdps=(44,-12,0) temp_centi=2762
+ICM42688P seq=54 ts=11091 acc_mg=(-278,-1703,-5311) gyro_mdps=(-1,-9,10) temp_centi=2842
+QMC5883P seq=54 mag_ut=(8000,-5333,10666)
+ICP20100 seq=54 press_pa=100400 temp_centi=2770
+QMI8658A seq=55 ts=11282 acc_mg=(1487,-47,-9307) gyro_mdps=(40,-13,0) temp_centi=2760
+ICM42688P seq=55 ts=11291 acc_mg=(-277,-1702,-5309) gyro_mdps=(-1,-10,10) temp_centi=2844
+QMC5883P seq=55 mag_ut=(5333,10666,-5333)
+ICP20100 seq=55 press_pa=100399 temp_centi=2770
+QMI8658A seq=56 ts=11482 acc_mg=(1472,-38,-9305) gyro_mdps=(43,-10,-3) temp_centi=2765
+ICM42688P seq=56 ts=11491 acc_mg=(-274,-1704,-5311) gyro_mdps=(-1,-9,9) temp_centi=2838
+QMC5883P seq=56 mag_ut=(8000,10666,-26666)
+ICP20100 seq=56 press_pa=100399 temp_centi=2775
+QMI8658A seq=57 ts=11682 acc_mg=(1485,-50,-9300) gyro_mdps=(39,-12,1) temp_centi=2762
+ICM42688P seq=57 ts=11691 acc_mg=(-278,-1703,-5306) gyro_mdps=(-1,-9,9) temp_centi=2841
+QMC5883P seq=57 mag_ut=(-13333,16000,-32000)
+ICP20100 seq=57 press_pa=100400 temp_centi=2770
+QMI8658A seq=58 ts=11882 acc_mg=(1474,-38,-9319) gyro_mdps=(38,-16,-1) temp_centi=2763
+ICM42688P seq=58 ts=11891 acc_mg=(-270,-1703,-5306) gyro_mdps=(0,-10,10) temp_centi=2839
+QMC5883P seq=58 mag_ut=(-5333,2666,-16000)
+ICP20100 seq=58 press_pa=100399 temp_centi=2779
+QMI8658A seq=59 ts=12082 acc_mg=(1476,-37,-9311) gyro_mdps=(38,-14,2) temp_centi=2762
+ICM42688P seq=59 ts=12091 acc_mg=(-277,-1701,-5306) gyro_mdps=(-1,-8,10) temp_centi=2842
+QMC5883P seq=59 mag_ut=(10666,0,-5333)
+ICP20100 seq=59 press_pa=100400 temp_centi=2775
+QMI8658A seq=60 ts=12282 acc_mg=(1484,-38,-9306) gyro_mdps=(40,-11,0) temp_centi=2764
+ICM42688P seq=60 ts=12291 acc_mg=(-274,-1702,-5305) gyro_mdps=(-2,-9,9) temp_centi=2844
+QMC5883P seq=60 mag_ut=(8000,2666,-10666)
+ICP20100 seq=60 press_pa=100399 temp_centi=2775
+QMI8658A seq=61 ts=12482 acc_mg=(1480,-29,-9300) gyro_mdps=(42,-12,1) temp_centi=2767
+ICM42688P seq=61 ts=12491 acc_mg=(-278,-1705,-5309) gyro_mdps=(-1,-9,9) temp_centi=2839
+QMC5883P seq=61 mag_ut=(0,-8000,-10666)
+ICP20100 seq=61 press_pa=100399 temp_centi=2779
+QMI8658A seq=62 ts=12682 acc_mg=(1483,-45,-9303) gyro_mdps=(40,-14,0) temp_centi=2761
+ICM42688P seq=62 ts=12691 acc_mg=(-270,-1709,-5306) gyro_mdps=(-1,-8,10) temp_centi=2842
+QMC5883P seq=62 mag_ut=(-5333,5333,-21333)
+ICP20100 seq=62 press_pa=100399 temp_centi=2779
+QMI8658A seq=63 ts=12882 acc_mg=(1489,-37,-9308) gyro_mdps=(39,-13,0) temp_centi=2762
+ICM42688P seq=63 ts=12891 acc_mg=(-274,-1704,-5301) gyro_mdps=(-2,-10,9) temp_centi=2839
+QMC5883P seq=63 mag_ut=(8000,0,21333)
+ICP20100 seq=63 press_pa=100399 temp_centi=2783
+QMI8658A seq=64 ts=13082 acc_mg=(1479,-44,-9303) gyro_mdps=(39,-10,-1) temp_centi=2760
+ICM42688P seq=64 ts=13091 acc_mg=(-269,-1705,-5304) gyro_mdps=(0,-8,10) temp_centi=2842
+QMC5883P seq=64 mag_ut=(-8000,-5333,-10666)
+ICP20100 seq=64 press_pa=100400 temp_centi=2783
+QMI8658A seq=65 ts=13282 acc_mg=(1485,-43,-9309) gyro_mdps=(39,-12,2) temp_centi=2764
+ICM42688P seq=65 ts=13291 acc_mg=(-277,-1702,-5309) gyro_mdps=(-1,-8,9) temp_centi=2842
+QMC5883P seq=65 mag_ut=(-8000,8000,0)
+ICP20100 seq=65 press_pa=100399 temp_centi=2779
+QMI8658A seq=66 ts=13482 acc_mg=(1489,-43,-9308) gyro_mdps=(37,-13,0) temp_centi=2761
+ICM42688P seq=66 ts=13491 acc_mg=(-278,-1711,-5303) gyro_mdps=(-1,-10,10) temp_centi=2845
+QMC5883P seq=66 mag_ut=(16000,0,0)
+ICP20100 seq=66 press_pa=100399 temp_centi=2779
+QMI8658A seq=67 ts=13682 acc_mg=(1485,-41,-9324) gyro_mdps=(38,-11,-1) temp_centi=2765
+ICM42688P seq=67 ts=13691 acc_mg=(-278,-1707,-5310) gyro_mdps=(0,-9,9) temp_centi=2839
+QMC5883P seq=67 mag_ut=(5333,16000,-16000)
+ICP20100 seq=67 press_pa=100399 temp_centi=2775
+QMI8658A seq=68 ts=13882 acc_mg=(1478,-43,-9303) gyro_mdps=(44,-14,2) temp_centi=2762
+ICM42688P seq=68 ts=13891 acc_mg=(-278,-1705,-5310) gyro_mdps=(-1,-11,10) temp_centi=2844
+QMC5883P seq=68 mag_ut=(5333,0,-10666)
+ICP20100 seq=68 press_pa=100399 temp_centi=2766
+QMI8658A seq=69 ts=14082 acc_mg=(1479,-34,-9308) gyro_mdps=(45,-16,0) temp_centi=2764
+ICM42688P seq=69 ts=14091 acc_mg=(-275,-1699,-5310) gyro_mdps=(-1,-9,10) temp_centi=2842
+QMC5883P seq=69 mag_ut=(-2666,10666,21333)
+ICP20100 seq=69 press_pa=100399 temp_centi=2770
+QMI8658A seq=70 ts=14282 acc_mg=(1484,-44,-9308) gyro_mdps=(40,-11,4) temp_centi=2762
+ICM42688P seq=70 ts=14291 acc_mg=(-271,-1707,-5307) gyro_mdps=(-1,-10,9) temp_centi=2845
+QMC5883P seq=70 mag_ut=(0,-8000,-16000)
+ICP20100 seq=70 press_pa=100400 temp_centi=2779
+QMI8658A seq=71 ts=14482 acc_mg=(1482,-35,-9312) gyro_mdps=(40,-11,1) temp_centi=2761
+ICM42688P seq=71 ts=14491 acc_mg=(-278,-1708,-5306) gyro_mdps=(-1,-9,10) temp_centi=2842
+QMC5883P seq=71 mag_ut=(-2666,-18666,-32000)
+ICP20100 seq=71 press_pa=100400 temp_centi=2775
+QMI8658A seq=72 ts=14682 acc_mg=(1487,-39,-9295) gyro_mdps=(41,-11,0) temp_centi=2764
+ICM42688P seq=72 ts=14691 acc_mg=(-276,-1702,-5307) gyro_mdps=(0,-8,9) temp_centi=2842
+QMC5883P seq=72 mag_ut=(16000,0,0)
+ICP20100 seq=72 press_pa=100399 temp_centi=2770
+QMI8658A seq=73 ts=14882 acc_mg=(1482,-32,-9302) gyro_mdps=(41,-11,0) temp_centi=2765
+ICM42688P seq=73 ts=14891 acc_mg=(-278,-1707,-5306) gyro_mdps=(-1,-10,10) temp_centi=2842
+QMC5883P seq=73 mag_ut=(-2666,0,0)
+ICP20100 seq=73 press_pa=100399 temp_centi=2779
+QMI8658A seq=74 ts=15082 acc_mg=(1478,-43,-9296) gyro_mdps=(40,-10,2) temp_centi=2760
+ICM42688P seq=74 ts=15091 acc_mg=(-278,-1705,-5307) gyro_mdps=(-1,-8,10) temp_centi=2841
+QMC5883P seq=74 mag_ut=(8000,2666,10666)
+ICP20100 seq=74 press_pa=100398 temp_centi=2779
+QMI8658A seq=75 ts=15282 acc_mg=(1485,-33,-9313) gyro_mdps=(44,-10,2) temp_centi=2762

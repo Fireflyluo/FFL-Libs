@@ -1,0 +1,16 @@
+{
+    th_sht30 = {
+        description = "Enable SHT30 temperature/humidity driver",
+        default = false,
+        showmenu = true,
+        __sourceinfo_showmenu = { },
+        __sourceinfo_description = {
+            ["Enable SHT30 temperature/humidity driver"] = {
+                file = [[.\xmake.lua]],
+                line = 13
+            }
+        },
+        __sourceinfo_default = { },
+        __scriptdir = [[D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\TH-lib]]
+    }
+}

@@ -1,4 +1,17 @@
 {
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-MD",
+            "-std:c11",
+            "-Iutils",
+            "-DSW_TIMER_AVAILABLE",
+            "/W4",
+            "/utf-8"
+        }
+    },
+    depfiles_format = "cl_json",
     depfiles = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -22,20 +35,7 @@
         ]\
     }\
 }",
-    depfiles_format = "cl_json",
     files = {
         [[utils\sw_timer.c]]
-    },
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-MD",
-            "-std:c11",
-            "-Iutils",
-            "-DSW_TIMER_AVAILABLE",
-            "/W4",
-            "/utf-8"
-        }
     }
 }

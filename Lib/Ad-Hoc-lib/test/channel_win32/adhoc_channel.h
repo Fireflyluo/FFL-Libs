@@ -56,6 +56,7 @@ typedef struct
     uint8_t  max_nodes;      /**< 最大节点数 */
     uint8_t  topo[ADHOC_CHANNEL_MAX_NODES][ADHOC_CHANNEL_MAX_NODES]; /**< 拓扑矩阵: topo[from][to]=RSSI */
     adhoc_channel_node_rx_t nodes[ADHOC_CHANNEL_MAX_NODES]; /**< 各节点接收队列 */
+    uint8_t  drop_rate_pct;  /**< 随机丢包率(0~100) */
     CRITICAL_SECTION lock;   /**< 临界区保护 */
 } adhoc_channel_t;
 
@@ -79,6 +80,13 @@ void adhoc_channel_deinit(adhoc_channel_t *ch);
  * @param rssi     信号强度(dBm), 0=不可达, <-127 视为不可达
  */
 void adhoc_channel_set_topo(adhoc_channel_t *ch, uint8_t from_idx, uint8_t to_idx, int8_t rssi);
+
+/**
+ * @brief 设置随机丢包率
+ * @param ch            信道实例
+ * @param drop_rate_pct 丢包率百分比(0=无丢包, 100=全丢)
+ */
+void adhoc_channel_set_drop_rate(adhoc_channel_t *ch, uint8_t drop_rate_pct);
 
 /**
  * @brief 向信道发送帧(广播到所有可达节点)

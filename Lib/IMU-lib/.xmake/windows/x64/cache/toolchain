@@ -1,0 +1,139 @@
+{
+    nasm_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    msvc_arch_x64_plat_windows = {
+        vcvars = {
+            VCToolsInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\]],
+            UniversalCRTSdkDir = [[E:\Windows Kits\10\]],
+            WindowsSDKVersion = "10.0.26100.0",
+            VSCMD_ARG_TGT_ARCH = "x64",
+            VCToolsVersion = "14.50.35717",
+            LIBPATH = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x86\store\references;E:\Windows Kits\10\UnionMetadata\10.0.26100.0;E:\Windows Kits\10\References\10.0.26100.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319]],
+            WindowsLibPath = [[E:\Windows Kits\10\UnionMetadata\10.0.26100.0;E:\Windows Kits\10\References\10.0.26100.0]],
+            LIB = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;E:\Windows Kits\10\lib\10.0.26100.0\ucrt\x64;E:\Windows Kits\10\\lib\10.0.26100.0\\um\x64]],
+            UCRTVersion = "10.0.26100.0",
+            VSInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\]],
+            VCIDEInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\]],
+            DevEnvdir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\]],
+            VCToolsRedistDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Redist\MSVC\14.50.35710\]],
+            VSCMD_ARG_HOST_ARCH = "x64",
+            VS180COMNTOOLS = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\]],
+            VSCMD_VER = "18.3.0-insiders",
+            WindowsSdkVerBinPath = [[E:\Windows Kits\10\bin\10.0.26100.0\]],
+            ExtensionSdkDir = [[C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs]],
+            WindowsSdkBinPath = [[E:\Windows Kits\10\bin\]],
+            VSCMD_ARG_app_plat = "Desktop",
+            VCInstallDir = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\]],
+            VisualStudioVersion = "18.0",
+            INCLUDE = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\include;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Auxiliary\VS\include;E:\Windows Kits\10\include\10.0.26100.0\ucrt;E:\Windows Kits\10\\include\10.0.26100.0\\um;E:\Windows Kits\10\\include\10.0.26100.0\\shared;E:\Windows Kits\10\\include\10.0.26100.0\\winrt;E:\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um]],
+            PATH = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\18\Insiders\Team Tools\DiagnosticsHub\Collector;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\Extensions\Microsoft\CodeCoverage.Console;E:\Windows Kits\10\bin\10.0.26100.0\\x64;E:\Windows Kits\10\bin\\x64;C:\Program Files\Microsoft Visual Studio\18\Insiders\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\;C:\Users\21614\.codex\tmp\arg0\codex-arg0vYumxD;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;E:\APP\VMware\bin\;C:\Program Files\Microsoft\jdk-17.0.13.11-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;D:\APP\path\mingw64\bin;D:\Desktop\工具软件\putty\;PP\Git\cmd;D:\APP\Node_js\node_cache;D:\APP\Node_js\node_global;D:\APP\Node_js\;D:\APP\Node_js\node_global\node_modules;D:\APP\Git\cmd;E:\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\dotnet\;E:\APP\xmake;;C:\Program Files\Docker\Docker\resources\bin;D:\APP\path\cargo\bin;C:\Users\21614\scoop\shims;C:\Users\21614\.cargo\bin;C:\Users\21614\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\21614\AppData\Local\Programs\Python\Python313\;C:\Users\21614\AppData\Local\Programs\Python\Launcher\;C:\Users\21614\AppData\Local\Microsoft\WindowsApps;D:\APP\path\arm-gcc-15.2\bin;D:\APP\Microsoft VS Code\bin;D:\APP\path\openocd\bin;C:\Users\21614\AppData\Local\Programs\Python\Python313\Scripts\pyocd.exe;D:\APP\path\java\jdk.1.8.0_201\bin;D:\APP\path\java\jdk.1.8.0_201\jre\bin;C:\Users\21614\.vscode\extensions\metalcode-eu.windows-arm-none-eabi-0.1.6\bin;D:\APP\CLion 2025.1.1\bin;D:\APP\ESP32\.espressif\python_env\idf5.2_py3.11_env\Scripts;E:\APP\Microsoft VS Code\bin;C:\Users\21614\.dotnet\tools;D:\APP\path\clangd_21.1.0\bin;E:\GO\go1.25.5\go\bin;C:\Users\21614\go\bin;D:\APP\path\npm-global;c:\Users\21614\.vscode\extensions\openai.chatgpt-26.519.32039-win32-x64\bin\windows-x86_64;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\vcpkg]],
+            WindowsSdkDir = [[E:\Windows Kits\10\]]
+        },
+        plat = "windows",
+        vs_sdkver = "10.0.26100.0",
+        arch = "x64",
+        vs = "2026",
+        vs_toolset = "14.50.35717",
+        __checked = "2026",
+        __global = true,
+        vcarchs = {
+            "arm",
+            "arm64",
+            "arm64ec",
+            "x64",
+            "x86"
+        }
+    },
+    ["tool_target_imu-lib_windows_x64_cc"] = {
+        toolname = "cl",
+        toolchain_info = {
+            arch = "x64",
+            name = "msvc",
+            cachekey = "msvc_arch_x64_plat_windows",
+            plat = "windows"
+        },
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    cuda_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    zig_arch_x64_plat_windows = {
+        arch = "x64",
+        __global = true,
+        plat = "windows"
+    },
+    yasm_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    rust_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    nim_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = false,
+        arch = "x64",
+        __global = true
+    },
+    swift_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    go_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    gfortran_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    ["tool_target_imu-lib_windows_x64_ar"] = {
+        toolname = "link",
+        toolchain_info = {
+            arch = "x64",
+            name = "msvc",
+            cachekey = "msvc_arch_x64_plat_windows",
+            plat = "windows"
+        },
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\link.exe]]
+    },
+    ["tool_target_imu-lib_windows_x64_cxx"] = {
+        toolname = "cl",
+        toolchain_info = {
+            arch = "x64",
+            name = "msvc",
+            cachekey = "msvc_arch_x64_plat_windows",
+            plat = "windows"
+        },
+        program = [[C:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\cl.exe]]
+    },
+    fpc_arch_x64_plat_windows = {
+        plat = "windows",
+        __checked = true,
+        arch = "x64",
+        __global = true
+    },
+    clang_arch_x64_plat_windows = {
+        arch = "x64",
+        __global = true,
+        plat = "windows"
+    }
+}

@@ -1,3 +1,4 @@
 {
-    projectfile = "sensor/xmake_riscv.lua"
+    projectdir = "Lib/TH-lib",
+    projectfile = "xmake.lua"
 }
