@@ -1,7 +1,0 @@
-{
-    cmdlines = {
-        [[xmake f -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\MAG-lib --yes -y -c --mag_qmc5883p=y --plat=windows --arch=x64 --mode=release --kind=static --vs=2026 --runtimes=MD --builddir=D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\cache\build_e97d4971]],
-        [[xmake build -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\MAG-lib --yes]],
-        [[xmake install -y --packages=n -o D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8 -P D:\MCU\0.fireflyluo-Embedded-Libs-main\Lib\MAG-lib --yes]]
-    }
-}
