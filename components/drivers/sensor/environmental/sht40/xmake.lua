@@ -6,10 +6,19 @@ target("ffl.sht40")
     add_headerfiles("include/*.h")
     add_includedirs("include", {public = true})
     add_deps("ffl.atomic")
-    add_deps("ffl.atomic")
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
+    end
+
+target("ffl.sht40.test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/sht40_crc_test.c")
+    add_deps("ffl.sht40")
+    add_tests("default")
+
+    if not is_plat("windows") then
+        add_cflags("-Wall", "-Wextra", "-Werror")
     end

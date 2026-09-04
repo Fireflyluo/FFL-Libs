@@ -52,6 +52,20 @@ typedef enum {
     QMC5883P_SET_RESET_OFF = 2u
 } qmc5883p_set_reset_mode_t;
 
+#define QMC5883P_CTRL1_MODE_MASK            0x03u
+#define QMC5883P_CTRL1_ODR_MASK             0x0Cu
+#define QMC5883P_CTRL1_ODR_SHIFT            2u
+#define QMC5883P_CTRL1_OSR1_MASK            0x30u
+#define QMC5883P_CTRL1_OSR1_SHIFT           4u
+#define QMC5883P_CTRL1_OSR2_MASK            0xC0u
+#define QMC5883P_CTRL1_OSR2_SHIFT           6u
+#define QMC5883P_CTRL2_SET_RESET_MODE_MASK  0x03u
+#define QMC5883P_CTRL2_RNG_MASK             0x0Cu
+#define QMC5883P_CTRL2_RNG_SHIFT            2u
+#define QMC5883P_CTRL2_SOFT_RESET_MASK      0x80u
+#define QMC5883P_STATUS_OVFL_MASK           0x02u
+
+#if defined(FFL_ENABLE_LEGACY_BITFIELDS)
 typedef union {
     uint8_t reg;
     struct {
@@ -81,5 +95,6 @@ typedef union {
         uint8_t RFU : 6;
     } bit;
 } qmc5883p_status_t;
+#endif
 
 #endif

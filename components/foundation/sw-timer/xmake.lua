@@ -6,10 +6,8 @@ target("ffl.sw_timer")
     add_headerfiles("include/sw_timer.h")
     add_includedirs("include", {public = true})
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
     end
 
 target("ffl.sw_timer.test")
@@ -20,8 +18,6 @@ target("ffl.sw_timer.test")
     add_deps("ffl.sw_timer")
     add_tests("default")
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cxxflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cxxflags("/W4", "/utf-8")
     end

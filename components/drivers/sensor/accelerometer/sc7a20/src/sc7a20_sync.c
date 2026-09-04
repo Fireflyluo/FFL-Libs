@@ -65,7 +65,7 @@ int sc7a20_init_with_config(sc7a20_dev_t *dev, const sc7a20_cfg_t *cfg)
 int sc7a20_deinit(sc7a20_dev_t *dev)
 {
     int rc;
-    sc7a20_ctrl1_t ctrl1;
+    uint8_t ctrl1 = 0u;
 
     if (dev == NULL) {
         return -EINVAL;
@@ -80,9 +80,7 @@ int sc7a20_deinit(sc7a20_dev_t *dev)
         return rc;
     }
 
-    memset(&ctrl1, 0, sizeof(ctrl1));
-    ctrl1.bit.ODR = SC7A20_ACCEL_ODR_POWER_DOWN;
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL1, &ctrl1.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL1, &ctrl1, 1u);
     dev->initialized = false;
 
     sc7a20_core_unlock(dev);

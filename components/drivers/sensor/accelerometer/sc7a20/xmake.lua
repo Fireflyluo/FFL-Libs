@@ -20,10 +20,8 @@ target("ffl.sc7a20")
         add_defines("FFL_SC7A20_ASYNC_ENABLED=0", {public = true})
     end
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
     end
 
 target("ffl-sc7a20")
@@ -36,10 +34,8 @@ target("ffl-sc7a20")
     add_includedirs("../../../../foundation/atomic/include")
     add_defines("FFL_SC7A20_ASYNC_ENABLED=1", {public = true})
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
     end
 
 target("ffl.sc7a20.unit")

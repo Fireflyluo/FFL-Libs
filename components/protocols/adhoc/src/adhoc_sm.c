@@ -614,11 +614,14 @@ static void adhoc_sm_enter_st1_internal(adhoc_sm_t *sm, uint8_t lock_active, uin
     sm->next_tx_us = sm->upstream_last_seen_us = 0u;
     sm->gateway_network_started = sm->gateway_network_locked = 0u;
     sm->gateway_network_start_us = sm->gateway_network_end_us = 0u;
-    sm->gateway_rx_window_open = sm->gateway_rx_window_start_us = sm->gateway_rx_window_end_us = 0u;
+    sm->gateway_rx_window_open = 0u;
+    sm->gateway_rx_window_start_us = 0u;
+    sm->gateway_rx_window_end_us = 0u;
     sm->network_lock_active = lock_active != 0u ? 1u : 0u;
     sm->network_lock_closed = lock_closed != 0u ? 1u : 0u;
     sm->network_lock_end_us = lock_end_us;
-    sm->regroup_timer_active = sm->regroup_start_us = 0u;
+    sm->regroup_timer_active = 0u;
+    sm->regroup_start_us = 0u;
     adhoc_sm_candidate_clear(&sm->candidate);
     adhoc_sm_neighbor_cache_reset(sm);
     adhoc_sm_upstream_bindings_reset(sm);
@@ -668,7 +671,8 @@ static void adhoc_sm_enter_un(adhoc_sm_t *sm, uint32_t ts_us, uint8_t joined_lev
     sm->network_lock_active = sm->candidate.network_end_us != 0u ? 1u : 0u;
     sm->network_lock_closed = 0u;
     sm->network_lock_end_us = sm->candidate.network_end_us;
-    sm->regroup_timer_active = sm->regroup_start_us = 0u;
+    sm->regroup_timer_active = 0u;
+    sm->regroup_start_us = 0u;
     adhoc_sm_neighbors_release_except(sm, sm->candidate.gateway_no, sm->candidate.upstream_level, sm->candidate.upstream_id);
     adhoc_sm_candidate_clear(&sm->candidate);
 }
@@ -687,7 +691,8 @@ static void adhoc_sm_enter_cn(adhoc_sm_t *sm, uint32_t ts_us)
         sm->regroup_timer_active = 1u;
         sm->regroup_start_us = ts_us;
     } else {
-        sm->regroup_timer_active = sm->regroup_start_us = 0u;
+        sm->regroup_timer_active = 0u;
+        sm->regroup_start_us = 0u;
     }
 }
 

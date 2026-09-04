@@ -1,86 +1,201 @@
 [
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20_new", "/Isensor\\sc7a20_new\\inc", "/DSC7A20_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20_new\\windows\\x64\\release\\sensor\\sc7a20_new\\src\\sc7a20_core.c.obj", "sensor\\sc7a20_new\\src\\sc7a20_core.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20_new\\src\\sc7a20_core.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\sw-timer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sw_timer.test\\cross\\arm\\release\\components\\foundation\\sw-timer\\test\\sw_timer_test.cpp.o", "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"],
+  "file": "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20_new", "/Isensor\\sc7a20_new\\inc", "/DSC7A20_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20_new\\windows\\x64\\release\\sensor\\sc7a20_new\\src\\sc7a20_sync.c.obj", "sensor\\sc7a20_new\\src\\sc7a20_sync.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20_new\\src\\sc7a20_sync.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer.test\\cross\\arm\\release\\components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp.o", "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"],
+  "file": "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20_new", "/Isensor\\sc7a20_new\\inc", "/DSC7A20_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20_new\\windows\\x64\\release\\sensor\\sc7a20_new\\src\\sc7a20_async.c.obj", "sensor\\sc7a20_new\\src\\sc7a20_async.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20_new\\src\\sc7a20_async.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20htr", "/Isensor\\sc7a20htr\\inc", "/Isensor\\sc7a20htr\\platform", "/DSC7A20HTR_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20htr\\windows\\x64\\release\\sensor\\sc7a20htr\\sc7a20_core.c.obj", "sensor\\sc7a20htr\\sc7a20_core.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20htr\\sc7a20_core.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20htr", "/Isensor\\sc7a20htr\\inc", "/Isensor\\sc7a20htr\\platform", "/DSC7A20HTR_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20htr\\windows\\x64\\release\\sensor\\sc7a20htr\\sc7a20_core_async.c.obj", "sensor\\sc7a20htr\\sc7a20_core_async.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20htr\\sc7a20_core_async.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sc7a20htr", "/Isensor\\sc7a20htr\\inc", "/Isensor\\sc7a20htr\\platform", "/DSC7A20HTR_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sc7a20htr\\windows\\x64\\release\\sensor\\sc7a20htr\\platform\\platform.c.obj", "sensor\\sc7a20htr\\platform\\platform.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sc7a20htr\\platform\\platform.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\QMI8658A", "/DQMI8658A_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\qmi8658a\\windows\\x64\\release\\sensor\\QMI8658A\\qmi8658a_driver.c.obj", "sensor\\QMI8658A\\qmi8658a_driver.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\QMI8658A\\qmi8658a_driver.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c.o", "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"],
+  "file": "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\QMI8658A", "/DQMI8658A_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\qmi8658a\\windows\\x64\\release\\sensor\\QMI8658A\\qmi8658a_reg.c.obj", "sensor\\QMI8658A\\qmi8658a_reg.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\QMI8658A\\qmi8658a_reg.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sht40", "/DSHT40_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sht40\\windows\\x64\\release\\sensor\\sht40\\sht40_hal.c.obj", "sensor\\sht40\\sht40_hal.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sht40\\sht40_hal.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer\\cross\\arm\\release\\components\\foundation\\ringbuffer\\src\\ringbuffer.c.o", "components\\foundation\\ringbuffer\\src\\ringbuffer.c"],
+  "file": "components\\foundation\\ringbuffer\\src\\ringbuffer.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Iutils", "/DRINGBUFFER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\ringbuffer\\windows\\x64\\release\\utils\\ringbuffer.c.obj", "utils\\ringbuffer.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "utils\\ringbuffer.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Iutils", "/DSW_TIMER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sw_timer\\windows\\x64\\release\\utils\\sw_timer.c.obj", "utils\\sw_timer.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "utils\\sw_timer.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sht40_new", "/Isensor\\sht40_new\\inc", "/DSHT40_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sht40_new\\windows\\x64\\release\\sensor\\sht40_new\\src\\sht40_core.c.obj", "sensor\\sht40_new\\src\\sht40_core.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sht40_new\\src\\sht40_core.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sht40_new", "/Isensor\\sht40_new\\inc", "/DSHT40_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sht40_new\\windows\\x64\\release\\sensor\\sht40_new\\src\\sht40_sync.c.obj", "sensor\\sht40_new\\src\\sht40_sync.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sht40_new\\src\\sht40_sync.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\sht40_new", "/Isensor\\sht40_new\\inc", "/DSHT40_NEW_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\sht40_new\\windows\\x64\\release\\sensor\\sht40_new\\src\\sht40_async.c.obj", "sensor\\sht40_new\\src\\sht40_async.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\sht40_new\\src\\sht40_async.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\oled", "/DOLED_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\oled\\windows\\x64\\release\\sensor\\oled\\OLED.c.obj", "sensor\\oled\\OLED.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\oled\\OLED.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c.o", "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"],
+  "file": "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\oled", "/DOLED_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\oled\\windows\\x64\\release\\sensor\\oled\\OLED_Data.c.obj", "sensor\\oled\\OLED_Data.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\oled\\OLED_Data.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal.c.o", "components\\runtime\\osal\\src\\osal.c"],
+  "file": "components\\runtime\\osal\\src\\osal.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/MD", "/std:c11", "/Isensor\\ICM42688P", "/DICM42688P_DRIVER_AVAILABLE", "/W4", "/utf-8", "/Fobuild\\.objs\\icm42688p\\windows\\x64\\release\\sensor\\ICM42688P\\icm42688p.c.obj", "sensor\\ICM42688P\\icm42688p.c", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include", "-imsvc", "E:\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt", "-imsvc", "E:\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"],
-  "file": "sensor\\ICM42688P\\icm42688p.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_event.c.o", "components\\runtime\\osal\\src\\osal_event.c"],
+  "file": "components\\runtime\\osal\\src\\osal_event.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_memory.c.o", "components\\runtime\\osal\\src\\osal_memory.c"],
+  "file": "components\\runtime\\osal\\src\\osal_memory.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_msg.c.o", "components\\runtime\\osal\\src\\osal_msg.c"],
+  "file": "components\\runtime\\osal\\src\\osal_msg.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_timer.c.o", "components\\runtime\\osal\\src\\osal_timer.c"],
+  "file": "components\\runtime\\osal\\src\\osal_timer.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_pt.c.o", "components\\runtime\\osal\\src\\osal_pt.c"],
+  "file": "components\\runtime\\osal\\src\\osal_pt.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal_port.c.o", "components\\runtime\\osal\\src\\osal_port.c"],
+  "file": "components\\runtime\\osal\\src\\osal_port.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.integration\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.integration\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c"],
+  "file": "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_crc8.c.o", "components\\protocols\\adhoc\\src\\adhoc_crc8.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_crc8.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_data_plane.c.o", "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_frame.c.o", "components\\protocols\\adhoc\\src\\adhoc_frame.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_frame.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_node.c.o", "components\\protocols\\adhoc\\src\\adhoc_node.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_node.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_reply_list.c.o", "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_sm.c.o", "components\\protocols\\adhoc\\src\\adhoc_sm.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_sm.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_timing.c.o", "components\\protocols\\adhoc\\src\\adhoc_timing.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_timing.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c.o", "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"],
+  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\sw-timer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sw_timer\\cross\\arm\\release\\components\\foundation\\sw-timer\\src\\sw_timer.c.o", "components\\foundation\\sw-timer\\src\\sw_timer.c"],
+  "file": "components\\foundation\\sw-timer\\src\\sw_timer.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
 }]

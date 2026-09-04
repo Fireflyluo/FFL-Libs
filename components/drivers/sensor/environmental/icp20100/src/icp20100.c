@@ -15,6 +15,13 @@
 #define EAGAIN 11
 #endif
 
+#define ICP20100_MODE_FIFO_MASK       0x03u
+#define ICP20100_MODE_POWER_MASK      0x04u
+#define ICP20100_MODE_MEAS_MASK       0x08u
+#define ICP20100_MODE_CONFIG_MASK     0xE0u
+#define ICP20100_MODE_CONFIG_SHIFT    5u
+#define ICP20100_FIFO_LEVEL_MASK      0x1Fu
+
 const icp20100_cfg_t g_icp20100_default_cfg = {
     .addr = ICP20100_I2C_ADDR_AD0_LOW,
     .expected_chip_id = ICP20100_DEVICE_ID_DEFAULT,
@@ -147,15 +154,15 @@ int icp20100_probe(icp20100_dev_t *dev, uint8_t *chip_id, uint8_t *version)
 
 int icp20100_soft_reset(icp20100_dev_t *dev)
 {
-    icp20100_mode_select_t mode;
+    uint8_t mode;
     int rc;
 
     if (dev == NULL) {
         return -EINVAL;
     }
 
-    memset(&mode, 0, sizeof(mode));
-    rc = icp20100_write_reg(dev, ICP20100_REG_MODE_SELECT, &mode.reg, 1u);
+    mode = 0u;
+    rc = icp20100_write_reg(dev, ICP20100_REG_MODE_SELECT, &mode, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -166,7 +173,7 @@ int icp20100_soft_reset(icp20100_dev_t *dev)
 int icp20100_set_config(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
 {
     icp20100_cfg_t use_cfg;
-    icp20100_mode_select_t mode;
+    uint8_t mode;
     int rc;
 
     if (dev == NULL) {
@@ -178,14 +185,12 @@ int icp20100_set_config(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
         return -EINVAL;
     }
 
-    memset(&mode, 0, sizeof(mode));
-    mode.bit.FIFO_READOUT_MODE = (uint8_t)use_cfg.fifo_mode;
-    mode.bit.POWER_MODE = (uint8_t)use_cfg.power_mode;
-    mode.bit.MEAS_MODE = (uint8_t)use_cfg.meas_mode;
-    mode.bit.FORCED_MEAS_TRIGGER = 0u;
-    mode.bit.MEAS_CONFIG = (uint8_t)use_cfg.op_mode;
+    mode = (uint8_t)((uint8_t)use_cfg.fifo_mode & ICP20100_MODE_FIFO_MASK);
+    mode |= (uint8_t)(((uint8_t)use_cfg.power_mode << 2u) & ICP20100_MODE_POWER_MASK);
+    mode |= (uint8_t)(((uint8_t)use_cfg.meas_mode << 3u) & ICP20100_MODE_MEAS_MASK);
+    mode |= (uint8_t)(((uint8_t)use_cfg.op_mode << ICP20100_MODE_CONFIG_SHIFT) & ICP20100_MODE_CONFIG_MASK);
 
-    rc = icp20100_write_reg(dev, ICP20100_REG_MODE_SELECT, &mode.reg, 1u);
+    rc = icp20100_write_reg(dev, ICP20100_REG_MODE_SELECT, &mode, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -239,7 +244,7 @@ int icp20100_init(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
 
 int icp20100_read_raw(icp20100_dev_t *dev, icp20100_raw_sample_t *raw)
 {
-    icp20100_fifo_fill_t fifo_fill;
+    uint8_t fifo_fill;
     uint8_t data[6];
     uint32_t press20;
     uint32_t temp20;
@@ -252,11 +257,11 @@ int icp20100_read_raw(icp20100_dev_t *dev, icp20100_raw_sample_t *raw)
         return -ENODEV;
     }
 
-    rc = icp20100_read_reg(dev, ICP20100_REG_FIFO_FILL, &fifo_fill.reg, 1u);
+    rc = icp20100_read_reg(dev, ICP20100_REG_FIFO_FILL, &fifo_fill, 1u);
     if (rc != 0) {
         return rc;
     }
-    if (fifo_fill.bit.FIFO_LEVEL == 0u) {
+    if ((fifo_fill & ICP20100_FIFO_LEVEL_MASK) == 0u) {
         return -EAGAIN;
     }
 

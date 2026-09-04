@@ -7,8 +7,18 @@ target("ffl.sht30")
     add_includedirs("include", {public = true})
     add_deps("ffl.atomic")
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
+    end
+
+target("ffl.sht30.test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/sht30_crc_test.c")
+    add_deps("ffl.sht30")
+    add_tests("default")
+
+    if not is_plat("windows") then
+        add_cflags("-Wall", "-Wextra", "-Werror")
     end

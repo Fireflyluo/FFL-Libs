@@ -7,8 +7,6 @@ target("ffl.osal")
     add_includedirs("include", {public = true})
     add_deps("ffl.protothreads")
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
     end

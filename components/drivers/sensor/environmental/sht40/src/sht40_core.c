@@ -3,6 +3,25 @@
 
 #include <errno.h>
 
+#ifndef EBADMSG
+#define EBADMSG EIO
+#endif
+
+static uint8_t sht40_core_crc8(const uint8_t *data, uint8_t len)
+{
+    uint8_t crc = 0xFFu;
+    uint8_t index;
+    uint8_t bit;
+
+    for (index = 0u; index < len; ++index) {
+        crc ^= data[index];
+        for (bit = 0u; bit < 8u; ++bit) {
+            crc = (crc & 0x80u) != 0u ? (uint8_t)((crc << 1) ^ 0x31u) : (uint8_t)(crc << 1);
+        }
+    }
+    return crc;
+}
+
 int sht40_core_try_lock(sht40_dev_t *dev)
 {
     if (dev == 0) {
@@ -77,9 +96,15 @@ uint32_t sht40_core_measure_delay_ms(uint8_t cmd)
 int sht40_core_xfer_sync(sht40_dev_t *dev, uint8_t *buf, uint16_t len, bool read)
 {
     sht40_comm_msg_t msg;
+    int rc;
 
     if (buf == 0 || len == 0u) {
         return -EINVAL;
+    }
+
+    rc = sht40_core_validate_dev(dev);
+    if (rc != 0) {
+        return rc;
     }
 
     msg.buf = buf;
@@ -89,13 +114,30 @@ int sht40_core_xfer_sync(sht40_dev_t *dev, uint8_t *buf, uint16_t len, bool read
     return sht40_core_map_bus_status(dev->ops->xfer(dev->bus_ctx, &msg, 1u, 0, 0));
 }
 
+int sht40_core_validate_response(const uint8_t rx[6])
+{
+    if (rx == 0) {
+        return -EINVAL;
+    }
+    if (sht40_core_crc8(rx, 2u) != rx[2] || sht40_core_crc8(&rx[3], 2u) != rx[5]) {
+        return -EBADMSG;
+    }
+    return 0;
+}
+
 int sht40_core_read_sample_parse(const uint8_t rx[6], sht40_sample_t *out)
 {
     uint16_t t_raw;
     uint16_t h_raw;
+    int rc;
 
     if (rx == 0 || out == 0) {
         return -EINVAL;
+    }
+
+    rc = sht40_core_validate_response(rx);
+    if (rc != 0) {
+        return rc;
     }
 
     t_raw = (uint16_t)(((uint16_t)rx[0] << 8) | rx[1]);

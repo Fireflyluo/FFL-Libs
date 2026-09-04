@@ -7,8 +7,6 @@ target("ffl.qmi8658a")
     add_includedirs("include", {public = true})
     add_deps("ffl.imu_common")
 
-    if is_plat("mingw", "linux", "macosx") then
+    if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
-    elseif is_plat("windows") then
-        add_cflags("/W4", "/utf-8")
     end

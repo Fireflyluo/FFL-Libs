@@ -183,66 +183,66 @@ int sc7a20_core_decode_xyz(const sc7a20_dev_t *dev, const uint8_t raw[6], sc7a20
 int sc7a20_core_apply_config(sc7a20_dev_t *dev, const sc7a20_cfg_t *cfg)
 {
     int rc;
-    sc7a20_ctrl0_t ctrl0;
-    sc7a20_ctrl1_t ctrl1;
-    sc7a20_ctrl2_t ctrl2;
-    sc7a20_ctrl3_t ctrl3;
-    sc7a20_ctrl4_t ctrl4;
+    uint8_t ctrl0 = 0u;
+    uint8_t ctrl1 = 0u;
+    uint8_t ctrl2 = 0u;
+    uint8_t ctrl3 = 0u;
+    uint8_t ctrl4 = 0u;
 
     if (dev == NULL || cfg == NULL) {
         return -EINVAL;
     }
 
-    memset(&ctrl0, 0, sizeof(ctrl0));
-    memset(&ctrl1, 0, sizeof(ctrl1));
-    memset(&ctrl2, 0, sizeof(ctrl2));
-    memset(&ctrl3, 0, sizeof(ctrl3));
-    memset(&ctrl4, 0, sizeof(ctrl4));
+    if (cfg->high_resolution) {
+        ctrl0 |= SC7A20_CTRL0_HR_MASK;
+    }
+    if (cfg->axis_x_en) {
+        ctrl1 |= SC7A20_CTRL1_XEN_MASK;
+    }
+    if (cfg->axis_y_en) {
+        ctrl1 |= SC7A20_CTRL1_YEN_MASK;
+    }
+    if (cfg->axis_z_en) {
+        ctrl1 |= SC7A20_CTRL1_ZEN_MASK;
+    }
+    if (cfg->low_power) {
+        ctrl1 |= SC7A20_CTRL1_LPEN_MASK;
+    }
+    ctrl1 |= (uint8_t)(((uint8_t)cfg->odr << SC7A20_CTRL1_ODR_SHIFT) & SC7A20_CTRL1_ODR_MASK);
 
-    ctrl0.bit.HR = cfg->high_resolution ? 1u : 0u;
-    ctrl0.bit.OSR = 0u;
+    if (cfg->block_data_update) {
+        ctrl4 |= SC7A20_CTRL4_BDU_MASK;
+    }
+    ctrl4 |= (uint8_t)(((uint8_t)cfg->range << SC7A20_CTRL4_FS_SHIFT) & SC7A20_CTRL4_FS_MASK);
 
-    ctrl1.bit.Xen = cfg->axis_x_en ? 1u : 0u;
-    ctrl1.bit.Yen = cfg->axis_y_en ? 1u : 0u;
-    ctrl1.bit.Zen = cfg->axis_z_en ? 1u : 0u;
-    ctrl1.bit.LPen = cfg->low_power ? 1u : 0u;
-    ctrl1.bit.ODR = (uint8_t)cfg->odr;
-
-    ctrl2.reg = 0u;
-    ctrl3.reg = 0u;
-
-    ctrl4.reg = 0u;
-    ctrl4.bit.BDU = cfg->block_data_update ? 1u : 0u;
-    ctrl4.bit.fs = (uint8_t)cfg->range;
-
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL0, &ctrl0.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL0, &ctrl0, 1u);
     if (rc != 0) {
         return rc;
     }
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL1, &ctrl1.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL1, &ctrl1, 1u);
     if (rc != 0) {
         return rc;
     }
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL2, &ctrl2.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL2, &ctrl2, 1u);
     if (rc != 0) {
         return rc;
     }
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL3, &ctrl3.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL3, &ctrl3, 1u);
     if (rc != 0) {
         return rc;
     }
-    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL4, &ctrl4.reg, 1u);
+    rc = sc7a20_core_write_reg(dev, SC7A20_CTRL4, &ctrl4, 1u);
     if (rc != 0) {
         return rc;
     }
 
-    rc = sc7a20_core_read_reg(dev, SC7A20_CTRL4, &ctrl4.reg, 1u);
+    rc = sc7a20_core_read_reg(dev, SC7A20_CTRL4, &ctrl4, 1u);
     if (rc != 0) {
         return rc;
     }
 
     dev->cfg = *cfg;
-    dev->endian_ble = ctrl4.bit.BLE;
+    dev->endian_ble = (ctrl4 & SC7A20_CTRL4_BLE_MASK) != 0u;
     dev->sensitivity_g_per_lsb = sc7a20_sensitivity_g_per_lsb(cfg->range);
     return 0;
 }

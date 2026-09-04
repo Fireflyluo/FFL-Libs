@@ -14,11 +14,7 @@ static inline int ffl_atomic_try_lock_u8(volatile uint8_t *value)
 #elif defined(__GNUC__) || defined(__clang__)
     return __sync_bool_compare_and_swap(value, 0U, 1U);
 #else
-    if (*value != 0U) {
-        return 0;
-    }
-    *value = 1U;
-    return 1;
+#error "ffl_atomic requires MSVC, GCC, or Clang atomic intrinsics"
 #endif
 }
 
@@ -29,7 +25,7 @@ static inline void ffl_atomic_unlock_u8(volatile uint8_t *value)
 #elif defined(__GNUC__) || defined(__clang__)
     __sync_lock_release(value);
 #else
-    *value = 0U;
+#error "ffl_atomic requires MSVC, GCC, or Clang atomic intrinsics"
 #endif
 }
 

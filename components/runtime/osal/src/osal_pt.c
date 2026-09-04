@@ -63,8 +63,7 @@ uint8_t osal_pt_create(osal_pt_scheduler_t *sched,
     // 复制名称
     if (name != NULL)
     {
-        strncpy(new_pt->name, name, sizeof(new_pt->name) - 1);
-        new_pt->name[sizeof(new_pt->name) - 1] = '\0';
+        (void)snprintf(new_pt->name, sizeof(new_pt->name), "%s", name);
     }
     else
     {

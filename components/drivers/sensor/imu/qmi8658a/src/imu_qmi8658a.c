@@ -12,6 +12,23 @@
 #define ENODEV 19
 #endif
 
+#define QMI8658A_CTRL1_ADDR_AI_MASK   0x40u
+#define QMI8658A_CTRL2_ODR_MASK       0x0Fu
+#define QMI8658A_CTRL2_FS_MASK        0x70u
+#define QMI8658A_CTRL2_FS_SHIFT       4u
+#define QMI8658A_CTRL3_ODR_MASK       0x0Fu
+#define QMI8658A_CTRL3_FS_MASK        0x70u
+#define QMI8658A_CTRL3_FS_SHIFT       4u
+#define QMI8658A_CTRL5_ACCEL_LPF_EN   0x01u
+#define QMI8658A_CTRL5_ACCEL_LPF_MASK 0x06u
+#define QMI8658A_CTRL5_ACCEL_LPF_SHIFT 1u
+#define QMI8658A_CTRL5_GYRO_LPF_EN    0x10u
+#define QMI8658A_CTRL5_GYRO_LPF_MASK  0x60u
+#define QMI8658A_CTRL5_GYRO_LPF_SHIFT 5u
+#define QMI8658A_CTRL7_ACCEL_EN       0x01u
+#define QMI8658A_CTRL7_GYRO_EN        0x02u
+#define QMI8658A_CTRL7_SYNC_SAMPLE    0x80u
+
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -189,35 +206,31 @@ int imu_qmi8658a_set_accel_config(imu_qmi8658a_t *dev,
                                   qmi8658a_accel_fs_t fs,
                                   qmi8658a_accel_odr_t odr)
 {
-    qmi8658a_ctrl2_t ctrl2;
-    memset(&ctrl2, 0, sizeof(ctrl2));
-    ctrl2.bit.aFS = (uint8_t)fs;
-    ctrl2.bit.aODR = (uint8_t)odr;
+    uint8_t ctrl2 = (uint8_t)((uint8_t)odr & QMI8658A_CTRL2_ODR_MASK);
+    ctrl2 |= (uint8_t)(((uint8_t)fs << QMI8658A_CTRL2_FS_SHIFT) & QMI8658A_CTRL2_FS_MASK);
 
     dev->cfg.accel_fs = fs;
     dev->cfg.accel_odr = odr;
-    return imu_qmi8658a_write_reg(dev, QMI8658A_CTRL2, &ctrl2.reg, 1u);
+    return imu_qmi8658a_write_reg(dev, QMI8658A_CTRL2, &ctrl2, 1u);
 }
 
 int imu_qmi8658a_set_gyro_config(imu_qmi8658a_t *dev,
                                  qmi8658a_gyro_fs_t fs,
                                  qmi8658a_gyro_odr_t odr)
 {
-    qmi8658a_ctrl3_t ctrl3;
-    memset(&ctrl3, 0, sizeof(ctrl3));
-    ctrl3.bit.gFS = (uint8_t)fs;
-    ctrl3.bit.gODR = (uint8_t)odr;
+    uint8_t ctrl3 = (uint8_t)((uint8_t)odr & QMI8658A_CTRL3_ODR_MASK);
+    ctrl3 |= (uint8_t)(((uint8_t)fs << QMI8658A_CTRL3_FS_SHIFT) & QMI8658A_CTRL3_FS_MASK);
 
     dev->cfg.gyro_fs = fs;
     dev->cfg.gyro_odr = odr;
-    return imu_qmi8658a_write_reg(dev, QMI8658A_CTRL3, &ctrl3.reg, 1u);
+    return imu_qmi8658a_write_reg(dev, QMI8658A_CTRL3, &ctrl3, 1u);
 }
 
 int imu_qmi8658a_init(imu_qmi8658a_t *dev, const imu_qmi8658a_cfg_t *cfg)
 {
-    qmi8658a_ctrl1_t ctrl1;
-    qmi8658a_ctrl5_t ctrl5;
-    qmi8658a_ctrl7_t ctrl7;
+    uint8_t ctrl1;
+    uint8_t ctrl5;
+    uint8_t ctrl7;
     imu_qmi8658a_cfg_t local_cfg;
     int rc;
 
@@ -241,9 +254,8 @@ int imu_qmi8658a_init(imu_qmi8658a_t *dev, const imu_qmi8658a_cfg_t *cfg)
         return rc;
     }
 
-    memset(&ctrl1, 0, sizeof(ctrl1));
-    ctrl1.bit.ADDR_AI = local_cfg.enable_auto_increment ? 1u : 0u;
-    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL1, &ctrl1.reg, 1u);
+    ctrl1 = local_cfg.enable_auto_increment ? QMI8658A_CTRL1_ADDR_AI_MASK : 0u;
+    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL1, &ctrl1, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -258,21 +270,19 @@ int imu_qmi8658a_init(imu_qmi8658a_t *dev, const imu_qmi8658a_cfg_t *cfg)
         return rc;
     }
 
-    memset(&ctrl5, 0, sizeof(ctrl5));
-    ctrl5.bit.aLPF_EN = local_cfg.accel_lpf_enable ? 1u : 0u;
-    ctrl5.bit.aLPF_MODE = (uint8_t)(local_cfg.accel_lpf_mode & 0x3u);
-    ctrl5.bit.gLPF_EN = local_cfg.gyro_lpf_enable ? 1u : 0u;
-    ctrl5.bit.gLPF_MODE = (uint8_t)(local_cfg.gyro_lpf_mode & 0x3u);
-    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL5, &ctrl5.reg, 1u);
+    ctrl5 = local_cfg.accel_lpf_enable ? QMI8658A_CTRL5_ACCEL_LPF_EN : 0u;
+    ctrl5 |= (uint8_t)(((uint8_t)local_cfg.accel_lpf_mode << QMI8658A_CTRL5_ACCEL_LPF_SHIFT) & QMI8658A_CTRL5_ACCEL_LPF_MASK);
+    ctrl5 |= local_cfg.gyro_lpf_enable ? QMI8658A_CTRL5_GYRO_LPF_EN : 0u;
+    ctrl5 |= (uint8_t)(((uint8_t)local_cfg.gyro_lpf_mode << QMI8658A_CTRL5_GYRO_LPF_SHIFT) & QMI8658A_CTRL5_GYRO_LPF_MASK);
+    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL5, &ctrl5, 1u);
     if (rc != 0) {
         return rc;
     }
 
-    memset(&ctrl7, 0, sizeof(ctrl7));
-    ctrl7.bit.aEN = local_cfg.enable_accel ? 1u : 0u;
-    ctrl7.bit.gEN = local_cfg.enable_gyro ? 1u : 0u;
-    ctrl7.bit.syncSmpl = local_cfg.enable_sync_sample ? 1u : 0u;
-    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL7, &ctrl7.reg, 1u);
+    ctrl7 = local_cfg.enable_accel ? QMI8658A_CTRL7_ACCEL_EN : 0u;
+    ctrl7 |= local_cfg.enable_gyro ? QMI8658A_CTRL7_GYRO_EN : 0u;
+    ctrl7 |= local_cfg.enable_sync_sample ? QMI8658A_CTRL7_SYNC_SAMPLE : 0u;
+    rc = imu_qmi8658a_write_reg(dev, QMI8658A_CTRL7, &ctrl7, 1u);
     if (rc != 0) {
         return rc;
     }

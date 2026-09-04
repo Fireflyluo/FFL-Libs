@@ -101,6 +101,7 @@ uint8_t sht40_core_precision_cmd(sht40_precision_t precision);
 uint32_t sht40_core_measure_delay_ms(uint8_t cmd);
 
 int sht40_core_xfer_sync(sht40_dev_t *dev, uint8_t *buf, uint16_t len, bool read);
+int sht40_core_validate_response(const uint8_t rx[6]);
 int sht40_core_read_sample_parse(const uint8_t rx[6], sht40_sample_t *out);
 
 #ifdef __cplusplus

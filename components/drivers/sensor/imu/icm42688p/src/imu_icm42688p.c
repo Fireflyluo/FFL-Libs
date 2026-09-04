@@ -18,6 +18,17 @@
 
 #define IMU_ICM42688P_DEFAULT_ADDR   0x69u
 #define IMU_ICM42688P_EXPECTED_ID    0x47u
+#define ICM42688_DEVICE_CONFIG_SOFT_RESET_MASK 0x01u
+#define ICM42688_INTF_CONFIG1_CLKSEL_MASK       0x03u
+#define ICM42688_PWR_MGMT0_ACCEL_MODE_MASK      0x03u
+#define ICM42688_PWR_MGMT0_GYRO_MODE_MASK       0x0Cu
+#define ICM42688_PWR_MGMT0_GYRO_MODE_SHIFT      2u
+#define ICM42688_GYRO_CONFIG0_ODR_MASK          0x0Fu
+#define ICM42688_GYRO_CONFIG0_FS_MASK           0xE0u
+#define ICM42688_GYRO_CONFIG0_FS_SHIFT          5u
+#define ICM42688_ACCEL_CONFIG0_ODR_MASK         0x0Fu
+#define ICM42688_ACCEL_CONFIG0_FS_MASK          0xE0u
+#define ICM42688_ACCEL_CONFIG0_FS_SHIFT         5u
 
 const imu_icm42688p_cfg_t g_imu_icm42688p_default_cfg = {
     .addr = IMU_ICM42688P_DEFAULT_ADDR,
@@ -220,13 +231,10 @@ int imu_icm42688p_probe(imu_icm42688p_t *dev, uint8_t *who_am_i)
 
 int imu_icm42688p_soft_reset(imu_icm42688p_t *dev)
 {
-    icm42688_reg_device_config_t cfg;
+    uint8_t cfg = ICM42688_DEVICE_CONFIG_SOFT_RESET_MASK;
     int rc;
 
-    memset(&cfg, 0, sizeof(cfg));
-    cfg.bits.SOFT_RESET = 1u;
-
-    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_DEVICE_CONFIG, &cfg.reg, 1u);
+    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_DEVICE_CONFIG, &cfg, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -240,35 +248,31 @@ int imu_icm42688p_set_gyro_config(imu_icm42688p_t *dev,
                                   icm42688_gyro_fs_t fs,
                                   icm42688_odr_t odr)
 {
-    icm42688_reg_gyro_config0_t cfg;
-    memset(&cfg, 0, sizeof(cfg));
-    cfg.bits.GYRO_FS_SEL = (uint8_t)fs;
-    cfg.bits.GYRO_ODR = (uint8_t)odr;
+    uint8_t cfg = (uint8_t)((uint8_t)odr & ICM42688_GYRO_CONFIG0_ODR_MASK);
+    cfg |= (uint8_t)(((uint8_t)fs << ICM42688_GYRO_CONFIG0_FS_SHIFT) & ICM42688_GYRO_CONFIG0_FS_MASK);
 
     dev->cfg.gyro_fs = fs;
     dev->cfg.gyro_odr = odr;
-    return imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_GYRO_CONFIG0, &cfg.reg, 1u);
+    return imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_GYRO_CONFIG0, &cfg, 1u);
 }
 
 int imu_icm42688p_set_accel_config(imu_icm42688p_t *dev,
                                    icm42688_accel_fs_t fs,
                                    icm42688_odr_t odr)
 {
-    icm42688_reg_accel_config0_t cfg;
-    memset(&cfg, 0, sizeof(cfg));
-    cfg.bits.ACCEL_FS_SEL = (uint8_t)fs;
-    cfg.bits.ACCEL_ODR = (uint8_t)odr;
+    uint8_t cfg = (uint8_t)((uint8_t)odr & ICM42688_ACCEL_CONFIG0_ODR_MASK);
+    cfg |= (uint8_t)(((uint8_t)fs << ICM42688_ACCEL_CONFIG0_FS_SHIFT) & ICM42688_ACCEL_CONFIG0_FS_MASK);
 
     dev->cfg.accel_fs = fs;
     dev->cfg.accel_odr = odr;
-    return imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_ACCEL_CONFIG0, &cfg.reg, 1u);
+    return imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_ACCEL_CONFIG0, &cfg, 1u);
 }
 
 int imu_icm42688p_init(imu_icm42688p_t *dev, const imu_icm42688p_cfg_t *cfg)
 {
     imu_icm42688p_cfg_t local_cfg;
-    icm42688_reg_intf_config1_t intf_cfg;
-    icm42688_reg_pwr_mgmt0_t pwr_cfg;
+    uint8_t intf_cfg;
+    uint8_t pwr_cfg;
     int rc;
 
     if (dev == NULL) {
@@ -293,18 +297,15 @@ int imu_icm42688p_init(imu_icm42688p_t *dev, const imu_icm42688p_cfg_t *cfg)
         return rc;
     }
 
-    memset(&intf_cfg, 0, sizeof(intf_cfg));
-    intf_cfg.bits.CLKSEL = 1u;
-    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_INTF_CONFIG1, &intf_cfg.reg, 1u);
+    intf_cfg = 0x01u & ICM42688_INTF_CONFIG1_CLKSEL_MASK;
+    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_INTF_CONFIG1, &intf_cfg, 1u);
     if (rc != 0) {
         return rc;
     }
 
-    memset(&pwr_cfg, 0, sizeof(pwr_cfg));
-    pwr_cfg.bits.ACCEL_MODE = (uint8_t)local_cfg.accel_mode;
-    pwr_cfg.bits.GYRO_MODE = (uint8_t)local_cfg.gyro_mode;
-    pwr_cfg.bits.TEMP_DIS = 0u;
-    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_PWR_MGMT0, &pwr_cfg.reg, 1u);
+    pwr_cfg = (uint8_t)((uint8_t)local_cfg.accel_mode & ICM42688_PWR_MGMT0_ACCEL_MODE_MASK);
+    pwr_cfg |= (uint8_t)(((uint8_t)local_cfg.gyro_mode << ICM42688_PWR_MGMT0_GYRO_MODE_SHIFT) & ICM42688_PWR_MGMT0_GYRO_MODE_MASK);
+    rc = imu_icm42688p_write_reg(dev, ICM42688_BANK0, ICM42688_REG_PWR_MGMT0, &pwr_cfg, 1u);
     if (rc != 0) {
         return rc;
     }

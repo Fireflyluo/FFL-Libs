@@ -168,7 +168,7 @@ void osal_mem_kick(void)
  */
 void *osal_mem_alloc(uint16 size)
 {
-    osalMemHdr_t  *prev;
+    osalMemHdr_t  *prev = NULL;
     osalMemHdr_t  *hdr;
     uint16  tmp;
     byte coal = 0;

@@ -139,19 +139,18 @@ int qmc5883p_probe(qmc5883p_dev_t *dev, uint8_t *chip_id)
 
 int qmc5883p_soft_reset(qmc5883p_dev_t *dev)
 {
-    qmc5883p_ctrl2_t ctrl2;
+    uint8_t ctrl2;
     int rc;
 
     if (dev == NULL) {
         return -EINVAL;
     }
 
-    memset(&ctrl2, 0, sizeof(ctrl2));
-    ctrl2.bit.SOFT_RST = 1u;
-    ctrl2.bit.RNG = (uint8_t)dev->cfg.range;
-    ctrl2.bit.SET_RESET_MODE = (uint8_t)dev->cfg.set_reset_mode;
+    ctrl2 = QMC5883P_CTRL2_SOFT_RESET_MASK;
+    ctrl2 |= (uint8_t)(((uint8_t)dev->cfg.range << QMC5883P_CTRL2_RNG_SHIFT) & QMC5883P_CTRL2_RNG_MASK);
+    ctrl2 |= (uint8_t)((uint8_t)dev->cfg.set_reset_mode & QMC5883P_CTRL2_SET_RESET_MODE_MASK);
 
-    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_2, &ctrl2.reg, 1u);
+    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_2, &ctrl2, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -161,8 +160,8 @@ int qmc5883p_soft_reset(qmc5883p_dev_t *dev)
 int qmc5883p_set_config(qmc5883p_dev_t *dev, const qmc5883p_cfg_t *cfg)
 {
     qmc5883p_cfg_t use_cfg;
-    qmc5883p_ctrl1_t ctrl1;
-    qmc5883p_ctrl2_t ctrl2;
+    uint8_t ctrl1;
+    uint8_t ctrl2;
     int rc;
 
     if (dev == NULL) {
@@ -171,20 +170,18 @@ int qmc5883p_set_config(qmc5883p_dev_t *dev, const qmc5883p_cfg_t *cfg)
 
     use_cfg = (cfg != NULL) ? *cfg : dev->cfg;
 
-    memset(&ctrl2, 0, sizeof(ctrl2));
-    ctrl2.bit.SET_RESET_MODE = (uint8_t)use_cfg.set_reset_mode;
-    ctrl2.bit.RNG = (uint8_t)use_cfg.range;
-    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_2, &ctrl2.reg, 1u);
+    ctrl2 = (uint8_t)((uint8_t)use_cfg.set_reset_mode & QMC5883P_CTRL2_SET_RESET_MODE_MASK);
+    ctrl2 |= (uint8_t)(((uint8_t)use_cfg.range << QMC5883P_CTRL2_RNG_SHIFT) & QMC5883P_CTRL2_RNG_MASK);
+    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_2, &ctrl2, 1u);
     if (rc != 0) {
         return rc;
     }
 
-    memset(&ctrl1, 0, sizeof(ctrl1));
-    ctrl1.bit.MODE = (uint8_t)use_cfg.mode;
-    ctrl1.bit.ODR = (uint8_t)use_cfg.odr;
-    ctrl1.bit.OSR1 = (uint8_t)use_cfg.osr1;
-    ctrl1.bit.OSR2 = (uint8_t)use_cfg.osr2;
-    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_1, &ctrl1.reg, 1u);
+    ctrl1 = (uint8_t)((uint8_t)use_cfg.mode & QMC5883P_CTRL1_MODE_MASK);
+    ctrl1 |= (uint8_t)(((uint8_t)use_cfg.odr << QMC5883P_CTRL1_ODR_SHIFT) & QMC5883P_CTRL1_ODR_MASK);
+    ctrl1 |= (uint8_t)(((uint8_t)use_cfg.osr1 << QMC5883P_CTRL1_OSR1_SHIFT) & QMC5883P_CTRL1_OSR1_MASK);
+    ctrl1 |= (uint8_t)(((uint8_t)use_cfg.osr2 << QMC5883P_CTRL1_OSR2_SHIFT) & QMC5883P_CTRL1_OSR2_MASK);
+    rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_1, &ctrl1, 1u);
     if (rc != 0) {
         return rc;
     }
@@ -232,7 +229,7 @@ int qmc5883p_init(qmc5883p_dev_t *dev, const qmc5883p_cfg_t *cfg)
 int qmc5883p_read_raw(qmc5883p_dev_t *dev, qmc5883p_vec3i16_t *out)
 {
     uint8_t buf[6];
-    qmc5883p_status_t status;
+    uint8_t status;
     int rc;
 
     if (dev == NULL || out == NULL) {
@@ -242,11 +239,11 @@ int qmc5883p_read_raw(qmc5883p_dev_t *dev, qmc5883p_vec3i16_t *out)
         return -ENODEV;
     }
 
-    rc = qmc5883p_read_reg(dev, QMC5883P_REG_STATUS, &status.reg, 1u);
+    rc = qmc5883p_read_reg(dev, QMC5883P_REG_STATUS, &status, 1u);
     if (rc != 0) {
         return rc;
     }
-    if (status.bit.OVFL != 0u) {
+    if ((status & QMC5883P_STATUS_OVFL_MASK) != 0u) {
         return -EIO;
     }
 

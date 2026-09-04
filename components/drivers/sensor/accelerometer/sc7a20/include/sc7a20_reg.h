@@ -17,6 +17,18 @@ extern "C" {
 
 #include <stdint.h>
 
+#define SC7A20_CTRL0_HR_MASK       0x01u
+#define SC7A20_CTRL1_XEN_MASK      0x01u
+#define SC7A20_CTRL1_YEN_MASK      0x02u
+#define SC7A20_CTRL1_ZEN_MASK      0x04u
+#define SC7A20_CTRL1_LPEN_MASK     0x08u
+#define SC7A20_CTRL1_ODR_MASK      0xF0u
+#define SC7A20_CTRL1_ODR_SHIFT     4u
+#define SC7A20_CTRL4_FS_MASK       0x30u
+#define SC7A20_CTRL4_FS_SHIFT      4u
+#define SC7A20_CTRL4_BLE_MASK      0x40u
+#define SC7A20_CTRL4_BDU_MASK      0x80u
+
 /* ========================== 设备基本信息 ========================== */
 #define SC7A20_CHIP_ID     0x11 // 设备ID寄存器预期值
 #define SC7A20_VERSION_VAL 0x28 // 版本号寄存器预期值
@@ -92,7 +104,20 @@ extern "C" {
 
 #define SC7A20_DIG_CTRL     0x57 // 数字功能控制寄存器
 
+#define SC7A20_CTRL0_HR_MASK       0x01u
+#define SC7A20_CTRL1_XEN_MASK      0x01u
+#define SC7A20_CTRL1_YEN_MASK      0x02u
+#define SC7A20_CTRL1_ZEN_MASK      0x04u
+#define SC7A20_CTRL1_LPEN_MASK     0x08u
+#define SC7A20_CTRL1_ODR_MASK      0xF0u
+#define SC7A20_CTRL1_ODR_SHIFT     4u
+#define SC7A20_CTRL4_FS_MASK       0x30u
+#define SC7A20_CTRL4_FS_SHIFT      4u
+#define SC7A20_CTRL4_BLE_MASK      0x40u
+#define SC7A20_CTRL4_BDU_MASK      0x80u
+
 /* ========================== 寄存器位域结构体 ========================== */
+#if defined(FFL_ENABLE_LEGACY_BITFIELDS)
 
 /* CTRL0 (0x1F): 模式控制 */
 typedef union {
@@ -456,6 +481,7 @@ typedef union {
     } bit;
     uint8_t reg;
 } sc7a20_spi_ctrl_t;
+#endif
 /* ========================== 枚举类型定义 ========================== */
 /* 加速度计ODR枚举 */
 typedef enum {

@@ -84,6 +84,11 @@ int sht40_read_serial(sht40_dev_t *dev, uint32_t *serial)
         return rc;
     }
 
+    rc = sht40_core_validate_response(rx);
+    if (rc != 0) {
+        return rc;
+    }
+
     *serial = ((uint32_t)rx[0] << 24) | ((uint32_t)rx[1] << 16) | ((uint32_t)rx[3] << 8) | rx[4];
     return 0;
 }

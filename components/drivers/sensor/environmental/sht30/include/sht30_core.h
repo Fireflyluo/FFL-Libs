@@ -99,6 +99,7 @@ void sht30_core_precision_cmd(uint8_t cmd[2], sht30_precision_t precision);
 uint32_t sht30_core_measure_delay_ms(const uint8_t cmd[2]);
 
 int sht30_core_xfer_sync(sht30_dev_t *dev, uint8_t *buf, uint16_t len, bool read);
+int sht30_core_validate_response(const uint8_t rx[6]);
 int sht30_core_read_sample_parse(const uint8_t rx[6], sht30_sample_t *out);
 
 #ifdef __cplusplus
