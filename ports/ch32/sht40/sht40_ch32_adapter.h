@@ -1,7 +1,7 @@
-﻿#ifndef SHT40_NEW_CH32_ADAPTER_H
-#define SHT40_NEW_CH32_ADAPTER_H
+#ifndef FFL_SHT40_CH32_ADAPTER_H
+#define FFL_SHT40_CH32_ADAPTER_H
 
-#include "../inc/sht40_core.h"
+#include "sht40_core.h"
 #include "drv_i2c.h"
 
 typedef struct {
@@ -11,4 +11,4 @@ typedef struct {
 
 extern const sht40_bus_ops_t g_sht40_ch32_i2c_ops;
 
-#endif
+#endif /* FFL_SHT40_CH32_ADAPTER_H */

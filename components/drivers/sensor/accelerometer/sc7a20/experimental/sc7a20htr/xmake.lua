@@ -5,7 +5,7 @@ target("sc7a20htr")
     set_basename("sc7a20htr")
 
     -- Source files
-    add_files("sc7a20_core.c", "sc7a20_core_async.c")
+    add_files("sc7a20_core.c", "sc7a20_core_async.c", "sc7a20_fifo.c")
 
     -- Optional platform file
     if os.exists("platform/platform.c") then

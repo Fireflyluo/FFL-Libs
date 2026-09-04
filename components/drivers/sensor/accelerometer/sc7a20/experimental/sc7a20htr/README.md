@@ -57,6 +57,9 @@ int main(void)
 数据读取：
 - `sc7a20_read_acceleration`
 - `sc7a20_read_raw_data`
+- `sc7a20_get_fifo_src`
+- `sc7a20_read_fifo_raw_data`
+- `sc7a20_read_fifo_acceleration`
 - `sc7a20_is_data_ready` / `sc7a20_read_new_data`
 
 配置管理：
@@ -86,6 +89,15 @@ int main(void)
 - 同一设备句柄不要在多任务中并发访问，必要时使用互斥或事件同步。
 - 异步接口由底层 I2C 回调驱动，回调中尽量保持轻量处理。
 - `sc7a20_check_async_timeout` 为占位逻辑，若需超时控制请在应用层实现。
+
+### SPI FIFO 使用建议
+
+- 如果通过 SPI 使用 FIFO，优先使用 `sc7a20_read_fifo_raw_data` 或 `sc7a20_read_fifo_acceleration`。
+- `SC7A20_FIFO_DATA (0x69)` 在 SPI 下依赖 `SC7A20_SPI_CTRL.ADR_SPI_AD6` 的 bank 选择，应用层直接访问时更容易出错。
+- 3 线 SPI FIFO 取样建议从 `0x27` 起做 7 字节连续读取，再解码后 6 字节的 XYZ。
+- 多器件共享 SPI 时，必须保证总线仲裁和片选严格独占。
+
+详细背景见 `spi_fifo_stability_notes.md`。
 
 ## 8. 版本信息
 

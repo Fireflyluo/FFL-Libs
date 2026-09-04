@@ -1,0 +1,6 @@
+target("ffl.imu_common")
+    set_kind("headeronly")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_headerfiles("include/*.h")
+    add_includedirs("include", {public = true})

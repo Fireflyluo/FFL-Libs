@@ -1,40 +1,27 @@
 # Local Xmake Repository
 
-This directory is a local xmake package repository. It exposes the package:
+本地 package 仓库只提供已经明确需要“快速完整库入口”的单设备驱动。它不再提供 `embedded-sensor-drivers`、`acc-lib`、`imu-lib` 等聚合包。
 
-- embedded-sensor-drivers
+当前 package：
 
-## Use in another project
-
-1) Add the repository path
+- `ffl-sc7a20`：SC7A20 完整静态 driver core；不携带 I2C、GPIO、IRQ、DMA 或具体 HAL。
 
 ```lua
-add_repositories("embedded-sensors path/to/fireflyluo-Embedded-Libs/xmake-repo")
-```
+add_repositories("fireflyluo path/to/fireflyluo-Embedded-Libs/xmake-repo")
+add_requires("ffl-sc7a20")
 
-2) Require the package (customize drivers)
-
-```lua
-add_requires("embedded-sensor-drivers", {
-    configs = {
-        sensor_icm42688p = true,
-        sensor_qmi8658a = true,
-        sensor_sc7a20htr = true,
-        sensor_sc7a20_new = true,
-        sensor_sht40 = true,
-        sensor_sht40_new = true,
-        sensor_oled = false,
-        utils_ringbuffer = true,
-        utils_sw_timer = true
-    }
-})
-```
-
-3) Link to your target
-
-```lua
-target("app")
+target("firmware")
     set_kind("binary")
-    add_files("src/*.c")
-    add_packages("embedded-sensor-drivers")
+    add_files("src/*.c", "board/sc7a20_port.c")
+    add_packages("ffl-sc7a20")
+```
+
+需要关闭异步 API、检查源代码或按工程裁剪时，请改用源码组件：
+
+```lua
+includes("path/to/fireflyluo-Embedded-Libs/components/drivers/sensor/accelerometer/sc7a20")
+
+target("firmware")
+    set_kind("binary")
+    add_deps("ffl.sc7a20")
 ```

@@ -1,7 +1,7 @@
-﻿#ifndef SC7A20_NEW_CH32_ADAPTER_H
-#define SC7A20_NEW_CH32_ADAPTER_H
+#ifndef FFL_SC7A20_CH32_ADAPTER_H
+#define FFL_SC7A20_CH32_ADAPTER_H
 
-#include "../inc/sc7a20_core.h"
+#include "sc7a20_core.h"
 #include "drv_i2c.h"
 
 typedef struct {
@@ -11,4 +11,4 @@ typedef struct {
 
 extern const sc7a20_bus_ops_t g_sc7a20_ch32_i2c_ops;
 
-#endif
+#endif /* FFL_SC7A20_CH32_ADAPTER_H */

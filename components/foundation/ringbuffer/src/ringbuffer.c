@@ -1,226 +1,170 @@
 #include "ringbuffer.h"
 
+#include <string.h>
+
 /**
- * @brief 初始化环形缓冲区
- *
- * @param rb            指向环形缓冲区对象的指针
- * @param pool          指向缓冲区池的指针
- * @param size          缓冲区大小
+ * @file ringbuffer.c
+ * @brief 基于镜像索引的固定容量字节环形缓冲区实现。
  */
+
+static int ringbuffer_is_valid(const ringbuffer_t *rb)
+{
+    return rb != NULL && rb->buffer_ptr != NULL && rb->buffer_size != 0U &&
+           rb->read_index < rb->buffer_size && rb->write_index < rb->buffer_size;
+}
+
+static size_t ringbuffer_data_length(const ringbuffer_t *rb)
+{
+    if (rb->read_index == rb->write_index) {
+        return rb->read_mirror == rb->write_mirror ? 0U : rb->buffer_size;
+    }
+
+    if (rb->write_index > rb->read_index) {
+        return rb->write_index - rb->read_index;
+    }
+
+    return rb->buffer_size - (rb->read_index - rb->write_index);
+}
+
+static size_t ringbuffer_space_length(const ringbuffer_t *rb)
+{
+    return rb->buffer_size - ringbuffer_data_length(rb);
+}
+
+static void ringbuffer_copy_in(ringbuffer_t *rb, const uint8_t *source, size_t length)
+{
+    size_t first_length = rb->buffer_size - rb->write_index;
+
+    if (first_length > length) {
+        first_length = length;
+    }
+
+    memcpy(&rb->buffer_ptr[rb->write_index], source, first_length);
+    memcpy(rb->buffer_ptr, source + first_length, length - first_length);
+}
+
+static void ringbuffer_copy_out(ringbuffer_t *rb, uint8_t *destination, size_t length)
+{
+    size_t first_length = rb->buffer_size - rb->read_index;
+
+    if (first_length > length) {
+        first_length = length;
+    }
+
+    memcpy(destination, &rb->buffer_ptr[rb->read_index], first_length);
+    memcpy(destination + first_length, rb->buffer_ptr, length - first_length);
+}
+
+static void ringbuffer_advance_read(ringbuffer_t *rb, size_t length)
+{
+    size_t next_index = rb->read_index + length;
+
+    if (next_index >= rb->buffer_size) {
+        rb->read_mirror ^= 1U;
+    }
+
+    rb->read_index = next_index % rb->buffer_size;
+}
+
+static void ringbuffer_advance_write(ringbuffer_t *rb, size_t length)
+{
+    size_t next_index = rb->write_index + length;
+
+    if (next_index >= rb->buffer_size) {
+        rb->write_mirror ^= 1U;
+    }
+
+    rb->write_index = next_index % rb->buffer_size;
+}
+
 void ringbuffer_init(ringbuffer_t *rb, uint8_t *pool, size_t size)
 {
-    if (rb == NULL || size == 0)
-    {
+    if (rb == NULL) {
         return;
     }
 
-    // 初始化读写索引
-    rb->read_mirror = rb->read_index = 0;
-    rb->write_mirror = rb->write_index = 0;
-
-    // 设置缓冲区池和大小
     rb->buffer_ptr = pool;
-    rb->buffer_size = size - (size % 4); // 假设对齐大小为4
+    rb->buffer_size = pool == NULL ? 0U : size;
+    rb->read_index = 0U;
+    rb->write_index = 0U;
+    rb->read_mirror = 0U;
+    rb->write_mirror = 0U;
 }
 
-/**
- * @brief 将一块数据放入环形缓冲区。如果容量不足，将丢弃超出范围的数据。
- *
- * @param rb            指向环形缓冲区对象的指针
- * @param ptr           指向数据缓冲区的指针
- * @param length        数据大小（字节）
- *
- * @return 返回放入环形缓冲区的数据大小
- */
 size_t ringbuffer_put(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
 {
-    size_t size;
-
-    if (rb == NULL)
-    {
-        return 0;
+    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+        return 0U;
     }
 
-    // 是否有足够的空间
-    size = rb->buffer_size - (rb->write_index - rb->read_index);
-    if (rb->write_index < rb->read_index)
-    {
-        size = rb->read_index - rb->write_index;
+    if (length == 0U) {
+        return 0U;
     }
 
-    // 没有空间
-    if (size == 0)
-    {
-        return 0;
+    if (length > ringbuffer_space_length(rb)) {
+        length = ringbuffer_space_length(rb);
     }
 
-    // 丢弃超出范围的数据
-    if (size < length)
-    {
-        length = size;
-    }
-
-    if (rb->buffer_size - rb->write_index > length)
-    {
-        // read_index - write_index = 空闲空间
-        memcpy(&rb->buffer_ptr[rb->write_index], ptr, length);
-        // 这不会导致溢出，因为在当前镜像中有足够的空间
-        rb->write_index += length;
-        return length;
-    }
-
-    memcpy(&rb->buffer_ptr[rb->write_index], &ptr[0], rb->buffer_size - rb->write_index);
-    memcpy(&rb->buffer_ptr[0], &ptr[rb->buffer_size - rb->write_index], length - (rb->buffer_size - rb->write_index));
-
-    // 进入镜像区间
-    rb->write_mirror = ~rb->write_mirror;
-    rb->write_index = length - (rb->buffer_size - rb->write_index);
-
+    ringbuffer_copy_in(rb, ptr, length);
+    ringbuffer_advance_write(rb, length);
     return length;
 }
 
-/**
- * @brief 将一块数据放入环形缓冲区。如果容量不足，将覆盖环形缓冲区中的现有数据。
- *
- * @param rb            指向环形缓冲区对象的指针
- * @param ptr           指向数据缓冲区的指针
- * @param length        数据大小（字节）
- *
- * @return 返回放入环形缓冲区的数据大小
- */
 size_t ringbuffer_put_force(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
 {
     size_t space_length;
 
-    if (rb == NULL)
-    {
-        return 0;
+    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+        return 0U;
     }
 
-    space_length = rb->buffer_size - (rb->write_index - rb->read_index);
-    if (rb->write_index < rb->read_index)
-    {
-        space_length = rb->read_index - rb->write_index;
+    if (length == 0U) {
+        return 0U;
     }
 
-    if (length > rb->buffer_size)
-    {
-        ptr = &ptr[length - rb->buffer_size];
+    if (length > rb->buffer_size) {
+        ptr += length - rb->buffer_size;
         length = rb->buffer_size;
     }
 
-    if (rb->buffer_size - rb->write_index > length)
-    {
-        // read_index - write_index = 空闲空间
-        memcpy(&rb->buffer_ptr[rb->write_index], ptr, length);
-        // 这不会导致溢出，因为在当前镜像中有足够的空间
-        rb->write_index += length;
-        if (length > space_length)
-        {
-            rb->read_index = rb->write_index;
-        }
-
-        return length;
+    space_length = ringbuffer_space_length(rb);
+    if (length > space_length) {
+        ringbuffer_advance_read(rb, length - space_length);
     }
 
-    memcpy(&rb->buffer_ptr[rb->write_index], &ptr[0], rb->buffer_size - rb->write_index);
-    memcpy(&rb->buffer_ptr[0], &ptr[rb->buffer_size - rb->write_index], length - (rb->buffer_size - rb->write_index));
-
-    // 进入镜像区间
-    rb->write_mirror = ~rb->write_mirror;
-    rb->write_index = length - (rb->buffer_size - rb->write_index);
-
-    if (length > space_length)
-    {
-        if (rb->write_index <= rb->read_index)
-        {
-            rb->read_mirror = ~rb->read_mirror;
-        }
-        rb->read_index = rb->write_index;
-    }
-
+    ringbuffer_copy_in(rb, ptr, length);
+    ringbuffer_advance_write(rb, length);
     return length;
 }
 
-/**
- * @brief 从环形缓冲区中获取数据。
- *
- * @param rb            指向环形缓冲区的指针
- * @param ptr           指向数据缓冲区的指针
- * @param length        想要从环形缓冲区中读取的数据大小
- *
- * @return 返回从环形缓冲区中读取的数据大小
- */
 size_t ringbuffer_get(ringbuffer_t *rb, uint8_t *ptr, size_t length)
 {
-    size_t size;
-
-    if (rb == NULL)
-    {
-        return 0;
+    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+        return 0U;
     }
 
-    // 是否有足够的数据
-    size = rb->buffer_size - (rb->write_index - rb->read_index);
-    if (rb->write_index < rb->read_index)
-    {
-        size = rb->read_index - rb->write_index;
+    if (length == 0U) {
+        return 0U;
     }
 
-    // 没有数据
-    if (size == 0)
-    {
-        return 0;
+    if (length > ringbuffer_data_length(rb)) {
+        length = ringbuffer_data_length(rb);
     }
 
-    // 数据不足
-    if (size < length)
-    {
-        length = size;
-    }
-
-    if (rb->buffer_size - rb->read_index > length)
-    {
-        // 复制所有数据
-        memcpy(ptr, &rb->buffer_ptr[rb->read_index], length);
-        // 这不会导致溢出，因为在当前镜像中有足够的空间
-        rb->read_index += length;
-        return length;
-    }
-
-    memcpy(&ptr[0], &rb->buffer_ptr[rb->read_index], rb->buffer_size - rb->read_index);
-    memcpy(&ptr[rb->buffer_size - rb->read_index], &rb->buffer_ptr[0], length - (rb->buffer_size - rb->read_index));
-
-    // 进入镜像区间
-    rb->read_mirror = ~rb->read_mirror;
-    rb->read_index = length - (rb->buffer_size - rb->read_index);
-
+    ringbuffer_copy_out(rb, ptr, length);
+    ringbuffer_advance_read(rb, length);
     return length;
 }
 
-/**
- * @brief 获取环形缓冲区的状态
- * @param rb  指向环形缓冲区对象的指针
- * @return 返回环形缓冲区的状态
- * 在读写指针的值相同情况下，如果二者的指示位相同，说明缓冲区为空；如果二者的指示位不同，说明缓冲区为满。
- */
-inline ringbuffer_state ringbuffer_status(ringbuffer_t *rb)
+ringbuffer_state ringbuffer_status(ringbuffer_t *rb)
 {
-    if (rb == NULL)
-    {
+    if (!ringbuffer_is_valid(rb)) {
         return RINGBUFFER_ERROR;
     }
 
-    if (rb->read_index == rb->write_index)
-    {
-        if (rb->read_mirror == rb->write_mirror)
-        {
-            return RINGBUFFER_EMPTY;
-        }
-        else
-        {
-            return RINGBUFFER_FULL;
-        }
+    if (rb->read_index != rb->write_index) {
+        return RINGBUFFER_HALFFULL;
     }
-    return RINGBUFFER_HALFFULL;
+
+    return rb->read_mirror == rb->write_mirror ? RINGBUFFER_EMPTY : RINGBUFFER_FULL;
 }

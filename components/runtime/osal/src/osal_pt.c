@@ -1,5 +1,8 @@
 // osal_pt.c
 #include "osal_pt.h"
+#include "osal_memory.h"
+
+#include <stdio.h>
 #include <string.h>
 
 // 全局调度器实例
@@ -54,6 +57,7 @@ uint8_t osal_pt_create(osal_pt_scheduler_t *sched,
     new_pt->triggered_events = 0;
     new_pt->entry = entry;
     new_pt->arg = arg;
+    new_pt->sched = sched;
     new_pt->next = NULL;
 
     // 复制名称

@@ -3,7 +3,11 @@
 #include <stddef.h>
 #include <string.h>
 
-/* Number of slots in timer wheel. */
+/**
+ * @file sw_timer.c
+ * @brief 基于固定 256 槽时间轮的软件定时器实现。
+ */
+
 #define SW_TIMER_WHEEL_SIZE 256U
 
 static sw_timer_t *g_wheel[SW_TIMER_WHEEL_SIZE];
@@ -11,7 +15,6 @@ static sw_timer_t *g_expired_list;
 static uint16_t g_current_slot;
 static uint32_t g_tick_ms;
 
-/* Optional platform critical-section hooks. */
 static sw_timer_lock_hook_t g_lock_hook;
 static sw_timer_lock_hook_t g_unlock_hook;
 
@@ -53,7 +56,7 @@ static void wheel_insert(sw_timer_t *timer, uint32_t ticks)
 {
     uint32_t slot_offset = ticks % SW_TIMER_WHEEL_SIZE;
 
-    timer->rounds = (uint16_t)(ticks / SW_TIMER_WHEEL_SIZE);
+    timer->rounds = (uint16_t)((ticks - 1U) / SW_TIMER_WHEEL_SIZE);
     timer->slot = (uint16_t)((g_current_slot + slot_offset) % SW_TIMER_WHEEL_SIZE);
     timer->next = g_wheel[timer->slot];
     g_wheel[timer->slot] = timer;
@@ -97,26 +100,44 @@ void sw_timer_stop(sw_timer_t *timer)
     head = &g_wheel[timer->slot];
     node = *head;
 
-    while (node != NULL)
-    {
-        if (node == timer)
-        {
-            if (prev == NULL)
-            {
-                *head = node->next;
-            }
-            else
-            {
-                prev->next = node->next;
-            }
-
-            timer->next = NULL;
-            timer->active = 0U;
-            break;
-        }
-
+    while (node != NULL && node != timer) {
         prev = node;
         node = node->next;
+    }
+
+    if (node == timer) {
+        if (prev == NULL) {
+            *head = node->next;
+        }
+        else {
+            prev->next = node->next;
+        }
+
+        timer->next = NULL;
+        timer->active = 0U;
+        sw_timer_exit_critical();
+        return;
+    }
+
+    head = &g_expired_list;
+    prev = NULL;
+    node = *head;
+
+    while (node != NULL && node != timer) {
+        prev = node;
+        node = node->next;
+    }
+
+    if (node == timer) {
+        if (prev == NULL) {
+            *head = node->next;
+        }
+        else {
+            prev->next = node->next;
+        }
+
+        timer->next = NULL;
+        timer->active = 0U;
     }
 
     sw_timer_exit_critical();

@@ -1,4 +1,4 @@
-﻿#include "../inc/sht40.h"
+#include "sht40.h"
 
 #include <errno.h>
 #include <string.h>

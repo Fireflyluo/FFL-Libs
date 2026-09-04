@@ -1,4 +1,5 @@
-﻿#include "../inc/sht40_core.h"
+#include "sht40_core.h"
+#include "ffl_atomic.h"
 
 #include <errno.h>
 
@@ -7,7 +8,7 @@ int sht40_core_try_lock(sht40_dev_t *dev)
     if (dev == 0) {
         return -EINVAL;
     }
-    if (!__sync_bool_compare_and_swap(&dev->in_use, 0u, 1u)) {
+    if (!ffl_atomic_try_lock_u8(&dev->in_use)) {
         return -EBUSY;
     }
     return 0;
@@ -16,7 +17,7 @@ int sht40_core_try_lock(sht40_dev_t *dev)
 void sht40_core_unlock(sht40_dev_t *dev)
 {
     if (dev != 0) {
-        __sync_lock_release(&dev->in_use);
+        ffl_atomic_unlock_u8(&dev->in_use);
     }
 }
 

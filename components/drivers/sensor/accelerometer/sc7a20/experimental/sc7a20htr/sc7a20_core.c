@@ -72,6 +72,30 @@ static sc7a20_status_t read_registers(sc7a20_handle_t handle, uint8_t reg, uint8
     return handle->ops.read(reg, data, len);
 }
 
+static void decode_raw_axes(sc7a20_handle_t handle, const uint8_t *buffer, int16_t *x, int16_t *y, int16_t *z)
+{
+    if (handle->endian == 0)
+    {
+        *x = ((int16_t)((buffer[1] << 8) | buffer[0])) >> 4;
+        *y = ((int16_t)((buffer[3] << 8) | buffer[2])) >> 4;
+        *z = ((int16_t)((buffer[5] << 8) | buffer[4])) >> 4;
+    }
+    else
+    {
+        *x = ((int16_t)((buffer[0] << 8) | buffer[1])) >> 4;
+        *y = ((int16_t)((buffer[2] << 8) | buffer[3])) >> 4;
+        *z = ((int16_t)((buffer[4] << 8) | buffer[5])) >> 4;
+    }
+}
+
+static void fill_accel_data_from_raw(sc7a20_handle_t handle, const uint8_t *buffer, sc7a20_accel_data_t *data)
+{
+    decode_raw_axes(handle, buffer, &data->x, &data->y, &data->z);
+    data->x_g = data->x * handle->sensitivity;
+    data->y_g = data->y * handle->sensitivity;
+    data->z_g = data->z * handle->sensitivity;
+}
+
 /**
  * @brief 验证设备通信
  */

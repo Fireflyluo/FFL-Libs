@@ -7,5 +7,9 @@ scripts/opencode_job_runner.py
 scripts/start_opencode_job.ps1
 
 build/
+.xmake/
+.codex/
+.tmp/
+logs/
 # accidental Windows device filename
 nul

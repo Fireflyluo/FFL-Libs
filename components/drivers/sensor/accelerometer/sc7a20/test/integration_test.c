@@ -1,5 +1,5 @@
-﻿#include "../inc/sc7a20.h"
-#include "../adapters/mock_adapter.h"
+#include "sc7a20.h"
+#include "mock_adapter.h"
 
 #include <assert.h>
 

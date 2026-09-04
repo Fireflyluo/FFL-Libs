@@ -1,4 +1,5 @@
-﻿#include "../inc/sc7a20_core.h"
+#include "sc7a20_core.h"
+#include "ffl_atomic.h"
 
 #include <errno.h>
 #include <string.h>
@@ -39,7 +40,7 @@ int sc7a20_core_try_lock(sc7a20_dev_t *dev)
     if (dev == NULL) {
         return -EINVAL;
     }
-    if (!__sync_bool_compare_and_swap(&dev->in_use, 0u, 1u)) {
+    if (!ffl_atomic_try_lock_u8(&dev->in_use)) {
         return -EBUSY;
     }
     return 0;
@@ -48,7 +49,7 @@ int sc7a20_core_try_lock(sc7a20_dev_t *dev)
 void sc7a20_core_unlock(sc7a20_dev_t *dev)
 {
     if (dev != NULL) {
-        __sync_lock_release(&dev->in_use);
+        ffl_atomic_unlock_u8(&dev->in_use);
     }
 }
 

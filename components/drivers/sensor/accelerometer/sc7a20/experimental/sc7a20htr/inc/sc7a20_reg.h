@@ -66,6 +66,13 @@ extern "C" {
 #define SC7A20_FIFO_SRC  0x2F // FIFO状态寄存器
 #define SC7A20_FIFO_DATA 0x69 // FIFO数据寄存器
 /*
+ * SPI note:
+ * - Direct 0x69 FIFO_DATA access depends on SPI_CTRL.ADR_SPI_AD6 selecting
+ *   the 0x40-0x7F register bank first.
+ * - For 3-wire SPI FIFO sample reads, prefer a 7-byte burst from 0x27 and
+ *   decode bytes [1..6] as XYZ. This avoids bank-switch churn on 0x69.
+ */
+/*
  * 读取 SC7A20_FIFO_DATA 寄存器相当于是读取FIFO数据，读取数据顺序是X轴、Y轴、Z轴；
  * 可以根据0x2F寄存器值计算FIFO组数，然后组数*3作为读取0x69的次数；
  * FIFO_MODE=0相当于顺序是28h,29h,2Ah,2Bh,2Ch,2Dh；

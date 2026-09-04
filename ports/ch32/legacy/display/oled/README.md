@@ -159,7 +159,7 @@ void OLED_Delay_ms(uint16_t ms);
 
 ## 5. 示例工程
 
-完整的使用示例请参考 `demo/xmake` 目录中的工程文件。
+旧 `demo/xmake` 已清理。本目录仍是 CH32 HAL 直连实现，不提供可复用示例；后续请先抽出显示传输、延时和复位 port。验收项见 `docs/HARDWARE_VALIDATION_BACKLOG.md`。
 
 ## 6. 注意事项
 

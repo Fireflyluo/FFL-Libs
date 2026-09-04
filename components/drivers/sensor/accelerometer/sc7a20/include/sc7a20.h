@@ -7,6 +7,10 @@ extern "C" {
 
 #include "sc7a20_core.h"
 
+#ifndef FFL_SC7A20_ASYNC_ENABLED
+#define FFL_SC7A20_ASYNC_ENABLED 1
+#endif
+
 int sc7a20_init(sc7a20_dev_t *dev);
 int sc7a20_init_with_config(sc7a20_dev_t *dev, const sc7a20_cfg_t *cfg);
 int sc7a20_deinit(sc7a20_dev_t *dev);
@@ -23,22 +27,24 @@ int sc7a20_set_range(sc7a20_dev_t *dev, sc7a20_accel_fs_t range);
 int sc7a20_set_odr(sc7a20_dev_t *dev, sc7a20_accel_odr_t odr);
 int sc7a20_set_axis_enable(sc7a20_dev_t *dev, bool x_en, bool y_en, bool z_en);
 
+#if FFL_SC7A20_ASYNC_ENABLED
 int sc7a20_read_reg_async(sc7a20_dev_t *dev,
-                          uint8_t reg,
-                          uint8_t *data,
-                          uint16_t len,
-                          sc7a20_done_cb_t cb,
-                          void *user);
-int sc7a20_write_reg_async(sc7a20_dev_t *dev,
                            uint8_t reg,
-                           const uint8_t *data,
+                           uint8_t *data,
                            uint16_t len,
                            sc7a20_done_cb_t cb,
                            void *user);
+int sc7a20_write_reg_async(sc7a20_dev_t *dev,
+                            uint8_t reg,
+                            const uint8_t *data,
+                            uint16_t len,
+                            sc7a20_done_cb_t cb,
+                            void *user);
 int sc7a20_read_xyz_raw_async(sc7a20_dev_t *dev,
-                              sc7a20_read_xyz_cb_t cb,
-                              void *user);
+                               sc7a20_read_xyz_cb_t cb,
+                               void *user);
 int sc7a20_cancel_async(sc7a20_dev_t *dev);
+#endif
 
 #ifdef __cplusplus
 }

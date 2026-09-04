@@ -1,0 +1,5 @@
+includes("foundation/xmake.lua")
+includes("algorithms/xmake.lua")
+includes("runtime/xmake.lua")
+includes("drivers/xmake.lua")
+includes("protocols/xmake.lua")

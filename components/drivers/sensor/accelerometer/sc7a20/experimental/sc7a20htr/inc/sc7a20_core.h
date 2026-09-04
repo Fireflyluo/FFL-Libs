@@ -126,6 +126,9 @@ extern "C"
      * @return 操作状态
      */
     sc7a20_status_t sc7a20_read_raw_data(sc7a20_handle_t handle, int16_t *x, int16_t *y, int16_t *z);
+    sc7a20_status_t sc7a20_get_fifo_src(sc7a20_handle_t handle, sc7a20_fifo_src_t *fifo_src);
+    sc7a20_status_t sc7a20_read_fifo_raw_data(sc7a20_handle_t handle, int16_t *x, int16_t *y, int16_t *z);
+    sc7a20_status_t sc7a20_read_fifo_acceleration(sc7a20_handle_t handle, sc7a20_accel_data_t *data);
 
     /**
      * @brief 检查新数据是否就绪

@@ -1,4 +1,4 @@
-﻿#include "../inc/sc7a20_core.h"
+#include "sc7a20_core.h"
 
 #include <errno.h>
 #include <string.h>

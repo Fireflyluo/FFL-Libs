@@ -9,7 +9,7 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
-#include "../sc7a20_reg.h"
+#include "sc7a20_reg.h"
 
 #ifndef SC7A20_COMM_WRITE
 #define SC7A20_COMM_WRITE (1u << 0)

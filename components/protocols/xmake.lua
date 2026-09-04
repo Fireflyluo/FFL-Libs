@@ -1,0 +1,1 @@
+includes("adhoc/xmake.lua")

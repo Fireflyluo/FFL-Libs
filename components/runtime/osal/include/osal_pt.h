@@ -20,6 +20,8 @@ extern "C"
         PT_STATE_EXITED     // 已退出
     } pt_state_t;
 
+    typedef struct osal_pt_scheduler osal_pt_scheduler_t;
+
     // 协程控制块
     typedef struct osal_pt
     {
@@ -34,18 +36,19 @@ extern "C"
         // 协程函数指针
         char (*entry)(struct osal_pt *pt, void *arg);
         void *arg; // 参数
+        osal_pt_scheduler_t *sched;
 
         struct osal_pt *next; // 链表指针
     } osal_pt_t;
 
     // 协程调度器
-    typedef struct
+    struct osal_pt_scheduler
     {
         osal_pt_t *pt_list;    // 协程链表
         osal_pt_t *current_pt; // 当前运行的协程
         uint8_t next_pt_id;    // 下一个协程ID
         uint32_t system_time;  // 系统时间
-    } osal_pt_scheduler_t;
+    };
 
     // API函数
     void osal_pt_scheduler_init(osal_pt_scheduler_t *sched);

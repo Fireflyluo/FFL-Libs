@@ -1,7 +1,7 @@
 ﻿#ifndef SC7A20_MOCK_ADAPTER_H
 #define SC7A20_MOCK_ADAPTER_H
 
-#include "../inc/sc7a20_core.h"
+#include "sc7a20_core.h"
 
 typedef struct {
     uint8_t regs[256];

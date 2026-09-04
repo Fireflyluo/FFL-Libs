@@ -1,11 +1,19 @@
-#ifndef __SW_TIMER_H
-#define __SW_TIMER_H
+#ifndef FFL_SW_TIMER_H
+#define FFL_SW_TIMER_H
 
 #include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/**
+ * @file sw_timer.h
+ * @brief 基于时间轮的软件定时器 C/C++ 兼容公开接口。
+ *
+ * `sw_timer_tick_isr()` 应由系统 tick 中断调用，`sw_timer_process()` 应在主循环或
+ * 任务上下文调用。组件不绑定 MCU、RTOS 或具体临界区实现，平台保护通过钩子注入。
+ */
 
 /**
  * @brief 软件定时器回调函数类型定义
@@ -107,4 +115,4 @@ void sw_timer_process(void);
 }
 #endif
 
-#endif /* __SW_TIMER_H */
+#endif /* FFL_SW_TIMER_H */
