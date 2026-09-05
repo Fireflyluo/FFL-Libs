@@ -2,14 +2,21 @@ target("ffl.sht30")
     set_kind("object")
     set_default(false)
     set_languages("c11", "cxx17")
-    add_files("src/sht30_core.c", "src/sht30_sync.c", "src/sht30_async.c")
-    add_headerfiles("include/*.h")
+    add_files("src/sht30_core.c", "src/sht30_sync.c", "src/sht30_async.c", "src/ffl_sht30.c")
+    add_headerfiles("include/*.h", "include/(ffl/*.h)")
     add_includedirs("include", {public = true})
-    add_deps("ffl.atomic")
+    add_deps("ffl.atomic", "ffl.driver_port")
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")
+
+target("ffl.sht30.cxx-test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/sht30_cxx_compile.cpp")
+    add_deps("ffl.sht30")
+    add_tests("default")
+    add_cxxflags("-Wall", "-Wextra", "-Werror")
 
 target("ffl.sht30.test")
     set_kind("binary")
@@ -19,6 +26,4 @@ target("ffl.sht30.test")
     add_deps("ffl.sht30")
     add_tests("default")
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")

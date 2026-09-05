@@ -10,6 +10,20 @@ static void sht30_delay_if_present(const sht30_dev_t *dev, uint32_t ms)
     }
 }
 
+static int sht30_soft_reset_locked(sht30_dev_t *dev)
+{
+    int rc;
+    uint8_t cmd[2] = {0x30u, 0xA2u};
+
+    rc = sht30_core_xfer_sync(dev, cmd, 2u, false);
+    if (rc != 0) {
+        return rc;
+    }
+
+    sht30_delay_if_present(dev, 2u);
+    return 0;
+}
+
 int sht30_init(sht30_dev_t *dev)
 {
     int rc;
@@ -32,7 +46,7 @@ int sht30_init(sht30_dev_t *dev)
     memset(&dev->async, 0, sizeof(dev->async));
     dev->initialized = true;
 
-    rc = sht30_soft_reset(dev);
+    rc = sht30_soft_reset_locked(dev);
 
     sht30_core_unlock(dev);
     return rc;
@@ -41,7 +55,6 @@ int sht30_init(sht30_dev_t *dev)
 int sht30_soft_reset(sht30_dev_t *dev)
 {
     int rc;
-    uint8_t cmd[2] = {0x30u, 0xA2u};
 
     if (dev == 0) {
         return -EINVAL;
@@ -50,13 +63,14 @@ int sht30_soft_reset(sht30_dev_t *dev)
         return -ENODEV;
     }
 
-    rc = sht30_core_xfer_sync(dev, cmd, 2u, false);
+    rc = sht30_core_try_lock(dev);
     if (rc != 0) {
         return rc;
     }
 
-    sht30_delay_if_present(dev, 2u);
-    return 0;
+    rc = sht30_soft_reset_locked(dev);
+    sht30_core_unlock(dev);
+    return rc;
 }
 
 int sht30_read_status(sht30_dev_t *dev, uint16_t *status)
@@ -72,8 +86,14 @@ int sht30_read_status(sht30_dev_t *dev, uint16_t *status)
         return -ENODEV;
     }
 
+    rc = sht30_core_try_lock(dev);
+    if (rc != 0) {
+        return rc;
+    }
+
     rc = sht30_core_xfer_sync(dev, cmd, 2u, false);
     if (rc != 0) {
+        sht30_core_unlock(dev);
         return rc;
     }
 
@@ -81,10 +101,12 @@ int sht30_read_status(sht30_dev_t *dev, uint16_t *status)
 
     rc = sht30_core_xfer_sync(dev, rx, 3u, true);
     if (rc != 0) {
+        sht30_core_unlock(dev);
         return rc;
     }
 
     *status = (uint16_t)(((uint16_t)rx[0] << 8) | rx[1]);
+    sht30_core_unlock(dev);
     return 0;
 }
 
@@ -101,10 +123,16 @@ int sht30_read_sample(sht30_dev_t *dev, sht30_repeatability_t repeatability, sht
         return -ENODEV;
     }
 
+    rc = sht30_core_try_lock(dev);
+    if (rc != 0) {
+        return rc;
+    }
+
     sht30_core_precision_cmd(cmd, repeatability);
 
     rc = sht30_core_xfer_sync(dev, cmd, 2u, false);
     if (rc != 0) {
+        sht30_core_unlock(dev);
         return rc;
     }
 
@@ -112,10 +140,13 @@ int sht30_read_sample(sht30_dev_t *dev, sht30_repeatability_t repeatability, sht
 
     rc = sht30_core_xfer_sync(dev, rx, 6u, true);
     if (rc != 0) {
+        sht30_core_unlock(dev);
         return rc;
     }
 
-    return sht30_core_read_sample_parse(rx, out);
+    rc = sht30_core_read_sample_parse(rx, out);
+    sht30_core_unlock(dev);
+    return rc;
 }
 
 int sht30_heater(sht30_dev_t *dev, sht30_heater_cmd_t cmd)
@@ -130,13 +161,20 @@ int sht30_heater(sht30_dev_t *dev, sht30_heater_cmd_t cmd)
         return -ENODEV;
     }
 
-    b[0] = (uint8_t)((uint16_t)cmd >> 8);
-    b[1] = (uint8_t)((uint16_t)cmd & 0xFFu);
-    rc = sht30_core_xfer_sync(dev, b, 2u, false);
+    rc = sht30_core_try_lock(dev);
     if (rc != 0) {
         return rc;
     }
 
+    b[0] = (uint8_t)((uint16_t)cmd >> 8);
+    b[1] = (uint8_t)((uint16_t)cmd & 0xFFu);
+    rc = sht30_core_xfer_sync(dev, b, 2u, false);
+    if (rc != 0) {
+        sht30_core_unlock(dev);
+        return rc;
+    }
+
     sht30_delay_if_present(dev, 1u);
+    sht30_core_unlock(dev);
     return 0;
 }

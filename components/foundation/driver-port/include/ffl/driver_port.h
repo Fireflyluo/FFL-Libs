@@ -41,6 +41,20 @@ typedef struct {
 
 typedef void (*ffl_xfer_done_fn)(void *user, int status);
 
+/*
+ * `endpoint` and the `msgs` array are borrowed only for the duration of
+ * `xfer()`. A port that queues work must copy their values before returning.
+ * Message buffers remain owned by the caller until a synchronous transfer
+ * returns or an accepted asynchronous transfer invokes `done`.
+ *
+ * With `done == NULL`, `xfer()` must complete synchronously and return the
+ * final status. With `done != NULL`, a successful submission must invoke the
+ * callback exactly once, either inline or later. A failed submission returns a
+ * negative status and must not invoke the callback. If `cancel()` returns
+ * success, the cancelled request is complete and its callback must not run.
+ * A delayed callback must run in task or thread context, never directly from
+ * an ISR, because a driver may delay or submit a follow-up transfer in `done`.
+ */
 typedef struct {
     int (*xfer)(void *ctx,
                 const ffl_endpoint_t *endpoint,
@@ -126,7 +140,8 @@ static inline bool ffl_endpoint_is_valid(const ffl_endpoint_t *endpoint)
 
 static inline bool ffl_transport_is_valid(const ffl_transport_t *transport)
 {
-    return transport != 0 && transport->ops != 0 && transport->ops->xfer != 0;
+    return transport != 0 && transport->ops != 0 && transport->ops->xfer != 0 &&
+           ffl_endpoint_is_valid(&transport->endpoint);
 }
 
 static inline int ffl_transport_xfer(const ffl_transport_t *transport,

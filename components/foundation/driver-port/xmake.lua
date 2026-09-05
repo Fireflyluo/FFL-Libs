@@ -2,7 +2,7 @@ target("ffl.driver_port")
     set_kind("headeronly")
     set_default(false)
     set_languages("c11", "cxx17")
-    add_headerfiles("include/ffl/*.h")
+    add_headerfiles("include/(ffl/*.h)")
     add_includedirs("include", {public = true})
 
 target("ffl.driver_port.test")

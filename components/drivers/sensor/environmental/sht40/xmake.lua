@@ -3,7 +3,7 @@ target("ffl.sht40")
     set_default(false)
     set_languages("c11", "cxx17")
     add_files("src/sht40_core.c", "src/sht40_sync.c", "src/sht40_async.c", "src/ffl_sht40.c")
-    add_headerfiles("include/ffl/*.h")
+    add_headerfiles("include/*.h", "include/(ffl/*.h)")
     add_includedirs("include", {public = true})
     add_deps("ffl.atomic", "ffl.driver_port")
 

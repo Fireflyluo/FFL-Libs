@@ -8,6 +8,8 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "ffl/driver_port.h"
+
 #ifndef SHT30_COMM_WRITE
 #define SHT30_COMM_WRITE (1u << 0)
 #endif
@@ -81,6 +83,10 @@ typedef struct {
     const sht30_bus_ops_t *ops;
     void *bus_ctx;
     uint8_t addr;
+
+    const ffl_transport_t *transport;
+    const ffl_time_ops_t *time_ops;
+    void *time_ctx;
 
     sht30_delay_ms_fn delay_ms;
     void *delay_ctx;

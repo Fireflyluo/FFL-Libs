@@ -157,6 +157,9 @@ int sht30_cancel_async(sht30_dev_t *dev)
     if (dev->ops == 0 || dev->ops->cancel == 0) {
         return -ENOTSUP;
     }
+    if (dev->async.op == SHT30_ASYNC_NONE) {
+        return -ENOENT;
+    }
 
     rc = sht30_core_map_bus_status(dev->ops->cancel(dev->bus_ctx));
     if (rc == 0) {
