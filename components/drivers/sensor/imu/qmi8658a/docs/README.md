@@ -7,10 +7,10 @@
 ## 当前交付边界
 
 - 仅支持 I2C 7-bit endpoint，地址来自 `ffl_endpoint_i2c7()`；默认地址为 `0x6A`，SA0 拉低时使用 `0x6B`。
-- 仅支持加速度计与陀螺仪同时启用、自动地址递增和 14 字节 6DOF burst 读取；`enable_sync_sample` 可选。
-- 同步模式下 `read_raw()` 检查 `STATUSINT.Avail/Locked`，非同步模式跳过该门控；两种模式都会检查 `STATUS0.aDA/gDA`，未就绪返回 `-EAGAIN`。
-- 同步模式初始化会按 I2C 要求配置 `CTRL8/CTRL9` AHB clock gating，并轮询 `STATUSINT.CmdDone`，写入 `CTRL9=0x00` 完成 ACK；命令未完成或 ACK 未清除则初始化/配置失败。
-- 运行中的同步配置会先清除 `CTRL7.syncSmpl`，等待并读取最后一个陀螺仪高字节释放旧锁定，再修改量程/ODR；切换到非同步模式时会恢复 AHB clock gating。
+- 仅支持加速度计与陀螺仪同时启用、自动地址递增、同步采样和 14 字节 6DOF burst 读取；关闭 `enable_sync_sample` 会被配置校验拒绝。
+- `read_raw()` 首先检查 `STATUSINT.Avail/Locked`，随后检查 `STATUS0.aDA/gDA`；任一未就绪均返回 `-EAGAIN`。
+- 初始化和运行时配置会按 I2C 要求配置 `CTRL8/CTRL9` AHB clock gating，并轮询 `STATUSINT.CmdDone`，写入 `CTRL9=0x00` 完成 ACK；命令未完成或 ACK 未清除则初始化/配置失败。
+- 运行中的同步配置会先清除 `CTRL7.syncSmpl`，等待并读取最后一个陀螺仪高字节释放旧锁定，再修改量程/ODR，最后恢复同步采样。
 - 配置写入全部成功后才更新软件缓存；运行中的 facade 调用通过 `in_use` 原子字节锁串行化。
 - FIFO、IRQ、SPI、异步传输和单传感器模式当前明确不属于支持范围，不应由文档或 API 推断为已实现。
 

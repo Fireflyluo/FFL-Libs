@@ -66,6 +66,7 @@ static int imu_qmi8658a_validate_config(const imu_qmi8658a_cfg_t *cfg)
 {
     if (cfg == 0 || !cfg->enable_accel || !cfg->enable_gyro ||
         !cfg->enable_auto_increment ||
+        !cfg->enable_sync_sample ||
         cfg->accel_fs > QMI8658A_ACCEL_FS_16G ||
         cfg->accel_odr > QMI8658A_ACCEL_ODR_28_025HZ ||
         cfg->gyro_fs > QMI8658A_GYRO_FS_2048DPS ||
@@ -341,6 +342,7 @@ static int imu_qmi8658a_write_config(imu_qmi8658a_t *dev,
     uint8_t ctrl5;
     uint8_t ctrl7 = 0u;
     uint8_t ctrl7_without_sync;
+    uint8_t discarded;
     int rc;
 
     ctrl2 = (uint8_t)((uint8_t)cfg->accel_odr & QMI8658A_CTRL2_ODR_MASK);
@@ -362,7 +364,7 @@ static int imu_qmi8658a_write_config(imu_qmi8658a_t *dev,
             return rc;
         }
         imu_qmi8658a_delay(dev, 1u);
-        rc = imu_qmi8658a_read_reg(dev, QMI8658A_OUTZ_H_G, &ctrl1, 1u);
+        rc = imu_qmi8658a_read_reg(dev, QMI8658A_OUTZ_H_G, &discarded, 1u);
         if (rc != 0) {
             return rc;
         }
@@ -388,12 +390,9 @@ static int imu_qmi8658a_write_config(imu_qmi8658a_t *dev,
     if (rc != 0) {
         return rc;
     }
-    rc = imu_qmi8658a_set_ahb_clock_gating(dev, !cfg->enable_sync_sample);
+    rc = imu_qmi8658a_set_ahb_clock_gating(dev, false);
     if (rc != 0) {
         return rc;
-    }
-    if (!cfg->enable_sync_sample) {
-        return 0;
     }
     return imu_qmi8658a_write_reg(dev, QMI8658A_CTRL7, &ctrl7, 1u);
 }
@@ -475,23 +474,21 @@ int imu_qmi8658a_read_raw(imu_qmi8658a_t *dev, imu_raw_sample_t *raw)
         return -ENODEV;
     }
 
-    if (dev->cfg.enable_sync_sample) {
+    rc = imu_qmi8658a_read_reg(dev, QMI8658A_STATUSINT, &statusint, 1u);
+    if (rc != 0) {
+        return rc;
+    }
+    if ((statusint & QMI8658A_STATUSINT_AVAIL_MASK) == 0u) {
+        return -EAGAIN;
+    }
+    if ((statusint & QMI8658A_STATUSINT_LOCKED_MASK) == 0u) {
+        imu_qmi8658a_delay_us(dev, imu_qmi8658a_lock_delay_us(dev->cfg.gyro_odr));
         rc = imu_qmi8658a_read_reg(dev, QMI8658A_STATUSINT, &statusint, 1u);
         if (rc != 0) {
             return rc;
         }
-        if ((statusint & QMI8658A_STATUSINT_AVAIL_MASK) == 0u) {
-            return -EAGAIN;
-        }
         if ((statusint & QMI8658A_STATUSINT_LOCKED_MASK) == 0u) {
-            imu_qmi8658a_delay_us(dev, imu_qmi8658a_lock_delay_us(dev->cfg.gyro_odr));
-            rc = imu_qmi8658a_read_reg(dev, QMI8658A_STATUSINT, &statusint, 1u);
-            if (rc != 0) {
-                return rc;
-            }
-            if ((statusint & QMI8658A_STATUSINT_LOCKED_MASK) == 0u) {
-                return -EAGAIN;
-            }
+            return -EAGAIN;
         }
     }
 
