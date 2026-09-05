@@ -20,7 +20,7 @@ extern "C"
     {
         struct
         {
-            uint8_t USER_BANK : 3; // [1:0] 用户Bank选择
+            uint8_t USER_BANK : 3; // [2:0] 用户Bank选择
             uint8_t RESERVED : 5;  // [7:2] 保留
         } bits;
         uint8_t reg;
@@ -34,10 +34,11 @@ extern "C"
         ICM42688_BANK2 = 2,
         ICM42688_BANK3 = 3, // 注：Bank3在文档中未详细描述
         ICM42688_BANK4 = 4,
-        ICM42688_BANK_MAX = 7
+        ICM42688_BANK_MAX = 4
     } icm42688_bank_t;
 
-#define ICM42688P_DEVICE_ID 0x68U  ///< WHO_AM_I register value
+#define ICM42688P_WHO_AM_I_ID 0x47U ///< WHO_AM_I register value
+#define ICM42688P_DEVICE_ID ICM42688P_WHO_AM_I_ID
 #define ICM42688P_I2C_ADDR_0 0x68U ///< SDO = GND
 #define ICM42688P_I2C_ADDR_1 0x69U ///< SDO = VDDIO
 
@@ -570,15 +571,15 @@ extern "C"
         ICM42688_ODR_4000HZ = 4,    // 4 kHz
         ICM42688_ODR_2000HZ = 5,    // 2 kHz
         ICM42688_ODR_1000HZ = 6,    // 1 kHz
-        ICM42688_ODR_500HZ = 7,     // 500 Hz
-        ICM42688_ODR_200HZ = 8,     // 200 Hz
-        ICM42688_ODR_100HZ = 9,     // 100 Hz
-        ICM42688_ODR_50HZ = 10,     // 50 Hz
-        ICM42688_ODR_25HZ = 11,     // 25 Hz
-        ICM42688_ODR_12_5HZ = 12,   // 12.5 Hz
-        ICM42688_ODR_6_25HZ = 13,   // 6.25 Hz
-        ICM42688_ODR_3_125HZ = 14,  // 3.125 Hz
-        ICM42688_ODR_1_5625HZ = 15, // 1.5625 Hz
+        ICM42688_ODR_200HZ = 7,     // 200 Hz
+        ICM42688_ODR_100HZ = 8,     // 100 Hz
+        ICM42688_ODR_50HZ = 9,      // 50 Hz
+        ICM42688_ODR_25HZ = 10,     // 25 Hz
+        ICM42688_ODR_12_5HZ = 11,   // 12.5 Hz
+        ICM42688_ODR_6_25HZ = 12,   // 6.25 Hz
+        ICM42688_ODR_3_125HZ = 13,  // 3.125 Hz
+        ICM42688_ODR_1_5625HZ = 14, // 1.5625 Hz
+        ICM42688_ODR_500HZ = 15,    // 500 Hz
     } icm42688_odr_t;
 
     /**

@@ -23,7 +23,7 @@ components/
     │   ├── environmental/sht40/      # ffl.sht40，通用 I2C transport + CH32 port
     │   ├── environmental/icp20100/   # ffl.icp20100
     │   ├── magnetometer/qmc5883p/    # ffl.qmc5883p
-    │   └── imu/common|qmi8658a|icm42688p/ # QMI8658A 当前为同步 I2C 6DOF facade
+    │   └── imu/common|qmi8658a|icm42688p/ # QMI/ICM 均提供同步 I2C 6DOF facade
     ├── display/                      # 预留通用显示驱动组件入口
     └── radio/                        # 预留通用射频驱动组件入口
 ```

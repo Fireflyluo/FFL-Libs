@@ -8,12 +8,12 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "ffl/driver_port.h"
 #include "icm42688_reg.h"
 #include "imu_bus.h"
 #include "imu_types.h"
 
 typedef struct {
-    uint8_t addr;
     icm42688_sensor_mode_t accel_mode;
     icm42688_sensor_mode_t gyro_mode;
     icm42688_accel_fs_t accel_fs;
@@ -25,6 +25,9 @@ typedef struct {
 typedef struct {
     const imu_bus_ops_t *bus_ops;
     void *bus_ctx;
+    const ffl_transport_t *transport;
+    const ffl_time_ops_t *time_ops;
+    void *time_ctx;
     imu_delay_ms_fn delay_ms;
     void *delay_ctx;
 
@@ -32,6 +35,7 @@ typedef struct {
     uint8_t chip_id;
     uint8_t current_bank;
     bool initialized;
+    volatile uint8_t in_use;
 
     imu_icm42688p_cfg_t cfg;
 } imu_icm42688p_t;
@@ -59,6 +63,8 @@ int imu_icm42688p_set_accel_config(imu_icm42688p_t *dev,
 int imu_icm42688p_set_gyro_config(imu_icm42688p_t *dev,
                                   icm42688_gyro_fs_t fs,
                                   icm42688_odr_t odr);
+int imu_icm42688p_configure(imu_icm42688p_t *dev,
+                            const imu_icm42688p_cfg_t *cfg);
 
 #ifdef __cplusplus
 }
