@@ -29,7 +29,7 @@ static int qmc5883p_validate(const qmc5883p_dev_t *dev)
     if (dev == NULL || dev->ops == NULL || dev->ops->xfer == NULL) {
         return -EINVAL;
     }
-    if (dev->addr == 0u) {
+    if (dev->addr == 0u || dev->addr > 0x7Fu) {
         return -EINVAL;
     }
     return 0;
@@ -59,15 +59,15 @@ static float qmc5883p_lsb_per_ut(qmc5883p_range_t range)
 {
     switch (range) {
     case QMC5883P_RANGE_2G:
-        return 1.50f;
+        return 150.0f;
     case QMC5883P_RANGE_8G:
-        return 0.375f;
+        return 37.5f;
     case QMC5883P_RANGE_12G:
-        return 0.25f;
+        return 25.0f;
     case QMC5883P_RANGE_30G:
-        return 0.10f;
+        return 10.0f;
     default:
-        return 0.375f;
+        return 0.0f;
     }
 }
 
@@ -154,6 +154,7 @@ int qmc5883p_soft_reset(qmc5883p_dev_t *dev)
     if (rc != 0) {
         return rc;
     }
+    dev->initialized = false;
     return 0;
 }
 
@@ -169,6 +170,24 @@ int qmc5883p_set_config(qmc5883p_dev_t *dev, const qmc5883p_cfg_t *cfg)
     }
 
     use_cfg = (cfg != NULL) ? *cfg : dev->cfg;
+    if (use_cfg.addr == 0u) {
+        use_cfg.addr = dev->addr;
+    }
+    if (use_cfg.addr == 0u || use_cfg.addr > 0x7Fu || use_cfg.addr != dev->addr ||
+        use_cfg.mode > QMC5883P_MODE_CONTINUOUS || use_cfg.odr > QMC5883P_ODR_200HZ ||
+        use_cfg.osr1 > QMC5883P_OSR1_1 || use_cfg.osr2 > QMC5883P_OSR2_8 ||
+        use_cfg.range > QMC5883P_RANGE_2G ||
+        use_cfg.set_reset_mode > QMC5883P_SET_RESET_OFF) {
+        return -EINVAL;
+    }
+
+    if (dev->initialized) {
+        ctrl1 = QMC5883P_MODE_SUSPEND;
+        rc = qmc5883p_write_reg(dev, QMC5883P_REG_CONTROL_1, &ctrl1, 1u);
+        if (rc != 0) {
+            return rc;
+        }
+    }
 
     ctrl2 = (uint8_t)((uint8_t)use_cfg.set_reset_mode & QMC5883P_CTRL2_SET_RESET_MODE_MASK);
     ctrl2 |= (uint8_t)(((uint8_t)use_cfg.range << QMC5883P_CTRL2_RNG_SHIFT) & QMC5883P_CTRL2_RNG_MASK);
@@ -203,6 +222,11 @@ int qmc5883p_init(qmc5883p_dev_t *dev, const qmc5883p_cfg_t *cfg)
     if (local_cfg.addr == 0u) {
         local_cfg.addr = QMC5883P_I2C_ADDR_DEFAULT;
     }
+    if (local_cfg.addr > 0x7Fu) {
+        return -EINVAL;
+    }
+
+    dev->initialized = false;
 
     dev->addr = local_cfg.addr;
     dev->cfg = local_cfg;
@@ -245,6 +269,9 @@ int qmc5883p_read_raw(qmc5883p_dev_t *dev, qmc5883p_vec3i16_t *out)
     }
     if ((status & QMC5883P_STATUS_OVFL_MASK) != 0u) {
         return -EIO;
+    }
+    if ((status & QMC5883P_STATUS_DRDY_MASK) == 0u) {
+        return -EAGAIN;
     }
 
     rc = qmc5883p_read_reg(dev, QMC5883P_REG_XOUT_L, buf, sizeof(buf));

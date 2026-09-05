@@ -8,6 +8,7 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "ffl/driver_port.h"
 #include "qmc5883p_reg.h"
 
 #ifndef QMC5883P_COMM_WRITE
@@ -60,9 +61,11 @@ typedef struct {
 typedef struct {
     const qmc5883p_bus_ops_t *ops;
     void *bus_ctx;
+    const ffl_transport_t *transport;
     uint8_t addr;
     uint8_t chip_id;
     bool initialized;
+    volatile uint8_t in_use;
     qmc5883p_cfg_t cfg;
 } qmc5883p_dev_t;
 

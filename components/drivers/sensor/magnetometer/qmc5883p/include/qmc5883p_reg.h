@@ -40,10 +40,10 @@ typedef enum {
 } qmc5883p_osr2_t;
 
 typedef enum {
-    QMC5883P_RANGE_2G = 0u,
-    QMC5883P_RANGE_8G = 1u,
-    QMC5883P_RANGE_12G = 2u,
-    QMC5883P_RANGE_30G = 3u
+    QMC5883P_RANGE_30G = 0u,
+    QMC5883P_RANGE_12G = 1u,
+    QMC5883P_RANGE_8G = 2u,
+    QMC5883P_RANGE_2G = 3u
 } qmc5883p_range_t;
 
 typedef enum {
@@ -64,6 +64,7 @@ typedef enum {
 #define QMC5883P_CTRL2_RNG_SHIFT            2u
 #define QMC5883P_CTRL2_SOFT_RESET_MASK      0x80u
 #define QMC5883P_STATUS_OVFL_MASK           0x02u
+#define QMC5883P_STATUS_DRDY_MASK           0x01u
 
 #if defined(FFL_ENABLE_LEGACY_BITFIELDS)
 typedef union {
