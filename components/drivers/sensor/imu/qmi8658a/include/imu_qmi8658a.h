@@ -8,12 +8,12 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "ffl/driver_port.h"
 #include "imu_bus.h"
 #include "imu_types.h"
 #include "qmi8658a_reg.h"
 
 typedef struct {
-    uint8_t addr;
     qmi8658a_accel_fs_t accel_fs;
     qmi8658a_accel_odr_t accel_odr;
     qmi8658a_gyro_fs_t gyro_fs;
@@ -31,12 +31,17 @@ typedef struct {
 typedef struct {
     const imu_bus_ops_t *bus_ops;
     void *bus_ctx;
+    const ffl_transport_t *transport;
+    const ffl_time_ops_t *time_ops;
+    void *time_ctx;
     imu_delay_ms_fn delay_ms;
+    void (*delay_us)(void *ctx, uint32_t us);
     void *delay_ctx;
 
     uint8_t addr;
     uint8_t chip_id;
     bool initialized;
+    volatile uint8_t in_use;
 
     imu_qmi8658a_cfg_t cfg;
 } imu_qmi8658a_t;
@@ -56,6 +61,8 @@ int imu_qmi8658a_set_accel_config(imu_qmi8658a_t *dev,
 int imu_qmi8658a_set_gyro_config(imu_qmi8658a_t *dev,
                                  qmi8658a_gyro_fs_t fs,
                                  qmi8658a_gyro_odr_t odr);
+int imu_qmi8658a_configure(imu_qmi8658a_t *dev,
+                           const imu_qmi8658a_cfg_t *cfg);
 
 #ifdef __cplusplus
 }

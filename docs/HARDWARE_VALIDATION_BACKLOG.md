@@ -23,7 +23,7 @@
 | `ffl.sht30` | core 可构建 | 初始化、测温湿、CRC、clock stretching 或平台总线时序。 |
 | `ffl.icp20100` | I2C core 与 mock 测试可构建；仅连续 pressure/temperature FIFO | 上电/OTP 校准、芯片识别、启动延迟、压力温度读数、异常恢复；forced/FIFO 其它模式另行验证。 |
 | `ffl.qmc5883p` | I2C core 与 mock 测试可构建 | 芯片识别、连续磁场读数、量程、DRDY 时序、Suspend 重配和异常恢复。 |
-| `ffl.qmi8658a` | core 可构建 | I2C/SPI 任选实际接口、WHO_AM_I、加速度/陀螺仪量程与 FIFO。 |
+| `ffl.qmi8658a` | I2C core + ffl facade 与 C/C++ fake-register test 可构建 | 实际 I2C、SA0 `0x6A/0x6B`、WHO_AM_I、复位时序、同步锁定、加速度/陀螺仪量程与连续 burst 采样；FIFO/IRQ/SPI 尚未交付。 |
 | `ffl.icm42688p` | core 可构建 | SPI/I2C 实际接口、WHO_AM_I、加速度/陀螺仪、FIFO 与中断。 |
 | `ffl.osal` + `ports/py32/osal/` | 通用 core 可编译 | tick、临界区保护、任务消息、定时器、内存分配与长时间调度。 |
 | `ffl.adhoc` + `ports/ch32/adhoc/` | 协议 core 可编译 | CH32 链路收发、时钟驱动、丢包/重传、长时间稳定性。 |

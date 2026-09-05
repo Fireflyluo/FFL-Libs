@@ -36,6 +36,14 @@ extern "C"
 /* 状态寄存器 */
 #define QMI8658A_STATUSINT 0x2D // 状态中断寄存器
 #define QMI8658A_STATUS0 0x2E   // 状态中断寄存器
+#define QMI8658A_STATUSINT_AVAIL_MASK  0x01u
+#define QMI8658A_STATUSINT_LOCKED_MASK 0x02u
+#define QMI8658A_STATUS0_ADA_MASK       0x01u
+#define QMI8658A_STATUS0_GDA_MASK       0x02u
+#define QMI8658A_STATUSINT_CMD_DONE_MASK 0x80u
+#define QMI8658A_CTRL8_CTRL9_HANDSHAKE_STATUS_MASK 0x80u
+#define QMI8658A_CTRL9_CMD_AHB_CLOCK_GATING 0x12u
+#define QMI8658A_CTRL9_CMD_ACK 0x00u
 /* ========================== 校准寄存器组 ========================== */
 #define QMI8658A_CAL1_L 0x0B // 校准寄存器1低字节
 #define QMI8658A_CAL1_H 0x0C // 校准寄存器1高字节
@@ -128,8 +136,8 @@ extern "C"
     {
         struct
         {
-            uint8_t gODR : 4; // 输出数据率 (0000:关闭, 0001:12.5Hz, ...)
-            uint8_t gFS : 3;  // 量程选择 (000:±16dps, 001:±32dps, 010:±64dps, 011:1±28dps...)
+            uint8_t gODR : 4; // 输出数据率，编码见 qmi8658a_gyro_odr_t
+            uint8_t gFS : 3;  // 量程选择，编码见 qmi8658a_gyro_fs_t
             uint8_t gST : 1;  // 自检使能 (0:禁用, 1:启用)
         } bit;
         uint8_t reg;
@@ -178,7 +186,7 @@ extern "C"
             uint8_t Pedo_EN : 1;              // 计步器使能 (0:禁用, 1:启用)
             uint8_t reserved : 1;             // 保留位
             uint8_t ACTIVITY_INT_SEL : 1;     // 活动中断选择 (0:INT2, 1:INT1)
-            uint8_t CTRL9_HandShake_Type : 1; // CTRL9握手类型 (0:状态位, 1:INT引脚)
+            uint8_t CTRL9_HandShake_Type : 1; // CTRL9握手类型 (0:INT引脚, 1:STATUSINT状态位)
         } bit;
         uint8_t reg;
     } qmi8658a_ctrl8_t;
@@ -252,24 +260,22 @@ extern "C"
     typedef enum
     {
         /* Normal模式（0000-0111） */
-        QMI8658A_ACCEL_ODR_7174_4HZ_NORMAL = 0, // 0000: 7174.4 Hz（Normal模式，100%占空比）
-        QMI8658A_ACCEL_ODR_NA_0001 = 1,         // 0001: N/A（手册未定义有效ODR）
-        QMI8658A_ACCEL_ODR_NA_0010 = 2,         // 0010: N/A（手册未定义有效ODR）
-        QMI8658A_ACCEL_ODR_1000HZ_ACC_ONLY = 3, // 0011: 1000 Hz（仅加速度计模式）
-        QMI8658A_ACCEL_ODR_500HZ_ACC_ONLY = 4,  // 0100: 500 Hz（仅加速度计模式）
-        QMI8658A_ACCEL_ODR_250HZ_ACC_ONLY = 5,  // 0101: 250 Hz（仅加速度计模式）
-        QMI8658A_ACCEL_ODR_125HZ_ACC_ONLY = 6,  // 0110: 125 Hz（仅加速度计模式）
-        QMI8658A_ACCEL_ODR_62_5HZ_ACC_ONLY = 7, // 0111: 62.5 Hz（仅加速度计模式）
-
-        /* Low Power模式（1000-1111） */
-        QMI8658A_ACCEL_ODR_128HZ_LP = 8,    // 1000: 128 Hz（低功耗模式，100%占空比）
-        QMI8658A_ACCEL_ODR_NA_1001 = 9,     // 1001: N/A（手册未定义有效ODR）
-        QMI8658A_ACCEL_ODR_NA_1010 = 10,    // 1010: N/A（手册未定义有效ODR）
-        QMI8658A_ACCEL_ODR_NA_1011 = 11,    // 1011: N/A（手册未定义有效ODR）
-        QMI8658A_ACCEL_ODR_31_25HZ_LP = 12, // 1100: 31.25 Hz（低功耗模式，100%占空比）
-        QMI8658A_ACCEL_ODR_21HZ_LP = 13,    // 1101: 21 Hz（低功耗模式，58%占空比）
-        QMI8658A_ACCEL_ODR_11HZ_LP = 14,    // 1110: 11 Hz（低功耗模式，31%占空比）
-        QMI8658A_ACCEL_ODR_3HZ_LP = 15      // 1111: 3 Hz（低功耗模式，8.5%占空比）
+        QMI8658A_ACCEL_ODR_7174_4HZ = 0,
+        QMI8658A_ACCEL_ODR_3587_2HZ = 1,
+        QMI8658A_ACCEL_ODR_1793_6HZ = 2,
+        QMI8658A_ACCEL_ODR_896_8HZ = 3,
+        QMI8658A_ACCEL_ODR_448_4HZ = 4,
+        QMI8658A_ACCEL_ODR_224_2HZ = 5,
+        QMI8658A_ACCEL_ODR_112_1HZ = 6,
+        QMI8658A_ACCEL_ODR_56_05HZ = 7,
+        QMI8658A_ACCEL_ODR_28_025HZ = 8,
+        QMI8658A_ACCEL_ODR_NA_1001 = 9,
+        QMI8658A_ACCEL_ODR_NA_1010 = 10,
+        QMI8658A_ACCEL_ODR_NA_1011 = 11,
+        QMI8658A_ACCEL_ODR_128HZ_LP = 12,
+        QMI8658A_ACCEL_ODR_21HZ_LP = 13,
+        QMI8658A_ACCEL_ODR_11HZ_LP = 14,
+        QMI8658A_ACCEL_ODR_3HZ_LP = 15
     } qmi8658a_accel_odr_t;
 
     /* 陀螺仪ODR枚举 */
@@ -302,69 +308,6 @@ extern "C"
         QMI8658A_FIFO_SIZE_64SAMPLES = 2, // 64样本
         QMI8658A_FIFO_SIZE_128SAMPLES = 3 // 128样本
     } qmi8658a_fifo_size_t;
-
-    /* ========================== 设备上下文结构 ========================== */
-
-    typedef int32_t (*qmi8658a_write_ptr)(void *, uint8_t, uint8_t *, uint16_t);
-    typedef int32_t (*qmi8658a_read_ptr)(void *, uint8_t, uint8_t *, uint16_t);
-
-    typedef struct
-    {
-        qmi8658a_write_ptr write_reg; // 寄存器写入函数指针
-        qmi8658a_read_ptr read_reg;   // 寄存器读取函数指针
-        void *handle;                 // 硬件句柄
-
-        // 设备状态记录
-        qmi8658a_accel_fs_t accel_fs; // 当前加速度计量程
-        qmi8658a_gyro_fs_t gyro_fs;   // 当前陀螺仪量程
-        uint8_t is_accel_enabled;     // 加速度计使能状态
-        uint8_t is_gyro_enabled;      // 陀螺仪使能状态
-    } qmi8658a_ctx_t;
-
-    /* ========================== 函数声明 ========================== */
-
-    // I2C通信接口
-    int32_t qmi8658a_i2c_read(void *handle, uint8_t reg, uint8_t *data, uint16_t len);
-    int32_t qmi8658a_i2c_write(void *handle, uint8_t reg, uint8_t *data, uint16_t len);
-
-    // 基础寄存器操作
-    int32_t qmi8658a_read_reg(qmi8658a_ctx_t *ctx, uint8_t reg, uint8_t *data, uint16_t len);
-    int32_t qmi8658a_write_reg(qmi8658a_ctx_t *ctx, uint8_t reg, uint8_t *data, uint16_t len);
-
-    // 设备信息获取
-    int32_t qmi8658a_device_id_get(qmi8658a_ctx_t *ctx, uint8_t *buff);
-
-    // 系统控制
-    int32_t qmi8658a_soft_reset(qmi8658a_ctx_t *ctx); // 软复位
-
-    // 加速度计配置
-    int32_t qmi8658a_accel_data_rate_set(qmi8658a_ctx_t *ctx, qmi8658a_accel_odr_t val);
-    int32_t qmi8658a_accel_data_rate_get(qmi8658a_ctx_t *ctx, qmi8658a_accel_odr_t *val);
-    int32_t qmi8658a_accel_full_scale_set(qmi8658a_ctx_t *ctx, qmi8658a_accel_fs_t val);
-    int32_t qmi8658a_accel_full_scale_get(qmi8658a_ctx_t *ctx, qmi8658a_accel_fs_t *val);
-    int32_t qmi8658a_accel_enable(qmi8658a_ctx_t *ctx, uint8_t enable);
-
-    // 陀螺仪配置
-    int32_t qmi8658a_gyro_data_rate_set(qmi8658a_ctx_t *ctx, qmi8658a_gyro_odr_t val);
-    int32_t qmi8658a_gyro_data_rate_get(qmi8658a_ctx_t *ctx, qmi8658a_gyro_odr_t *val);
-    int32_t qmi8658a_gyro_full_scale_set(qmi8658a_ctx_t *ctx, qmi8658a_gyro_fs_t val);
-    int32_t qmi8658a_gyro_full_scale_get(qmi8658a_ctx_t *ctx, qmi8658a_gyro_fs_t *val);
-    int32_t qmi8658a_gyro_enable(qmi8658a_ctx_t *ctx, uint8_t enable);
-
-    // 滤波器配置
-    int32_t qmi8658a_filter_config(qmi8658a_ctx_t *ctx, uint8_t accel_filter, uint8_t gyro_filter);
-
-    // FIFO配置
-    int32_t qmi8658a_fifo_config(qmi8658a_ctx_t *ctx, qmi8658a_fifo_mode_t mode, qmi8658a_fifo_size_t size);
-    int32_t qmi8658a_fifo_read_mode_disable(qmi8658a_ctx_t *ctx);
-
-    // 数据读取
-    int32_t qmi8658a_temperature_get(qmi8658a_ctx_t *ctx, float *temp);
-    int32_t qmi8658a_angular_rate_raw(qmi8658a_ctx_t *ctx, uint8_t *buff);
-    int32_t qmi8658a_acceleration_raw(qmi8658a_ctx_t *ctx, uint8_t *buff);
-    int32_t qmi8658a_timestamp_get(qmi8658a_ctx_t *ctx, uint32_t *timestamp);
-    // 命令接口
-    int32_t qmi8658a_ctrl9_command(qmi8658a_ctx_t *ctx, uint8_t cmd);
 
 #ifdef __cplusplus
 }
