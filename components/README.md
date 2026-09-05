@@ -8,6 +8,7 @@
 components/
 ├── foundation/
 │   ├── atomic/                       # ffl.atomic，跨编译器字节锁封装
+│   ├── driver-port/                  # ffl.driver_port，统一南向 transport/time 契约
 │   ├── ringbuffer/                   # ffl.ringbuffer，C/C++ host 测试
 │   └── sw-timer/                     # ffl.sw_timer，C/C++ host 测试
 ├── runtime/
@@ -19,7 +20,7 @@ components/
     ├── sensor/
     │   ├── accelerometer/sc7a20/     # ffl.sc7a20 + ffl-sc7a20 static
     │   ├── environmental/sht30/      # ffl.sht30
-    │   ├── environmental/sht40/      # ffl.sht40
+    │   ├── environmental/sht40/      # ffl.sht40，通用 I2C transport + CH32 port
     │   ├── environmental/icp20100/   # ffl.icp20100
     │   ├── magnetometer/qmc5883p/    # ffl.qmc5883p
     │   └── imu/common|qmi8658a|icm42688p/
@@ -50,7 +51,7 @@ components/<domain>/<component>/
 | `test/` | host / mock 自动验证 | 不把必须接开发板的程序伪装为 host test。 |
 | `experimental/` | 待评审、未整合工作区 | 默认不被根 Xmake 索引包含。 |
 
-所有 C 公开头提供 `extern "C"` 边界，根工程使用 C11 + C++17。C++ 调用方不需要也不应复制 C core。
+所有 C 公开头提供 `extern "C"` 边界，根工程使用 C11 + C++17。公共 API 命名与南向接口契约见 `docs/API_STYLE.md`；C++ 调用方不需要也不应复制 C core。
 
 ## 两种驱动入口
 

@@ -1,91 +1,132 @@
-﻿#include "sht40_ch32_adapter.h"
+#include "sht40_ch32_adapter.h"
 #include "board.h"
 
 #include <errno.h>
 
-static int sht40_i2c_wait_idle(i2c_num_t i2c_num, uint32_t timeout_ms)
-{
-    uint32_t start = HAL_GetTick();
-    uint32_t guard = 0u;
-    uint32_t err;
+#define FFL_SHT40_CH32_DEFAULT_TIMEOUT_MS 50u
 
+static int ffl_sht40_ch32_wait_idle(const ffl_sht40_ch32_i2c_t *bus)
+{
+    uint32_t start;
+    uint32_t guard = 0u;
+    uint32_t error;
+
+    if (bus == 0) {
+        return -EINVAL;
+    }
+
+    start = HAL_GetTick();
     while (1) {
-        if (bsp_i2c_get_state(i2c_num) == I2C_STATE_IDLE) {
-            err = bsp_i2c_get_error(i2c_num);
-            return (err == I2C_OK) ? 0 : -EIO;
+        if (bsp_i2c_get_state(bus->i2c_num) == I2C_STATE_IDLE) {
+            error = bsp_i2c_get_error(bus->i2c_num);
+            return (error == I2C_OK) ? 0 : -EIO;
         }
 
-        err = bsp_i2c_get_error(i2c_num);
-        if (err != I2C_OK) {
+        error = bsp_i2c_get_error(bus->i2c_num);
+        if (error != I2C_OK) {
             return -EIO;
         }
 
-        if ((HAL_GetTick() - start) >= timeout_ms) {
-            bsp_i2c_recover(i2c_num);
-            return -ETIMEDOUT;
-        }
-
-        guard++;
-        if (guard > 2000000u) {
-            bsp_i2c_recover(i2c_num);
+        if ((HAL_GetTick() - start) >= bus->timeout_ms || guard++ >= 2000000u) {
+            bsp_i2c_recover(bus->i2c_num);
             return -ETIMEDOUT;
         }
     }
 }
 
-static int sht40_ch32_xfer(void *ctx,
-                           const sht40_comm_msg_t *msgs,
-                           uint8_t cnt,
-                           sht40_bus_done_cb_t cb,
-                           void *user)
+static int ffl_sht40_ch32_xfer(void *ctx,
+                               const ffl_endpoint_t *endpoint,
+                               const ffl_xfer_msg_t *msgs,
+                               uint8_t count,
+                               ffl_xfer_done_fn done,
+                               void *user)
 {
-    sht40_ch32_bus_ctx_t *bus;
+    ffl_sht40_ch32_i2c_t *bus = (ffl_sht40_ch32_i2c_t *)ctx;
+    const ffl_xfer_msg_t *message;
+    uint8_t direction;
     int rc;
 
-    if (ctx == 0 || msgs == 0 || cnt == 0u) {
+    if (bus == 0 || endpoint == 0 || msgs == 0 || count != 1u ||
+        endpoint->kind != FFL_ENDPOINT_I2C_7BIT || !ffl_endpoint_is_valid(endpoint)) {
         return -EINVAL;
     }
 
-    bus = (sht40_ch32_bus_ctx_t *)ctx;
-
-    if (cnt == 1u) {
-        if ((msgs[0].flags & SHT40_COMM_READ) != 0u) {
-            rc = (bsp_i2c_read(bus->i2c_num, bus->dev_addr, msgs[0].buf, msgs[0].len) == I2C_OK) ? 0 : -EIO;
-            if (rc == 0) {
-                rc = sht40_i2c_wait_idle(bus->i2c_num, 50u);
-            }
-        } else if ((msgs[0].flags & SHT40_COMM_WRITE) != 0u) {
-            rc = (bsp_i2c_write(bus->i2c_num, bus->dev_addr, msgs[0].buf, msgs[0].len) == I2C_OK) ? 0 : -EIO;
-            if (rc == 0) {
-                rc = sht40_i2c_wait_idle(bus->i2c_num, 50u);
-            }
-        } else {
-            rc = -EINVAL;
-        }
-    } else {
-        rc = -ENOTSUP;
+    message = &msgs[0];
+    direction = (uint8_t)(message->flags & FFL_XFER_MSG_DIRECTION_MASK);
+    if (message->buf == 0 || message->len == 0u ||
+        (direction != FFL_XFER_MSG_WRITE && direction != FFL_XFER_MSG_READ)) {
+        return -EINVAL;
     }
 
-    if (cb != 0) {
-        cb(user, rc);
+    if (direction == FFL_XFER_MSG_READ) {
+        rc = (bsp_i2c_read(bus->i2c_num,
+                           endpoint->value.i2c.addr7,
+                           message->buf,
+                           message->len) == I2C_OK) ? 0 : -EIO;
+    } else {
+        rc = (bsp_i2c_write(bus->i2c_num,
+                            endpoint->value.i2c.addr7,
+                            message->buf,
+                            message->len) == I2C_OK) ? 0 : -EIO;
+    }
+    if (rc == 0) {
+        rc = ffl_sht40_ch32_wait_idle(bus);
+    }
+
+    if (rc == 0 && done != 0) {
+        done(user, 0);
     }
     return rc;
 }
 
-static int sht40_ch32_cancel(void *ctx)
+static int ffl_sht40_ch32_cancel(void *ctx)
 {
-    sht40_ch32_bus_ctx_t *bus;
+    ffl_sht40_ch32_i2c_t *bus = (ffl_sht40_ch32_i2c_t *)ctx;
 
-    if (ctx == 0) {
+    if (bus == 0) {
         return -EINVAL;
     }
 
-    bus = (sht40_ch32_bus_ctx_t *)ctx;
     bsp_i2c_recover(bus->i2c_num);
     return 0;
 }
 
-const sht40_bus_ops_t g_sht40_ch32_i2c_ops = {
-    .xfer = sht40_ch32_xfer,
-    .cancel = sht40_ch32_cancel,
+static void ffl_sht40_ch32_delay_ms(void *ctx, uint32_t ms)
+{
+    (void)ctx;
+    HAL_Delay(ms);
+}
+
+static const ffl_transport_ops_t g_ffl_sht40_ch32_transport_ops = {
+    ffl_sht40_ch32_xfer,
+    ffl_sht40_ch32_cancel,
 };
+
+static const ffl_time_ops_t g_ffl_sht40_ch32_time_ops = {
+    ffl_sht40_ch32_delay_ms,
+    0,
+};
+
+int ffl_sht40_ch32_transport_init(ffl_transport_t *transport,
+                                   ffl_sht40_ch32_i2c_t *bus,
+                                   i2c_num_t i2c_num,
+                                   uint8_t addr7)
+{
+    if (transport == 0 || bus == 0 || i2c_num >= I2C_NUM_MAX || addr7 > 0x7Fu) {
+        return -EINVAL;
+    }
+
+    bus->i2c_num = i2c_num;
+    bus->timeout_ms = FFL_SHT40_CH32_DEFAULT_TIMEOUT_MS;
+    transport->ops = &g_ffl_sht40_ch32_transport_ops;
+    transport->ctx = bus;
+    transport->endpoint = ffl_endpoint_i2c7(addr7);
+    return 0;
+}
+
+void ffl_sht40_ch32_time_init(ffl_time_ops_t *time_ops)
+{
+    if (time_ops != 0) {
+        *time_ops = g_ffl_sht40_ch32_time_ops;
+    }
+}

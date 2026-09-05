@@ -2,10 +2,10 @@ target("ffl.sht40")
     set_kind("object")
     set_default(false)
     set_languages("c11", "cxx17")
-    add_files("src/sht40_core.c", "src/sht40_sync.c", "src/sht40_async.c")
-    add_headerfiles("include/*.h")
+    add_files("src/sht40_core.c", "src/sht40_sync.c", "src/sht40_async.c", "src/ffl_sht40.c")
+    add_headerfiles("include/ffl/*.h")
     add_includedirs("include", {public = true})
-    add_deps("ffl.atomic")
+    add_deps("ffl.atomic", "ffl.driver_port")
 
     if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
@@ -21,4 +21,16 @@ target("ffl.sht40.test")
 
     if not is_plat("windows") then
         add_cflags("-Wall", "-Wextra", "-Werror")
+    end
+
+target("ffl.sht40.cxx-test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/sht40_cxx_compile.cpp")
+    add_deps("ffl.sht40")
+    add_tests("default")
+
+    if not is_plat("windows") then
+        add_cxxflags("-Wall", "-Wextra", "-Werror")
     end

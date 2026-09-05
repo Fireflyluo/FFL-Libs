@@ -15,11 +15,11 @@
 
 | 领域 | 正式组件 | 适配 / 测试位置 | 状态 |
 |---|---|---|---|
-| 基础设施 | `ffl.atomic`、`ffl.ringbuffer`、`ffl.sw_timer` | 各组件 `test/` | ringbuffer 与 sw-timer 有 host 测试。 |
+| 基础设施 | `ffl.atomic`、`ffl.driver_port`、`ffl.ringbuffer`、`ffl.sw_timer` | 各组件 `test/` | driver-port 为通用南向契约；ringbuffer 与 sw-timer 有 host 测试。 |
 | 运行时 | `ffl.protothreads`、`ffl.osal` | `ports/py32/osal/` | OSAL 已编译；PY32 硬件回补待做。 |
 | 协议 | `ffl.adhoc` | `ports/ch32/adhoc/`、`tests/protocols/adhoc/` | core 已迁移并可编译。 |
 | 加速度计 | `ffl.sc7a20`、`ffl-sc7a20` | `ports/ch32/sc7a20/`、组件 mock test | 保留源码裁剪与完整 static 双入口。 |
-| 环境传感器 | `ffl.sht30`、`ffl.sht40`、`ffl.icp20100` | `ports/ch32/sht40/` | core 已迁移；板端 I2C 验证待做。 |
+| 环境传感器 | `ffl.sht30`、`ffl.sht40`、`ffl.icp20100` | `ports/ch32/sht40/` | SHT40 已提供 `ffl_transport_t` 门面与 CH32 适配；板端 I2C 验证待做。 |
 | IMU / 磁力计 | `ffl.qmi8658a`、`ffl.icm42688p`、`ffl.qmc5883p` | 由最终工程提供 bus port | core 已迁移；板端验证待做。 |
 | 显示 / 射频 | 无正式 core target | `ports/ch32/legacy/` | 已从旧根目录隔离，但仍待拆出通用 bus/GPIO port。 |
 
