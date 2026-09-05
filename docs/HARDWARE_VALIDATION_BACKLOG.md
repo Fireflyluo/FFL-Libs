@@ -11,6 +11,7 @@
 | `ffl.sw_timer` | C++ host test | 可自动验证。 |
 | `ffl.sc7a20.unit` | mock I2C 单元测试 | 不访问真实器件。 |
 | `ffl.sc7a20.integration` | mock I2C 集成测试 | 不访问真实器件。 |
+| `ffl.icp20100` | mock I2C + C/C++ host test | 验证地址传播、寄存器事务、FIFO 解析与错误码；不访问真实器件。 |
 
 ## 需要板端回补
 
@@ -19,7 +20,7 @@
 | `ffl.sc7a20` + `ports/ch32/sc7a20/` | core 与 mock 测试可构建 | WHO_AM_I、寄存器读写、量程/ODR、连续采样、FIFO、异步或中断路径、I2C 异常恢复。 |
 | `ffl.sht40` + `ports/ch32/sht40/` | core 可构建 | 序列号、单次测量、CRC、repeatability、I2C NACK / timeout 恢复。 |
 | `ffl.sht30` | core 可构建 | 初始化、测温湿、CRC、clock stretching 或平台总线时序。 |
-| `ffl.icp20100` | core 可构建 | 芯片识别、启动延迟、压力温度读数、异常复位恢复。 |
+| `ffl.icp20100` | I2C core 与 mock 测试可构建；仅连续 pressure/temperature FIFO | 上电/OTP 校准、芯片识别、启动延迟、压力温度读数、异常恢复；forced/FIFO 其它模式另行验证。 |
 | `ffl.qmc5883p` | core 可构建 | 芯片识别、连续磁场读数、量程与数据就绪。 |
 | `ffl.qmi8658a` | core 可构建 | I2C/SPI 任选实际接口、WHO_AM_I、加速度/陀螺仪量程与 FIFO。 |
 | `ffl.icm42688p` | core 可构建 | SPI/I2C 实际接口、WHO_AM_I、加速度/陀螺仪、FIFO 与中断。 |

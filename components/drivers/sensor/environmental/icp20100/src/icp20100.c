@@ -36,7 +36,7 @@ static int icp20100_validate(const icp20100_dev_t *dev)
     if (dev == NULL || dev->ops == NULL || dev->ops->xfer == NULL) {
         return -EINVAL;
     }
-    if (dev->addr == 0u) {
+    if (dev->addr == 0u || dev->addr > 0x7Fu) {
         return -EINVAL;
     }
     return 0;
@@ -152,7 +152,7 @@ int icp20100_probe(icp20100_dev_t *dev, uint8_t *chip_id, uint8_t *version)
     return 0;
 }
 
-int icp20100_soft_reset(icp20100_dev_t *dev)
+int icp20100_stop_measurement(icp20100_dev_t *dev)
 {
     uint8_t mode;
     int rc;
@@ -181,7 +181,15 @@ int icp20100_set_config(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
     }
 
     use_cfg = (cfg != NULL) ? *cfg : dev->cfg;
-    if (use_cfg.op_mode > ICP20100_OP_MODE4) {
+    if (use_cfg.addr == 0u) {
+        use_cfg.addr = dev->addr;
+    }
+    if (use_cfg.addr == 0u || use_cfg.addr > 0x7Fu ||
+        use_cfg.addr != dev->addr ||
+        use_cfg.op_mode > ICP20100_OP_MODE4 ||
+        use_cfg.meas_mode != ICP20100_MEAS_MODE_CONTINUOUS ||
+        use_cfg.power_mode > ICP20100_POWER_MODE_ACTIVE ||
+        use_cfg.fifo_mode != ICP20100_FIFO_PRES_TEMP) {
         return -EINVAL;
     }
 
@@ -213,6 +221,11 @@ int icp20100_init(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
     if (local_cfg.addr == 0u) {
         local_cfg.addr = ICP20100_I2C_ADDR_AD0_LOW;
     }
+    if (local_cfg.addr > 0x7Fu) {
+        return -EINVAL;
+    }
+
+    dev->initialized = false;
 
     dev->addr = local_cfg.addr;
     dev->cfg = local_cfg;
@@ -228,7 +241,7 @@ int icp20100_init(icp20100_dev_t *dev, const icp20100_cfg_t *cfg)
         return rc;
     }
 
-    rc = icp20100_soft_reset(dev);
+    rc = icp20100_stop_measurement(dev);
     if (rc != 0) {
         return rc;
     }

@@ -8,6 +8,8 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "ffl/driver_port.h"
+
 #include "icp20100_reg.h"
 
 #ifndef ICP20100_COMM_WRITE
@@ -59,10 +61,15 @@ typedef struct {
     void (*delay_us)(void *ctx, uint32_t us);
     void *delay_ctx;
 
+    const ffl_transport_t *transport;
+    const ffl_time_ops_t *time_ops;
+    void *time_ctx;
+
     uint8_t addr;
     uint8_t chip_id;
     uint8_t version;
     bool initialized;
+    volatile uint8_t in_use;
     icp20100_cfg_t cfg;
 } icp20100_dev_t;
 
@@ -70,7 +77,7 @@ extern const icp20100_cfg_t g_icp20100_default_cfg;
 
 int icp20100_init(icp20100_dev_t *dev, const icp20100_cfg_t *cfg);
 int icp20100_probe(icp20100_dev_t *dev, uint8_t *chip_id, uint8_t *version);
-int icp20100_soft_reset(icp20100_dev_t *dev);
+int icp20100_stop_measurement(icp20100_dev_t *dev);
 int icp20100_set_config(icp20100_dev_t *dev, const icp20100_cfg_t *cfg);
 
 int icp20100_read_reg(icp20100_dev_t *dev, uint8_t reg, uint8_t *data, uint16_t len);
