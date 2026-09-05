@@ -44,9 +44,8 @@ int sht30_init(sht30_dev_t *dev)
 
     dev->addr = (dev->addr == 0u) ? SHT30_I2C_ADDR : dev->addr;
     memset(&dev->async, 0, sizeof(dev->async));
-    dev->initialized = true;
-
     rc = sht30_soft_reset_locked(dev);
+    dev->initialized = (rc == 0);
 
     sht30_core_unlock(dev);
     return rc;

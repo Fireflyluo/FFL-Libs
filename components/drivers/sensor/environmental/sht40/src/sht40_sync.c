@@ -44,9 +44,8 @@ int sht40_init(sht40_dev_t *dev)
 
     dev->addr = (dev->addr == 0u) ? SHT40_I2C_ADDR : dev->addr;
     memset(&dev->async, 0, sizeof(dev->async));
-    dev->initialized = true;
-
     rc = sht40_soft_reset_locked(dev);
+    dev->initialized = (rc == 0);
 
     sht40_core_unlock(dev);
     return rc;

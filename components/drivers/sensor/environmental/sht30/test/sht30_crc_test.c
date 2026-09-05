@@ -462,6 +462,32 @@ static int test_consumes_callback_that_races_cancel_failure(void)
     return 0;
 }
 
+static int test_allows_init_retry_after_reset_failure(void)
+{
+    static const ffl_transport_ops_t transport_ops = {
+        .xfer = fake_i2c_xfer,
+        .cancel = NULL
+    };
+    fake_i2c_t bus = {.transfer_status = -EIO};
+    ffl_transport_t transport = {
+        .ops = &transport_ops,
+        .ctx = &bus,
+        .endpoint = {0}
+    };
+    ffl_sht30_config_t config;
+    ffl_sht30_device_t device = {0};
+
+    transport.endpoint = ffl_endpoint_i2c7(0x44u);
+    ffl_sht30_config_init(&config);
+    if (ffl_sht30_bind(&device, &transport, &g_time_ops, &bus) != 0 ||
+        ffl_sht30_init(&device, &config) != -EIO || device.initialized) {
+        return 1;
+    }
+
+    bus.transfer_status = 0;
+    return ffl_sht30_init(&device, &config) == 0 && device.initialized ? 0 : 1;
+}
+
 int main(void)
 {
     const int failed = test_accepts_valid_frame() + test_rejects_invalid_crc() +
@@ -469,7 +495,8 @@ int main(void)
                        test_rejects_missing_delay() + test_accepts_inline_async_completion() +
                        test_serializes_pending_async() + test_serializes_concurrent_cancel() +
                        test_rejects_cancel_during_callback_processing() +
-                       test_consumes_callback_that_races_cancel_failure();
+                       test_consumes_callback_that_races_cancel_failure() +
+                       test_allows_init_retry_after_reset_failure();
 
     if (failed != 0) {
         fprintf(stderr, "sht30 CRC tests failed: %d\n", failed);
