@@ -32,9 +32,16 @@ static int fake_xfer(void *ctx,
     return -1;
 }
 
+static void fake_delay_ms(void *ctx, uint32_t ms)
+{
+    (void)ctx;
+    (void)ms;
+}
+
 int main()
 {
     static const ffl_transport_ops_t ops = {fake_xfer, nullptr};
+    static const ffl_time_ops_t time_ops = {fake_delay_ms, nullptr, nullptr};
     fake_bus bus = {};
     ffl_sht40_device_t device = {};
     ffl_sht40_config_t config = {};
@@ -47,7 +54,7 @@ int main()
     ffl_sht40_config_init(&config);
     config.i2c_addr7 = 0x44u;
 
-    if (ffl_sht40_bind(&device, &transport, nullptr, nullptr) != 0 ||
+    if (ffl_sht40_bind(&device, &transport, &time_ops, nullptr) != 0 ||
         ffl_sht40_init(&device, &config) != 0 ||
         ffl_sht40_read_sample(&device, FFL_SHT40_PRECISION_HIGH, &sample) != 0) {
         return 1;

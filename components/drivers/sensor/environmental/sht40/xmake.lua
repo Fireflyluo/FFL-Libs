@@ -7,9 +7,7 @@ target("ffl.sht40")
     add_includedirs("include", {public = true})
     add_deps("ffl.atomic", "ffl.driver_port")
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")
 
 target("ffl.sht40.test")
     set_kind("binary")
@@ -19,9 +17,7 @@ target("ffl.sht40.test")
     add_deps("ffl.sht40")
     add_tests("default")
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")
 
 target("ffl.sht40.cxx-test")
     set_kind("binary")
@@ -31,6 +27,4 @@ target("ffl.sht40.cxx-test")
     add_deps("ffl.sht40")
     add_tests("default")
 
-    if not is_plat("windows") then
-        add_cxxflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cxxflags("-Wall", "-Wextra", "-Werror")

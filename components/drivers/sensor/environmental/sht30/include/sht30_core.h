@@ -70,7 +70,21 @@ typedef enum {
     SHT30_ASYNC_SOFT_RESET
 } sht30_async_op_t;
 
+typedef enum {
+    SHT30_ASYNC_STATE_IDLE = 0,
+    SHT30_ASYNC_STATE_COMMAND_SUBMITTING,
+    SHT30_ASYNC_STATE_COMMAND_PENDING,
+    SHT30_ASYNC_STATE_COMMAND_PROCESSING,
+    SHT30_ASYNC_STATE_READ_SUBMITTING,
+    SHT30_ASYNC_STATE_READ_PENDING,
+    SHT30_ASYNC_STATE_READ_PROCESSING,
+    SHT30_ASYNC_STATE_CANCELLING,
+    SHT30_ASYNC_STATE_CANCELLED
+} sht30_async_state_t;
+
 typedef struct {
+    volatile uint8_t state;
+    volatile uint8_t submit_depth;
     sht30_async_op_t op;
     uint8_t cmd[2];
     uint8_t rx[6];

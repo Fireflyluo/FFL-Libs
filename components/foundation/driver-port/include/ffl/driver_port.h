@@ -51,7 +51,8 @@ typedef void (*ffl_xfer_done_fn)(void *user, int status);
  * final status. With `done != NULL`, a successful submission must invoke the
  * callback exactly once, either inline or later. A failed submission returns a
  * negative status and must not invoke the callback. If `cancel()` returns
- * success, the cancelled request is complete and its callback must not run.
+ * success, the cancelled request is complete and its callback must not run or
+ * still be executing when `cancel()` returns.
  * A delayed callback must run in task or thread context, never directly from
  * an ISR, because a driver may delay or submit a follow-up transfer in `done`.
  */

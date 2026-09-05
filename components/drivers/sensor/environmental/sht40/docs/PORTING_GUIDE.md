@@ -2,7 +2,8 @@
 
 The SHT40 core has no required MCU port. A consuming project may adapt its
 own I2C API to `ffl_transport_ops_t`; no board header or vendor HAL header is
-included by this component.
+included by this component. `ffl_sht40_bind()` requires `ffl_time_ops_t::delay_ms`,
+because reset and measurement waits are mandatory for a correct transaction.
 
 ## Minimal synchronous adapter
 
@@ -61,7 +62,8 @@ For a synchronous board I2C call, return its result directly and do not invoke
 `done` when the caller does not request completion notification. When `done` is
 provided, invoke `done(user, status)` exactly once after a successful transfer;
 the callback may run before the adapter returns or after an asynchronous queue
-operation. If submission fails synchronously, return the negative error and do
+operation. A delayed callback must run in task or thread context, not directly
+from an ISR. If submission fails synchronously, return the negative error and do
 not invoke `done`. Implement
 `cancel` only when the board driver can abort a pending asynchronous transfer.
 

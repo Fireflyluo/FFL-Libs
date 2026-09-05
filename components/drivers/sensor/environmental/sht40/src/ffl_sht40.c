@@ -87,9 +87,22 @@ int ffl_sht40_bind(ffl_sht40_device_t *device,
                    const ffl_time_ops_t *time_ops,
                    void *time_ctx)
 {
+    int rc;
+
     if (device == 0 || !ffl_transport_is_valid(transport) ||
-        transport->endpoint.kind != FFL_ENDPOINT_I2C_7BIT) {
+        transport->endpoint.kind != FFL_ENDPOINT_I2C_7BIT ||
+        transport->endpoint.value.i2c.addr7 == 0u || time_ops == 0 ||
+        time_ops->delay_ms == 0) {
         return -EINVAL;
+    }
+
+    rc = sht40_core_try_lock(device);
+    if (rc != 0) {
+        return rc;
+    }
+    if (device->initialized) {
+        sht40_core_unlock(device);
+        return -EBUSY;
     }
 
     device->ops = &g_ffl_sht40_transport_adapter;
@@ -102,17 +115,24 @@ int ffl_sht40_bind(ffl_sht40_device_t *device,
     device->addr = transport->endpoint.value.i2c.addr7;
     memset(&device->async, 0, sizeof(device->async));
     device->initialized = false;
-    device->in_use = 0u;
+    sht40_core_unlock(device);
     return 0;
 }
 
 int ffl_sht40_set_i2c_addr(ffl_sht40_device_t *device, uint8_t addr7)
 {
+    int rc;
+
     if (device == 0 || addr7 == 0u || addr7 > 0x7Fu) {
         return -EINVAL;
     }
 
+    rc = sht40_core_try_lock(device);
+    if (rc != 0) {
+        return rc;
+    }
     device->addr = addr7;
+    sht40_core_unlock(device);
     return 0;
 }
 
