@@ -34,7 +34,7 @@ typedef struct {
             uint8_t addr7;
         } i2c;
         struct {
-            uint8_t chip_select;
+            uint8_t reserved;
         } spi;
     } value;
 } ffl_endpoint_t;
@@ -59,8 +59,37 @@ typedef struct {
 
 typedef struct {
     void (*delay_ms)(void *ctx, uint32_t ms);
+    void (*delay_us)(void *ctx, uint32_t us);
     uint32_t (*now_us)(void *ctx);
 } ffl_time_ops_t;
+
+typedef enum {
+    FFL_GPIO_LOW = 0,
+    FFL_GPIO_HIGH = 1
+} ffl_gpio_level_t;
+
+typedef struct {
+    int (*write)(void *ctx, uint32_t line, ffl_gpio_level_t level);
+    int (*read)(void *ctx, uint32_t line, ffl_gpio_level_t *out_level);
+} ffl_gpio_ops_t;
+
+typedef struct {
+    const ffl_gpio_ops_t *ops;
+    void *ctx;
+    uint32_t line;
+} ffl_gpio_t;
+
+typedef struct {
+    int (*enable)(void *ctx, uint32_t line);
+    int (*disable)(void *ctx, uint32_t line);
+    int (*ack)(void *ctx, uint32_t line);
+} ffl_irq_ops_t;
+
+typedef struct {
+    const ffl_irq_ops_t *ops;
+    void *ctx;
+    uint32_t line;
+} ffl_irq_t;
 
 static inline ffl_endpoint_t ffl_endpoint_i2c7(uint8_t addr7)
 {
@@ -68,6 +97,15 @@ static inline ffl_endpoint_t ffl_endpoint_i2c7(uint8_t addr7)
 
     endpoint.kind = FFL_ENDPOINT_I2C_7BIT;
     endpoint.value.i2c.addr7 = addr7;
+    return endpoint;
+}
+
+static inline ffl_endpoint_t ffl_endpoint_spi(void)
+{
+    ffl_endpoint_t endpoint;
+
+    endpoint.kind = FFL_ENDPOINT_SPI;
+    endpoint.value.spi.reserved = 0u;
     return endpoint;
 }
 
@@ -121,6 +159,82 @@ static inline int ffl_transport_cancel(const ffl_transport_t *transport)
     }
 
     return transport->ops->cancel(transport->ctx);
+}
+
+static inline int ffl_time_delay_ms(const ffl_time_ops_t *ops, void *ctx, uint32_t ms)
+{
+    if (ops == 0 || ops->delay_ms == 0) {
+        return -ENOTSUP;
+    }
+
+    ops->delay_ms(ctx, ms);
+    return 0;
+}
+
+static inline int ffl_time_delay_us(const ffl_time_ops_t *ops, void *ctx, uint32_t us)
+{
+    if (ops == 0 || ops->delay_us == 0) {
+        return -ENOTSUP;
+    }
+
+    ops->delay_us(ctx, us);
+    return 0;
+}
+
+static inline bool ffl_gpio_is_valid(const ffl_gpio_t *gpio)
+{
+    return gpio != 0 && gpio->ops != 0;
+}
+
+static inline int ffl_gpio_write(const ffl_gpio_t *gpio, ffl_gpio_level_t level)
+{
+    if (!ffl_gpio_is_valid(gpio) || gpio->ops->write == 0 ||
+        (level != FFL_GPIO_LOW && level != FFL_GPIO_HIGH)) {
+        return -EINVAL;
+    }
+
+    return gpio->ops->write(gpio->ctx, gpio->line, level);
+}
+
+static inline int ffl_gpio_read(const ffl_gpio_t *gpio, ffl_gpio_level_t *out_level)
+{
+    if (!ffl_gpio_is_valid(gpio) || gpio->ops->read == 0 || out_level == 0) {
+        return -EINVAL;
+    }
+
+    return gpio->ops->read(gpio->ctx, gpio->line, out_level);
+}
+
+static inline bool ffl_irq_is_valid(const ffl_irq_t *irq)
+{
+    return irq != 0 && irq->ops != 0;
+}
+
+static inline int ffl_irq_enable(const ffl_irq_t *irq)
+{
+    if (!ffl_irq_is_valid(irq) || irq->ops->enable == 0) {
+        return -ENOTSUP;
+    }
+
+    return irq->ops->enable(irq->ctx, irq->line);
+}
+
+static inline int ffl_irq_disable(const ffl_irq_t *irq)
+{
+    if (!ffl_irq_is_valid(irq) || irq->ops->disable == 0) {
+        return -ENOTSUP;
+    }
+
+    return irq->ops->disable(irq->ctx, irq->line);
+}
+
+static inline int ffl_irq_ack(const ffl_irq_t *irq)
+{
+    if (!ffl_irq_is_valid(irq) || irq->ops->ack == 0) {
+        return -ENOTSUP;
+    }
+
+    return irq->ops->ack(irq->ctx, irq->line);
 }
 
 #ifdef __cplusplus

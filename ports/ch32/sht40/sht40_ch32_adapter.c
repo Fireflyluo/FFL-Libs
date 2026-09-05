@@ -103,8 +103,9 @@ static const ffl_transport_ops_t g_ffl_sht40_ch32_transport_ops = {
 };
 
 static const ffl_time_ops_t g_ffl_sht40_ch32_time_ops = {
-    ffl_sht40_ch32_delay_ms,
-    0,
+    .delay_ms = ffl_sht40_ch32_delay_ms,
+    .delay_us = 0,
+    .now_us = 0,
 };
 
 int ffl_sht40_ch32_transport_init(ffl_transport_t *transport,

@@ -29,7 +29,10 @@ starts a hardware transaction.
 
 ## Driver Ports
 
-Use `ffl/driver_port.h` for transport and time capabilities. A driver core
-must not include a board, MCU, vendor HAL, GPIO, I2C, SPI, DMA, or IRQ header.
-Official ports are optional: consuming projects may implement
-`ffl_transport_ops_t` directly.
+Use `ffl/driver_port.h` for transport, time, GPIO, and IRQ capabilities. A
+driver binds only the capabilities it needs; do not add a monolithic HAL
+vtable. SPI chip-select and device-enable signals use `ffl_gpio_t`, while
+components expose explicit `on_irq` entry points instead of registering vendor
+interrupt handlers. A driver core must not include a board, MCU, vendor HAL,
+GPIO, I2C, SPI, DMA, or IRQ header. Official ports are optional: consuming
+projects may implement the public capability callbacks directly.

@@ -8,7 +8,7 @@
 components/
 ├── foundation/
 │   ├── atomic/                       # ffl.atomic，跨编译器字节锁封装
-│   ├── driver-port/                  # ffl.driver_port，统一南向 transport/time 契约
+│   ├── driver-port/                  # ffl.driver_port，统一 transport/time/GPIO/IRQ 契约
 │   ├── ringbuffer/                   # ffl.ringbuffer，C/C++ host 测试
 │   └── sw-timer/                     # ffl.sw_timer，C/C++ host 测试
 ├── runtime/
