@@ -9,8 +9,10 @@ components/
 ├── foundation/
 │   ├── atomic/                       # ffl.atomic，跨编译器字节锁封装
 │   ├── driver-port/                  # ffl.driver_port，统一 transport/time/GPIO/IRQ 契约
-│   ├── ringbuffer/                   # ffl.ringbuffer，C/C++ host 测试
-│   └── sw-timer/                     # ffl.sw_timer，C/C++ host 测试
+│   ├── ringbuffer/                   # ffl.ringbuffer，include/ffl/ringbuffer.h，GCC/G++ host 测试
+│   └── sw-timer/                     # ffl.sw_timer，include/ffl/sw_timer.h，GCC/G++ host 测试
+├── algorithms/
+│   └── impact-displacement/          # ffl.impact_displacement，纯算法 core，C/C++ host 测试
 ├── runtime/
 │   ├── protothreads/                 # ffl.protothreads，纯头文件
 │   └── osal/                         # ffl.osal，通用 core 与显式 port hooks

@@ -15,7 +15,8 @@
 
 | 领域 | 正式组件 | 适配 / 测试位置 | 状态 |
 |---|---|---|---|
-| 基础设施 | `ffl.atomic`、`ffl.driver_port`、`ffl.ringbuffer`、`ffl.sw_timer` | 各组件 `test/` | driver-port 为通用南向契约；ringbuffer 与 sw-timer 有 host 测试。 |
+| 基础设施 | `ffl.atomic`、`ffl.driver_port`、`ffl.ringbuffer`、`ffl.sw_timer` | 各组件 `test/` | driver-port 为通用南向契约；atomic、ringbuffer 与 sw-timer 均有 GCC host 测试。ringbuffer 与 sw-timer 的公开头分别位于 `include/ffl/ringbuffer.h`、`include/ffl/sw_timer.h`。 |
+| 算法 | `ffl.impact_displacement` | `components/algorithms/impact-displacement/test/` | 纯算法 core，无 HAL、RTOS、总线或板级依赖；提供 C/C++ GCC host 测试。源项目的 `impact_episode_v02*` 业务策略与事件生命周期未迁移，仍由应用层负责。 |
 | 运行时 | `ffl.protothreads`、`ffl.osal` | `ports/py32/osal/` | OSAL 已编译；PY32 硬件回补待做。 |
 | 协议 | `ffl.adhoc` | `ports/ch32/adhoc/`、`tests/protocols/adhoc/` | core 已迁移并可编译。 |
 | 加速度计 | `ffl.sc7a20`、`ffl-sc7a20` | `ports/ch32/sc7a20/`、组件 mock test | 保留源码裁剪与完整 static 双入口。 |
