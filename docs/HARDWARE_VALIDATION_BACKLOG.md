@@ -9,8 +9,9 @@
 |---|---|---|
 | `ffl.ringbuffer` | C++ host test | 可自动验证。 |
 | `ffl.sw_timer` | C++ host test | 可自动验证。 |
-| `ffl.sc7a20.unit` | mock I2C 单元测试 | 不访问真实器件。 |
-| `ffl.sc7a20.integration` | mock I2C 集成测试 | 不访问真实器件。 |
+| `ffl.sc7a20.test` | ffl facade fake-register C test | 验证 I2C 地址/标志、同步读写、配置回滚、异步完成与取消；不访问真实器件。 |
+| `ffl.sc7a20.cxx-test` | C++ facade compile test | 验证 C/C++ 公开头兼容；不访问真实器件。 |
+| `ffl.sc7a20.unit` / `ffl.sc7a20.integration` | core mock 测试 | 不访问真实器件。 |
 | `ffl.icp20100` | mock I2C + C/C++ host test | 验证地址传播、寄存器事务、FIFO 解析与错误码；不访问真实器件。 |
 | `ffl.qmc5883p` | mock I2C + C/C++ host test | 验证地址传播、量程编码、DRDY/溢出、三轴解析与 µT 换算；不访问真实器件。 |
 
@@ -18,7 +19,7 @@
 
 | 组件 / Port | 当前状态 | 板端验收项 |
 |---|---|---|
-| `ffl.sc7a20` + `ports/ch32/sc7a20/` | core 与 mock 测试可构建 | WHO_AM_I、寄存器读写、量程/ODR、连续采样、FIFO、异步或中断路径、I2C 异常恢复。 |
+| `ffl.sc7a20` / `ffl.sc7a20.full` + `ports/ch32/sc7a20/` | core、portable facade 与 fake-register C/C++ 测试可构建 | 实际 I2C 波形、WHO_AM_I、寄存器读写、量程/ODR、连续采样、异步 callback/cancel、I2C 异常恢复；FIFO/IRQ 仍未交付，`experimental/sc7a20htr/` 不作为正式验证依据。 |
 | `ffl.sht40` + `ports/ch32/sht40/` | core 可构建 | 序列号、单次测量、CRC、repeatability、I2C NACK / timeout 恢复。 |
 | `ffl.sht30` | core 可构建 | 初始化、测温湿、CRC、clock stretching 或平台总线时序。 |
 | `ffl.icp20100` | I2C core 与 mock 测试可构建；仅连续 pressure/temperature FIFO | 上电/OTP 校准、芯片识别、启动延迟、压力温度读数、异常恢复；forced/FIFO 其它模式另行验证。 |

@@ -30,6 +30,8 @@ int sc7a20_init_with_config(sc7a20_dev_t *dev, const sc7a20_cfg_t *cfg)
     }
 
     use_cfg = (cfg != NULL) ? cfg : &g_sc7a20_default_cfg;
+    dev->initialized = false;
+    dev->async_state = SC7A20_ASYNC_STATE_IDLE;
 
     reset_cmd = 0xA5u;
     rc = sc7a20_core_write_reg(dev, SC7A20_SOFT_RESET, &reset_cmd, 1u);
@@ -58,6 +60,7 @@ int sc7a20_init_with_config(sc7a20_dev_t *dev, const sc7a20_cfg_t *cfg)
     dev->who_am_i = who;
     dev->initialized = true;
     dev->async.op = SC7A20_ASYNC_OP_NONE;
+    dev->async_state = SC7A20_ASYNC_STATE_IDLE;
     sc7a20_core_unlock(dev);
     return 0;
 }
@@ -104,10 +107,15 @@ int sc7a20_soft_reset(sc7a20_dev_t *dev)
         return rc;
     }
 
+    dev->initialized = false;
+    dev->async_state = SC7A20_ASYNC_STATE_IDLE;
     cmd = 0xA5u;
     rc = sc7a20_core_write_reg(dev, SC7A20_SOFT_RESET, &cmd, 1u);
     if (rc == 0) {
         rc = sc7a20_core_apply_config(dev, &dev->cfg);
+    }
+    if (rc == 0) {
+        dev->initialized = true;
     }
 
     sc7a20_core_unlock(dev);

@@ -71,6 +71,13 @@ typedef enum {
     SC7A20_ASYNC_OP_READ_XYZ
 } sc7a20_async_op_t;
 
+typedef enum {
+    SC7A20_ASYNC_STATE_IDLE = 0,
+    SC7A20_ASYNC_STATE_ACTIVE,
+    SC7A20_ASYNC_STATE_CANCELLING,
+    SC7A20_ASYNC_STATE_COMPLETING
+} sc7a20_async_state_t;
+
 typedef struct {
     sc7a20_async_op_t op;
     uint8_t reg_addr;
@@ -96,6 +103,7 @@ typedef struct {
     float sensitivity_g_per_lsb;
 
     volatile uint8_t in_use;
+    volatile uint8_t async_state;
     sc7a20_async_ctx_t async;
 } sc7a20_dev_t;
 

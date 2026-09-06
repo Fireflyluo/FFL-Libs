@@ -18,7 +18,7 @@ components/
 │   └── adhoc/                        # ffl.adhoc，协议 core
 └── drivers/
     ├── sensor/
-    │   ├── accelerometer/sc7a20/     # ffl.sc7a20 + ffl-sc7a20 static
+    │   ├── accelerometer/sc7a20/     # ffl.sc7a20 object + ffl.sc7a20.full static
     │   ├── environmental/sht30/      # ffl.sht30
     │   ├── environmental/sht40/      # ffl.sht40，通用 I2C transport + CH32 port
     │   ├── environmental/icp20100/   # ffl.icp20100
@@ -57,7 +57,7 @@ components/<domain>/<component>/
 
 ### 源码组件（长期主入口）
 
-`object` target 适合资源受限 MCU：调用工程可以选择该组件自己的编译期功能，例如 SC7A20 的 `sc7a20_async`。裁剪发生在编译阶段，驱动稳定后也继续保留这一入口。
+`object` target 适合资源受限 MCU：调用工程可以选择该组件自己的编译期功能，例如 SC7A20 的 `sc7a20_async`。裁剪发生在编译阶段，驱动稳定后也继续保留这一入口。SC7A20 的 `ffl.sc7a20` 同时包含统一 facade 和 core；关闭 async 时不编译异步源文件。
 
 ```lua
 includes("components/drivers/sensor/accelerometer/sc7a20")
@@ -67,11 +67,20 @@ target("firmware")
     add_deps("ffl.sc7a20")
 ```
 
-### 完整 static package（可选快速入口）
+### 完整 static package（快速入口）
 
 仅对明确需要双入口的单设备驱动维护 `ffl-<device>` package。该 package 与源码 target 共用同一套 `include/` 和 `src/`，不允许复制 core，也不允许把同类全部驱动打进一个包。
 
-当前示例为 `ffl-sc7a20`；recipe 位于 `xmake-repo/packages/f/ffl-sc7a20/xmake.lua`，完整功能静态库 target 为 `ffl-sc7a20`。它仍要求最终工程提供 I2C / SPI 等板级回调。
+SC7A20 的完整入口为 `ffl.sc7a20.full`，始终编译同步、异步和 portable facade。现有 recipe 仍使用 `ffl-sc7a20`，因此组件暂保留同内容的兼容静态 target；它不是跨设备 aggregate。两种入口都要求最终工程提供 `ffl.driver_port` 的 I2C transport；完整 static 不代表绑定固定 MCU HAL。
+
+```lua
+includes("components/drivers/sensor/accelerometer/sc7a20")
+target("firmware")
+    set_kind("binary")
+    add_deps("ffl.sc7a20.full")
+```
+
+需要 Flash/RAM 裁剪时使用 `ffl.sc7a20`，并按需设置 `sc7a20_async=false`；需要最快接入且不裁剪时使用 `ffl.sc7a20.full`。
 
 ## Port 与验证
 

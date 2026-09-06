@@ -1,4 +1,5 @@
 #include "sc7a20.h"
+#include "ffl_atomic.h"
 
 #include <errno.h>
 #include <string.h>
@@ -15,10 +16,20 @@ static void sc7a20_async_on_bus_done(void *user, int status)
         return;
     }
 
+    if (!ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                        SC7A20_ASYNC_STATE_ACTIVE,
+                                        SC7A20_ASYNC_STATE_COMPLETING) &&
+        !ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                        SC7A20_ASYNC_STATE_CANCELLING,
+                                        SC7A20_ASYNC_STATE_COMPLETING)) {
+        return;
+    }
+
     mapped = sc7a20_core_map_bus_status(status);
     async = dev->async;
 
     dev->async.op = SC7A20_ASYNC_OP_NONE;
+    ffl_atomic_store_u8(&dev->async_state, SC7A20_ASYNC_STATE_IDLE);
     sc7a20_core_unlock(dev);
 
     if (mapped == 0 && async.op == SC7A20_ASYNC_OP_READ_XYZ && async.xyz_cb != NULL) {
@@ -60,6 +71,7 @@ int sc7a20_read_reg_async(sc7a20_dev_t *dev,
     }
 
     memset(&dev->async, 0, sizeof(dev->async));
+    ffl_atomic_store_u8(&dev->async_state, SC7A20_ASYNC_STATE_ACTIVE);
     dev->async.op = SC7A20_ASYNC_OP_READ_REG;
     dev->async.reg_addr = (len > 1u) ? (uint8_t)(reg | 0x80u) : reg;
     dev->async.read_buf = data;
@@ -76,7 +88,9 @@ int sc7a20_read_reg_async(sc7a20_dev_t *dev,
     msgs[1].flags = (uint8_t)(SC7A20_COMM_READ | SC7A20_COMM_STOP);
 
     rc = sc7a20_core_map_bus_status(dev->ops->xfer(dev->bus_ctx, msgs, 2u, sc7a20_async_on_bus_done, dev));
-    if (rc != 0) {
+    if (rc != 0 && ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                                  SC7A20_ASYNC_STATE_ACTIVE,
+                                                  SC7A20_ASYNC_STATE_IDLE)) {
         dev->async.op = SC7A20_ASYNC_OP_NONE;
         sc7a20_core_unlock(dev);
     }
@@ -106,6 +120,7 @@ int sc7a20_write_reg_async(sc7a20_dev_t *dev,
     }
 
     memset(&dev->async, 0, sizeof(dev->async));
+    ffl_atomic_store_u8(&dev->async_state, SC7A20_ASYNC_STATE_ACTIVE);
     dev->async.op = SC7A20_ASYNC_OP_WRITE_REG;
     dev->async.reg_addr = (len > 1u) ? (uint8_t)(reg | 0x80u) : reg;
     dev->async.write_buf = data;
@@ -122,7 +137,9 @@ int sc7a20_write_reg_async(sc7a20_dev_t *dev,
     msgs[1].flags = (uint8_t)(SC7A20_COMM_WRITE | SC7A20_COMM_STOP);
 
     rc = sc7a20_core_map_bus_status(dev->ops->xfer(dev->bus_ctx, msgs, 2u, sc7a20_async_on_bus_done, dev));
-    if (rc != 0) {
+    if (rc != 0 && ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                                  SC7A20_ASYNC_STATE_ACTIVE,
+                                                  SC7A20_ASYNC_STATE_IDLE)) {
         dev->async.op = SC7A20_ASYNC_OP_NONE;
         sc7a20_core_unlock(dev);
     }
@@ -147,6 +164,7 @@ int sc7a20_read_xyz_raw_async(sc7a20_dev_t *dev, sc7a20_read_xyz_cb_t cb, void *
     }
 
     memset(&dev->async, 0, sizeof(dev->async));
+    ffl_atomic_store_u8(&dev->async_state, SC7A20_ASYNC_STATE_ACTIVE);
     dev->async.op = SC7A20_ASYNC_OP_READ_XYZ;
     dev->async.reg_addr = (uint8_t)(SC7A20_OUTX_L | 0x80u);
     dev->async.xyz_cb = cb;
@@ -161,7 +179,9 @@ int sc7a20_read_xyz_raw_async(sc7a20_dev_t *dev, sc7a20_read_xyz_cb_t cb, void *
     msgs[1].flags = (uint8_t)(SC7A20_COMM_READ | SC7A20_COMM_STOP);
 
     rc = sc7a20_core_map_bus_status(dev->ops->xfer(dev->bus_ctx, msgs, 2u, sc7a20_async_on_bus_done, dev));
-    if (rc != 0) {
+    if (rc != 0 && ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                                  SC7A20_ASYNC_STATE_ACTIVE,
+                                                  SC7A20_ASYNC_STATE_IDLE)) {
         dev->async.op = SC7A20_ASYNC_OP_NONE;
         sc7a20_core_unlock(dev);
     }
@@ -183,11 +203,29 @@ int sc7a20_cancel_async(sc7a20_dev_t *dev)
         return -ENOTSUP;
     }
 
+    if (!ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                        SC7A20_ASYNC_STATE_ACTIVE,
+                                        SC7A20_ASYNC_STATE_CANCELLING)) {
+        return -EALREADY;
+    }
+
     rc = sc7a20_core_map_bus_status(dev->ops->cancel(dev->bus_ctx));
-    if (rc == 0) {
+    if (rc != 0) {
+        if (ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                           SC7A20_ASYNC_STATE_CANCELLING,
+                                           SC7A20_ASYNC_STATE_ACTIVE)) {
+            return rc;
+        }
+        return -EALREADY;
+    }
+
+    if (ffl_atomic_compare_exchange_u8(&dev->async_state,
+                                       SC7A20_ASYNC_STATE_CANCELLING,
+                                       SC7A20_ASYNC_STATE_IDLE)) {
         dev->async.op = SC7A20_ASYNC_OP_NONE;
         sc7a20_core_unlock(dev);
+        return 0;
     }
-    return rc;
+    return -EALREADY;
 }
 
