@@ -1,11 +1,27 @@
 target("ffl.adhoc")
     set_kind("object")
     set_default(false)
-    set_languages("c17", "cxx17")
+    set_languages("c11", "cxx17")
     add_files("src/*.c")
     add_headerfiles("include/*.h")
     add_includedirs("include", {public = true})
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")
+
+target("ffl.adhoc.test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/adhoc_smoke.c")
+    add_deps("ffl.adhoc")
+    add_tests("default")
+    add_cflags("-Wall", "-Wextra", "-Werror")
+
+target("ffl.adhoc.cxx-test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/adhoc_cxx_smoke.cpp")
+    add_deps("ffl.adhoc")
+    add_tests("default")
+    add_cxxflags("-Wall", "-Wextra", "-Werror")

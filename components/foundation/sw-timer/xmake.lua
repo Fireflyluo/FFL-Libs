@@ -6,9 +6,7 @@ target("ffl.sw_timer")
     add_headerfiles("include/sw_timer.h")
     add_includedirs("include", {public = true})
 
-    if not is_plat("windows") then
-        add_cflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cflags("-Wall", "-Wextra", "-Werror")
 
 target("ffl.sw_timer.test")
     set_kind("binary")
@@ -18,6 +16,4 @@ target("ffl.sw_timer.test")
     add_deps("ffl.sw_timer")
     add_tests("default")
 
-    if not is_plat("windows") then
-        add_cxxflags("-Wall", "-Wextra", "-Werror")
-    end
+    add_cxxflags("-Wall", "-Wextra", "-Werror")
