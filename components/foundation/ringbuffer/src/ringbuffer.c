@@ -1,4 +1,4 @@
-#include "ringbuffer.h"
+#include "ffl/ringbuffer.h"
 
 #include <string.h>
 
@@ -7,13 +7,13 @@
  * @brief 基于镜像索引的固定容量字节环形缓冲区实现。
  */
 
-static int ringbuffer_is_valid(const ringbuffer_t *rb)
+static int ffl_ringbuffer_is_valid(const ffl_ringbuffer_t *rb)
 {
     return rb != NULL && rb->buffer_ptr != NULL && rb->buffer_size != 0U &&
            rb->read_index < rb->buffer_size && rb->write_index < rb->buffer_size;
 }
 
-static size_t ringbuffer_data_length(const ringbuffer_t *rb)
+static size_t ffl_ringbuffer_data_length(const ffl_ringbuffer_t *rb)
 {
     if (rb->read_index == rb->write_index) {
         return rb->read_mirror == rb->write_mirror ? 0U : rb->buffer_size;
@@ -26,12 +26,12 @@ static size_t ringbuffer_data_length(const ringbuffer_t *rb)
     return rb->buffer_size - (rb->read_index - rb->write_index);
 }
 
-static size_t ringbuffer_space_length(const ringbuffer_t *rb)
+static size_t ffl_ringbuffer_space_length(const ffl_ringbuffer_t *rb)
 {
-    return rb->buffer_size - ringbuffer_data_length(rb);
+    return rb->buffer_size - ffl_ringbuffer_data_length(rb);
 }
 
-static void ringbuffer_copy_in(ringbuffer_t *rb, const uint8_t *source, size_t length)
+static void ffl_ringbuffer_copy_in(ffl_ringbuffer_t *rb, const uint8_t *source, size_t length)
 {
     size_t first_length = rb->buffer_size - rb->write_index;
 
@@ -43,7 +43,7 @@ static void ringbuffer_copy_in(ringbuffer_t *rb, const uint8_t *source, size_t l
     memcpy(rb->buffer_ptr, source + first_length, length - first_length);
 }
 
-static void ringbuffer_copy_out(ringbuffer_t *rb, uint8_t *destination, size_t length)
+static void ffl_ringbuffer_copy_out(ffl_ringbuffer_t *rb, uint8_t *destination, size_t length)
 {
     size_t first_length = rb->buffer_size - rb->read_index;
 
@@ -55,7 +55,7 @@ static void ringbuffer_copy_out(ringbuffer_t *rb, uint8_t *destination, size_t l
     memcpy(destination + first_length, rb->buffer_ptr, length - first_length);
 }
 
-static void ringbuffer_advance_read(ringbuffer_t *rb, size_t length)
+static void ffl_ringbuffer_advance_read(ffl_ringbuffer_t *rb, size_t length)
 {
     size_t next_index = rb->read_index + length;
 
@@ -66,7 +66,7 @@ static void ringbuffer_advance_read(ringbuffer_t *rb, size_t length)
     rb->read_index = next_index % rb->buffer_size;
 }
 
-static void ringbuffer_advance_write(ringbuffer_t *rb, size_t length)
+static void ffl_ringbuffer_advance_write(ffl_ringbuffer_t *rb, size_t length)
 {
     size_t next_index = rb->write_index + length;
 
@@ -77,7 +77,7 @@ static void ringbuffer_advance_write(ringbuffer_t *rb, size_t length)
     rb->write_index = next_index % rb->buffer_size;
 }
 
-void ringbuffer_init(ringbuffer_t *rb, uint8_t *pool, size_t size)
+void ffl_ringbuffer_init(ffl_ringbuffer_t *rb, uint8_t *pool, size_t size)
 {
     if (rb == NULL) {
         return;
@@ -91,9 +91,9 @@ void ringbuffer_init(ringbuffer_t *rb, uint8_t *pool, size_t size)
     rb->write_mirror = 0U;
 }
 
-size_t ringbuffer_put(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
+size_t ffl_ringbuffer_put(ffl_ringbuffer_t *rb, const uint8_t *ptr, size_t length)
 {
-    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+    if (!ffl_ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
         return 0U;
     }
 
@@ -101,20 +101,20 @@ size_t ringbuffer_put(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
         return 0U;
     }
 
-    if (length > ringbuffer_space_length(rb)) {
-        length = ringbuffer_space_length(rb);
+    if (length > ffl_ringbuffer_space_length(rb)) {
+        length = ffl_ringbuffer_space_length(rb);
     }
 
-    ringbuffer_copy_in(rb, ptr, length);
-    ringbuffer_advance_write(rb, length);
+    ffl_ringbuffer_copy_in(rb, ptr, length);
+    ffl_ringbuffer_advance_write(rb, length);
     return length;
 }
 
-size_t ringbuffer_put_force(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
+size_t ffl_ringbuffer_put_force(ffl_ringbuffer_t *rb, const uint8_t *ptr, size_t length)
 {
     size_t space_length;
 
-    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+    if (!ffl_ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
         return 0U;
     }
 
@@ -127,19 +127,19 @@ size_t ringbuffer_put_force(ringbuffer_t *rb, const uint8_t *ptr, size_t length)
         length = rb->buffer_size;
     }
 
-    space_length = ringbuffer_space_length(rb);
+    space_length = ffl_ringbuffer_space_length(rb);
     if (length > space_length) {
-        ringbuffer_advance_read(rb, length - space_length);
+        ffl_ringbuffer_advance_read(rb, length - space_length);
     }
 
-    ringbuffer_copy_in(rb, ptr, length);
-    ringbuffer_advance_write(rb, length);
+    ffl_ringbuffer_copy_in(rb, ptr, length);
+    ffl_ringbuffer_advance_write(rb, length);
     return length;
 }
 
-size_t ringbuffer_get(ringbuffer_t *rb, uint8_t *ptr, size_t length)
+size_t ffl_ringbuffer_get(ffl_ringbuffer_t *rb, uint8_t *ptr, size_t length)
 {
-    if (!ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
+    if (!ffl_ringbuffer_is_valid(rb) || (ptr == NULL && length != 0U)) {
         return 0U;
     }
 
@@ -147,24 +147,24 @@ size_t ringbuffer_get(ringbuffer_t *rb, uint8_t *ptr, size_t length)
         return 0U;
     }
 
-    if (length > ringbuffer_data_length(rb)) {
-        length = ringbuffer_data_length(rb);
+    if (length > ffl_ringbuffer_data_length(rb)) {
+        length = ffl_ringbuffer_data_length(rb);
     }
 
-    ringbuffer_copy_out(rb, ptr, length);
-    ringbuffer_advance_read(rb, length);
+    ffl_ringbuffer_copy_out(rb, ptr, length);
+    ffl_ringbuffer_advance_read(rb, length);
     return length;
 }
 
-ringbuffer_state ringbuffer_status(ringbuffer_t *rb)
+ffl_ringbuffer_state_t ffl_ringbuffer_status(ffl_ringbuffer_t *rb)
 {
-    if (!ringbuffer_is_valid(rb)) {
-        return RINGBUFFER_ERROR;
+    if (!ffl_ringbuffer_is_valid(rb)) {
+        return FFL_RINGBUFFER_ERROR;
     }
 
     if (rb->read_index != rb->write_index) {
-        return RINGBUFFER_HALFFULL;
+        return FFL_RINGBUFFER_HALFFULL;
     }
 
-    return rb->read_mirror == rb->write_mirror ? RINGBUFFER_EMPTY : RINGBUFFER_FULL;
+    return rb->read_mirror == rb->write_mirror ? FFL_RINGBUFFER_EMPTY : FFL_RINGBUFFER_FULL;
 }

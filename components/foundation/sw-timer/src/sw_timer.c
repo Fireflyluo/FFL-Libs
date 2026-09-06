@@ -1,40 +1,40 @@
-﻿#include "sw_timer.h"
+#include "ffl/sw_timer.h"
 
 #include <stddef.h>
 #include <string.h>
 
 /**
- * @file sw_timer.c
+ * @file ffl_sw_timer.c
  * @brief 基于固定 256 槽时间轮的软件定时器实现。
  */
 
-#define SW_TIMER_WHEEL_SIZE 256U
+#define FFL_SW_TIMER_WHEEL_SIZE 256U
 
-static sw_timer_t *g_wheel[SW_TIMER_WHEEL_SIZE];
-static sw_timer_t *g_expired_list;
+static ffl_sw_timer_t *g_wheel[FFL_SW_TIMER_WHEEL_SIZE];
+static ffl_sw_timer_t *g_expired_list;
 static uint16_t g_current_slot;
 static uint32_t g_tick_ms;
 
-static sw_timer_lock_hook_t g_lock_hook;
-static sw_timer_lock_hook_t g_unlock_hook;
+static ffl_sw_timer_lock_fn g_lock_fn;
+static ffl_sw_timer_unlock_fn g_unlock_fn;
 
-static void sw_timer_enter_critical(void)
+static void ffl_sw_timer_enter_critical(void)
 {
-    if (g_lock_hook != NULL)
+    if (g_lock_fn != NULL)
     {
-        g_lock_hook();
+        g_lock_fn();
     }
 }
 
-static void sw_timer_exit_critical(void)
+static void ffl_sw_timer_exit_critical(void)
 {
-    if (g_unlock_hook != NULL)
+    if (g_unlock_fn != NULL)
     {
-        g_unlock_hook();
+        g_unlock_fn();
     }
 }
 
-static uint32_t ms_to_ticks(uint32_t ms)
+static uint32_t ffl_sw_timer_ms_to_ticks(uint32_t ms)
 {
     uint32_t ticks;
 
@@ -52,50 +52,51 @@ static uint32_t ms_to_ticks(uint32_t ms)
     return (ticks == 0U) ? 1U : ticks;
 }
 
-static void wheel_insert(sw_timer_t *timer, uint32_t ticks)
+static void ffl_sw_timer_wheel_insert(ffl_sw_timer_t *timer, uint32_t ticks)
 {
-    uint32_t slot_offset = ticks % SW_TIMER_WHEEL_SIZE;
+    uint32_t slot_offset = ticks % FFL_SW_TIMER_WHEEL_SIZE;
 
-    timer->rounds = (uint16_t)((ticks - 1U) / SW_TIMER_WHEEL_SIZE);
-    timer->slot = (uint16_t)((g_current_slot + slot_offset) % SW_TIMER_WHEEL_SIZE);
+    timer->rounds = (uint16_t)((ticks - 1U) / FFL_SW_TIMER_WHEEL_SIZE);
+    timer->slot = (uint16_t)((g_current_slot + slot_offset) % FFL_SW_TIMER_WHEEL_SIZE);
     timer->next = g_wheel[timer->slot];
     g_wheel[timer->slot] = timer;
     timer->active = 1U;
 }
 
-void sw_timer_wheel_init(uint32_t tick_ms)
+void ffl_sw_timer_wheel_init(uint32_t tick_ms)
 {
     if (tick_ms == 0U)
     {
         tick_ms = 1U;
     }
 
-    sw_timer_enter_critical();
+    ffl_sw_timer_enter_critical();
     memset(g_wheel, 0, sizeof(g_wheel));
     g_expired_list = NULL;
     g_current_slot = 0U;
     g_tick_ms = tick_ms;
-    sw_timer_exit_critical();
+    ffl_sw_timer_exit_critical();
 }
 
-void sw_timer_set_lock_hooks(sw_timer_lock_hook_t lock_hook, sw_timer_lock_hook_t unlock_hook)
+void ffl_sw_timer_set_lock_hooks(ffl_sw_timer_lock_fn lock_fn,
+                                 ffl_sw_timer_unlock_fn unlock_fn)
 {
-    g_lock_hook = lock_hook;
-    g_unlock_hook = unlock_hook;
+    g_lock_fn = lock_fn;
+    g_unlock_fn = unlock_fn;
 }
 
-void sw_timer_stop(sw_timer_t *timer)
+void ffl_sw_timer_stop(ffl_sw_timer_t *timer)
 {
-    sw_timer_t **head;
-    sw_timer_t *prev = NULL;
-    sw_timer_t *node;
+    ffl_sw_timer_t **head;
+    ffl_sw_timer_t *prev = NULL;
+    ffl_sw_timer_t *node;
 
     if (timer == NULL || timer->active == 0U)
     {
         return;
     }
 
-    sw_timer_enter_critical();
+    ffl_sw_timer_enter_critical();
 
     head = &g_wheel[timer->slot];
     node = *head;
@@ -115,7 +116,7 @@ void sw_timer_stop(sw_timer_t *timer)
 
         timer->next = NULL;
         timer->active = 0U;
-        sw_timer_exit_critical();
+        ffl_sw_timer_exit_critical();
         return;
     }
 
@@ -140,14 +141,18 @@ void sw_timer_stop(sw_timer_t *timer)
         timer->active = 0U;
     }
 
-    sw_timer_exit_critical();
+    ffl_sw_timer_exit_critical();
 }
 
-int sw_timer_start(sw_timer_t *timer, uint32_t delay_ms, uint32_t period_ms, sw_timer_cb_t cb, void *arg)
+int ffl_sw_timer_start(ffl_sw_timer_t *timer,
+                       uint32_t delay_ms,
+                       uint32_t period_ms,
+                       ffl_sw_timer_expired_fn expired_fn,
+                       void *arg)
 {
     uint32_t delay_ticks;
 
-    if (timer == NULL || cb == NULL)
+    if (timer == NULL || expired_fn == NULL)
     {
         return -1;
     }
@@ -157,15 +162,15 @@ int sw_timer_start(sw_timer_t *timer, uint32_t delay_ms, uint32_t period_ms, sw_
         return -2;
     }
 
-    delay_ticks = ms_to_ticks(delay_ms);
-    timer->period_ticks = (period_ms == 0U) ? 0U : ms_to_ticks(period_ms);
+    delay_ticks = ffl_sw_timer_ms_to_ticks(delay_ms);
+    timer->period_ticks = (period_ms == 0U) ? 0U : ffl_sw_timer_ms_to_ticks(period_ms);
     timer->periodic = (timer->period_ticks != 0U) ? 1U : 0U;
-    timer->cb = cb;
+    timer->cb = expired_fn;
     timer->arg = arg;
 
-    sw_timer_stop(timer);
+    ffl_sw_timer_stop(timer);
 
-    sw_timer_enter_critical();
+    ffl_sw_timer_enter_critical();
 
     if (delay_ticks == 0U)
     {
@@ -175,21 +180,21 @@ int sw_timer_start(sw_timer_t *timer, uint32_t delay_ms, uint32_t period_ms, sw_
     }
     else
     {
-        wheel_insert(timer, delay_ticks);
+        ffl_sw_timer_wheel_insert(timer, delay_ticks);
     }
 
-    sw_timer_exit_critical();
+    ffl_sw_timer_exit_critical();
 
     return 0;
 }
 
-void sw_timer_tick_isr(void)
+void ffl_sw_timer_tick_isr(void)
 {
-    sw_timer_t *node;
-    sw_timer_t *prev = NULL;
-    sw_timer_t *next;
+    ffl_sw_timer_t *node;
+    ffl_sw_timer_t *prev = NULL;
+    ffl_sw_timer_t *next;
 
-    g_current_slot = (uint16_t)((g_current_slot + 1U) % SW_TIMER_WHEEL_SIZE);
+    g_current_slot = (uint16_t)((g_current_slot + 1U) % FFL_SW_TIMER_WHEEL_SIZE);
     node = g_wheel[g_current_slot];
 
     while (node != NULL)
@@ -220,15 +225,15 @@ void sw_timer_tick_isr(void)
     }
 }
 
-void sw_timer_process(void)
+void ffl_sw_timer_process(void)
 {
-    sw_timer_t *local_list;
-    sw_timer_t *node;
+    ffl_sw_timer_t *local_list;
+    ffl_sw_timer_t *node;
 
-    sw_timer_enter_critical();
+    ffl_sw_timer_enter_critical();
     local_list = g_expired_list;
     g_expired_list = NULL;
-    sw_timer_exit_critical();
+    ffl_sw_timer_exit_critical();
 
     while (local_list != NULL)
     {
@@ -245,9 +250,9 @@ void sw_timer_process(void)
 
         if (node->periodic != 0U)
         {
-            sw_timer_enter_critical();
-            wheel_insert(node, node->period_ticks);
-            sw_timer_exit_critical();
+            ffl_sw_timer_enter_critical();
+            ffl_sw_timer_wheel_insert(node, node->period_ticks);
+            ffl_sw_timer_exit_critical();
         }
     }
 }

@@ -3,7 +3,7 @@ target("ffl.ringbuffer")
     set_default(false)
     set_languages("c11", "cxx17")
     add_files("src/ringbuffer.c")
-    add_headerfiles("include/ringbuffer.h")
+    add_headerfiles("include/(ffl/ringbuffer.h)")
     add_includedirs("include", {public = true})
 
     add_cflags("-Wall", "-Wextra", "-Werror")

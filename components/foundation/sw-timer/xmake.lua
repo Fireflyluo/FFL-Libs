@@ -3,7 +3,7 @@ target("ffl.sw_timer")
     set_default(false)
     set_languages("c11", "cxx17")
     add_files("src/sw_timer.c")
-    add_headerfiles("include/sw_timer.h")
+    add_headerfiles("include/(ffl/sw_timer.h)")
     add_includedirs("include", {public = true})
 
     add_cflags("-Wall", "-Wextra", "-Werror")
