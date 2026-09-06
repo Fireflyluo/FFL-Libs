@@ -1,6 +1,10 @@
 #ifndef FFL_ATOMIC_H
 #define FFL_ATOMIC_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 #if defined(_MSC_VER)
@@ -83,5 +87,9 @@ static inline void ffl_atomic_unlock_u8(volatile uint8_t *value)
 #error "ffl_atomic requires MSVC, GCC, or Clang atomic intrinsics"
 #endif
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* FFL_ATOMIC_H */
