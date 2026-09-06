@@ -4,6 +4,12 @@
 
 #include <stdint.h>
 
+#if defined(__GNUC__) && (__GNUC__ >= 7)
+#define PT_FALLTHROUGH __attribute__((fallthrough))
+#else
+#define PT_FALLTHROUGH
+#endif
+
 /**
  * @brief Protothread 状态结构
  * 仅保存行号，极其轻量
@@ -33,7 +39,7 @@ typedef struct pt
 #define PT_END(pt) \
     }              \
     (pt)->lc = 0;  \
-    return 0;      \
+    return 2;      \
     }
 
 /**
@@ -43,6 +49,7 @@ typedef struct pt
     do                          \
     {                           \
         (pt)->lc = __LINE__;    \
+        PT_FALLTHROUGH;         \
     case __LINE__:              \
         if (!(cond))            \
             return 0;           \
@@ -70,9 +77,11 @@ typedef struct pt
 #define PT_SPAWN(pt, child, thread) \
     do                              \
     {                               \
+        PT_INIT(child);             \
         (pt)->lc = __LINE__;        \
+        PT_FALLTHROUGH;             \
     case __LINE__:                  \
-        if (!(thread))              \
+        if (PT_SCHEDULE(thread))    \
             return 0;               \
     } while (0)
 
@@ -94,6 +103,7 @@ typedef struct pt
     {                  \
         (pt)->lc = 0;  \
         PT_INIT(pt);   \
+        return 0;      \
     } while (0)
 
 /**
