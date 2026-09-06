@@ -4,6 +4,10 @@
 #include "type.h"
 #include "osal_timer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef void (*pTaskInitFn)(uint8 task_id);
 typedef uint16(*pTaskEventHandlerFn)(uint8 task_id, uint16 task_event);
 
@@ -22,6 +26,7 @@ typedef struct OSALTaskREC
 
 extern OsalTadkREC_t  *TaskActive;
 
+extern void osal_process_once(void);
 extern void osal_start_system(void);
 extern void osal_add_Task(pTaskInitFn pfnInit, pTaskEventHandlerFn pfnEventProcessor, uint8 taskPriority);
 extern void osal_Task_init(void);
@@ -30,5 +35,9 @@ extern OsalTadkREC_t *osalNextActiveTask(void);
 extern OsalTadkREC_t *osalFindTask(uint8 taskID);
 extern uint8 osal_set_event(byte task_id, uint16 event_flag);
 extern uint8 osal_clear_event(uint8 task_id, uint16 event_flag);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

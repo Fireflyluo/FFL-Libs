@@ -4,6 +4,10 @@
 #include "type.h"
 #include "timer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define TIMER_DECR_TIME       	1 	//任务定时器更新时自减的数值单位
 
 extern void osalTimerInit(void);
@@ -14,5 +18,9 @@ extern uint16 osal_get_timeoutEx(uint8 task_id, uint16 event_id);
 extern uint8 osal_timer_num_active(void);
 extern uint32 osal_GetSystemClock(void);
 extern void osal_update_timers(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

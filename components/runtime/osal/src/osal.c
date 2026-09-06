@@ -35,6 +35,41 @@ uint8 osal_init_system(void)
 }
 
 /*********************************************************************
+ * @fn osal_process_once
+ *
+ * @brief 处理一次任务事件调度。
+ */
+void osal_process_once(void)
+{
+    uint16 events;
+    uint16 retEvents;
+
+    TaskActive = osalNextActiveTask();
+    if (TaskActive)
+    {
+        HAL_ENTER_CRITICAL_SECTION();
+        events = TaskActive->events;
+        // 清除此任务的事件标志
+        TaskActive->events = 0;
+        HAL_EXIT_CRITICAL_SECTION();
+
+        if (events != 0)
+        {
+            // 调用任务处理事件
+            if (TaskActive->pfnEventProcessor)
+            {
+                retEvents = (TaskActive->pfnEventProcessor)(TaskActive->taskID, events);
+
+                // 将未处理完的事件重新添加回当前任务
+                HAL_ENTER_CRITICAL_SECTION();
+                TaskActive->events |= retEvents;
+                HAL_EXIT_CRITICAL_SECTION();
+            }
+        }
+    }
+}
+
+/*********************************************************************
  * @fn osal_start_system
  *
  * @brief
@@ -49,9 +84,6 @@ uint8 osal_init_system(void)
  */
 void osal_start_system(void)
 {
-    uint16 events;
-    uint16 retEvents;
-
 #ifdef OSAL_PT_ENABLE
     osal_pt_scheduler_t sched;
     osal_pt_scheduler_init(&sched); // 初始化协程调度器
@@ -59,29 +91,7 @@ void osal_start_system(void)
 
     while (1)
     {
-        TaskActive = osalNextActiveTask();
-        if (TaskActive)
-        {
-            HAL_ENTER_CRITICAL_SECTION();
-            events = TaskActive->events;
-            // 清除此任务的事件标志
-            TaskActive->events = 0;
-            HAL_EXIT_CRITICAL_SECTION();
-
-            if (events != 0)
-            {
-                // 调用任务处理事件
-                if (TaskActive->pfnEventProcessor)
-                {
-                    retEvents = (TaskActive->pfnEventProcessor)(TaskActive->taskID, events);
-
-                    // 将未处理完的事件重新添加回当前任务
-                    HAL_ENTER_CRITICAL_SECTION();
-                    TaskActive->events |= retEvents;
-                    HAL_EXIT_CRITICAL_SECTION();
-                }
-            }
-        }
+        osal_process_once();
 #ifdef OSAL_PT_ENABLE
         // 协程调度
         osal_pt_schedule(&sched);

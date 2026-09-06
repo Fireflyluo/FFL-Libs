@@ -3,6 +3,10 @@
 
 #include "type.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define MAXMEMHEAP              1024*8       //内存池大小，单位字节
 
 #define OSALMEM_METRICS         1            //定义有效则开启内存统计
@@ -19,6 +23,10 @@ uint16 osal_heap_block_free(void);
 uint16 osal_heap_mem_used(void);
 uint16 osal_heap_high_water(void);
 uint16 osal_heap_mem_usage_rate(void);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif

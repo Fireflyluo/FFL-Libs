@@ -8,3 +8,23 @@ target("ffl.osal")
     add_deps("ffl.protothreads")
 
     add_cflags("-Wall", "-Wextra", "-Werror")
+
+target("ffl.osal.test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/osal_host_test.c")
+    add_deps("ffl.osal")
+    add_tests("default")
+
+    add_cflags("-Wall", "-Wextra", "-Werror")
+
+target("ffl.osal.cxx-test")
+    set_kind("binary")
+    set_default(false)
+    set_languages("c11", "cxx17")
+    add_files("test/osal_cxx_test.cpp")
+    add_deps("ffl.osal")
+    add_tests("default")
+
+    add_cxxflags("-Wall", "-Wextra", "-Werror")

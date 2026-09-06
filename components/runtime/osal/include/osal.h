@@ -3,6 +3,10 @@
 
 #include "type.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // 如果需要启用协程支持，请取消下面的注释
 // #define OSAL_PT_ENABLE
 
@@ -42,5 +46,9 @@ void *osal_revmemcpy(void *dst, const void *src, unsigned int len);
 void *osal_memdup(const void *src, unsigned int len);
 uint8 osal_memcmp(const void *src1, const void *src2, unsigned int len);
 void *osal_memset(void *dest, uint8 value, int len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
