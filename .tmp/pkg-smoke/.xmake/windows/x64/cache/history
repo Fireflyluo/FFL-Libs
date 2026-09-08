@@ -1,9 +1,0 @@
-{
-    cmdlines = {
-        "xmake f -P . -F xmake.lua -y -c",
-        "xmake f -P . -F xmake.lua -y -c",
-        "xmake -P . -F xmake.lua -r",
-        [[xmake lua E:\APP\xmake\modules\private\utils\statistics.lua --file=xmake.lua --project=.]],
-        "xmake -P . -F xmake.lua -r"
-    }
-}

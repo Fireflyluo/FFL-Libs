@@ -1,9 +1,0 @@
-{
-    packages = {
-        [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\m\mag-lib\latest\43ac2ac38dcf42b6b6954b06009f77a8]],
-        [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\b\baro-lib\latest\ad1e8f2cc7b143d6bdcf892146b2a419]],
-        [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\t\th-lib\latest\19b99769523840df81d6749e3af5f92e]],
-        [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\a\acc-lib\latest\7bb3121110204fbba81403407ca566b5]],
-        [[D:\MCU\0.fireflyluo-Embedded-Libs-main\.tmp\pkg-smoke\build\.packages\i\imu-lib\latest\5077f9dffa414d2f8ee2a93b542f89fc]]
-    }
-}

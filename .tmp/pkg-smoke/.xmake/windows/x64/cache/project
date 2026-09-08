@@ -1,4 +1,0 @@
-{
-    projectfile = "xmake.lua",
-    projectdir = "."
-}
