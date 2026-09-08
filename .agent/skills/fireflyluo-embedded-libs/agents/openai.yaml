@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fireflyluo Embedded Libraries"
+  short_description: "Maintain component, port, Xmake, and validation boundaries"
+  default_prompt: "Use $fireflyluo-embedded-libs to make a scoped change in this embedded components repository."
