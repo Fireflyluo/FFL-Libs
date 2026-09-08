@@ -1,11 +1,13 @@
 {
-    mtimes = {
-        ["xmake.lua"] = 1779922964
+    options = {
+        arch = "arm",
+        toolchain = "arm-none-eabi",
+        mode = "release",
+        plat = "cross"
     },
     recheck = false,
-    options = {
-        th_sht30 = true,
-        clean = true,
-        th_sht40 = true
+    mtimes = {
+        ["xmake.lua"] = 1788850217,
+        ["..\\..\\toolchains\\arm-none-eabi.lua"] = 1788538635
     }
 }

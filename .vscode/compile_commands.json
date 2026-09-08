@@ -1,81 +1,6 @@
 [
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\sw-timer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sw_timer.test\\cross\\arm\\release\\components\\foundation\\sw-timer\\test\\sw_timer_test.cpp.o", "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"],
-  "file": "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer.test\\cross\\arm\\release\\components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp.o", "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"],
-  "file": "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c.o", "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"],
-  "file": "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer\\cross\\arm\\release\\components\\foundation\\ringbuffer\\src\\ringbuffer.c.o", "components\\foundation\\ringbuffer\\src\\ringbuffer.c"],
-  "file": "components\\foundation\\ringbuffer\\src\\ringbuffer.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c.o", "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"],
-  "file": "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"
-},
-{
-  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
   "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal\\cross\\arm\\release\\components\\runtime\\osal\\src\\osal.c.o", "components\\runtime\\osal\\src\\osal.c"],
   "file": "components\\runtime\\osal\\src\\osal.c"
 },
@@ -111,73 +36,288 @@
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\protothreads\\include", "-o", "build\\.objs\\ffl.protothreads.test\\cross\\arm\\release\\components\\runtime\\protothreads\\test\\protothreads_test.c.o", "components\\runtime\\protothreads\\test\\protothreads_test.c"],
+  "file": "components\\runtime\\protothreads\\test\\protothreads_test.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer\\cross\\arm\\release\\components\\foundation\\ringbuffer\\src\\ringbuffer.c.o", "components\\foundation\\ringbuffer\\src\\ringbuffer.c"],
+  "file": "components\\foundation\\ringbuffer\\src\\ringbuffer.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"],
-  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc.cxx-test\\cross\\arm\\release\\components\\protocols\\adhoc\\test\\adhoc_cxx_smoke.cpp.o", "components\\protocols\\adhoc\\test\\adhoc_cxx_smoke.cpp"],
+  "file": "components\\protocols\\adhoc\\test\\adhoc_cxx_smoke.cpp"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.integration\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\integration_test.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\ringbuffer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.ringbuffer.test\\cross\\arm\\release\\components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp.o", "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"],
+  "file": "components\\foundation\\ringbuffer\\test\\ringbuffer_test.cpp"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-o", "build\\.objs\\ffl.sc7a20.integration\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"],
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\runtime\\protothreads\\include", "-o", "build\\.objs\\ffl.protothreads.cxx-test\\cross\\arm\\release\\components\\runtime\\protothreads\\test\\protothreads_cxx_test.cpp.o", "components\\runtime\\protothreads\\test\\protothreads_cxx_test.cpp"],
+  "file": "components\\runtime\\protothreads\\test\\protothreads_cxx_test.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a.test\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_test.c.o", "components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_test.c"],
+  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.full\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.full\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.full\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.full\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c.o", "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"],
+  "file": "components\\drivers\\sensor\\environmental\\icp20100\\src\\icp20100.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\src\\ffl_icp20100.c.o", "components\\drivers\\sensor\\environmental\\icp20100\\src\\ffl_icp20100.c"],
+  "file": "components\\drivers\\sensor\\environmental\\icp20100\\src\\ffl_icp20100.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c.o", "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"],
+  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\src\\ffl_qmi8658a.c.o", "components\\drivers\\sensor\\imu\\qmi8658a\\src\\ffl_qmi8658a.c"],
+  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\src\\ffl_qmi8658a.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.atomic.cxx-test\\cross\\arm\\release\\components\\foundation\\atomic\\test\\atomic_cxx_smoke.cpp.o", "components\\foundation\\atomic\\test\\atomic_cxx_smoke.cpp"],
+  "file": "components\\foundation\\atomic\\test\\atomic_cxx_smoke.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_cxx_compile.cpp.o", "components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\sht40_async.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\src\\ffl_sht40.c.o", "components\\drivers\\sensor\\environmental\\sht40\\src\\ffl_sht40.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\src\\ffl_sht40.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\icp20100\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icp20100.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_test.c.o", "components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_test.c"],
+  "file": "components\\drivers\\sensor\\environmental\\icp20100\\test\\icp20100_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_crc_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\sw-timer\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sw_timer.test\\cross\\arm\\release\\components\\foundation\\sw-timer\\test\\sw_timer_test.cpp.o", "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"],
+  "file": "components\\foundation\\sw-timer\\test\\sw_timer_test.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\algorithms\\impact-displacement\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.impact_displacement.test\\cross\\arm\\release\\components\\algorithms\\impact-displacement\\test\\impact_displacement_smoke.c.o", "components\\algorithms\\impact-displacement\\test\\impact_displacement_smoke.c"],
+  "file": "components\\algorithms\\impact-displacement\\test\\impact_displacement_smoke.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\unit_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-o", "build\\.objs\\ffl.sc7a20.unit\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"],
   "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\mock_adapter.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c"],
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal.test\\cross\\arm\\release\\components\\runtime\\osal\\test\\osal_host_test.c.o", "components\\runtime\\osal\\test\\osal_host_test.c"],
+  "file": "components\\runtime\\osal\\test\\osal_host_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p.test\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_test.c.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_test.c"],
+  "file": "components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_cxx_compile.cpp.o", "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\driver-port\\include", "-o", "build\\.objs\\ffl.driver_port.test\\cross\\arm\\release\\components\\foundation\\driver-port\\test\\driver_port_test.c.o", "components\\foundation\\driver-port\\test\\driver_port_test.c"],
+  "file": "components\\foundation\\driver-port\\test\\driver_port_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc.test\\cross\\arm\\release\\components\\protocols\\adhoc\\test\\adhoc_smoke.c.o", "components\\protocols\\adhoc\\test\\adhoc_smoke.c"],
+  "file": "components\\protocols\\adhoc\\test\\adhoc_smoke.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\algorithms\\impact-displacement\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.impact_displacement\\cross\\arm\\release\\components\\algorithms\\impact-displacement\\src\\ffl_impact_displacement.c.o", "components\\algorithms\\impact-displacement\\src\\ffl_impact_displacement.c"],
+  "file": "components\\algorithms\\impact-displacement\\src\\ffl_impact_displacement.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\foundation\\driver-port\\include", "-o", "build\\.objs\\ffl.driver_port.cxx-test\\cross\\arm\\release\\components\\foundation\\driver-port\\test\\driver_port_cxx_test.cpp.o", "components\\foundation\\driver-port\\test\\driver_port_cxx_test.cpp"],
+  "file": "components\\foundation\\driver-port\\test\\driver_port_cxx_test.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_cxx_compile.cpp.o", "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\test\\sht30_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p.test\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_test.c.o", "components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_test.c"],
+  "file": "components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\runtime\\osal\\include", "-Icomponents\\runtime\\protothreads\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.osal.cxx-test\\cross\\arm\\release\\components\\runtime\\osal\\test\\osal_cxx_test.cpp.o", "components\\runtime\\osal\\test\\osal_cxx_test.cpp"],
+  "file": "components\\runtime\\osal\\test\\osal_cxx_test.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\foundation\\atomic\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.atomic.test\\cross\\arm\\release\\components\\foundation\\atomic\\test\\atomic_smoke.c.o", "components\\foundation\\atomic\\test\\atomic_smoke.c"],
+  "file": "components\\foundation\\atomic\\test\\atomic_smoke.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_cxx_compile.cpp.o", "components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\test\\qmi8658a_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht40\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht40.test\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c.o", "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht40\\test\\sht40_crc_test.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c"],
   "file": "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\qmc5883p.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_crc8.c.o", "components\\protocols\\adhoc\\src\\adhoc_crc8.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_crc8.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\ffl_qmc5883p.c.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\ffl_qmc5883p.c"],
+  "file": "components\\drivers\\sensor\\magnetometer\\qmc5883p\\src\\ffl_qmc5883p.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_data_plane.c.o", "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_core.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_frame.c.o", "components\\protocols\\adhoc\\src\\adhoc_frame.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_frame.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_sync.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_node.c.o", "components\\protocols\\adhoc\\src\\adhoc_node.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_node.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\sht30_async.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_reply_list.c.o", "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\environmental\\sht30\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sht30\\cross\\arm\\release\\components\\drivers\\sensor\\environmental\\sht30\\src\\ffl_sht30.c.o", "components\\drivers\\sensor\\environmental\\sht30\\src\\ffl_sht30.c"],
+  "file": "components\\drivers\\sensor\\environmental\\sht30\\src\\ffl_sht30.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_sm.c.o", "components\\protocols\\adhoc\\src\\adhoc_sm.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_sm.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\algorithms\\impact-displacement\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.impact_displacement.cxx-test\\cross\\arm\\release\\components\\algorithms\\impact-displacement\\test\\impact_displacement_cxx_smoke.cpp.o", "components\\algorithms\\impact-displacement\\test\\impact_displacement_cxx_smoke.cpp"],
+  "file": "components\\algorithms\\impact-displacement\\test\\impact_displacement_cxx_smoke.cpp"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c17", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_timing.c.o", "components\\protocols\\adhoc\\src\\adhoc_timing.c"],
-  "file": "components\\protocols\\adhoc\\src\\adhoc_timing.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.test\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_test.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_test.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_test.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\qmi8658a\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmi8658a\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c.o", "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"],
-  "file": "components\\drivers\\sensor\\imu\\qmi8658a\\src\\imu_qmi8658a.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\ffl_sc7a20.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\magnetometer\\qmc5883p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.qmc5883p.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_cxx_compile.cpp.o", "components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\magnetometer\\qmc5883p\\test\\qmc5883p_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c.o", "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"],
+  "file": "components\\drivers\\sensor\\imu\\icm42688p\\src\\imu_icm42688p.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\src\\ffl_icm42688p.c.o", "components\\drivers\\sensor\\imu\\icm42688p\\src\\ffl_icm42688p.c"],
+  "file": "components\\drivers\\sensor\\imu\\icm42688p\\src\\ffl_icm42688p.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
@@ -186,16 +326,46 @@
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_core.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_crc8.c.o", "components\\protocols\\adhoc\\src\\adhoc_crc8.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_crc8.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_sync.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_data_plane.c.o", "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_data_plane.c"
 },
 {
   "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
-  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-DFFL_SC7A20_ASYNC_ENABLED=1", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl-sc7a20\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"],
-  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\src\\sc7a20_async.c"
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_frame.c.o", "components\\protocols\\adhoc\\src\\adhoc_frame.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_frame.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_node.c.o", "components\\protocols\\adhoc\\src\\adhoc_node.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_node.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_reply_list.c.o", "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_reply_list.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_sm.c.o", "components\\protocols\\adhoc\\src\\adhoc_sm.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_sm.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-gcc.exe", "-c", "-std=c11", "-Icomponents\\protocols\\adhoc\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.adhoc\\cross\\arm\\release\\components\\protocols\\adhoc\\src\\adhoc_timing.c.o", "components\\protocols\\adhoc\\src\\adhoc_timing.c"],
+  "file": "components\\protocols\\adhoc\\src\\adhoc_timing.c"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\imu\\icm42688p\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-Icomponents\\drivers\\sensor\\imu\\common\\include", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.icm42688p.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_cxx_compile.cpp.o", "components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\imu\\icm42688p\\test\\icm42688p_cxx_compile.cpp"
+},
+{
+  "directory": "d:\\MCU\\0.fireflyluo-Embedded-Libs-main",
+  "arguments": ["D:\\APP\\path\\arm-gcc-15.2\\bin\\arm-none-eabi-g++.exe", "-c", "-std=c++17", "-Icomponents\\drivers\\sensor\\accelerometer\\sc7a20\\include", "-Icomponents\\foundation\\atomic\\include", "-Icomponents\\foundation\\driver-port\\include", "-DFFL_SC7A20_ASYNC_ENABLED=0", "-Wall", "-Wextra", "-Werror", "-o", "build\\.objs\\ffl.sc7a20.cxx-test\\cross\\arm\\release\\components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_cxx_compile.cpp.o", "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_cxx_compile.cpp"],
+  "file": "components\\drivers\\sensor\\accelerometer\\sc7a20\\test\\ffl_sc7a20_cxx_compile.cpp"
 }]

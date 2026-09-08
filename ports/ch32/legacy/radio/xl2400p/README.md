@@ -164,7 +164,7 @@ void xl2400_delay_ms(uint16_t ms);
 
 ## 5. 示例工程
 
-旧 `demo/xmake` 已清理。本目录仍是 CH32 HAL 直连实现，不提供可复用示例；后续请先抽出 SPI、NSS、IRQ 和 delay port。验收项见 `docs/HARDWARE_VALIDATION_BACKLOG.md`。
+旧 `demo/xmake` 已清理。本目录仍是 CH32 HAL 直连实现，不提供可复用示例；后续请先抽出 SPI、NSS、IRQ 和 delay port。验收项见 `docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md`。
 
 ## 6. 注意事项
 

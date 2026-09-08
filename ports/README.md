@@ -1,25 +1,32 @@
-# Ports
+# 平台适配
 
-`ports/` 放置与 MCU、开发板和外设资源绑定的适配代码。它可以包含厂商 HAL、`board.h`、DMA/IRQ 设置与固定管脚，但这些内容不得进入 `components/` 的通用 core。
+`ports/` 是组件与 MCU、开发板、厂商 HAL 之间的连接层。组件 core 负责通用逻辑，port 负责把真实硬件能力转换成 core 需要的接口。
 
-```text
-ports/
-├── ch32/
-│   ├── adhoc/                 # Ad-Hoc CH32 链路适配
-│   ├── sc7a20/                # SC7A20 CH32 I2C 适配
-│   ├── sht40/                  # SHT40 CH32 ffl_transport 适配
-│   └── legacy/
-│       ├── display/oled/       # 尚未解耦的 HAL 直连 OLED
-│       └── radio/              # 尚未解耦的 HAL 直连射频实现
-└── py32/
-    └── osal/                   # PY32 OSAL 临界区 / 类型适配
+## 当前可用目录
+
+| 目标             | 目录                        | 用途                                |
+| ---------------- | --------------------------- | ----------------------------------- |
+| CH32 Ad-Hoc 链路 | [ch32/adhoc](ch32/adhoc/)   | 将协议 core 接到 CH32 链路。        |
+| CH32 SC7A20      | [ch32/sc7a20](ch32/sc7a20/) | 提供 SC7A20 的 CH32 I2C 等适配。    |
+| CH32 SHT40       | [ch32/sht40](ch32/sht40/)   | 提供 `ffl_transport_t` 和时间适配。 |
+| PY32 OSAL        | [py32/osal](py32/osal/)     | 提供临界区、tick 等 OSAL 能力。     |
+
+`ch32/legacy/` 下的 OLED、SI24R1、XN297L 和 XL2400P 仍直接依赖固定 HAL 和板级资源，不是通用组件 port。
+
+## 接入已有 port
+
+先检查 port 的 README、头文件和 `xmake.lua`，确认它需要的 `board.h`、`drv_i2c.h`、时钟初始化或全局句柄。port 通常需要由最终固件 target 显式加入：
+
+```lua
+includes("path/to/components/drivers/sensor/environmental/sht40")
+add_includedirs("path/to/ports/ch32/sht40/include")
+add_files("path/to/ports/ch32/sht40/src/*.c")
 ```
 
-`legacy/` 表示“已从旧仓库根目录整理出来、但尚未形成可复用 core”的过渡区域。它不是正式驱动接口，也不会由根 `xmake.lua` 默认构建；后续重构必须先建立 bus、GPIO、delay、IRQ 等显式 port 契约，再创建对应 `components/drivers/...` 叶子组件。
+具体文件名以目标 port 的实际目录为准。接入前还要完成 MCU 时钟、GPIO 复用、I2C/SPI、DMA 和 IRQ 初始化。
 
-`ch32/sht40/` 是已经具备显式 `ffl_transport_t` 入口的正式适配层，
-通过 `ffl_sht40_ch32_transport_init()` 和
-`ffl_sht40_ch32_time_init()` 接入 `ffl_sht40_bind()`；它仍需要最终 CH32
-工程提供 `drv_i2c.h`、`board.h` 和实际 I2C 初始化。
+## 自己编写 port
 
-真实硬件测试项见 `docs/HARDWARE_VALIDATION_BACKLOG.md`。
+只实现组件实际需要的能力：transport、时间、GPIO、IRQ 或临界区。不要把厂商 HAL 头文件带入 `components/`，也不要在 core 中保存板级全局句柄。完成 host/mock 验证后，再按目标板记录硬件证据。
+
+硬件验证清单位于 [docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md](../docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md)。

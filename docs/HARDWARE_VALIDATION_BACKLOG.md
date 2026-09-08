@@ -1,43 +1,5 @@
-# 硬件验证回补清单
+# 硬件验证清单已迁移
 
-**更新日期：** 2026-09-04  
-**原则：** 本清单中的“已编译”或“mock 通过”不等于硬件验证。完成板端测试后，应在对应组件文档和本表记录目标板、总线、频率、固件提交和结果。
+完整内容位于 [`maintainer/HARDWARE_VALIDATION_BACKLOG.md`](maintainer/HARDWARE_VALIDATION_BACKLOG.md)。
 
-## 已有自动验证
-
-| 组件 | 验证方式 | 结论 |
-|---|---|---|
-| `ffl.ringbuffer` | C++ host test | 可自动验证。 |
-| `ffl.sw_timer` | C++ host test | 可自动验证。 |
-| `ffl.sc7a20.test` | ffl facade fake-register C test | 验证 I2C 地址/标志、同步读写、配置回滚、异步完成与取消；不访问真实器件。 |
-| `ffl.sc7a20.cxx-test` | C++ facade compile test | 验证 C/C++ 公开头兼容；不访问真实器件。 |
-| `ffl.sc7a20.unit` / `ffl.sc7a20.integration` | core mock 测试 | 不访问真实器件。 |
-| `ffl.icp20100` | mock I2C + C/C++ host test | 验证地址传播、寄存器事务、FIFO 解析与错误码；不访问真实器件。 |
-| `ffl.qmc5883p` | mock I2C + C/C++ host test | 验证地址传播、量程编码、DRDY/溢出、三轴解析与 µT 换算；不访问真实器件。 |
-
-## 需要板端回补
-
-| 组件 / Port | 当前状态 | 板端验收项 |
-|---|---|---|
-| `ffl.sc7a20` / `ffl.sc7a20.full` + `ports/ch32/sc7a20/` | core、portable facade 与 fake-register C/C++ 测试可构建 | 实际 I2C 波形、WHO_AM_I、寄存器读写、量程/ODR、连续采样、异步 callback/cancel、I2C 异常恢复；FIFO/IRQ 仍未交付，`experimental/sc7a20htr/` 不作为正式验证依据。 |
-| `ffl.sht40` + `ports/ch32/sht40/` | core 可构建 | 序列号、单次测量、CRC、repeatability、I2C NACK / timeout 恢复。 |
-| `ffl.sht30` | core 可构建 | 初始化、测温湿、CRC、clock stretching 或平台总线时序。 |
-| `ffl.icp20100` | I2C core 与 mock 测试可构建；仅连续 pressure/temperature FIFO | 上电/OTP 校准、芯片识别、启动延迟、压力温度读数、异常恢复；forced/FIFO 其它模式另行验证。 |
-| `ffl.qmc5883p` | I2C core 与 mock 测试可构建 | 芯片识别、连续磁场读数、量程、DRDY 时序、Suspend 重配和异常恢复。 |
-| `ffl.qmi8658a` | I2C core + ffl facade 与 C/C++ fake-register test 可构建 | 实际 I2C、SA0 `0x6A/0x6B`、WHO_AM_I、复位时序、同步锁定、加速度/陀螺仪量程与连续 burst 采样；FIFO/IRQ/SPI 尚未交付。 |
-| `ffl.icm42688p` | I2C core + ffl facade 与 C/C++ fake-register test 可构建 | 实际 I2C 波形、0x68/0x69 地址、WHO_AM_I=0x47、bank 切换、复位时序、量程/ODR、温度/6DOF burst；SPI/FIFO/IRQ/APEX/DMA/异步未交付。 |
-| `ffl.osal` + `ports/py32/osal/` | 通用 core 可编译 | tick、临界区保护、任务消息、定时器、内存分配与长时间调度。 |
-| `ffl.adhoc` + `ports/ch32/adhoc/` | 协议 core 可编译 | CH32 链路收发、时钟驱动、丢包/重传、长时间稳定性。 |
-
-## 已整理、待解耦的板级驱动
-
-这些目录已经从旧根目录迁入 `ports/ch32/legacy/`，但源码仍直接依赖 CH32 HAL、`main.h`、固定 GPIO 或全局 SPI 句柄。因此它们 **不是** 可复用 `components/` core，也没有自动 host 测试：
-
-| Port 目录 | 后续整理目标 | 板端验收项 |
-|---|---|---|
-| `ports/ch32/legacy/display/oled/` | 抽出显示数据/命令传输、延时与复位 port | 上电初始化、全屏刷新、字体/图形、长时间刷新。 |
-| `ports/ch32/legacy/radio/si24r1/` | 抽出 SPI、CE、IRQ 与延时 port | SPI 读写、收发配对、IRQ、丢包与重发。 |
-| `ports/ch32/legacy/radio/xn297l/` | 抽出 SPI、CE/CSN、IRQ 与延时 port | 寄存器读写、收发配对、频道/速率切换。 |
-| `ports/ch32/legacy/radio/xl2400p/` | 抽出 SPI、NSS、IRQ 与延时 port | SPI self-test、收发配对、状态机与异常恢复。 |
-
-`SC7A20HTR` FIFO 工作区保留在 `components/drivers/sensor/accelerometer/sc7a20/experimental/sc7a20htr/`；在确定是否吸收其接口前，不应将其结果当作正式 SC7A20 驱动的验证结论。
+本文档保留为旧链接兼容入口。

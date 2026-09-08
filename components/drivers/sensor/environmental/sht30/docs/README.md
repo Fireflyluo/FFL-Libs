@@ -14,4 +14,4 @@
 
 最小适配器和同步/异步完成语义见 [PORTING_GUIDE.md](PORTING_GUIDE.md)。
 
-当前只完成代码迁移与 host 编译检查；真实器件上的 CRC、时序、NACK、timeout 和测量结果仍需按 `docs/HARDWARE_VALIDATION_BACKLOG.md` 回补。
+当前只完成代码迁移与 host 编译检查；真实器件上的 CRC、时序、NACK、timeout 和测量结果仍需按 `docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md` 回补。

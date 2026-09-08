@@ -1,4 +1,3 @@
 {
-    projectdir = "Lib/TH-lib",
-    projectfile = "xmake.lua"
+    projectdir = "examples/stm32-base-driver"
 }

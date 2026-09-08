@@ -11,5 +11,7 @@ build/
 .codex/
 .tmp/
 logs/
+
+docs/maintainer/
 # accidental Windows device filename
 nul
