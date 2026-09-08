@@ -16,3 +16,8 @@ logs/
 docs/maintainer/
 # accidental Windows device filename
 nul
+
+# toolchain installer archives (download separately, never commit)
+toolchains/**/*.zip
+toolchains/**/*.7z
+
