@@ -1,17 +1,18 @@
 -- ============================================================================
--- examples/stm32-base-driver: STM32F103C8T6 最小系统板固件示例
+-- examples/stm32-base-driver：FFL 仓库用法示例固件（STM32F103 交叉编译）
 --
--- 演示组件（全部来自仓库 components/，不复制到本目录）：
---   ffl.osal / ffl.ringbuffer / ffl.sw_timer / ffl.sc7a20
+-- 构建来源分层（路径均相对仓库根）：
+--   1) components/     ffl 组件源码（不复制到本目录）
+--   2) ports/stm32/f1  MCU 南向：osal 临界区、I2C xfer、sc7a20 bind
+--   3) app/            业务任务与功能演示
+--   4) bsp/            本板时钟 / LED / UART / I2C 引脚
+--   5) sdk/            裁剪版 STM32F1 HAL + CMSIS
 --
--- 按仓库端口惯例：MCU 固件 target 直接把组件源码 add_files 进来，使整个
--- target 统一使用 Cortex-M3 编译选项（组件自身 xmake 保留 host object 用法，
--- 供 host 测试与需要裁剪的工程使用）。
+-- 阅读顺序建议：readme.md → docs/tasks/ → app/main.c → app/app_task.c
 --
 -- 构建：
---   xmake f -P examples/stm32-base-driver
+--   xmake f -P examples/stm32-base-driver -p cross --toolchain=arm-none-eabi -a arm -m release
 --   xmake    -P examples/stm32-base-driver
--- 产物：stm32-base-driver(.elf/.bin)，烧录到 F103C8T6。
 -- ============================================================================
 
 -- 注册仓库的 arm-none-eabi 工具链定义（bin 需在 PATH，或配置 sdkdir）
@@ -23,6 +24,8 @@ local OSAL_SRC = path.join(ROOT, "components/runtime/osal/src")
 local PT_INC = path.join(ROOT, "components/runtime/protothreads/include")
 local ATOMIC_INC = path.join(ROOT, "components/foundation/atomic/include")
 local DRIVER_PORT_INC = path.join(ROOT, "components/foundation/driver-port/include")
+local ULOG_SRC = path.join(ROOT, "components/foundation/ulog/src")
+local ULOG_INC = path.join(ROOT, "components/foundation/ulog/include")
 local RB_SRC = path.join(ROOT, "components/foundation/ringbuffer/src")
 local RB_INC = path.join(ROOT, "components/foundation/ringbuffer/include")
 local ST_SRC = path.join(ROOT, "components/foundation/sw-timer/src")
@@ -30,6 +33,10 @@ local ST_INC = path.join(ROOT, "components/foundation/sw-timer/include")
 local S7A20_SRC = path.join(ROOT, "components/drivers/sensor/accelerometer/sc7a20/src")
 local S7A20_INC = path.join(ROOT, "components/drivers/sensor/accelerometer/sc7a20/include")
 local OSAL_INC = path.join(ROOT, "components/runtime/osal/include")
+-- 芯片南向适配（正式 ports）
+local PORT_F1 = path.join(ROOT, "ports/stm32/f1")
+local CUSB = path.join(ROOT, "third_party/usb/cherryusb/upstream")
+local PORT_USB = path.join(PORT_F1, "cherryusb/stm32-lora")
 
 local SDK = "sdk"
 local HAL_SRC = path.join(SDK, "STM32F1xx_HAL_Driver/Src")
@@ -48,22 +55,39 @@ target("stm32-base-driver")
     set_plat("cross")
     set_arch("arm")
     set_toolchains("arm-none-eabi")
+    set_optimize("smallest")
 
     -- 让 -mcpu=cortex-m3/-mthumb 等原样传给 arm-none-eabi-gcc，
     -- 不被 xmake 的自动忽略标志逻辑吞掉
     set_policy("check.auto_ignore_flags", false)
 
-    -- ---- 应用与板级 port（本示例自有，仅 port 层，不含组件实现） ----
+    -- ---- 应用（OSAL 多任务） + 板级 + ports/stm32/f1 南向 ----
+    -- 原板：W25Q 软 SPI + ST7735 硬 SPI1+DMA + USB CDC 收图
     add_files(
         "app/main.c",
-        "app/app_task.c",
+        "app/heartbeat_task.c",
+        "app/sc7a20_task.c",
+        "app/flash_task.c",
+        "app/lcd_task.c",
+        "app/alarm_task.c",
+        "app/features_demo.c",
+        "app/usb_img.c",
         "bsp/src/board.c",
-        "bsp/src/osal_port_stm32.c",
-        "bsp/src/stm32_time_ops.c",
-        "bsp/src/sc7a20_i2c_transport.c",
+        "bsp/src/board_i2c.c",
         "bsp/src/stm32f1xx_it.c",
+        "bsp/src/st7735.c",
+        "bsp/src/font6x8.c",
+        "bsp/src/w25q.c",
         "bsp/src/syscalls.c",
-        "bsp/src/sysmem.c"
+        "bsp/src/sysmem.c",
+        path.join(PORT_F1, "osal/osal_port.c"),
+        path.join(PORT_F1, "driver_port/driver_port.c"),
+        path.join(PORT_F1, "sc7a20/sc7a20_bind.c"),
+        path.join(PORT_USB, "usb_port_stm32f1.c"),
+        path.join(CUSB, "core/usbd_core.c"),
+        path.join(CUSB, "class/cdc/usbd_cdc_acm.c"),
+        path.join(CUSB, "port/fsdev/usb_dc_fsdev.c"),
+        path.join(CUSB, "port/fsdev/usb_glue_st.c")
     )
 
     -- ---- 仓库组件源码（ffl.osal 含 osal_pt，依赖 protothreads 头） ----
@@ -79,22 +103,30 @@ target("stm32-base-driver")
         path.join(ST_SRC, "sw_timer.c"),
         path.join(S7A20_SRC, "sc7a20_core.c"),
         path.join(S7A20_SRC, "sc7a20_sync.c"),
-        path.join(S7A20_SRC, "ffl_sc7a20.c")
+        path.join(S7A20_SRC, "ffl_sc7a20.c"),
+        path.join(ULOG_SRC, "ulog.c")
     )
 
     -- ---- STM32F1 SDK：HAL 子集 + 系统时钟 + 启动文件 ----
     add_files(
         path.join(HAL_SRC, "stm32f1xx_hal.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_cortex.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_dma.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_exti.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_flash.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_flash_ex.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_gpio.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_gpio_ex.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_i2c.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_spi.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_uart.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_tim.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_pwr.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_rcc.c"),
         path.join(HAL_SRC, "stm32f1xx_hal_rcc_ex.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_pcd.c"),
+        path.join(HAL_SRC, "stm32f1xx_hal_pcd_ex.c"),
+        path.join(HAL_SRC, "stm32f1xx_ll_usb.c"),
         SYSTEM_C,
         STARTUP
     )
@@ -113,12 +145,24 @@ target("stm32-base-driver")
         DRIVER_PORT_INC,
         RB_INC,
         ST_INC,
-        S7A20_INC
+        S7A20_INC,
+        ULOG_INC,
+        path.join(PORT_F1, "osal"),
+        path.join(PORT_F1, "driver_port"),
+        path.join(PORT_F1, "sc7a20"),
+        PORT_USB,
+        path.join(CUSB, "core"),
+        path.join(CUSB, "common"),
+        path.join(CUSB, "class/cdc"),
+        path.join(CUSB, "port/fsdev")
     )
 
     -- ---- 宏与编译选项 ----
     add_defines("STM32F103xB", "USE_HAL_DRIVER")
-    add_defines("FFL_SC7A20_ASYNC_ENABLED=0") -- 示例只演示同步读
+    add_defines("FFL_SC7A20_ASYNC_ENABLED=0")
+    add_defines("ULOG_ENABLE=1", "ULOG_LEVEL_MIN=ULOG_LEVEL_INFO",
+                "ULOG_BUFFER_SIZE=512", "ULOG_LINE_MAX=128",
+                "ULOG_ISR_LINE_MAX=64")
 
     add_cflags("-mcpu=cortex-m3", "-mthumb", "-ffunction-sections",
                "-fdata-sections", "-Wall")

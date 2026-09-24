@@ -7,15 +7,18 @@ CherryUSB 是上游 USB Host/Device 协议栈。本目录用于保存 CherryUSB 
 - 许可证：Apache-2.0，以随上游源码提供的 `LICENSE` 为准
 - 当前状态：已纳入上游源码，固定为 `v1.6.1`；尚未接入根构建，也尚未完成目标板验证
 
-## 纳入源码
+## 获取源码
 
-源码以固定 release tag 的 Git submodule 纳入：
+本仓库以固定 release tag 的 Git submodule 提供源码。首次克隆时初始化子模块：
 
 ```powershell
-git submodule add https://github.com/cherry-embedded/CherryUSB.git third_party/usb/cherryusb/upstream
-Set-Location third_party/usb/cherryusb/upstream
-git checkout v1.6.1
-Set-Location ../../../..
+git clone --recurse-submodules https://github.com/Fireflyluo/FFL-Libs.git
+```
+
+若已经克隆仓库，在根目录执行：
+
+```powershell
+git submodule update --init --recursive
 ```
 
 当前 submodule 提交：`c9625ffa773ad10b8824d1b5361bca2ccc1f3d1e`。

@@ -7,6 +7,28 @@
 
 ## Host
 
+Host 验证需要 Xmake 和 MinGW-w64 GCC。推荐先安装 [Xmake](https://xmake.io/#/getting_started?id=installation)，再通过 [MSYS2](https://www.msys2.org/) 安装 MinGW-w64：
+
+```powershell
+winget install xmake-io.xmake
+```
+
+在 MSYS2 的 `UCRT64` 终端中执行：
+
+```bash
+pacman -Syu
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
+
+将 MSYS2 的 `ucrt64/bin` 加入 `PATH` 后，重新打开 PowerShell 并验证：
+
+```powershell
+xmake --version
+gcc --version
+```
+
+工具可用后，在仓库根目录运行：
+
 ```powershell
 xmake f -P . -p mingw -a x86_64 -m release
 xmake -P .

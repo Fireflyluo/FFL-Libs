@@ -7,6 +7,7 @@
 | 需求                           | target                                         | 入口                                               |
 | ------------------------------ | ---------------------------------------------- | -------------------------------------------------- |
 | 原子操作、环形缓冲、软件定时器 | `ffl.atomic`、`ffl.ringbuffer`、`ffl.sw_timer` | `components/foundation/`                           |
+| 异步日志（环缓冲 + tx_try）    | `ffl.ulog`                                     | `components/foundation/ulog/`                     |
 | 总线、时间、GPIO、IRQ 能力     | `ffl.driver_port`                              | `components/foundation/driver-port/`               |
 | 协作式状态机                   | `ffl.protothreads`                             | `components/runtime/protothreads/`                 |
 | 事件、消息、定时器和内存抽象   | `ffl.osal`                                     | `components/runtime/osal/`                         |
@@ -40,4 +41,4 @@ target("firmware")
 
 ## 边界
 
-组件 core 不包含 `main.h`、厂商 HAL、固定 GPIO、全局 I2C/SPI 句柄或板级业务逻辑。未在真实硬件上验证的组件，只能视为 host/mock 或编译验证通过；维护者记录见 [docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md](../docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md)。
+组件 core 不包含 `main.h`、厂商 HAL、固定 GPIO、全局 I2C/SPI 句柄或板级业务逻辑。未在真实硬件上验证的组件，只能视为 host/mock 或编译验证通过；验证范围以组件自身文档、示例和测试说明为准。

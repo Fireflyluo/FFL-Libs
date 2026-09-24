@@ -16,11 +16,11 @@
 | `tests/`       | host、mock 和跨组件测试说明及测试入口。                                |
 | `third_party/` | 保持上游目录和许可证的第三方库，例如 CherryUSB `v1.6.1`。              |
 | `xmake-repo/`  | 少量需要快速接入的本地完整 package。                                   |
-| `docs/`        | 使用文档导航；仓库结构和验证维护资料位于 `docs/maintainer/`。          |
+| `docs/`        | 使用文档导航。                                                         |
 
 组件 core 不绑定具体 MCU HAL，也不自动创建按“传感器”“射频”或“中间件”聚合的大库。应用只选择需要的叶子 target，再由自己的工程或 `ports/` 提供硬件能力。这样既能减少无关代码，也能让同一套驱动逻辑适配不同 MCU 和板卡。
 
-当前仓库同时包含三种成熟度不同的内容：正式组件、已有但仍待真实板端验证的 port，以及 `experimental/` 或 `legacy/` 下的实验和历史板级实现。编译通过或 mock 测试通过不等于真实硬件验证，具体范围见 [tests/README.md](tests/README.md) 和维护者的 [硬件验证清单](docs/maintainer/HARDWARE_VALIDATION_BACKLOG.md)。
+当前仓库同时包含三种成熟度不同的内容：正式组件、已有但仍待真实板端验证的 port，以及 `experimental/` 或 `legacy/` 下的实验和历史板级实现。编译通过或 mock 测试通过不等于真实硬件验证，具体范围见 [tests/README.md](tests/README.md)、各组件文档和示例说明。
 
 ## 快速开始
 
@@ -109,5 +109,3 @@ void app_sht40_init(void)
 | 使用本地完整 package    | [xmake-repo/README.md](xmake-repo/README.md)   |
 
 当前正式组件包括基础设施、运行时、协议、算法和多种传感器驱动；完整列表与 target 见 [components/README.md](components/README.md)。CherryUSB 以第三方 submodule 形式固定在 `v1.6.1`，不作为本仓库的 `ffl.*` 组件。
-
-维护者资料集中在 [docs/maintainer/README.md](docs/maintainer/README.md)。

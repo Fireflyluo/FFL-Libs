@@ -2,8 +2,7 @@
 
 这个目录按使用目的划分：
 
-- 面向使用者的说明：仓库根目录 README、各目录 README、组件目录下的 `docs/`。
-- 面向维护者的资料：[`maintainer/`](maintainer/README.md)。
+- 使用说明位于仓库根目录 README、各目录 README 和组件目录下的 `docs/`。
 
 ## 从哪里开始
 

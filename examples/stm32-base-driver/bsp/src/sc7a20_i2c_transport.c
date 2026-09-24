@@ -93,10 +93,13 @@ void bsp_sc7a20_i2c_init(void) {
   GPIO_InitTypeDef gpio = {0};
 
   __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_AFIO_CLK_ENABLE(); /* I2C1 使用默认映射 PB6/PB7，仍使能 AFIO 时钟 */
+  __HAL_RCC_AFIO_CLK_ENABLE();
   __HAL_RCC_I2C1_CLK_ENABLE();
 
-  gpio.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+  /* STM32-LORA：SC7A20 在 I2C1 重映射脚 PB8=SCL / PB9=SDA */
+  __HAL_AFIO_REMAP_I2C1_ENABLE();
+
+  gpio.Pin = GPIO_PIN_8 | GPIO_PIN_9;
   gpio.Mode = GPIO_MODE_AF_OD;
   gpio.Pull = GPIO_NOPULL;
   gpio.Speed = GPIO_SPEED_FREQ_HIGH;

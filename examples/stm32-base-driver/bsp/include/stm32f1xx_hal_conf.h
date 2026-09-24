@@ -75,8 +75,12 @@ extern "C" {
 #define HAL_EXTI_MODULE_ENABLED
 #define HAL_GPIO_MODULE_ENABLED
 #define HAL_I2C_MODULE_ENABLED
+#define HAL_PCD_MODULE_ENABLED
 #define HAL_PWR_MODULE_ENABLED
 #define HAL_RCC_MODULE_ENABLED
+#define HAL_SPI_MODULE_ENABLED
+#define HAL_TIM_MODULE_ENABLED
+#define HAL_UART_MODULE_ENABLED
 
 /* ########################## Oscillator Values adaptation
  * ####################*/
@@ -87,7 +91,7 @@ extern "C" {
  * PLL).
  */
 #if !defined(HSE_VALUE)
-#define HSE_VALUE 8000000U /*!< Value of the External oscillator in Hz */
+#define HSE_VALUE 16000000U /*!< Value of the External oscillator in Hz */
 #endif                     /* HSE_VALUE */
 
 #if !defined(HSE_STARTUP_TIMEOUT)

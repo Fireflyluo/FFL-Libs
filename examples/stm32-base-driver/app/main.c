@@ -1,43 +1,64 @@
 /**
  * @file main.c
- * @brief STM32F103C8T6 最小系统板入口。
+ * @brief 合并示例：OSAL 多任务展示 ffl 组件与板级外设。
  *
- * 启动顺序：
- *   1. board_init(): HAL、72MHz、LED、DWT、I2C1；
- *   2. bsp_osal_port_init(): 把 STM32 临界区注册给 ffl.osal；
- *   3. ffl_sw_timer_*: 初始化时间轮并注册同一对临界区钩子；
- *   4. ffl.osal 初始化、注册应用任务并运行其 init；
- *   5. 主循环：osal_process_once() + ffl_sw_timer_process() + WFI。
+ * 板型（STM32-LORA 原板）：
+ *   Flash = 软 SPI（PB3/4/5+PA15），不碰 SPI1 remap
+ *   LCD   = 硬 SPI1 + DMA TX（PA5/7/4）
+ *   USB   = CDC 收图写入 W25Q
  *
- * SysTick(1ms) 中断负责 osal_update_timers() 与 ffl_sw_timer_tick_isr()，
- * 见 bsp/src/stm32f1xx_it.c。
+ * 任务：
+ *   heartbeat / sc7a20 / flash / lcd / features_demo
  */
 #include "board.h"
 #include "ffl/sw_timer.h"
 #include "osal.h"
 #include "osal_event.h"
+#include "osal_tasks.h"
+#include "ffl_port_stm32f1_osal.h"
+#include "ulog.h"
+#include "usb_img.h"
 
-#include "app_task.h"
-#include "osal_port_stm32.h"
+static int ulog_uart_tx_try(void *ctx, const uint8_t *data, uint16_t len) {
+  (void)ctx;
+  return board_uart_write_try((const char *)data, (int)len);
+}
+
+static void app_ulog_init(void) {
+  ulog_init_t cfg;
+  cfg.tx_try = ulog_uart_tx_try;
+  cfg.tx_direct = NULL;
+  cfg.tx_ctx = NULL;
+  cfg.poll_budget = 64u;
+  (void)ulog_init(&cfg);
+}
 
 int main(void) {
   board_init();
+  app_ulog_init();
 
-  /* ffl.osal 临界区钩子 */
-  bsp_osal_port_init();
-
-  /* ffl.sw_timer：时间轮 1ms 一格，锁钩子复用 STM32 临界区 */
-  ffl_sw_timer_set_lock_hooks(bsp_critical_enter, bsp_critical_exit);
+  ffl_stm32f1_osal_port_init();
+  ffl_sw_timer_set_lock_hooks(ffl_stm32f1_critical_enter,
+                              ffl_stm32f1_critical_exit);
   ffl_sw_timer_wheel_init(1u);
 
-  /* ffl.osal 系统初始化 + 任务注册 */
+  features_demo_run();
+  usb_img_init();
+  ULOGI("ulog + USART1 DMA TX + SPI1 DMA TX ready");
+
   (void)osal_init_system();
-  app_task_register();
+  heartbeat_task_register();
+  sc7a20_task_register();
+  flash_task_register();
+  lcd_task_register();
+  alarm_task_register();
   osal_Task_init();
 
   for (;;) {
     osal_process_once();
-    ffl_sw_timer_process(); /* 执行到期 sw_timer 回调（任务上下文） */
+    ffl_sw_timer_process();
+    ulog_poll();
+    board_uart_kick_tx();
     board_idle();
   }
 }

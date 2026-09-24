@@ -4,29 +4,35 @@
 
 ## 当前示例
 
+### stm32-base-driver（STM32-LORA 主示例，已合并）
+
+目录：[stm32-base-driver](stm32-base-driver/readme.md)
+
+STM32F103C8T6 交叉编译固件，用 **OSAL 多任务** 演示仓库组件与板级外设：
+
+| 任务文件 | 演示内容 |
+|----------|----------|
+| `app/heartbeat_task.c` | LED + 蜂鸣（60s 两声） |
+| `app/sc7a20_task.c` | `ffl.sc7a20` + `ports/stm32/f1` I2C + `ffl.ringbuffer` |
+| `app/flash_task.c` | 板载 W25Q 初始化 / 就绪探测 |
+| `app/usb_img.c` | **USB CDC** 收图写入外部 Flash（日志走 COM4） |
+| `app/lcd_task.c` | ST7735 从 W25Q 刷屏，**5s 换图** |
+| `app/features_demo.c` | `ffl.atomic` / ringbuffer / sw_timer 功能点 |
+
+南向适配：[`ports/stm32/f1`](../ports/stm32/f1/)（osal 临界区、I2C transport、CherryUSB）。  
+任务详解：`stm32-base-driver/docs/tasks/`。
+
+### cherryusb/stm32-lora-cdc
+
+目录：[cherryusb/stm32-lora-cdc](cherryusb/stm32-lora-cdc/readme.md)
+
+CherryUSB CDC 最小验证与吞吐测速（已并入 base-driver 的 USB 收图路径）。
+
 ### driver-dual-entry
 
 目录：[driver-dual-entry](driver-dual-entry/)
 
-展示 SC7A20 的两种接入方式：
-
-- `component/`：直接使用源码组件，适合裁剪和查看依赖。
-- `quick-package/`：使用本地 `ffl-sc7a20` package，适合快速接入。
-- `source-trimmed/`：展示裁剪后的源文件组织方式。
-
-先阅读该目录的 README，再从对应子目录执行 Xmake 命令。示例使用 host 或交叉工具链时，以示例自己的 `xmake.lua` 为准。
-
-### stm32-base-driver
-
-目录：[stm32-base-driver](stm32-base-driver/)
-
-STM32F103C8T6 最小系统板交叉编译固件示例，把 `ffl.osal`、`ffl.sc7a20`、
-`ffl.ringbuffer`、`ffl.sw_timer` 四个组件和一个 HAL 板级工程接在一起：
-
-- 展示 `ffl.driver_port` 南向能力在真实 MCU 上的写法：I2C transport、时间 ops、临界区；
-- 展示 SysTick 单一时基同时喂给 HAL、OSAL 与 sw_timer 的接法；
-- 组件源码来自仓库 `components/`（不复制），构建用 `-p cross --toolchain=arm-none-eabi`；
-- 接线（I2C1: PB6/PB7、LED: PC13）、构建/烧录与验证现象写在示例 README 中。
+展示 SC7A20 的两种接入方式（component / quick-package / source-trimmed）。
 
 ## 自己创建示例
 
@@ -37,4 +43,4 @@ STM32F103C8T6 最小系统板交叉编译固件示例，把 `ffl.osal`、`ffl.sc
 - 应用必须提供的 bus、GPIO、IRQ、时间或临界区回调；
 - host/mock 与真实硬件验证的区别。
 
-CherryUSB 等第三方库的可运行接入也放在这里，但上游源码仍保留在 [third_party/README.md](../third_party/README.md) 所述的位置。
+第三方库可运行接入放在这里，上游源码仍按 [third_party/README.md](../third_party/README.md)。
